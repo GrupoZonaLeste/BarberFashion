@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "League Spartan", sans-serif;
+}
+
+.navbar{
+    background: rgb(0,0,0);
+background: linear-gradient(180deg, rgba(0,0,0,1) 92%, rgba(19,19,19,1) 100%);
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.nav-link{
+    display: flex;
+    color: #FF9800;
+    font-weight: 600;
+}
+
+.navbar-nav{
+    display: flex;
+    justify-content: space-between;
+    width: 58%;
+}
+
+.nav-link:hover{
+    color: #ff9900ad;
+}
+
+.button{
+    color: #111111;
+    border: solid 2px #FF9800;
+    background-color: #FF9800;
+    cursor: pointer;
+    border-radius: 20px;
+    font-weight: 700;
+    height: 40px;
+    transition: 0.5s all;
+}
+
+.button:hover{
+    color: #FF9800;
+    background-color: #111111;
+    
+}
+
+.banner{
+    width: 100%;
+    display: block;
+    position: relative;
+    background-size: cover;
+    background: no-repeat center center;
+    z-index: -1;
+}
+
+.div-img{
+    background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 15%,
+ rgba(19,19,19,0.8211659663865546) 50%, rgba(0,0,0,1) 85%, rgba(0,0,0,1) 100%);
+    z-index: 1;
+}
+
+@media (max-width: 999px) {
+    .navbar-nav {
+        flex-direction: column;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link{
+        justify-content: center;
+    }
+
+    .container-fluid{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+        height: auto;
+    }
+}
+
