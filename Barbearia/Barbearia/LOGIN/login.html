@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Login - Barbearia</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-yellow text-white">
+            <h4 class="mb-0">Login</h4>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label for="username">Nome de Usuário</label>
+                <input type="text" class="form-control" id="username" placeholder="Digite seu nome de usuário">
+              </div>
+              <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            </form>
+          </div>
+          <div class="card-footer text-center">
+            <p>ou entre com</p>
+            <a href="https://www.facebook.com" class="btn btn-outline-dark btn-social mx-1">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.google.com" class="btn btn-outline-dark btn-social mx-1">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="https://www.twitter.com" class="btn btn-outline-dark btn-social mx-1">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div>
+          <div class="text-center mt-3">
+            <p>Ainda não tem uma conta?</p>
+            <button onclick="window.location.href = '../CADASTRO/cadastro.html';"
+              class="btn btn-secondary btn-block">Cadastrar</button>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
