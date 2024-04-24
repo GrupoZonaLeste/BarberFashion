@@ -76,3 +76,5 @@ fechar_editar.addEventListener('click', () => {
 })
 
 document.addEventListener("DOMContentLoaded", addDivCortes)
+
+

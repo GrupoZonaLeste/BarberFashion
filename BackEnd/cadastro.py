@@ -1,8 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
 from controller import Controller
 from model import *
 from connection import *
+from database import *
 
 db_handle = DBConnectionHandler()
 db_handle.connect_to_db()
@@ -25,3 +26,18 @@ async def add_item(cliente: Cliente):
 @app.post("/logar/")
 async def add_item(cliente: ClienteLogin):
     return controller.check_Login(cliente)
+
+@app.post('/marcarcorte')
+async def addCorteNoBanco(corte: dict = Body(...)):
+    await adicionar_corte(corte)
+    return "CORTE MARCARDO E ENVIADO AO BANCO"
+
+@app.get('/pegarcortes')
+async def pegarCortes():
+    dados = await pegar_cortes() 
+    return dados
+
+@app.delete('/deletarcorte/{id}')
+async def deletecorte(id):
+    await deletar_cortes(id)
+    return "CORTE DELETADO"
