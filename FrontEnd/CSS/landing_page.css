@@ -39,6 +39,7 @@
     border-radius: 20px;
     font-weight: 700;
     height: 3rem;
+    padding: 0.5rem;
     transition: 0.5s all;
     align-items: center;
 }
@@ -46,7 +47,7 @@
 .button:hover{
     color: #FF9800;
     background-color: #111111;
-    
+    text-decoration: none;
 }
 
 .banner{

@@ -1,2 +1,3 @@
 /.venv
 BackEnd/__pycache__
+fastapi_env

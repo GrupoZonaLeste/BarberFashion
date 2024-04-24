@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Conta</title>
     <link rel="stylesheet" href="/FrontEnd/CSS/pagina_cliente.css">
+    <title>Minha Conta</title>
 </head>
 
 <body>
@@ -53,34 +53,30 @@
                                 <option value="progressiva">Progressiva</option>
                                 <option value="coloração de cabelo">Coloração</option>
                             </select><br><br>
-
-                            <input type="submit" value="Agendar">
                         </form>
+                        <button id="input_agendar" type="submit">Agendar</button>
                     </div>
-                    <div class="card">
-                        <h4>Serviço Agendado</h4>
-                        <p>
-                        <h4>Data:</h4>
-                        <h5>25 de abril de 2024
-                            Horário: 15:00</h5>
 
-                        <h4>Descrição:</h4>
-                        <h5>Corte de cabelo</h5>
-                        </p>
-                        <button>Cancelar serviço</button>
-                        <button>Editar serviço</button>
+                    <div class="card">
+                        <div class="card-body" id="servicos_agendados">
+                            <h3>Serviços Agendados</h4>
+                        </div>
                     </div>
+
                     <div class="card">
                         <h3>Histórico</h3>
                         <p>
-
-                        <h5>Data: 20 de abril de 2024
+                        <h5>
+                            Data: 20 de abril de 2024
                             Horário: 14:30
-                            Descrição: Barba.</h5>
+                            Descrição: Barba.
+                        </h5>
 
-                        <h5>Data: 15 de abril de 2024
+                        <h5>
+                            Data: 15 de abril de 2024
                             Horário: 16:00
-                            Descrição: Coloração de cabelo.</h5>
+                            Descrição: Coloração de cabelo.
+                        </h5>
                         </p>
                     </div>
                 </div>
@@ -90,6 +86,33 @@
     <footer>
         <p>&copy; 2024 Barbearia</p>
     </footer>
+
+    <div id="editar-corte"style="visibility:hidden; z-index: 3;position: absolute;height: 100vh;width: 100%; background:radial-gradient(circle, rgba(0,0,0,0.6694327389158788) 0%, rgba(0,0,0,0.22405458765537467) 35%);">
+        <div class="card" style="margin:130px auto;">
+            <h3>Editar Serviço</h3>
+            <form>
+                <label for="data">Data:</label>
+                <input type="date" id="data" name="data" required><br><br>
+
+                <label for="horario">Horário:</label>
+                <input type="time" id="horario" name="horario" required><br><br>
+
+                <label for="servico">Serviço:</label>
+                <select id="servico" name="servico" required>
+                    <option value="" disabled selected>Selecione um serviço</option>
+                    <option value="corte de cabelo">Corte</option>
+                    <option value="barba">Barba</option>
+                    <option value="sobrancelha">Sobrancelha</option>
+                    <option value="progressiva">Progressiva</option>
+                    <option value="coloração de cabelo">Coloração</option>
+                </select><br><br>
+            </form>
+            <button id="input_editar" type="submit">Editar</button>
+            <button id="input_cancelar-edit" type="submit">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="/FrontEnd/JS/pagina_cliente.js"></script>
 </body>
 
 </html>

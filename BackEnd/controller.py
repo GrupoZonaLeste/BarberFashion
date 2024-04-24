@@ -30,8 +30,8 @@ class Controller:
         }, {
             'password': cliente.password
         }
-    ]
-}
+        ]
+        }   
         count = self.get_current_collection().count_documents(filter)
         if(count > 0):
             return {"status":"LOGIN CORRETO"}
