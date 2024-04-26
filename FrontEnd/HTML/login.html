@@ -11,26 +11,31 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg container-fluid">
+    <div class="container-fluid"> 
+    </div>
+</nav>
 
   <div class="container">
     <div class="row justify-content-center mt-5">
       <div class="col-md-6">
         <div class="card">
           <div class="card-header bg-yellow text-white">
-            <h4 class="mb-0">Login</h4>
+            <a href="index.html" class="voltar"><img src="../images/right-arrow.png" class="btn-voltar" alt=""></a>
+            <h4 class="title">Login</h4>
           </div>
           <div class="card-body">
             <form>
               <div class="form-group">
-                <label for="username">Email</label>
+                <label for="username">Email:</label>
                 <input type="text" class="form-control" id="email" placeholder="Digite seu email">
               </div>
               <div class="form-group">
-                <label for="password">Senha</label>
+                <label for="password">Senha:</label>
                 <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
               </div>
             </form>
-            <button type="submit" class="btn btn-primary btn-block" id="button-login">Entrar</button>
+            <button type="submit" class="btn btn-warning btn-block" id="button-login">Entrar</button>
           </div>
           <div class="card-footer text-center">
             <p>ou entre com</p>
@@ -48,13 +53,11 @@
             <p>Ainda não tem uma conta?</p>
             <button onclick="window.location.href = '/FrontEnd/HTML/cadastro.html';"
               class="btn btn-secondary btn-block">Cadastrar</button>
-
-
           </div>
         </div>
       </div>
       <ul>
-      <li><a href="index.html">Voltar</a></li>
+      
   </ul>
     </div>
   </div>
