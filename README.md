@@ -26,6 +26,8 @@ Nosso Projeto visa em desenvolver um site de barbearia que conecte o barbeiro e 
 ## Requisitos
 
 ```python
-pip install fastapi
+pip install -r requirements.txt
+cd BackEnd
+uvicorn cadastro:app --reload
 
 ```
