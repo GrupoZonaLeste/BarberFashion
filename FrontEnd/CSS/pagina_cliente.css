@@ -289,3 +289,25 @@ footer {
 .card button:hover {
     background-color: #ffca28;
 }
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    overflow: auto;
+    width: 50%;
+    background-color: #111111;
+    position: absolute;
+    left: 25rem;
+}
+
+.modal .content{
+    background-color: #f9f9f9;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
