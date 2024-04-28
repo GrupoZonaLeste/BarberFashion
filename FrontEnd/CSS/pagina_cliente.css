@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 *{
     margin: 0;
@@ -39,16 +39,20 @@ header {
 }
 
 .user-info {
-    background-color: #f0f0f0;
     padding: 10px;
     width: 15rem;
     display: flex;
-    margin-top: 5rem;
+    margin-top: 7rem;
     height: 30rem;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    border-radius: 1rem;
+    border: solid 0.15rem #585858;
     justify-content: space-evenly;
+    position: relative;
+    padding-left: 1.5rem;
+    right: 1rem;
 }
 
 .foto-perfil{
@@ -58,17 +62,57 @@ header {
     display: flex;
 }
 
-.user-details p {
-    margin: 5px 0;
+.foto-perfil > img{
+    height: 8rem;
+    width: 8rem;
 }
 
-.user-details button {
-    padding: 10px 20px;
+.user-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 15rem;
+}
+
+.user-details p {
+    color: #f9f9f9;
+}
+
+.nome-cliente{
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.editar-perfil{
     background-color: #FF9800;
-    color: #fff;
+    color: #111111;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 1rem;
     border: none;
     cursor: pointer;
-    margin-top: 10px;
+    padding: 0.8rem;
+    transition: 0.2s all;
+}
+
+.editar-perfil:hover{
+    background-color: #ffca28;
+}
+
+.sair{
+    background-color: #E74040;
+    color: #111111;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    padding: 0.8rem;
+    transition: 0.2s all;
+}
+
+.sair:hover{
+    background-color: #e74040a6;
 }
 
 main {
@@ -76,20 +120,40 @@ main {
     padding: 20px;
 }
 
-section {
-    text-align: center;
-    margin-bottom: 20px;
+.apresentation{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: #ccc;
+    height: 4rem;
+}
+
+.apres-title{
+    font-weight: 600;
+    font-size: 2rem;
 }
 
 .services {
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30rem;
+    padding: 2rem;
 }
 
+.superior{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.inferior{
+    display: flex;
+}
+
+
 .services .card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
     padding: 10px;
     margin: 0 10px;
 }
@@ -102,12 +166,72 @@ footer {
 }
 
 .card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    width: 300px;
+    display: flex;
+    flex-direction: column;
+    border-top: solid 0.3rem #FF9800;
+    border-radius: 0.5rem;
+    padding: 2rem;
     background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 25rem;
+    height: 20rem;
+}
+
+.detail{
+    position: relative;
+    left: 10.7rem;
+    height: 0.8rem;
+    width: 5rem;
+    background-color: #FF9800;
+}
+
+.card-title{
+    font-weight: 600;
+    color: #111111;
+    font-size: 1.4rem;
+}
+
+.card-subtitle{
+    width: 80%;
+    text-align: center;
+}
+
+.card-icon{
+    height: 8rem;
+    width: 8rem;
+    margin-top: -2rem;
+}
+
+.inferior{
+    display: flex;
+    justify-content: center;
+}
+
+.card-inferior{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 4rem;
+    justify-content: space-between;
+    align-items: center;
+    border-top: solid 0.3rem #FF9800;
+    border-radius: 0.5rem;
+    padding: 1.3rem;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon-seta{
+    display: flex;
+    height: 2rem;
+    width: 2rem;
 }
 
 .card h3 {
@@ -149,18 +273,17 @@ footer {
     background-color: #ffca28;
 }
 
-.card p {
-    color: #666;
-}
 
 .card button {
     background-color: #FF9800;
-    color: #fff;
+    color: #111111;
+    font-weight: 600;
     border: none;
-    padding: 10px 20px;
+    padding: 0.8rem;
     margin-top: 10px;
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 1rem;
+    transition: 0.2s all;
 }
 
 .card button:hover {
