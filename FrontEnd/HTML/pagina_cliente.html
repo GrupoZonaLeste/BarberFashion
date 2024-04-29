@@ -10,7 +10,8 @@
 
 <body>
     <nav class="navbar navbar-expand-lg container-fluid">
-        <div class="container-fluid"> 
+        <div class="container-fluid" style="color: #FF9800; display: flex; align-items: center; margin-left: 20px; font-size: xx-large; font-weight: bold;"> 
+            BARBERFASHION
         </div>
     </nav>
     <div class="container">
@@ -44,29 +45,7 @@
                                 <button class="modalBtn">AGENDAR</button>
                             </div>
                             
-                            <div class="modal">
-                                <div class="content">
-                                    <form>
-                                        <label for="data">Data:</label>
-                                        <input type="date" id="data" name="data" required><br><br>
-            
-                                        <label for="horario">Horário:</label>
-                                        <input type="time" id="horario" name="horario" required><br><br>
-            
-                                        <label for="servico">Serviço:</label>
-                                        <select id="servico" name="servico" required>
-                                            <option value="" disabled selected>Selecione um serviço</option>
-                                            <option value="corte de cabelo">Corte</option>
-                                            <option value="barba">Barba</option>
-                                            <option value="sobrancelha">Sobrancelha</option>
-                                            <option value="progressiva">Progressiva</option>
-                                            <option value="coloração de cabelo">Coloração</option>
-                                        </select><br><br>
-                                    </form>
-                                    <button id="input_agendar" type="submit">Agendar</button> 
-                                </div>
-                            </div>
-
+                            
                             <!--<h3>Agende um Serviço</h3>
                             <form>
                                 <label for="data">Data:</label>
@@ -89,12 +68,12 @@
                         </div>
     
                         <div class="card">
-                            <div class="card-body" id="servicos_agendados">
+                            <div class="card-body" id="servicos_agendados1">
                                 <div class="detail"></div>
                                 <img src="../images/agenda 1.png" class="card-icon" alt="">
                                 <p class="card-title">SERVIÇOS AGENDADOS</p>
                                 <p class="card-subtitle">Personalize, visualize e remarque quando quiser.</p>
-                                <button>EDITAR SERVIÇO</button>
+                                <button id="btn-editar-servicos">VISUALIZAR SERVIÇOS</button>
                             </div>
                         </div>
                     </div>
@@ -126,12 +105,46 @@
             </section>
         </main>
     </div>
+    
+    <div class="modal">
+        <div class="card" style="margin:130px auto; width: 300px;">
+                <button id="fechar_agendamento_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+                <h3>Agendar Serviço</h3><br>
+                <form>
+                    <label for="data">Data:</label>
+                    <input type="date" id="data" name="data" required><br><br>
 
-    <div id="editar-corte"style="visibility:hidden; z-index: 3;position: absolute;height: 100vh;width: 100%; background:radial-gradient(circle, rgba(0,0,0,0.6694327389158788) 0%, rgba(0,0,0,0.22405458765537467) 35%);">
-        <div id="sub-editar-corte" class="card" style="margin:130px auto;">
+                    <label for="horario">Horário:</label>
+                    <input type="time" id="horario" name="horario" required><br><br>
+
+                    <label for="servico">Serviço:</label>
+                    <select id="servico" name="servico" required>
+                        <option value="" disabled selected>Selecione um serviço</option>
+                        <option value="corte de cabelo">Corte</option>
+                        <option value="barba">Barba</option>
+                        <option value="sobrancelha">Sobrancelha</option>
+                        <option value="progressiva">Progressiva</option>
+                        <option value="coloração de cabelo">Coloração</option>
+                    </select><br><br>
+                </form>
+                <button id="input_agendar" type="submit">Agendar</button> 
+            
+        </div>
+    </div>
+    
+        <div class="modal2" style="background:radial-gradient(circle, rgba(0,0,0,0.5694327389158788) 0%, rgba(0,0,0,0.62405458765537467) 35%);">
+            <div id="servicos_agendados" class="card" style="margin:130px auto; width: 300px;">
+                <button id="fechar_servicos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+                <h3>Serviços Agendados</h3><br>
+            </div>
+        </div>
+
+
+    <div id="editar-corte" style="visibility:hidden; z-index: 3;position: absolute;height: 100vh;width: 100%; background:radial-gradient(circle, rgba(0,0,0,0.5694327389158788) 0%, rgba(0,0,0,0.62405458765537467) 35%);">
+        <div id="sub-editar-corte" class="card" style="margin:130px auto; width: 300px;">
             <h3>Editar Serviço</h3>
             <form id="form-editar-corte"></form>
-         </div>
+        </div>
     </div>
 
     <script src="/FrontEnd/JS/modal.js"></script>

@@ -290,18 +290,25 @@ footer {
     background-color: #ffca28;
 }
 
-.modal{
+.modal2 {
     display: none;
-    position: fixed;
     z-index: 1;
-    overflow: auto;
-    width: 50%;
-    background-color: #111111;
     position: absolute;
-    left: 25rem;
+    height: 100vh;
+    width: 100%; 
+    background:radial-gradient(circle, rgba(0,0,0,0.9694327389158788) 0%, rgba(0,0,0,0.82405458765537467) 35%);
 }
 
-.modal .content{
+.modal{
+    display: none;
+    z-index: 1;
+    position: absolute;
+    height: 100vh;
+    width: 100%; 
+    background:radial-gradient(circle, rgba(0,0,0,0.9694327389158788) 0%, rgba(0,0,0,0.82405458765537467) 35%);
+}
+
+/* .content{
     background-color: #f9f9f9;
     margin: 15% auto;
     padding: 20px;
@@ -310,4 +317,4 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
