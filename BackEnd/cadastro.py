@@ -41,3 +41,8 @@ async def pegarCortes():
 async def deletecorte(id):
     await deletar_cortes(id)
     return "CORTE DELETADO"
+
+@app.put('/atualizarcortes/{id}')
+async def atualizarCortes(id , dados: dict = Body(...)):
+    await atualizar_cortes(id, dados)
+    return "CORTE ATUALIZADO"
