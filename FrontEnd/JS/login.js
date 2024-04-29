@@ -30,7 +30,7 @@ login_btn.addEventListener('click', async () => {
           });
           console.log(response.data.status)
           if (response.data.status == "LOGIN CORRETO") {
-            window.location.href = "http://127.0.0.1:5500/FrontEnd/HTML/pagina_cliente.html";
+            window.location.href = "http:/FrontEnd/HTML/pagina_cliente.html";
             alert(`Login feito com sucesso!`);
            
         } else {
