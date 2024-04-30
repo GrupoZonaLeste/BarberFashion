@@ -378,6 +378,16 @@ footer{
     width: 100%;
 }
 
+.logomarca{
+    height: 7rem;
+    width: 7rem;
+}
+
+.logomarca > img{
+    height: 100%;
+    width: 100%;
+}
+
 @media (max-width: 999px) {
     .navbar-nav {
         flex-direction: column;

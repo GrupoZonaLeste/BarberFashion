@@ -28,7 +28,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #ffca28;
+    background-color: #FF9800;
 }
 
 .btn-voltar{
@@ -41,7 +41,9 @@ body {
     color: #000000;
     margin-bottom: 0;
     position: relative;
-    left: 12rem;
+    width: 88%;
+    display: flex;
+    justify-content: center;
 }
 
 .card-body {
@@ -58,17 +60,24 @@ label {
 }
 
 input.form-control {
-    border-color: #ffca28;
+    border-color: #111111;
 }
 
 button.btn-primary {
-    background-color: #ffca28;
-    border-color: #ffca28;
+    background-color: #FF9800;
+    border-color: #FF9800;
 }
 
 button.btn-primary:hover {
-    background-color: #ffca28;
-    border-color: #ffca28;
+    background-color: #FF9800;
+    border-color: #FF9800;
+}
+
+.btn-warning{
+    color: #000000;
+    font-weight: 600;
+    background-color: #FF9800;
+    border-color: #FF9800;
 }
 
 .btn-outline-dark {
