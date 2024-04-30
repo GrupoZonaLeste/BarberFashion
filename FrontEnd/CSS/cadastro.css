@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "League Spartan", sans-serif;
+}
+
+.navbar{
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 15%, rgb(8, 8, 8) 50%);
+    border-color: solid none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 80px;
+}
+
+body {
+    background-color: #111111;
+    /* Fundo cinza claro */
+}
+
+.card {
+    border: none;
+}
+
+.card-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #ffc107;
+}
+
+.btn-voltar{
+    height: 1.7rem;
+    width: 1.7rem;
+}
+
+
+.title{
+    color: #000000;
+    margin-bottom: 0;
+    position: relative;
+    left: 8rem;
+}
+
+.card-body {
+    background-color: #ffffff;
+}
+
+label {
+    color: #000000;
+}
+
+input.form-control {
+    border-color: #ffc107;
+}
+
+button.btn-primary {
+    background-color: #FF9800;
+    border-color: #ffc107;
+}
+
+button.btn-primary:hover {
+    background-color: #ffca28;
+    border-color: #ffca28;
+}

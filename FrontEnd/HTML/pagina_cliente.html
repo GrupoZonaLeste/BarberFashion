@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/FrontEnd/CSS/pagina_cliente.css">
+    <title>Minha Conta</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg container-fluid">
+        <div class="container-fluid"> 
+        </div>
+    </nav>
+    <div class="container">
+        <div class="user-info">
+            <div class="foto-perfil">
+                <img src="/images/profile.png" alt="Foto do Cliente">
+            </div>
+            <div class="user-details">
+                <p class="nome-cliente">Nome do Cliente</p>
+                <p class="email-cliente">Email: cliente@email.com</p>
+                <p class="tel-cliente">Telefone: (00) 1234-5678</p>
+                <a href="/Projeto_Barbearia/FrontEnd/HTML/editarPerfil_cliente.html" class="editar-perfil">EDITAR PERFIL</a>
+                <a href="../HTML/login.html" class="sair">SAIR</a>
+            </div>
+        </div>
+        <main>
+            <section class="apresentation">
+                <p class="apres-title">Olá (nome do cliente), Bem-vindo à Barbearia!</p>
+                <p class="apres-subtitle">Aqui você pode gerenciar seu perfil, visualizar seus pedidos e configurar suas preferências.</p>
+            </section>
+            <section>
+                <h2></h2>
+                <div class="services">
+                    <div class="superior">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="detail"></div>
+                                <img src="../images/penteado 1.png" class="card-icon" alt="">
+                                <p class="card-title">AGENDE UM SERVIÇO</p>
+                                <p class="card-subtitle">Agende o melhor horário disponível para realizar o corte de cabelo.</p>
+                                <button class="modalBtn">AGENDAR</button>
+                            </div>
+                            
+                            <div class="modal">
+                                <div class="content">
+                                    <form>
+                                        <label for="data">Data:</label>
+                                        <input type="date" id="data" name="data" required><br><br>
+            
+                                        <label for="horario">Horário:</label>
+                                        <input type="time" id="horario" name="horario" required><br><br>
+            
+                                        <label for="servico">Serviço:</label>
+                                        <select id="servico" name="servico" required>
+                                            <option value="" disabled selected>Selecione um serviço</option>
+                                            <option value="corte de cabelo">Corte</option>
+                                            <option value="barba">Barba</option>
+                                            <option value="sobrancelha">Sobrancelha</option>
+                                            <option value="progressiva">Progressiva</option>
+                                            <option value="coloração de cabelo">Coloração</option>
+                                        </select><br><br>
+                                    </form>
+                                    <button id="input_agendar" type="submit">Agendar</button> 
+                                </div>
+                            </div>
+
+                            <!--<h3>Agende um Serviço</h3>
+                            <form>
+                                <label for="data">Data:</label>
+                                <input type="date" id="data" name="data" required><br><br>
+    
+                                <label for="horario">Horário:</label>
+                                <input type="time" id="horario" name="horario" required><br><br>
+    
+                                <label for="servico">Serviço:</label>
+                                <select id="servico" name="servico" required>
+                                    <option value="" disabled selected>Selecione um serviço</option>
+                                    <option value="corte de cabelo">Corte</option>
+                                    <option value="barba">Barba</option>
+                                    <option value="sobrancelha">Sobrancelha</option>
+                                    <option value="progressiva">Progressiva</option>
+                                    <option value="coloração de cabelo">Coloração</option>
+                                </select><br><br>
+                            </form>
+                            <button id="input_agendar" type="submit">Agendar</button> -->
+                        </div>
+    
+                        <div class="card">
+                            <div class="card-body" id="servicos_agendados">
+                                <div class="detail"></div>
+                                <img src="../images/agenda 1.png" class="card-icon" alt="">
+                                <p class="card-title">SERVIÇOS AGENDADOS</p>
+                                <p class="card-subtitle">Personalize, visualize e remarque quando quiser.</p>
+                                <button>EDITAR SERVIÇO</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="inferior">
+                        <div class="card-inferior">
+                            <p class="card-title">HISTÓRICO DE SERVIÇOS</p>
+                            <div>
+                                <img src="../images/right-arrow-down.png" class="card-icon-seta" alt="">
+                            </div>
+                            <!-- <h3>Histórico</h3>
+                            <p>
+                            <h5>
+                                Data: 20 de abril de 2024
+                                Horário: 14:30
+                                Descrição: Barba.
+                            </h5>
+    
+                            <h5>
+                                Data: 15 de abril de 2024
+                                Horário: 16:00
+                                Descrição: Coloração de cabelo.
+                            </h5>
+                            </p> -->
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="editar-corte"style="visibility:hidden; z-index: 3;position: absolute;height: 100vh;width: 100%; background:radial-gradient(circle, rgba(0,0,0,0.6694327389158788) 0%, rgba(0,0,0,0.22405458765537467) 35%);">
+        <div id="sub-editar-corte" class="card" style="margin:130px auto;">
+            <h3>Editar Serviço</h3>
+            <form id="form-editar-corte"></form>
+         </div>
+    </div>
+
+    <script src="/FrontEnd/JS/modal.js"></script>
+    <script src="/FrontEnd/JS/pagina_cliente.js"></script>
+</body>
+
+</html>
