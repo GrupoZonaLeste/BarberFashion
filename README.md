@@ -32,7 +32,7 @@ As tecnologias utilizadas neste projeto:
 - [Axios](https://reactjs.org)
 - [MongoDB](https://vuejs.org)
 - [Bootstrap](https://getbootstrap.com)
- ## 📝Getting Started
+ ## 📝Primeiros passos
 
 Aqui vai uma passo a passo de como rodar a aplicação no seu própio ambiente. 
  ### Prerequisites
@@ -41,7 +41,7 @@ Certifique-se de ter o Python instalado
   ```sh
   winget install -e --id Python.Python.3.11
   ```
- ### 📦Installation
+ ### 📦 Instalação
 
 1. Clone o repositório 
    ```sh
@@ -66,6 +66,6 @@ caso o ambiente virtual não identifique o arquivo requirements.txt*
    ```sh
    uvicorn main:app --reload
    ```
- ## License
+ ## licença 
 
 Distributed under the MIT License. See [MIT License](https://opensource.org/licenses/MIT) for more information.
