@@ -29,7 +29,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #ffc107;
+    background-color: #FF9800;
 }
 
 .btn-voltar{
@@ -42,7 +42,7 @@ body {
     color: #000000;
     margin-bottom: 0;
     position: relative;
-    left: 8rem;
+    width: 100%;
 }
 
 .card-body {
@@ -54,15 +54,21 @@ label {
 }
 
 input.form-control {
-    border-color: #ffc107;
+    border-color: #000000;
 }
 
 button.btn-primary {
     background-color: #FF9800;
-    border-color: #ffc107;
+    border-color: #FF9800;
 }
 
 button.btn-primary:hover {
-    background-color: #ffca28;
-    border-color: #ffca28;
+    background-color: #FF9800;
+    border-color: #FF9800;
+}
+
+.btn-warning{
+    color: #212529;
+    background-color: #FF9800;
+    border-color: #FF9800;
 }
