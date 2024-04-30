@@ -79,7 +79,6 @@ def verificar_token(token: str):
 def login(email: str, senha: str, request: Request):
     email_decoded = unquote(email)
     resultado = controller.login(email_decoded, senha, request)
-    print(resultado)
     if resultado:
         return {"message": "Login bem-sucedido","token" : resultado}
     else:

@@ -18,25 +18,21 @@ login_btn.addEventListener('click', async () => {
     logar();
 
     async function logar(){
-        let data = fetchButtonData()
-        
-        console.log(data)
-        
-            const response = await axios({
-            method: "POST",
-            url: API_GATEWAY,
-            contentType: "application/json",
-            data:data,
-          });
-          console.log(response.data.status)
-          if (response.data.status == "LOGIN CORRETO") {
+
+    data = fetchButtonData()
+    const options = {
+        method: 'POST',
+        url: 'http://localhost:8000/login/',
+        params: {email: data.email, senha: data.password, '': ''},
+        headers: {'User-Agent': 'insomnia/9.1.0'}
+      };
+          axios.request(options).then(function (response) {
+            console.log(response.data);
             window.location.href = "http:/FrontEnd/HTML/pagina_cliente.html";
-            alert(`Login feito com sucesso!`);
-           
-        } else {
-            alert(`Este usuário não está cadastrado`);
-        }
-        
+          }).catch(function (error) {
+            console.error(error);
+          });
+          
     }
 
 
