@@ -17,14 +17,14 @@ Revitalize sua Imagem, Assegure sua Confiança e Mantenha sua Lealdade, cada Cor
 </p>
 </div>
 
- ## About The Project
+ ## 🚧Sobre o projeto
 
 ![Tela inicial do site](https://cdn.discordapp.com/attachments/480144183231905794/1234937065561653268/image.png?ex=66328c44&is=66313ac4&hm=778ab4319d65cb902472f1151bd66f72f7c08e59b29e6b5cb3c9dc4dbb94859d&)
 
 Bem-vindo ao nosso site dedicado a oferecer a melhor experiência de agendamento de cortes de cabelo! Nosso objetivo é proporcionar uma plataforma intuitiva e conveniente, onde os clientes possam facilmente marcar seus cortes de cabelo favoritos com os melhores profissionais da área.
 
 Além disso, nossa plataforma não se limita apenas aos clientes. Para os gerentes e funcionários dos salões de beleza, oferecemos ferramentas poderosas de gerenciamento de agendamentos. Com recursos avançados de programação e organização, eles podem gerenciar facilmente a agenda, acompanhar os horários dos clientes e garantir que todos recebam o atendimento excepcional que merecem.
- ### Built With
+ ### 🛠Tecnologias usadas
 
 As tecnologias utilizadas neste projeto:
 
@@ -32,7 +32,7 @@ As tecnologias utilizadas neste projeto:
 - [Axios](https://reactjs.org)
 - [MongoDB](https://vuejs.org)
 - [Bootstrap](https://getbootstrap.com)
- ## Getting Started
+ ## 📝Getting Started
 
 Aqui vai uma passo a passo de como rodar a aplicação no seu própio ambiente. 
  ### Prerequisites
@@ -41,7 +41,7 @@ Certifique-se de ter o Python instalado
   ```sh
   winget install -e --id Python.Python.3.11
   ```
- ### Installation
+ ### 📦Installation
 
 1. Clone o repositório 
    ```sh
