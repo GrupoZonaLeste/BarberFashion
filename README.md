@@ -11,7 +11,7 @@ Revitalize sua Imagem, Assegure sua Confiança e Mantenha sua Lealdade, cada Cor
 <a href="https://github.com/GrupoZonaLeste/Projeto_Barbearia"><strong>Explore a documentação »</strong></a>
 <br/>
 <br/>
-<a href="https://github.com/ShaanCoding/ReadME-Generator/"> Demo.</a>  
+<a href="https://github.com/GrupoZonaLeste/Projeto_Barbearia"> Demo.</a>  
 <a href="https://github.com/GrupoZonaLeste/Projeto_Barbearia/issues">Reporte um Bug .</a>
 <a href="https://github.com/GrupoZonaLeste/Projeto_Barbearia/labels/enhancement">Solicite uma Feature</a>
 </p>
