@@ -8,12 +8,12 @@
 Revitalize sua Imagem, Assegure sua Confiança e Mantenha sua Lealdade, cada Corte é uma Performance.
 <br/>
 <br/>
-<a href="https://github.com/GrupoZonaLeste/Projeto_Barbearia"><strong>Explore the docs »</strong></a>
+<a href="https://github.com/GrupoZonaLeste/Projeto_Barbearia"><strong>Explore a documentação »</strong></a>
 <br/>
 <br/>
-<a href="https://github.com/ShaanCoding/ReadME-Generator/">View Demo .</a>  
-<a href="https://github.com/GrupoZonaLeste/Projeto_Barbearia/issues">Report Bug .</a>
-<a href="https://github.com/GrupoZonaLeste/Projeto_Barbearia/labels/enhancement">Request Feature</a>
+<a href="https://github.com/ShaanCoding/ReadME-Generator/"> Demo.</a>  
+<a href="https://github.com/GrupoZonaLeste/Projeto_Barbearia/issues">Reporte um Bug .</a>
+<a href="https://github.com/GrupoZonaLeste/Projeto_Barbearia/labels/enhancement">Solicite uma Feature</a>
 </p>
 </div>
 
