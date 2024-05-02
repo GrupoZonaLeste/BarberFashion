@@ -31,7 +31,7 @@ login_btn.addEventListener('click', async () => {
           axios.request(options).then(function (response) {
             const token = response.data.token;
             saveTokenToLocal(token);
-            window.location.href = "http:/FrontEnd/HTML/pagina_cliente.html";
+            checkTokenValidityLogin();
           }).catch(function (error) {
             console.error(error);
             alert("Usuario não encontrado")
