@@ -34,6 +34,7 @@ login_btn.addEventListener('click', async () => {
             window.location.href = "http:/FrontEnd/HTML/pagina_cliente.html";
           }).catch(function (error) {
             console.error(error);
+            alert("Usuario não encontrado")
           });
           
     }
