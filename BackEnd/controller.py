@@ -61,5 +61,5 @@ class Controller:
             print(senha_criptografada)
             if senha_armazenada == senha_criptografada:
                 jwt = jwt_token.gerar_token(usuario['name'], client_ip) 
-                return [True ,jwt]
+                return [jwt]
         return False

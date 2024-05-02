@@ -5,7 +5,9 @@ const fetchButtonData = () => {
         
     };
   };
-
+  const saveTokenToLocal = (token) => {
+    localStorage.setItem('token', token);
+  };
 const API_GATEWAY = "http://localhost:8000/login"
 
 const login_btn = document.getElementById('button-login')
@@ -27,7 +29,8 @@ login_btn.addEventListener('click', async () => {
         headers: {'User-Agent': 'insomnia/9.1.0'}
       };
           axios.request(options).then(function (response) {
-            console.log(response.data);
+            const token = response.data.token;
+            saveTokenToLocal(token);
             window.location.href = "http:/FrontEnd/HTML/pagina_cliente.html";
           }).catch(function (error) {
             console.error(error);

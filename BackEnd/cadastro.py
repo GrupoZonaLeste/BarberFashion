@@ -80,6 +80,7 @@ def login(email: str, senha: str, request: Request):
     email_decoded = unquote(email)
     resultado = controller.login(email_decoded, senha, request)
     if resultado:
+        print(resultado)
         return {"message": "Login bem-sucedido","token" : resultado}
     else:
         raise HTTPException(status_code=401, detail="Credenciais inválidas")
