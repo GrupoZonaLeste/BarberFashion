@@ -29,9 +29,22 @@ login_btn.addEventListener('click', async () => {
         headers: {'User-Agent': 'insomnia/9.1.0'}
       };
           axios.request(options).then(function (response) {
+            console.log(response)
             const token = response.data.token;
+            const tipousuario = response.data.tipo_usuario[0]
             saveTokenToLocal(token);
-            window.location.href = "http:/FrontEnd/HTML/pagina_cliente.html";
+
+            
+            if(tipousuario == 'cliente'){
+              window.location.href = "http:/FrontEnd/HTML/pagina_cliente.html";
+            } 
+            if(tipousuario == 'adm'){
+                window.location.href = "http:/FrontEnd/HTML/pagina_gerente.html";
+            } 
+            if(tipousuario == 'funcionario'){
+                window.location.href = "http:/FrontEnd/HTML/pagina_funcionario.html";
+            }
+
           }).catch(function (error) {
             console.error(error);
             alert("Usuario não encontrado")

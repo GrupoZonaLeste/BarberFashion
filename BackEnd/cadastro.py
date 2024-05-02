@@ -29,6 +29,7 @@ app.add_middleware(
 
 @app.post("/cadastrar/")
 async def add_item(cliente: Cliente):
+    cliente.cliente = controller.qtd_ids()
     return controller.inserir_cliente(cliente)
 
 @app.post("/logar/")
@@ -80,8 +81,9 @@ def login(email: str, senha: str, request: Request):
     email_decoded = unquote(email)
     resultado = controller.login(email_decoded, senha, request)
     if resultado:
+        tipousuario = controller.tipoUsuario(email)
         print(resultado)
-        return {"message": "Login bem-sucedido","token" : resultado}
+        return {"message": "Login bem-sucedido","token" : resultado, "tipo_usuario": tipousuario}
     else:
         raise HTTPException(status_code=401, detail="Credenciais inválidas")
     

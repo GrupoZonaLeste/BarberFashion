@@ -2,9 +2,9 @@ const fetchButtonData = () => {
     return {
       name: document.getElementById('name').value,
       email: document.getElementById('email').value,
-      telefone: document.getElementById('phone').value ,
-      password: document.getElementById('password').value ,
-
+      telefone: document.getElementById('phone').value,
+      password: document.getElementById('password').value,
+      cliente: 0,
     };
   };
 const API_GATEWAY = "http://localhost:8000/cadastrar";
