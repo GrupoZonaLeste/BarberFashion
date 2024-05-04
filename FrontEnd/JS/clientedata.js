@@ -21,9 +21,10 @@ function PutData(name,email,phone){
     var nome_campo = document.getElementById("name")
     var email_campo = document.getElementById("email")
     var phone_campo = document.getElementById("phone")
-
+    var apresentation = document.getElementById("apresentation")
     nome_campo.textContent = name
     email_campo.textContent = ("Email:"+email)
     phone_campo.textContent = ("Telfone:"+email)
+    apresentation.textContent = ("Olá "+name+", Bem-vindo à Barbearia!")
 }
 
