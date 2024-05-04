@@ -66,7 +66,7 @@ def verificar_token(token: str):
             if exp_date > datetime.now():
                 print(exp_date)
                 print(datetime.now())
-                return {"message": "Token válido"}
+                return {"status": "Token válido"}
             else:
                 raise HTTPException(status_code=401, detail="Token expirado")
         else:

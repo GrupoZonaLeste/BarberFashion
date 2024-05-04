@@ -11,3 +11,12 @@ document.querySelectorAll('.nav-link').forEach(anchor =>{
         });
     });
 });
+
+document.getElementById('agendar').onclick = function(){
+    const token = localStorage.getItem("token"); 
+        if(token !== null && token !== undefined && token !== "") {
+            window.location.replace("http:/FrontEnd/HTML/pagina_cliente.html")
+        } else {
+            window.location.replace("http:/FrontEnd/HTML/login.html")
+        }
+}
