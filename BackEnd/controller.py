@@ -46,14 +46,16 @@ class Controller:
         user_agent = request.headers.get("user-agent")
         client_ip = request.client.host
         usuario = self.listar_usuario_por_email(email)
+
         print(usuario)
         if usuario:
             senha_armazenada = usuario.get('password')
+            cliente_id = usuario.get('cliente')
             print(senha_armazenada)
             senha_criptografada = hashlib.sha256(senha.encode()).hexdigest()
             print(senha_criptografada)
             if senha_armazenada == senha_criptografada:
-                jwt = jwt_token.gerar_token(usuario['name'], client_ip,) 
+                jwt = jwt_token.gerar_token(usuario['name'], client_ip, cliente_id) 
                 return [jwt]
         return False
     
@@ -70,5 +72,4 @@ class Controller:
             return {'adm'}
         elif(usuario3):
             return {'funcionario'}
-
 

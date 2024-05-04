@@ -83,7 +83,7 @@ def login(email: str, senha: str, request: Request):
     if resultado:
         tipousuario = controller.tipoUsuario(email)
         print(resultado)
-        return {"message": "Login bem-sucedido","token" : resultado, "tipo_usuario": tipousuario}
+        return {"status": "Login bem-sucedido","token" : resultado, "tipo_usuario": tipousuario}
     else:
         raise HTTPException(status_code=401, detail="Credenciais inválidas")
     
