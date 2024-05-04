@@ -17,6 +17,7 @@ class Cliente(BaseModel):
     email: Optional[str]
     telefone: Optional[str]
     password: str
+    cliente: int
 
 class ClienteLogin(BaseModel):
     email: str

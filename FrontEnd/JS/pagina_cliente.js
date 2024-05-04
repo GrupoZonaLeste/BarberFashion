@@ -1,4 +1,5 @@
 const data_corte = document.getElementById('data')
+      data_corte.min = dataHoje()
 const hora_corte = document.getElementById('horario')
 const select_corte = document.getElementById('servico')
 const btn_agendar = document.getElementById('input_agendar')
@@ -74,6 +75,7 @@ async function addDivCortes() {
                     dataInput.required = true
                     dataInput.type = "date"
                     dataInput.id = btn_editar.id
+                    dataInput.min = dataHoje()
 
                     const horaInput = document.createElement("input")
                     horaInput.required = true
@@ -132,4 +134,17 @@ async function addDivCortes() {
         })
         .catch(erro => console.log(`erro: ${erro}`))
 }
+
+function dataHoje(){
+    const data = new Date()
+
+    let dia = data.getDate() < '10' ? `0${data.getDate()}` : data.getDate()
+    let mes = data.getMonth() + 1 < '10' ? `0${data.getMonth() + 1}` : data.getMonth() + 1
+    let ano = data.getFullYear()
+
+    data_hoje = `${ano}-${mes}-${dia}`
+
+    return data_hoje
+}
+
 document.addEventListener("DOMContentLoaded", addDivCortes)

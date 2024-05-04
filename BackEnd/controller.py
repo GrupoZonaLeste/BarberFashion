@@ -33,15 +33,8 @@ class Controller:
         return usuario
     
     def check_Login(self, cliente: ClienteLogin) -> dict:
-        filter={
-        '$and': [
-        {
-            'email': cliente.email
-        }, {
-            'password': cliente.password
-        }
-        ]
-        }   
+        filter={'$and': [{'email': cliente.email}, {'password': cliente.password}]}   
+
         count = self.get_current_collection().count_documents(filter)
         if(count > 0):
             return {"status":"LOGIN CORRETO"}
@@ -63,3 +56,19 @@ class Controller:
                 jwt = jwt_token.gerar_token(usuario['name'], client_ip,) 
                 return [jwt]
         return False
+    
+    def qtd_ids(self):
+        return self.get_current_collection().count_documents({}) + 1
+    
+    def tipoUsuario(self, email):
+        usuario1 = self.get_current_collection().find_one({'$and': [{'cliente': {'$exists': True}}, {'email': email}]})
+        usuario2 = self.get_current_collection().find_one({'$and': [{'adm': {'$exists': True}}, {'email': email}]})
+        usuario3 = self.get_current_collection().find_one({'$and': [{'funcionario': {'$exists': True}}, {'email': email}]})
+        if(usuario1):
+            return {'cliente'}
+        elif(usuario2):
+            return {'adm'}
+        elif(usuario3):
+            return {'funcionario'}
+
+
