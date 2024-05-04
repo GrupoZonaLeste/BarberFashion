@@ -1,5 +1,4 @@
 let tokenChecked = false;
-
 async function checkTokenValidity() {
     if (tokenChecked) {
         return; // Se a função já foi chamada, retorna sem fazer nada
@@ -18,20 +17,24 @@ async function checkTokenValidity() {
         const response = await axios.request(options);
         console.log(response.data);
         if(response.data.status == "Token válido") {
-            
+            token_decoded = parseJwt(token)
+            DataLoad()
+            return true;    
         } else {
             alert("ERRO NA AUTENTICAÇÂO TENTE NOVAMENTE")
             window.location.replace("http:/FrontEnd/HTML/login.html");
+            return false;
         }
     } catch (error) {
         alert("Você não está autenticado");
         console.error(error);
         window.location.replace("http:/FrontEnd/HTML/login.html");
+        return false;
     }
 
-    // Marca que a função foi chamada
-    tokenChecked = true;
 }
 
-// Chamar a função de verificação de token imediatamente após o carregamento do script
 checkTokenValidity();
+async function DataLoad(){
+    GetData(token_decoded.sub);
+    }

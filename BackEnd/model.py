@@ -15,9 +15,9 @@ class ItemSend(BaseModel):
 class Cliente(BaseModel):
     name: str
     email: Optional[str]
-    telefone: Optional[str]
+    phone: Optional[str]
     password: str
-    cliente: int
+    client_id: int
 
 class ClienteLogin(BaseModel):
     email: str

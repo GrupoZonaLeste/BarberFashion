@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 from urllib.parse import unquote
 from tokens import Token
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-
+from typing import Dict
 
 db_handle = DBConnectionHandler()
 db_handle.connect_to_db()
@@ -29,7 +29,7 @@ app.add_middleware(
 
 @app.post("/cadastrar/")
 async def add_item(cliente: Cliente):
-    cliente.cliente = controller.qtd_ids()
+    cliente.client_id = controller.qtd_ids()
     return controller.inserir_cliente(cliente)
 
 @app.post("/logar/")
@@ -86,5 +86,10 @@ def login(email: str, senha: str, request: Request):
         return {"status": "Login bem-sucedido","token" : resultado, "tipo_usuario": tipousuario}
     else:
         raise HTTPException(status_code=401, detail="Credenciais inválidas")
+
+@app.get('/usuario')
+async def get_usuario(id: int):
+    return controller.listar_usuario_por_id(id)
+
     
     

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/FrontEnd/CSS/pagina_cliente.css">
+    <script src="/FrontEnd/JS/token_decode.js"></script>
     <title>Minha Conta</title>
 </head>
 
@@ -20,9 +21,9 @@
                 <img src="../images/profile.png" alt="Foto do Cliente">
             </div>
             <div class="user-details">
-                <p class="nome-cliente">Nome do Cliente</p>
-                <p class="email-cliente">Email: cliente@email.com</p>
-                <p class="tel-cliente">Telefone: (00) 1234-5678</p>
+                <p id="name"class="nome-cliente">Nome do Cliente</p>
+                <p id="email" class="email-cliente">Email: cliente@email.com</p>
+                <p id="phone" class="tel-cliente">Telefone: (00) 1234-5678</p>
                 <a href="../HTML/editar_cliente.html" class="editar-perfil">EDITAR PERFIL</a>
                 <a href="../HTML/login.html" class="sair" id="logout">SAIR</a>
             </div>
@@ -150,8 +151,13 @@
     <script src="/FrontEnd/JS/modal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/FrontEnd/JS/pagina_cliente.js"></script>
+    <script src="/FrontEnd//JS/clientedata.js"></script>
     <script src="/FrontEnd/JS/verifyToken_Cliente.js"></script>
+    <script src="/FrontEnd/JS/token_decode.js"></script>
     <script src="/FrontEnd/JS/logout.js"></script>
+  
+    
+    
     
 </body>
 

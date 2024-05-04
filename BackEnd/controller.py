@@ -32,6 +32,14 @@ class Controller:
         usuario = self.get_current_collection().find_one({'email': email})
         return usuario
     
+    def listar_usuario_por_id(self, id: int):
+        usuario = self.get_current_collection().find_one({'client_id': id})
+        if(usuario):
+            user = {'name': usuario.get('name'), 'email': usuario.get('email'), 'phone': usuario.get('phone')}
+            return user
+        else:
+            return {"status":"ID_NOT_FOUND"}
+    
     def check_Login(self, cliente: ClienteLogin) -> dict:
         filter={'$and': [{'email': cliente.email}, {'password': cliente.password}]}   
 
@@ -50,7 +58,7 @@ class Controller:
         print(usuario)
         if usuario:
             senha_armazenada = usuario.get('password')
-            cliente_id = usuario.get('cliente')
+            cliente_id = usuario.get('client_id')
             print(senha_armazenada)
             senha_criptografada = hashlib.sha256(senha.encode()).hexdigest()
             print(senha_criptografada)
@@ -63,7 +71,7 @@ class Controller:
         return self.get_current_collection().count_documents({}) + 1
     
     def tipoUsuario(self, email):
-        usuario1 = self.get_current_collection().find_one({'$and': [{'cliente': {'$exists': True}}, {'email': email}]})
+        usuario1 = self.get_current_collection().find_one({'$and': [{'client_id': {'$exists': True}}, {'email': email}]})
         usuario2 = self.get_current_collection().find_one({'$and': [{'adm': {'$exists': True}}, {'email': email}]})
         usuario3 = self.get_current_collection().find_one({'$and': [{'funcionario': {'$exists': True}}, {'email': email}]})
         if(usuario1):
