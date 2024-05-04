@@ -22,9 +22,11 @@ function PutData(name,email,phone){
     var email_campo = document.getElementById("email")
     var phone_campo = document.getElementById("phone")
     var apresentation = document.getElementById("apresentation")
-    nome_campo.textContent = name
+    let NameTitle = name.charAt(0).toUpperCase() + name.slice(1);
+
+    nome_campo.textContent = NameTitle
     email_campo.textContent = ("Email:"+email)
-    phone_campo.textContent = ("Telfone:"+email)
+    phone_campo.textContent = ("Telfone:"+phone)
     apresentation.textContent = ("Olá "+name+", Bem-vindo à Barbearia!")
 }
 
