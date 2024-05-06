@@ -1,11 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gerenciamento - Funcionário</title>
+    <link rel="stylesheet" href="/FrontEnd/CSS/pagina_funcionario.css">
 </head>
+
 <body>
-    <h1>PÁGINA FUNCIONARIO</h1>
+    <header>
+        <h1>Gerenciamento do Funcionário</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#perfil">Perfil</a></li>
+            <li><a href="#horarios">Horários</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="perfil">
+            <h2 style="color: white;">Perfil:</h2>
+            <div class="card">
+                <h3>Informações do Funcionário</h3>
+                <p>Nome: João Silva</p>
+                <p>Cargo: Barbeiro</p>
+                <p>Horário de Trabalho: 09:00 - 18:00</p>
+                <button class="button editar">Editar</button>
+            </div>
+        </section>
+        <section id="horarios">
+            <h2 style="color: white;">Horários:</h2>
+            <div class="card">
+                <h3>Horários Disponíveis</h3>
+                <ul>
+                    <li>Data: 10 de maio de 2024, Horário: 10:00, Status: Disponível <button
+                            class="button agendar">Agendar</button></li>
+                    <li>Data: 12 de maio de 2024, Horário: 11:30, Status: Disponível <button
+                            class="button agendar">Agendar</button></li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Agendamentos</h3>
+                <ul>
+                    <li>Data: 8 de maio de 2024, Horário: 14:00, Cliente: Maria Oliveira, Serviço: Corte</li>
+                    <li>Data: 9 de maio de 2024, Horário: 15:30, Cliente: José Santos, Serviço: Barba</li>
+                </ul>
+            </div>
+        </section>
+        <section id="servicos">
+            <h2 style="color: white;">Serviços:</h2>
+            <div class="card">
+                <h3>Lista de Serviços</h3>
+                <ul>
+                    <li>Serviço: Corte, Preço: R$ 30.00</li>
+                    <li>Serviço: Barba, Preço: R$ 20.00</li>
+                </ul>
+                <button class="button editar">Editar</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Barbearia</p>
+    </footer>
 </body>
+
 </html>

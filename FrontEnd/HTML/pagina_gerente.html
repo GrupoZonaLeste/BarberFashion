@@ -1,11 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gerenciamento - Barbearia</title>
+    <link rel="stylesheet" href="/FrontEnd/CSS/pagina_gerente.css">
 </head>
 <body>
-    <h1>PÁGINA GERENTE</h1>
+    <header>
+        <h1>Gerenciamento da Barbearia</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#funcionarios">Funcionários</a></li>
+            <li><a href="#clientes">Clientes</a></li>
+            <li><a href="#agendamentos">Agendamentos</a></li>
+            <li><a href="#configuracoes">Configurações</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="funcionarios">
+            <h2 style="color: white;">Funcionários:</h2>
+
+
+            <div class="card">
+                <h3>Cadastrar Funcionário</h3>
+                <form>
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                    <label for="cargo">Cargo:</label>
+                    <input type="text" id="cargo" name="cargo" required>
+                    <label for="horario">Horário de Trabalho:</label>
+                    <input type="time" id="horario" name="horario" required>
+                    <input type="submit" value="Cadastrar" style="background-color: #FF9800;" class="button cadastrar">
+
+                </form>
+                
+            </div>
+            <div class="card">
+                <h3>Funcionários Cadastrados</h3>
+                <ul>
+                    <li>
+                        <div class="funcionario-info">
+                            <span>Nome do Funcionário 1 - Cargo - Horário</span>
+                            <div class="botoes-funcionario">
+                                <button class="button editar">Editar</button>
+                                <button class="button remover">Remover</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="funcionario-info">
+                            <span>Nome do Funcionário 2 - Cargo - Horário</span>
+                            <div class="botoes-funcionario">
+                                <button class="button editar">Editar</button>
+                                <button class="button remover">Remover</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section id="clientes">
+            <h2 style="color: white;"> Clientes:</h2>
+            <div class="card">
+                <h3>Excluir Cliente</h3>
+                <form>
+                    <label for="cliente">Selecione um cliente:</label>
+                    <select id="cliente" name="cliente" required>
+                        <option value="" disabled selected>Selecione um cliente</option>
+                        <option value="cliente1">Nome do Cliente 1</option>
+                        <option value="cliente2">Nome do Cliente 2</option>
+                    </select>
+                    <input type="submit" value="Excluir" style="background-color: #FF9800;" class="button excluir">
+
+                </form>
+            </div>
+        </section>
+        
+        
+        <section id="agendamentos">
+            <h2 style="color: white;">Agendamentos:</h2>
+            <div class="card">
+                <h3>Agendamentos Marcados</h3>
+                <ul>
+                    <li>Data: 25 de abril de 2024, Horário: 15:00, Cliente: Nome do Cliente 1, Serviço: Corte <button class="cancelar">Cancelar</button></li>
+                </ul>
+                <ul>
+                    <li>Data: 28 de abril de 2024, Horário: 16:30, Cliente: Nome do Cliente 2, Serviço: Barba <button class="cancelar">Cancelar</button></li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Histórico de Agendamentos</h3>
+                <ul>
+                    <li>Data: 20 de abril de 2024, Horário: 14:30, Cliente: Nome do Cliente 3, Serviço: Barba</li>
+                    <li>Data: 15 de abril de 2024, Horário: 16:00, Cliente: Nome do Cliente 4, Serviço: Coloração de Cabelo</li>
+                </ul>
+            </div>
+        </section>
+        <section id="configuracoes">
+            <h2 style="color: white;">Configurações:</h2>
+            <div class="card">
+                <h3>Editar Barbearia</h3>
+                <form>
+                    <label for="horario-abertura">Horário de Abertura:</label>
+                    <input type="time" id="horario-abertura" name="horario-abertura" required>
+                    <label for="horario-fechamento">Horário de Fechamento:</label>
+                    <input type="time" id="horario-fechamento" name="horario-fechamento" required>
+                    <label for="preco-corte">Preço do Corte:</label>
+                    <input type="number" id="preco-corte" name="preco-corte" min="0" step="0.01" required>
+                    <input type="submit" value="Salvar" style="background-color: #FF9800;" class="button salvar">
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Barbearia</p>
+    </footer>
+    <!-- Modal de confirmação de exclusão -->
+    <div id="modal-confirmacao" class="modal">
+        <div class="modal-content">
+            <h4>Tem certeza que deseja remover?</h4>
+            <button id="btn-cancelar">Cancelar</button>
+            <button id="btn-confirmar">Confirmar</button>
+        </div>
+    </div>
 </body>
 </html>
