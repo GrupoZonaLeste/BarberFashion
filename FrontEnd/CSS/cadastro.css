@@ -72,3 +72,15 @@ button.btn-primary:hover {
     background-color: #FF9800;
     border-color: #FF9800;
 }
+span{
+    display: none;
+}
+.span-required{
+    font-size: 15px;
+    color: #e63636;
+}
+#button-cadastar[disabled]{
+    background-color: #3420004f;
+    border: #111111;
+    color: #000000;
+}

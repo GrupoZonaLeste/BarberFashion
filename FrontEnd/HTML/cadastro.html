@@ -25,29 +25,34 @@
           <h4 class="title">Cadastro de Usuário</h4>
         </div>
         <div class="card-body">
-          <form>
+          <form id="form">
             <div class="form-group">
               <label for="name">Nome:</label>
-              <input type="text" class="form-control" id="name" placeholder="Digite seu nome">
+              <input type="text" class="form-control required" id="name" placeholder="Digite seu nome" oninput="nameValidate()">
+              <span class="span-required">Seu nome deve ter pelo menos 3 caracteres</span>
             </div>
             <div class="form-group">
               <label for="email">E-mail:</label>
-              <input type="email" class="form-control" id="email" placeholder="Digite seu email">
+              <input type="email" class="form-control required" id="email" placeholder="Digite seu email" oninput="emailValidate()">
+              <span class="span-required">Digite um email válido</span>
             </div>
             <div class="form-group">
               <label for="phone">Telefone de Contato:</label>
-              <input type="phone" maxlength="11" class="form-control" id="phone" placeholder="Digite seu telefone">
+              <input type="text" class="form-control required" id="phone" placeholder="Digite seu telefone" oninput="phoneValidate()">
+              <span class="span-required">Digite um telefone válido</span>
             </div>
             <div class="form-group">
               <label for="password">Senha:</label>
-              <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+              <input type="password" class="form-control required" id="password" placeholder="Digite sua senha" oninput="passwordValidate()">
+              <span class="span-required">Sua senha deve ter pelo menos 8 caracteres</span>
             </div>
             <div class="form-group">
               <label for="confirm_password">Confirmar Senha:</label>
-              <input type="password" class="form-control" id="confirm_password" placeholder="Confirme sua senha">
+              <input type="password" class="form-control required" id="confirm_password" placeholder="Confirme sua senha" oninput="confirmPassword()">
+              <span class="span-required">Sua senha deve ser compatível</span>
             </div>
-          </form>
-          <input type="submit" id="button-cadastar" class="btn btn-warning btn-block">
+          <input type="button" id="button-cadastar" class="btn btn-warning btn-block" value=" Concluir Cadastro">
+        </form>
         </div>
       </div>
     </div>
@@ -56,7 +61,7 @@
   </div>
   
 </div>
-
+<script src="/FrontEnd/JS/data_validation.js"></script>
 <script src="/FrontEnd/JS/cadastro.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
