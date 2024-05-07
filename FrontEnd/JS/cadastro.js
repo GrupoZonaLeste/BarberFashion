@@ -18,15 +18,26 @@ const confirma_senha = document.getElementById('confirm_password')
 
 
 
-cadastar_btn.addEventListener('click', async () => {
+cadastar_btn.addEventListener('click',function() {
     if (nome_input.value == '' || email_input.value == '' || telefone_input.value == '' || senha_input.value == '' || confirma_senha == ''){
+        
         alert("prencha todos os campos")
-        return
+        validarFormulario()
+        return false
     } if (senha_input.value != confirma_senha.value){
+        
         alert("campos de senha diferentes")
-        return
+        validarFormulario()
+        return false
     }else{
-        inserir()
+        teste = validarFormulario()
+        if(teste){
+            inserir();
+        }else{
+            alert("Formulario com itens incorretos")
+            
+            
+        }
     }
 
 
@@ -41,7 +52,8 @@ async function inserir(){
             data:data,
           });
           if (response.data.status === "OK") {
-            alert(`O item foi inserido com sucesso!`);
+            alert(`Você se Cadastrou com sucesso`);
+            location.replace("http:/FrontEnd/HTML/login.html")
         } else if(response.data.status === "EMAIL CADASTRADO") {
             alert(`O Email "${data.email}" já está Cadastrado.`);
         } else {
