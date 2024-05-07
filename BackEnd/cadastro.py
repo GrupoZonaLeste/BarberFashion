@@ -29,8 +29,13 @@ app.add_middleware(
 
 @app.post("/cadastrar/")
 async def add_item(cliente: Cliente):
-    cliente.client_id = controller.qtd_ids()
+    cliente.client_id = controller.qtd_ids_cliente()
     return controller.inserir_cliente(cliente)
+
+@app.post("/cadastrar_funcionario")
+async def add_func(funcionario: Funcionario = Body(...)):
+    funcionario.funcionario_id = controller.qtd_ids_funcionario()
+    return controller.inserir_funcionario(funcionario)
 
 @app.post("/logar/")
 async def add_item(cliente: ClienteLogin):
@@ -91,5 +96,12 @@ def login(email: str, senha: str, request: Request):
 async def get_usuario(id: int):
     return controller.listar_usuario_por_id(id)
 
+@app.get('/listar_funcionarios/')
+async def get_funcionarios():
+    return controller.listar_funcionarios()
+
+@app.delete('/deletar_funcionario/{funcid}')
+async def delete_funcionarios(funcid: int):
+    return controller.excluir_funcionario(funcid)
     
     

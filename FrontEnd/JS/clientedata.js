@@ -27,6 +27,6 @@ function PutData(name,email,phone){
     nome_campo.textContent = NameTitle
     email_campo.textContent = ("Email:"+email)
     phone_campo.textContent = ("Telfone:"+phone)
-    apresentation.textContent = ("Olá "+name+", Bem-vindo à Barbearia!")
+    apresentation.textContent = ("Olá "+NameTitle+", Bem-vindo à Barbearia!")
 }
 

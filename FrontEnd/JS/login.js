@@ -32,8 +32,8 @@ login_btn.addEventListener('click', async () => {
             console.log(response)
             const token = response.data.token;
             const tipousuario = response.data.tipo_usuario[0]
+            console.log(tipousuario)
             saveTokenToLocal(token);
-
             if(tipousuario == 'cliente'){
               window.location.href = "http:/FrontEnd/HTML/pagina_cliente.html";
             } 
