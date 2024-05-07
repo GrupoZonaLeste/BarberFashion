@@ -23,3 +23,8 @@ class ClienteLogin(BaseModel):
     email: str
     password: str
 
+class Funcionario(BaseModel):
+    name: str
+    email: Optional[str]
+    password: str
+    funcionario_id: int

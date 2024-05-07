@@ -28,37 +28,17 @@
                 <form>
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name="nome" required>
-                    <label for="cargo">Cargo:</label>
-                    <input type="text" id="cargo" name="cargo" required>
-                    <label for="horario">Horário de Trabalho:</label>
-                    <input type="time" id="horario" name="horario" required>
-                    <input type="submit" value="Cadastrar" style="background-color: #FF9800;" class="button cadastrar">
-
+                    <label for="cargo">Email:</label>
+                    <input type="text" id="email" name="email" required>
+                    <label for="cargo">Senha:</label>
+                    <input type="text" id="senha" name="senha" required>
                 </form>
+                <input type="submit" id="cadastrarFuncionario" value="Cadastrar" style="background-color: #FF9800;" class="button cadastrar">
                 
             </div>
             <div class="card">
                 <h3>Funcionários Cadastrados</h3>
-                <ul>
-                    <li>
-                        <div class="funcionario-info">
-                            <span>Nome do Funcionário 1 - Cargo - Horário</span>
-                            <div class="botoes-funcionario">
-                                <button class="button editar">Editar</button>
-                                <button class="button remover">Remover</button>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="funcionario-info">
-                            <span>Nome do Funcionário 2 - Cargo - Horário</span>
-                            <div class="botoes-funcionario">
-                                <button class="button editar">Editar</button>
-                                <button class="button remover">Remover</button>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                <div id="funcionarios_cadastrados"></div>   
             </div>
         </section>
         <section id="clientes">
@@ -125,5 +105,7 @@
             <button id="btn-confirmar">Confirmar</button>
         </div>
     </div>
+
+    <script src="/FrontEnd/JS/pagina_gerente.js"></script>
 </body>
 </html>

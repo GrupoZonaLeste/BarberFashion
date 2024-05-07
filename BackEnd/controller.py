@@ -27,6 +27,17 @@ class Controller:
             cliente.password = self._hash_password(cliente.password)
             self.get_current_collection().insert_one(cliente.model_dump())
             return{"status": "OK"}
+    
+    def inserir_funcionario(self,funcionario: Funcionario) -> dict:
+        filter = {"email": funcionario.email}
+        count = self.get_current_collection().count_documents(filter)
+        print(count)
+        if(count > 0):
+            return {"status" : "EMAIL CADASTRADO"}
+        else:
+            funcionario.password = self._hash_password(funcionario.password)
+            self.get_current_collection().insert_one(funcionario.model_dump())
+            return{"status": "OK"}
         
     def listar_usuario_por_email(self, email):
         usuario = self.get_current_collection().find_one({'email': email})
@@ -39,7 +50,18 @@ class Controller:
             return user
         else:
             return {"status":"ID_NOT_FOUND"}
+        
+    def listar_funcionarios(self):
+        funcionarios = []
+        for i in self.get_current_collection().find({}):
+            funcionarios.append(i)
+        for i in funcionarios:
+            i["_id"] = f"ObjectId({str(i['_id'])})"
+        return funcionarios
     
+    def excluir_funcionario(self, funcid):
+        self.get_current_collection().delete_one({'funcionario_id': funcid})
+
     def check_Login(self, cliente: ClienteLogin) -> dict:
         filter={'$and': [{'email': cliente.email}, {'password': cliente.password}]}   
 
@@ -67,13 +89,16 @@ class Controller:
                 return [jwt]
         return False
     
-    def qtd_ids(self):
-        return self.get_current_collection().count_documents({}) + 1
+    def qtd_ids_cliente(self):
+        return self.get_current_collection().count_documents({'client_id': {'$exists': True}}) + 1
+    
+    def qtd_ids_funcionario(self):
+        return self.get_current_collection().count_documents({'funcionario_id': {'$exists': True}}) + 1
     
     def tipoUsuario(self, email):
         usuario1 = self.get_current_collection().find_one({'$and': [{'client_id': {'$exists': True}}, {'email': email}]})
-        usuario2 = self.get_current_collection().find_one({'$and': [{'adm': {'$exists': True}}, {'email': email}]})
-        usuario3 = self.get_current_collection().find_one({'$and': [{'funcionario': {'$exists': True}}, {'email': email}]})
+        usuario2 = self.get_current_collection().find_one({'$and': [{'gerente_id': {'$exists': True}}, {'email': email}]})
+        usuario3 = self.get_current_collection().find_one({'$and': [{'funcionario_id': {'$exists': True}}, {'email': email}]})
         if(usuario1):
             return {'cliente'}
         elif(usuario2):

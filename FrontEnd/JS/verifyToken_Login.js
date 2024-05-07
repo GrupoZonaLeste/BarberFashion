@@ -15,7 +15,6 @@ async function checkTokenValidityLogin() {
     console.log(response.data);
     if(response.data.status == "Token válido"){
         alert("LOGIN FEITO COM SUCESSO!");
-        window.location.replace("http:/FrontEnd/HTML/pagina_cliente.html");
     }else{
         alert("ERRO NA AUTENTICAÇÂO TENTE NOVAMENTE")
         window.location.href("http:/FrontEnd/HTML/pagina_cliente.html")
