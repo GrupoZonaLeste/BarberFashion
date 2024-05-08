@@ -12,10 +12,31 @@ const fetchButtonData = () => {
   };
 const btn_cadastrarFuncionario = document.getElementById('cadastrarFuncionario')  
 
+const div_alerta = document.getElementById('alert')
+const btnOk = document.getElementById('btn-ok')
+const btnDeletar = document.getElementById('btn-conf')
+const btnCancelar = document.getElementById('btn-canc')
+var mensagem = document.createElement("p")
+const div_confirmacao = document.getElementById('confirm')
 
 btn_cadastrarFuncionario.addEventListener('click', async () => {
     if(nomeInput.value == '' || emailInput.value == '' || senhaInput.value == ''){
-        alert("PREENCHA TODOS OS CAMPOS")
+        div_alerta.style.display = 'flex'
+        div_alerta.style.flexDirection = 'column-reverse'
+        div_alerta.style.alignItems = 'center'
+        div_alerta.style.borderColor = '#E74040'
+        mensagem.style.marginBottom = '1rem'
+        mensagem.style.color = '#E74040'
+
+        btnOk.style.backgroundColor = '#E74040'
+        btnOk.style.borderColor = '#E74040'
+        btnOk.style.boxShadow = '0px 0px 16px -5px #E74040'
+
+        mensagem.innerHTML = "Preencha os Campos do Cadastro!";
+        div_alerta.append(mensagem);
+        btnOk.addEventListener('click', () =>{
+            div_alerta.style.display = 'none'
+        });
         return
     }
 
