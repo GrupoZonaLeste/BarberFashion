@@ -137,7 +137,7 @@ main {
 .services {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     height: 30rem;
     padding: 2rem;
 }
