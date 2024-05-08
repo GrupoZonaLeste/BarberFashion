@@ -20,3 +20,10 @@ document.getElementById('agendar').onclick = function(){
             window.location.replace("http:/FrontEnd/HTML/login.html")
         }
 }
+
+const typed = new Typed(".placeholder-search",{
+    strings: ["Revitalize sua Imagem...", "Assegure sua Confiança...", "Mantenha sua Lealdade...", "Cortes de Excêlencia!!!"],
+    typeSpeed:50,
+    backSpeed:100, 
+    loop: true
+})

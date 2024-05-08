@@ -98,17 +98,34 @@ background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 15%,
     background-color: #FF9800;
     position: relative;
     left: 20rem;
-    top: 1.2rem;
+    top: 0.2rem;
 }
 
 .subtitle-home{
     display: flex;
     margin-top: 8rem;
-    color: #ffffff;
-    font-weight: 300;
-    font-size: 1.4rem;
-    width: 50%;
-    text-align: center;
+    color: #fcfcfc;
+    font-weight: 500;
+    font-size: 2.0rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.search{
+    display: flex;
+    flex-direction: row;
+
+    height: 4rem;
+    width: 40%;
+    border: 1px solid #fcfcfc;
+    border-radius: 5rem;
+    padding: 0.5rem;
+}
+
+span{
+    display: flex;
+    margin-left: 1rem;
+    align-items: center;
 }
 
 .funcionamento{
