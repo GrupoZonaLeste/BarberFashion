@@ -1,9 +1,9 @@
 from bson.objectid import ObjectId
 from typing import Dict, List
-from model import *
+from models.model import *
 from pymongo.results import InsertOneResult, UpdateResult, DeleteResult
 from bson.objectid import ObjectId
-from tokens import Token
+from controllers.tokens import Token
 import hashlib
 
 class Controller:

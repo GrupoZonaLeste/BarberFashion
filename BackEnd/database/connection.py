@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from mongo_db_config import mongo_db_meta
+from config.mongo_db_config import mongo_db_meta
 
 class DBConnectionHandler:
     def __init__(self) -> None:
