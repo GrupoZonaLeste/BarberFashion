@@ -7,9 +7,32 @@ const btn_agendar = document.getElementById('input_agendar')
 const divEditarCortes = document.getElementById('editar-corte')
 const form_editar_corte = document.getElementById('form-editar-corte')
 
+const div_alerta = document.getElementById('alert')
+const btnOk = document.getElementById('btn-ok')
+const btnDeletar = document.getElementById('btn-conf')
+const btnCancelar = document.getElementById('btn-canc')
+var mensagem = document.createElement("p")
+const div_confirmacao = document.getElementById('confirm')
+
 btn_agendar.addEventListener('click', async () => {
     if (data_corte.value == '' || hora_corte.value == '' || select_corte.value == '') {
-        alert("preencha os campos")
+        div_alerta.style.display = 'flex'
+        div_alerta.style.flexDirection = 'column-reverse'
+        div_alerta.style.alignItems = 'center'
+        div_alerta.style.borderColor = '#E74040'
+        mensagem.style.marginBottom = '1rem'
+        mensagem.style.color = '#E74040'
+
+        btnOk.style.backgroundColor = '#E74040'
+        btnOk.style.borderColor = '#E74040'
+        btnOk.style.boxShadow = '0px 0px 16px -5px #E74040'
+
+        mensagem.innerHTML = "Preencha os Campos do Serviço!";
+        div_alerta.append(mensagem);
+        btnOk.addEventListener('click', () =>{
+            div_alerta.style.display = 'none'
+        });
+        //alert("preencha os campos")
         return
     }
 
@@ -24,11 +47,29 @@ btn_agendar.addEventListener('click', async () => {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
+        
 
     hora_corte.value = ''
     data_corte.value = ''
     select_corte.value = ''
-    location.reload()
+    //location.reload()
+        div_alerta.style.display = 'flex'
+        div_alerta.style.flexDirection = 'column-reverse'
+        div_alerta.style.alignItems = 'center'
+        div_alerta.style.borderColor = '#FF9800'
+        mensagem.style.marginBottom = '1rem'
+        mensagem.style.color = '#FF9800'
+
+        btnOk.style.backgroundColor = '#FF9800'
+        btnOk.style.borderColor = '#FF9800'
+        btnOk.style.boxShadow = '0px 0px 16px -5px #FF9800'
+
+        mensagem.innerHTML = "Serviço Agendado com Sucesso!";
+        div_alerta.append(mensagem);
+        btnOk.addEventListener('click', () =>{
+            div_alerta.style.display = 'none'
+            location.reload()
+        });
 })
 
 const divCortes = document.getElementById('servicos_agendados')
@@ -39,29 +80,83 @@ async function addDivCortes() {
         .then(res => res.json())
         .then(data => {
             data.forEach(element => {
-                textNode = `<h4>Data:</h4> ${element.data} ; ${element.hora} <h4>Descrição:<h4>${element.servico}`;
+                textDATA = `<h4>DATA:</h4> ${element.data} ; ${element.hora} `;
+                textDESCRIPTION = `<h4>DESCRIÇÃO:</h4>${element.servico}`;
+
                 const p = document.createElement('p')
+                const p2 = document.createElement('p')
+                const div_services = document.getElementById('card_service')
+                const div_contentService = document.createElement('div')
+                const div_textos = document.createElement('div')
+                const div_btn = document.createElement('div')
                 const btn_delete = document.createElement('button')
                 const btn_editar = document.createElement('button')
-                btn_delete.innerHTML = "Deletar corte"
-                btn_editar.innerHTML = "Editar corte"
+                btn_delete.innerHTML = "DELETAR"
+                btn_editar.innerHTML = "EDITAR"
 
+                div_textos.id = 'text_service'
+                div_contentService.id = 'content_service'
                 id_corte = element._id
                 btn_delete.id = id_corte.slice(9, 33)
                 btn_editar.id = id_corte.slice(9, 33)
 
-                p.innerHTML = textNode
-                p.appendChild(btn_delete)
-                p.appendChild(btn_editar)
-                divCortes.appendChild(p)
+                div_btn.style.display = 'flex'
+                div_btn.style.flexDirection = 'row'
+                div_btn.style.justifyContent = 'space-around'
+                btn_delete.style.backgroundColor = '#E74040'
+                btn_delete.style.color = '#ffffff'
+                btn_delete.onmousemove = function(){
+                    btn_delete.style.opacity = 0.5
+                };
+                btn_delete.onmouseout = function(){
+                    btn_delete.style.opacity = 1
+                };
+
+                p.innerHTML = textDATA
+                p2.innerHTML = textDESCRIPTION
+                div_textos.append(p)
+                div_textos.append(p2)
+                div_btn.appendChild(btn_delete)
+                div_btn.appendChild(btn_editar)
+                div_contentService.append(div_textos)
+                div_contentService.append(div_btn)
+                div_services.append(div_contentService)
+                divCortes.appendChild(div_services)
+
                 btn_delete.addEventListener('click', async () => {
-                    await fetch(`http://localhost:8000/deletarcorte/${btn_delete.id}`, {
-                        method: "DELETE",
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                    location.reload()
+
+                    div_confirmacao.style.display = 'flex'
+                        div_confirmacao.style.flexDirection = 'column-reverse'
+                        div_confirmacao.style.alignItems = 'center'
+                        div_confirmacao.style.borderColor = '#E74040'
+                        mensagem.style.marginBottom = '1rem'
+                        mensagem.style.color = '#E74040'
+
+                        btnDeletar.style.backgroundColor = '#E74040'
+                        btnDeletar.style.borderColor = '#E74040'
+                        btnDeletar.style.boxShadow = '0px 0px 16px -5px #E74040'
+                        btnCancelar.style.backgroundColor = '#FF9800'
+                        btnCancelar.style.borderColor = '#FF9800'
+                        btnCancelar.style.boxShadow = '0px 0px 16px -5px #FF9800'
+
+                        mensagem.innerHTML = "Deseja mesmo Cancelar o Serviço?";
+                        div_confirmacao.append(mensagem);
+
+                        btnDeletar.addEventListener('click', async () =>{
+                            await fetch(`http://localhost:8000/deletarcorte/${btn_delete.id}`, {
+                            method: "DELETE",
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                            mensagem.innerHTML = "Serviço Cancelado com Sucesso!";
+                            div_confirmacao.append(mensagem);
+                            div_confirmacao.style.display = 'none'
+                            location.reload()
+                        });
+                        btnCancelar.addEventListener('click', () =>{
+                            div_confirmacao.style.display = 'none'
+                        })
                 })
 
                 btn_editar.addEventListener('click', () =>{
@@ -125,8 +220,25 @@ async function addDivCortes() {
                             headers: {
                                 'Content-Type': 'application/json'
                             }
+                            
                         }).catch(erro => console.log(`erro: ${erro}`))
-                        location.reload()
+                        div_alerta.style.display = 'flex'
+                        div_alerta.style.flexDirection = 'column-reverse'
+                        div_alerta.style.alignItems = 'center'
+                        div_alerta.style.borderColor = '#FF9800'
+                        mensagem.style.marginBottom = '1rem'
+                        mensagem.style.color = '#FF9800'
+
+                        btnOk.style.backgroundColor = '#FF9800'
+                        btnOk.style.borderColor = '#FF9800'
+                        btnOk.style.boxShadow = '0px 0px 16px -5px #FF9800'
+
+                        mensagem.innerHTML = "Serviço Editado com Sucesso!";
+                        div_alerta.append(mensagem);
+                        btnOk.addEventListener('click', () =>{
+                            div_alerta.style.display = 'none'
+                            location.reload()
+                        });
                     })
                 })
                 

@@ -14,6 +14,9 @@ const login_btn = document.getElementById('button-login')
 const email = document.getElementById('email')
 const senha = document.getElementById('password')
 
+const div_alerta = document.getElementById('alert')
+const btnOk = document.getElementById('btn-ok')
+var mensagem = document.createElement("p")
 
 login_btn.addEventListener('click', async () => {
    
@@ -47,7 +50,22 @@ login_btn.addEventListener('click', async () => {
 
           }).catch(function (error) {
             console.error(error);
-            alert("Usuario não encontrado")
+            div_alerta.style.display = 'flex'
+                div_alerta.style.flexDirection = 'column-reverse'
+                div_alerta.style.alignItems = 'center'
+                div_alerta.style.borderColor = '#E74040'
+                mensagem.style.marginBottom = '1rem'
+                mensagem.style.color = '#E74040'
+    
+                btnOk.style.backgroundColor = '#E74040'
+                btnOk.style.borderColor = '#E74040'
+                btnOk.style.boxShadow = '0px 0px 16px -5px #E74040'
+                mensagem.innerHTML = "Email ou Senha estão Incorretos!";
+                div_alerta.append(mensagem);
+                btnOk.addEventListener('click', () =>{
+                    div_alerta.style.display = 'none'
+                });
+            //alert("Usuario não encontrado")
           });
           
     }

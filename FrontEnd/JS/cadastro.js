@@ -16,17 +16,49 @@ const telefone_input = document.getElementById('phone')
 const senha_input = document.getElementById('password')
 const confirma_senha = document.getElementById('confirm_password')
 
-
+const div_alerta = document.getElementById('alert')
+const btnOk = document.getElementById('btn-ok')
+var mensagem = document.createElement("p")
 
 cadastar_btn.addEventListener('click',function() {
     if (nome_input.value == '' || email_input.value == '' || telefone_input.value == '' || senha_input.value == '' || confirma_senha == ''){
-        
-        alert("prencha todos os campos")
+        div_alerta.style.display = 'flex'
+        div_alerta.style.flexDirection = 'column-reverse'
+        div_alerta.style.alignItems = 'center'
+        div_alerta.style.borderColor = '#E74040'
+        mensagem.style.marginBottom = '1rem'
+        mensagem.style.color = '#E74040'
+
+        btnOk.style.backgroundColor = '#E74040'
+        btnOk.style.borderColor = '#E74040'
+        btnOk.style.boxShadow = '0px 0px 16px -5px #E74040'
+
+        mensagem.innerHTML = "Por Favor, Preencha Todos os Campos!";
+        div_alerta.append(mensagem);
+        btnOk.addEventListener('click', () =>{
+            div_alerta.style.display = 'none'
+        });
+        //alert("prencha todos os campos")
         validarFormulario()
         return false
     } if (senha_input.value != confirma_senha.value){
-        
-        alert("campos de senha diferentes")
+        div_alerta.style.display = 'flex'
+        div_alerta.style.flexDirection = 'column-reverse'
+        div_alerta.style.alignItems = 'center'
+        div_alerta.style.borderColor = '#E74040'
+        mensagem.style.marginBottom = '1rem'
+        mensagem.style.color = '#E74040'
+
+        btnOk.style.backgroundColor = '#E74040'
+        btnOk.style.borderColor = '#E74040'
+        btnOk.style.boxShadow = '0px 0px 16px -5px #E74040'
+
+        mensagem.innerHTML = "Senhas inseridas indiferentes!";
+        div_alerta.append(mensagem);
+        btnOk.addEventListener('click', () =>{
+            div_alerta.style.display = 'none'
+        });
+        //alert("campos de senha diferentes")
         validarFormulario()
         return false
     }else{
@@ -34,13 +66,25 @@ cadastar_btn.addEventListener('click',function() {
         if(teste){
             inserir();
         }else{
-            alert("Formulario com itens incorretos")
-            
+            div_alerta.style.display = 'flex'
+            div_alerta.style.flexDirection = 'column-reverse'
+            div_alerta.style.alignItems = 'center'
+            div_alerta.style.borderColor = '#E74040'
+            mensagem.style.marginBottom = '1rem'
+            mensagem.style.color = '#E74040'
+    
+            btnOk.style.backgroundColor = '#E74040'
+            btnOk.style.borderColor = '#E74040'
+            btnOk.style.boxShadow = '0px 0px 16px -5px #E74040'
+            mensagem.innerHTML = "Formulario com campos incompletos!";
+            div_alerta.append(mensagem);
+            //alert("Formulario com itens incorretos")
+            btnOk.addEventListener('click', () =>{
+                div_alerta.style.display = 'none'
+            });
             
         }
     }
-
-
 
 async function inserir(){
     let data = fetchButtonData()
@@ -52,18 +96,101 @@ async function inserir(){
             data:data,
           });
           if (response.data.status === "OK") {
-            alert(`Você se Cadastrou com sucesso`);
+            div_alerta.style.display = 'flex'
+            div_alerta.style.flexDirection = 'column-reverse'
+            div_alerta.style.alignItems = 'center'
+            div_alerta.style.borderColor = '#00D446'
+            mensagem.innerHTML = "Você Cadastrou-se com Sucesso!";
+            div_alerta.append(mensagem);
+            mensagem.style.color = '#00D446'
+            mensagem.style.marginBottom = '1rem'
+            mensagem.style.color = '#00D446'
+    
+            btnOk.style.backgroundColor = '#00D446'
+            btnOk.style.borderColor = '#00D446'
+            btnOk.style.boxShadow = '0px 0px 16px -5px #00D446'
+            //alert(`Você se Cadastrou com sucesso`);
             location.replace("http:/FrontEnd/HTML/login.html")
+            btnOk.addEventListener('click', () =>{
+                div_alerta.style.display = 'none'
+            });
+            
         } else if(response.data.status === "EMAIL CADASTRADO") {
-            alert(`O Email "${data.email}" já está Cadastrado.`);
+            div_alerta.style.display = 'flex'
+            div_alerta.style.flexDirection = 'column-reverse'
+            div_alerta.style.alignItems = 'center'
+            div_alerta.style.borderColor = '#FF9800'
+            mensagem.style.marginBottom = '1rem'
+            mensagem.style.color = '#FF9800'
+
+            btnOk.style.backgroundColor = '#FF9800'
+            btnOk.style.borderColor = '#FF9800'
+            btnOk.style.boxShadow = '0px 0px 16px -5px #FF9800'
+
+            var link = document.createElement("a")
+            link.href = '../HTML/login.html'
+            link.textContent = 'Clique aqui para ser redirecionado'
+            mensagem.innerHTML = "Email já está Cadastrado,  ";
+            mensagem.append(link);
+            div_alerta.append(mensagem);
+            btnOk.addEventListener('click', () =>{
+                div_alerta.style.display = 'none'
+            });
+           
+            //alert(`O Email "${data.email}" já está Cadastrado.`);
         } else {
-            alert(`Ocorreu um erro ao excluir o item com o ID ${data}.`);
+            div_alerta.style.display = 'flex'
+            div_alerta.style.flexDirection = 'column-reverse'
+            div_alerta.style.alignItems = 'center'
+            div_alerta.style.borderColor = '#E74040'
+            mensagem.style.marginBottom = '1rem'
+            mensagem.style.color = '#E74040'
+
+            btnOk.style.backgroundColor = '#E74040'
+            btnOk.style.borderColor = '#E74040'
+            btnOk.style.boxShadow = '0px 0px 16px -5px #E74040'
+            mensagem.innerHTML = "Ocorreu um Erro ao Excluir o item com o ID!";
+            div_alerta.append(mensagem);
+            btnOk.addEventListener('click', () =>{
+                div_alerta.style.display = 'none'
+            })
+            //alert(`Ocorreu um erro ao excluir o item com o ID ${data}.`);
         }
         } catch (error) {
             if (error.response && error.response.status === 422) {
-                alert('Dados incorretos');
+                div_alerta.style.display = 'flex'
+                div_alerta.style.flexDirection = 'column-reverse'
+                div_alerta.style.alignItems = 'center'
+                div_alerta.style.borderColor = '#E74040'
+                mensagem.style.marginBottom = '1rem'
+                mensagem.style.color = '#E74040'
+    
+                btnOk.style.backgroundColor = '#E74040'
+                btnOk.style.borderColor = '#E74040'
+                btnOk.style.boxShadow = '0px 0px 16px -5px #E74040'
+                mensagem.innerHTML = "Dados Incorretos!";
+                div_alerta.append(mensagem);
+                btnOk.addEventListener('click', () =>{
+                    div_alerta.style.display = 'none'
+                });
+                //alert('Dados incorretos');
             } else {
-                console.log('Erro ao atualizar o item:', error);
+                div_alerta.style.display = 'flex'
+                div_alerta.style.flexDirection = 'column-reverse'
+                div_alerta.style.alignItems = 'center'
+                div_alerta.style.borderColor = '#E74040'
+                mensagem.style.marginBottom = '1rem'
+                mensagem.style.color = '#E74040'
+    
+                btnOk.style.backgroundColor = '#E74040'
+                btnOk.style.borderColor = '#E74040'
+                btnOk.style.boxShadow = '0px 0px 16px -5px #E74040'
+                mensagem.innerHTML = "Erro ao Atualizar o Item!";
+                div_alerta.append(mensagem);
+                btnOk.addEventListener('click', () =>{
+                    div_alerta.style.display = 'none'
+                });
+                //console.log('Erro ao atualizar o item:', error);
             }
         }
     }
