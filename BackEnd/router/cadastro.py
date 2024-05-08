@@ -103,5 +103,9 @@ async def get_funcionarios():
 @app.delete('/deletar_funcionario/{funcid}')
 async def delete_funcionarios(funcid: int):
     return controller.excluir_funcionario(funcid)
+
+@app.post('/editar_cliente/')
+async def editar_cliente(id: int, name: str , email: str, phone: str ):
+    return controller.editar_cliente(id,name,email ,phone)
     
     

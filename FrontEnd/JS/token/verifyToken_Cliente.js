@@ -22,13 +22,13 @@ async function checkTokenValidity() {
             return true;    
         } else {
             alert("ERRO NA AUTENTICAÇÂO TENTE NOVAMENTE")
-            window.location.replace("http:/FrontEnd/HTML/login.html");
+            window.location.replace("http:/FrontEnd/HTML/cliente/login_cliente.html");
             return false;
         }
     } catch (error) {
         alert("Você não está autenticado");
         console.error(error);
-        window.location.replace("http:/FrontEnd/HTML/login.html");
+        window.location.replace("http:/FrontEnd/HTML/cliente/login_cliente.html");
         return false;
     }
 

@@ -106,3 +106,15 @@ class Controller:
         elif(usuario3):
             return {'funcionario'}
 
+    def editar_cliente(self,id,name, email,phone):
+        usuario = self.get_current_collection().find_one({'client_id':id})
+        itens = { "$set": { "name": name, 
+                           "email":email,
+                           "phone":phone
+                           }}
+        try:
+            self.get_current_collection().update_one({'client_id': id},itens)
+            return({"status":"OK"})
+        except:
+            return({"status":"ERROR"})
+

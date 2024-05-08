@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/FrontEnd/CSS/pagina_cliente.css">
-    <script src="/FrontEnd/JS/token_decode.js"></script>
+    <link rel="stylesheet" href="/FrontEnd/CSS/cliente/pagina_cliente.css">
+    <script src="/FrontEnd/JS/token/token_decode.js"></script>
     <title>Minha Conta</title>
 </head>
 
@@ -31,14 +31,13 @@
     <div class="container">
         <div class="user-info">
             <div class="foto-perfil">
-                <img src="../images/profile.png" alt="Foto do Cliente">
+                <img src="/FrontEnd/images/profile.png" alt="Foto do Cliente">
             </div>
             <div class="user-details">
                 <p id="name"class="nome-cliente">Nome do Cliente</p>
                 <p id="email" class="email-cliente">Email: cliente@email.com</p>
                 <p id="phone" class="tel-cliente">Telefone: (00) 1234-5678</p>
-                <a href="../HTML/editar_cliente.html" class="editar-perfil">EDITAR PERFIL</a>
-                <a href="../HTML/login.html" class="sair" id="logout">SAIR</a>
+                <a href="/FrontEnd/HTML/cliente/login_cliente.html" class="sair" id="logout">SAIR</a>
             </div>
         </div>
         <main>
@@ -53,7 +52,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="detail"></div>
-                                <img src="../images/penteado 1.png" class="card-icon" alt="">
+                                <img src="/FrontEnd/images/penteado 1.png" class="card-icon" alt="">
                                 <p class="card-title">AGENDE UM SERVIÇO</p>
                                 <p class="card-subtitle">Agende o melhor horário disponível para realizar o corte de cabelo.</p>
                                 <button class="modalBtn">AGENDAR</button>
@@ -63,10 +62,20 @@
                         <div class="card">
                             <div class="card-body" id="servicos_agendados1">
                                 <div class="detail"></div>
-                                <img src="../images/agenda 1.png" class="card-icon" alt="">
+                                <img src="/FrontEnd/images/agenda 1.png" class="card-icon" alt="">
                                 <p class="card-title">SERVIÇOS AGENDADOS</p>
                                 <p class="card-subtitle">Personalize, visualize e remarque quando quiser.</p>
                                 <button id="btn-editar-servicos">VISUALIZAR SERVIÇOS</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="detail"></div>
+                                <img src="/FrontEnd/images/perfil-pessoal.png" class="card-icon" alt="">
+                                <p class="card-title">EDITAR PERFIL</p>
+                                <p class="card-subtitle">Edite seus Dados e Informações Pessoais</p>
+                                <a href="/FrontEnd/HTML/cliente/editar_cliente.html" class="editar-perfil">EDITAR PERFIL</a>
                             </div>
                         </div>
                     </div>
@@ -75,7 +84,7 @@
                         <div class="card-inferior">
                             <p class="card-title">HISTÓRICO DE SERVIÇOS</p>
                             <div>
-                                <img src="../images/right-arrow-down.png" class="card-icon-seta" alt="">
+                                <img src="/FrontEnd/images/right-arrow-down.png" class="card-icon-seta" alt="">
                             </div>
                         </div>
                     </div>
@@ -133,14 +142,13 @@
             <form id="form-editar-corte"></form>
         </div>
     </div>
-
-    <script src="/FrontEnd/JS/modal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/FrontEnd/JS/pagina_cliente.js"></script>
-    <script src="/FrontEnd//JS/clientedata.js"></script>
-    <script src="/FrontEnd/JS/verifyToken_Cliente.js"></script>
-    <script src="/FrontEnd/JS/token_decode.js"></script>
-    <script src="/FrontEnd/JS/logout.js"></script>
+    <script src="/FrontEnd/JS/cliente/modal.js"></script>
+    <script src="/FrontEnd/JS/cliente/pagina_cliente.js"></script>
+    <script src="/FrontEnd//JS/cliente/data_cliente.js"></script>
+    <script src="/FrontEnd/JS/token/verifyToken_Cliente.js"></script>
+    <script src="/FrontEnd/JS/token/token_decode.js"></script>
+    <script src="/FrontEnd/JS/cliente/logout.js"></script>
   
     
     
