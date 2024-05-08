@@ -2,3 +2,10 @@
 BackEnd/__pycache__
 BackEnd/__pycache__/
 fastapi_env
+BackEnd/config/__pycache__/
+BackEnd/controllers/__pycache__/
+BackEnd/controllers/__pycache__/
+BackEnd/database/__pycache__/
+BackEnd/database/__pycache__/
+BackEnd/models/__pycache__/
+BackEnd/router/__pycache__/

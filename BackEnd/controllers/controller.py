@@ -53,7 +53,7 @@ class Controller:
         
     def listar_funcionarios(self):
         funcionarios = []
-        for i in self.get_current_collection().find({'funcionario_id': {'$exists': True}}):
+        for i in self.get_current_collection().find({}):
             funcionarios.append(i)
         for i in funcionarios:
             i["_id"] = f"ObjectId({str(i['_id'])})"
