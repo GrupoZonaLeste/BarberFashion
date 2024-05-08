@@ -463,3 +463,16 @@ footer {
 #seta{
     cursor: pointer;
 }
+.alert{
+    display: none;
+    z-index: 1;
+    position: absolute;
+    justify-content: space-between;
+    border-radius: 1rem;
+    text-align: center;
+    top: 3rem;
+    width: 25rem;
+    padding: 2rem;
+    border: solid 2px transparent;
+    background-color: #111111;
+}
