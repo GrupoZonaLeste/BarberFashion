@@ -9,61 +9,87 @@
 </head>
 
 <body>
-    <header>
-        <h1>Gerenciamento do Funcionário</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#perfil">Perfil</a></li>
-            <li><a href="#horarios">Horários</a></li>
-            <li><a href="#servicos">Serviços</a></li>
-        </ul>
+    <nav class="navbar navbar-expand-lg container-fluid">
+        <div class="container-fluid" style="color: #FF9800; display: flex; align-items: center; margin-left: 20px; font-size: xx-large; font-weight: bold;"> 
+            BARBERFASHION
+        </div>
     </nav>
-    <main>
-        <section id="perfil">
-            <h2 style="color: white;">Perfil:</h2>
-            <div class="card">
-                <h3>Informações do Funcionário</h3>
-                <p>Nome: João Silva</p>
-                <p>Cargo: Barbeiro</p>
-                <p>Horário de Trabalho: 09:00 - 18:00</p>
-                <button class="button editar">Editar</button>
+
+    <div class="centralizador">
+        <div class="alert" id="alert">
+          <button id="btn-ok">OK</button>
+        </div>
+      </div> 
+
+    <main class="container">
+
+        <div class="sidebar">
+            <div class="config">
+                <a href=""><img src="/FrontEnd/images/setting-wh.png" alt=""></a>
+                <a href="" class="link-config">CONFIGURAÇÕES</a>
             </div>
-        </section>
-        <section id="horarios">
-            <h2 style="color: white;">Horários:</h2>
+            <div class="sair">
+                <a href=""><img src="/FrontEnd/images/sair-red.png" alt=""></a>
+                <a href="" class="link-sair">SAIR</a>
+            </div>            
+        </div>
+
+        <section>
+            <section class="apresentation">
+                <p id="apresentation" class="apres-title">Olá Senhor (nome do funcionario)</p>
+                <p class="apres-subtitle">Administre seus Clientes, Aceite pedidos de Agendamento e visualize toda a sua Agenda</p>
+            </section>
+        <div class="services">  
+        <div class="superior">
+            <section class="card">
+                <div class="card-body">
+                    <div class="detail"></div>
+                        <img src="/FrontEnd/images/perfil-pessoal.png" class="card-icon" alt="">
+                        <p class="card-title">EDITAR PERFIL</p>
+                        <p class="card-subtitle">Edite seus Dados e Informações Pessoais</p>
+                        <a href="/FrontEnd/HTML/cliente/editar_cliente.html" class="editar-perfil">EDITAR PERFIL</a>
+                </div>
+            </section>
+            <section class="card">
+                <div class="card-body">
+                    <div class="detail"></div>
+                    <h3>Horários Disponíveis</h3>
+                    <ul>
+                        <li>Data: 10 de maio de 2024, Horário: 10:00, Status: Disponível <button
+                                class="button agendar">Agendar</button></li>
+                        <li>Data: 12 de maio de 2024, Horário: 11:30, Status: Disponível <button
+                                class="button agendar">Agendar</button></li>
+                    </ul>
+                </div>
+            </section>
+        </div>    
+
+
+        <div class="superior2">
             <div class="card">
-                <h3>Horários Disponíveis</h3>
-                <ul>
-                    <li>Data: 10 de maio de 2024, Horário: 10:00, Status: Disponível <button
-                            class="button agendar">Agendar</button></li>
-                    <li>Data: 12 de maio de 2024, Horário: 11:30, Status: Disponível <button
-                            class="button agendar">Agendar</button></li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Agendamentos</h3>
-                <ul>
-                    <li>Data: 8 de maio de 2024, Horário: 14:00, Cliente: Maria Oliveira, Serviço: Corte</li>
-                    <li>Data: 9 de maio de 2024, Horário: 15:30, Cliente: José Santos, Serviço: Barba</li>
-                </ul>
-            </div>
-        </section>
-        <section id="servicos">
-            <h2 style="color: white;">Serviços:</h2>
-            <div class="card">
+                <div class="card-body">
+                    <div class="detail"></div>
                 <h3>Lista de Serviços</h3>
                 <ul>
                     <li>Serviço: Corte, Preço: R$ 30.00</li>
                     <li>Serviço: Barba, Preço: R$ 20.00</li>
                 </ul>
                 <button class="button editar">Editar</button>
+                </div>
             </div>
-        </section>
+            <div class="card">
+                <div class="card-body">
+                    <div class="detail"></div>
+                    <h3>Agendamentos</h3>
+                    <ul>
+                        <li>Data: 8 de maio de 2024, Horário: 14:00, Cliente: Maria Oliveira, Serviço: Corte</li>
+                        <li>Data: 9 de maio de 2024, Horário: 15:30, Cliente: José Santos, Serviço: Barba</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>  
+    </section>
     </main>
-    <footer>
-        <p>&copy; 2024 Barbearia</p>
-    </footer>
 </body>
-
 </html>
