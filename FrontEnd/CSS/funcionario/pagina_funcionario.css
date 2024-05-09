@@ -317,3 +317,9 @@ body {
 .modal-content button:hover {
     background-color: #555;
 }
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
