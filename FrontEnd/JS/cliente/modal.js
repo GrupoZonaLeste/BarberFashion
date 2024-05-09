@@ -25,10 +25,11 @@ const btn3 = document.getElementById('fechar_agendamento_btn')
 btn3.addEventListener('click', ()=> {
     modal.style.display = 'none'
 })
-const btn3teste = document.getElementById('fechar_servicos_btn')
+const btn3teste = document.getElementById('fechar_agendamento_btn2')
 btn3teste.addEventListener('click', ()=> {
     modal3.style.display = 'none'
 })
+
 
 
 const btn4 = document.getElementById('fechar_servicos_btn')
