@@ -34,7 +34,7 @@ function PutData(nome,email1,phone){
 const btn_update = document.getElementById('btnupdate')
 
 btn_update.addEventListener('click', async function(){
-     new_name = document.getElementById('name').value.trim()
+     new_name = document.getElementById('name').value
      new_email = document.getElementById('email').value.trim()
      new_phone = document.getElementById('phone').value.trim()
      const params = { id: id };

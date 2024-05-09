@@ -93,7 +93,6 @@ async function addDivCortes() {
                 const btn_editar = document.createElement('button')
                 btn_delete.innerHTML = "DELETAR"
                 btn_editar.innerHTML = "EDITAR"
-
                 div_textos.id = 'text_service'
                 div_contentService.id = 'content_service'
                 id_corte = element._id
