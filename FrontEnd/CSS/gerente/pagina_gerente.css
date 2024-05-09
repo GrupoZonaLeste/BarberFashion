@@ -17,13 +17,6 @@ body {
     background-color: #111111;
 }
 
-header {
-    background-color: #000;
-    color: #FF9800;
-    padding: 20px 0;
-    text-align: center;
-}
-
 .navbar{
     background: rgb(0,0,0);
     background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 15%, rgb(8, 8, 8) 50%);
@@ -151,13 +144,6 @@ header {
 .services .card {
     padding: 10px;
     margin: 0 10px;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
 }
 
 .card {

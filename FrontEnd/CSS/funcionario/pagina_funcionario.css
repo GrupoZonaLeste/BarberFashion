@@ -1,58 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "League Spartan", sans-serif;
+}
+
 body {
     font-family: Arial, sans-serif;
-    color: #000;
     margin: 0;
     padding: 0;
-    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #111111;
 }
 
-header {
-    background-color: #000;
-    color: #FF9800;
-    padding: 20px 0;
+.navbar{
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 15%, rgb(8, 8, 8) 50%);
+    border-color: solid none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 80px;
+}
+
+
+.centralizador{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 7;
+}
+
+.alert{
+    display: none;
+    z-index: 1;
+    position: absolute;
+    justify-content: space-between;
+    border-radius: 1rem;
     text-align: center;
+    top: 3rem;
+    width: 25rem;
+    padding: 2rem;
+    border: solid 2px transparent;
+    background-color: #111111;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+#btn-ok{
+    padding: 0.6rem;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 16px -5px transparent;
+    border: solid 1px transparent;
+    color: #ffffff;
+    width: 40%;
+    background-color: transparent;
+    transition: 0.3s all;   
+}
+
+#btn-ok:hover{
+    opacity: 0.5;
+}
+
+.sidebar{
+    padding: 10px;
+    width: 8rem;
+    display: flex;
+    margin-top: 8rem;
+    height: 20rem;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    border-radius: 1rem;
+    border: solid 0.15rem #585858;
+    justify-content: space-evenly;
+    position: relative;
+    padding-left: 1.5rem;
+    right: 1rem;
 }
 
-nav li {
-    display: inline;
-    margin-right: 20px;
+.config{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
 }
 
-nav a {
-    text-decoration: none;
+.config > a { 
+    display: flex;
+}
+
+.config > a >img{
+    display: flex;
+    height: 3rem;
+}
+
+.link-config{
     color: #fff;
-    padding: 10px 20px;
-    background-color: #FF9800;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    text-decoration: none;
 }
 
-nav a:hover {
-    background-color: #666;
+.config:hover, .sair:hover{
+    opacity: 0.5;
 }
 
-main {
-    padding: 20px;
+.sair{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
 }
 
-h2 {
-    margin-bottom: 20px;
-    color: white;
+.sair > a{
+    display: flex;
+}
+
+.sair > a > img{
+    display: flex;
+    height: 3rem;
+    width: 3rem;
+}
+
+.link-sair{
+    color: #E74040;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.apresentation{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: #ccc;
+    height: 4rem;
+    margin-top: 2rem;
+}
+
+.apres-title{
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.services {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30rem;
+    padding: 2rem;
 }
 
 .card {
-    background-color: #fff;
-    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    border-top: solid 0.3rem #FF9800;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 25rem;
+    height: 20rem;
+}
+
+.services .card {
+    padding: 10px;
+    margin: 0 10px;
+}
+
+.superior{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.superior2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.detail{
+    position: relative;
+    left: 10.7rem;
+    height: 0.8rem;
+    width: 5rem;
+    background-color: #FF9800;
+}
+
+.card-icon{
+    height: 8rem;
+    width: 8rem;
+    margin-top: -2rem;
+}
+
+.editar-perfil{
+    background-color: #FF9800;
+    color: #111111;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    padding: 0.8rem;
+    transition: 0.2s all;
+}
+
+.editar-perfil:hover{
+    background-color: #ffca28;
+}
+
+.card-title{
+    font-weight: 600;
+    color: #111111;
+    font-size: 1.4rem;
+}
+
+.card-subtitle{
+    width: 80%;
+    text-align: center;
 }
 
 .card h3 {
@@ -98,12 +280,6 @@ h2 {
     padding-left: 20px;
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-}
 
 /* Modal de confirmação */
 .modal {
@@ -139,71 +315,5 @@ footer {
 }
 
 .modal-content button:hover {
-    background-color: #555;
-}
-
-/* Estilos dos Botões */
-.button {
-    display: inline-block;
-    padding: 5px 5px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.button.cadastrar {
-    background-color: #FF9800;
-    color: white;
-    padding: 5px 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100px;
-}
-
-.button.salvar {
-    background-color: #FF9800;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100px;
-}
-
-.button.excluir {
-    background-color: #E74040;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 5px;
-    font-size: 14px;
-    width: 100px;
-    cursor: pointer;
-}
-
-.cancelar {
-    background-color: #E74040;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 5px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.button.editar {
-    background-color: #FF9800;
-    color: #fff;
-}
-
-.button.remover {
-    background-color: #E74040;
-    color: #fff;
-}
-
-.button:hover {
     background-color: #555;
 }
