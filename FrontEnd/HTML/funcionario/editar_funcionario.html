@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/FrontEnd/CSS/funcionario/editar_funcionario.css">
+    
+    <title>Editar Perfil</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg container-fluid">
+    <div class="container-fluid" style="color: #FF9800; display: flex; align-items: center; margin-left: 20px; font-size: xx-large; font-weight: bold;"> 
+      BARBERFASHION
+  </div>
+  </nav>
+
+  <div class="container">
+      
+      <form>
+          <div class="voltar">
+              <a href="/FrontEnd/HTML/funcionario/pagina_funcionario.html"><img src="/FrontEnd/images/right-arrow-white.png"class="icon-voltar">VOLTAR</a>
+          </div>
+          <div class="foto-perfil">
+              <label tabindex="0" class="picture">
+                <input type="file" accept="image/*" id="picture_input">
+                <span class="picture_image"></span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="name">NOME:</label>
+            <input type="text" class="form-control" id="name" placeholder="Digite seu nome">
+          </div>
+          <div class="form-group">
+            <label for="email">EMAIL:</label>
+            <input type="email" class="form-control" id="email" placeholder="Digite seu email">
+          </div>
+          <div class="form-group tel">
+            <label for="phone">TELEFONE:</label>
+            <input type="phone" class="form-control" id="phone" placeholder="Digite seu telefone">
+          </div>
+          <div class="options">
+              <button class="editar-perfil" id="btnupdate">CONFIRMAR</button>
+              <button class="sair" id="btncancelar">CANCELAR</button>
+            </div> 
+          </form>
+  </div>
+  
+  
+</body>
+<script src="/FrontEnd/JS/funcionario/editar_funcionario.js"></script>
+</html>
