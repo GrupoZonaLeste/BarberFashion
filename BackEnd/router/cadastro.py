@@ -46,9 +46,9 @@ async def addCorteNoBanco(corte: dict = Body(...)):
     await adicionar_corte(corte)
     return "CORTE MARCARDO E ENVIADO AO BANCO"
 
-@app.get('/pegarcortes')
-async def pegarCortes():
-    dados = await pegar_cortes() 
+@app.get('/pegarcortes/{client_id}')
+async def pegarCortes(client_id):
+    dados = await pegar_cortes(client_id) 
     return dados
 
 @app.delete('/deletarcorte/{id}')

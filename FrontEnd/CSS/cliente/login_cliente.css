@@ -142,3 +142,7 @@ button.btn-primary:hover {
     margin: 0;
     margin-top: 1.2rem;
 }
+
+a:hover {
+    cursor: pointer;
+}
