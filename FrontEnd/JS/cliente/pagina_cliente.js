@@ -35,13 +35,15 @@ btn_agendar.addEventListener('click', async () => {
         //alert("preencha os campos")
         return
     }
+    console.log("ID DO USUARIO: " + retornarIdUsuario())
 
     await fetch("http://localhost:8000/marcarcorte", {
         method: "POST",
         body: JSON.stringify({
             "data": data_corte.value,
             "hora": hora_corte.value,
-            "servico": select_corte.value
+            "servico": select_corte.value,
+            "client_id": retornarIdUsuario()
         }),
         headers: {
             "Content-type": "application/json; charset=UTF-8"
@@ -76,7 +78,7 @@ const divCortes = document.getElementById('servicos_agendados')
 const dadosDivCortes = document.getElementById('dados_servicos_marcados')
 
 async function addDivCortes() {
-    await fetch("http://localhost:8000/pegarcortes")
+    await fetch(`http://localhost:8000/pegarcortes/${retornarIdUsuario()}`)
         .then(res => res.json())
         .then(data => {
             data.forEach(element => {

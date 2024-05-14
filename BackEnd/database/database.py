@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 from bson import ObjectId
+import json
 
 MONGO_CONNECTION_STRING = MongoClient("mongodb://localhost:27017")
 database = MONGO_CONNECTION_STRING['Barbearia']
@@ -8,12 +9,11 @@ collection_cortes = database['cortes']
 async def adicionar_corte(corte: dict):
     collection_cortes.insert_one(corte)
 
-async def pegar_cortes():
+async def pegar_cortes(client_id):
     datas = []
-    for i in collection_cortes.find({}):
+    for i in collection_cortes.find({'client_id': int(client_id)}):
+        i["_id"] = f"ObjectId({str(i['_id'])})"
         datas.append(i)
-    for i in datas:
-        i["_id"] = f"ObjectId({str(i['_id'])})"       
     return datas
 
 async def deletar_cortes(id: str):

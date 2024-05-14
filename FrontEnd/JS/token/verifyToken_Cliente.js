@@ -37,4 +37,12 @@ async function checkTokenValidity() {
 checkTokenValidity();
 async function DataLoad(){
     GetData(token_decoded.sub);
-    }
+}
+
+function retornarIdUsuario(){
+    const token = localStorage.getItem('token')
+    const token_decoded = parseJwt(token)
+    const id = token_decoded.sub
+
+    return id
+}

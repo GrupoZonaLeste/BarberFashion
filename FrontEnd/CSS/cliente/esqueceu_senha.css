@@ -20,6 +20,7 @@ body {
     background-color: #111111;
 }
 
+
 .card {
     border: none;
 }
@@ -44,11 +45,6 @@ body {
     width: 88%;
     display: flex;
     justify-content: center;
-}
-
-.card-body {
-    background-color: #ffffff;
-    /* Branco */
 }
 
 .card-footer {
@@ -96,53 +92,4 @@ button.btn-primary:hover {
 
 .text-secondary {
     color: #000000;
-}
-
-
-.centralizador{
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.alert{
-    display: none;
-    z-index: 1;
-    position: absolute;
-    justify-content: space-between;
-    border-radius: 1rem;
-    text-align: center;
-    top: 3rem;
-    width: 25rem;
-    padding: 2rem;
-    border: solid 2px transparent;
-    background-color: #111111;
-}
-
-#btn-ok{
-    padding: 0.2rem;
-    border-radius: 2rem;
-    box-shadow: 0px 0px 16px -5px transparent;
-    border: solid 1px transparent;
-    color: #ffffff;
-    width: 40%;
-    background-color: transparent;
-    transition: 0.3s all;   
-}
-
-#btn-ok:hover{
-    opacity: 0.5;
-}
-
-.EsqueceuSenha{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 0;
-    margin-top: 1.2rem;
-}
-
-a:hover {
-    cursor: pointer;
 }
