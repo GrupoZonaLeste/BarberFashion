@@ -47,19 +47,16 @@
                         <img src="/FrontEnd/images/perfil-pessoal.png" class="card-icon" alt="">
                         <p class="card-title">EDITAR PERFIL</p>
                         <p class="card-subtitle">Edite seus Dados e Informações Pessoais</p>
-                        <a href="/FrontEnd/HTML/cliente/editar_cliente.html" class="editar-perfil">EDITAR PERFIL</a>
+                        <a href="/FrontEnd/HTML/funcionario/editar_funcionario.html" class="editar-perfil">EDITAR PERFIL</a>
                 </div>
             </section>
             <section class="card">
                 <div class="card-body">
                     <div class="detail"></div>
-                    <h3>Horários Disponíveis</h3>
-                    <ul>
-                        <li>Data: 10 de maio de 2024, Horário: 10:00, Status: Disponível <button
-                                class="button agendar">Agendar</button></li>
-                        <li>Data: 12 de maio de 2024, Horário: 11:30, Status: Disponível <button
-                                class="button agendar">Agendar</button></li>
-                    </ul>
+                    <img src="/FrontEnd/images/agenda.png" class="card-icon" alt="">
+                    <p class="card-title">AGENDA</p>
+                    <p class="card-subtitle">Visualize sua agenda completa, quais horários foram marcados e toda a sua programação</p>
+                    <button id="btn-agenda">VISUALIZAR AGENDA</button>
                 </div>
             </section>
         </div>    
@@ -69,26 +66,58 @@
             <div class="card">
                 <div class="card-body">
                     <div class="detail"></div>
-                <h3>Lista de Serviços</h3>
-                <ul>
-                    <li>Serviço: Corte, Preço: R$ 30.00</li>
-                    <li>Serviço: Barba, Preço: R$ 20.00</li>
-                </ul>
-                <button class="button editar">Editar</button>
+                    <img src="/FrontEnd/images/barber.png" class="card-icon" alt="">
+                    <p class="card-title">MEUS SERVIÇOS</p>
+                    <p class="card-subtitle">Visualize todos os cortes e serviços que você realiza</p>
+                    <button id="btn-meus-servicos">VISUALIZAR SERVIÇOS</button>
                 </div>
             </div>
             <div class="card">
                 <div class="card-body">
                     <div class="detail"></div>
+                    <img src="/FrontEnd/images/notebook.png" class="card-icon" alt="">
+                    <p class="card-title">PEDIDOS DE AGENDAMENTO</p>
+                    <p class="card-subtitle">Visualize e confirme todos os pedidos de serviços</p>
+                    <button id="btn-pedidos">AGENDAMENTO</button>
+
                     <h3>Agendamentos</h3>
                     <div id="cortes-marcados"></div>
+
                 </div>
             </div>
         </div>
     </div>  
     </section>
     </main>
+    <div class="modal_agenda">
+        <div id="agenda" class="card">
+            <button id="fechar_agenda_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <h3>Agenda</h3><br>
+                <div id="card_service">
+                    <p>Aqui mostra a agenda dele com os clientes que irão cotar os cabelos **Vale lembrar que o cliente só aparece aqui quando o corte for confirmado em 'pedidos de agendamento'</p>
+                </div>
+        </div>
+    </div>
+    
+    <div class="modal_servico">
+        <div id="servicos_agendados" class="card">
+            <button id="fechar_servicos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <h3>Meus Serviços</h3><br>
+                <div id="card_service"> Aqui ele visualiza os cortes em que ele corta</div>
+        </div>
+    </div>
+
+    <div class="modal_agendamento">
+        <div id="pedido_agendamento" class="card">
+            <button id="fechar_pedidos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <h3>Agendamento</h3><br>
+                <div id="card_service">Aqui visualiza confirma ou exclui solicitação de corte do cliente, Se aceita é marcado na agenda, mostra confirmação para o cliente e mostra na "AGENDA" do funcionario que foi confirmado</div>
+        </div>
+    </div>
+
+    <script src="/FrontEnd/JS/funcionario/modal/modal_funcionario.js"></script>
 
     <script src="/FrontEnd/JS/funcionario/pagina_funcionario.js"></script>
+
 </body>
 </html>

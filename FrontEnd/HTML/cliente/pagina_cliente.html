@@ -30,8 +30,13 @@
 
     <div class="container">
         <div class="user-info">
+            
             <div class="foto-perfil">
-                <img src="/FrontEnd/images/profile.png" alt="Foto do Cliente">
+                <label tabindex="0" class="picture">
+                    <input type="file" accept="image/*" id="picture_input">
+                    <span class="picture_image"></span>
+                </label>
+                <!--<img src="/FrontEnd/images/profile.png" alt="Foto do Cliente">-->
             </div>
             <div class="user-details">
                 <p id="name"class="nome-cliente">Nome do Cliente</p>
@@ -55,7 +60,7 @@
                                 <img src="/FrontEnd/images/penteado 1.png" class="card-icon" alt="">
                                 <p class="card-title">AGENDE UM SERVIÇO</p>
                                 <p class="card-subtitle">Agende o melhor horário disponível para realizar o corte de cabelo.</p>
-                                <button class="modalBtn">AGENDAR</button>
+                                <button class="btn_agendar">AGENDAR</button>
                             </div>
                         </div>
     
@@ -94,7 +99,7 @@
         </main>
     </div>
     
-    <div class="modal">
+    <div class="modal_agendar">
         <div class="card" style="margin:130px auto; width: 300px;">
                 <button id="fechar_agendamento_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
                 <h3>Agendar Serviço</h3><br>
@@ -120,7 +125,7 @@
         </div>
     </div>
     
-        <div class="modal2">
+        <div class="modal_servico">
             <div id="servicos_agendados" class="card">
                 <button id="fechar_servicos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
                 <h3>Serviços Agendados</h3><br>
@@ -143,7 +148,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/FrontEnd/JS/cliente/modal.js"></script>
+    <script src="/FrontEnd/JS/cliente/modal/modal_cliente.js"></script>
     <script src="/FrontEnd/JS/cliente/pagina_cliente.js"></script>
     <script src="/FrontEnd//JS/cliente/data_cliente.js"></script>
     <script src="/FrontEnd/JS/token/verifyToken_Cliente.js"></script>

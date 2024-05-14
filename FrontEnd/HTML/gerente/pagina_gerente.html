@@ -47,7 +47,7 @@
                                 <img src="/FrontEnd/images/employee 1.png" class="card-icon" alt="">
                                 <p class="card-title">FUNCIONÁRIOS</p>
                                 <p class="card-subtitle">Cadastre e adicone as  credenciais do novo Funcionário.</p>
-                                <button class="modalBtn">CADASTRAR BARBEIRO</button>
+                                <button id="btn-cadastrar-barbeiro">CADASTRAR BARBEIRO</button>
                             </div>
                         </div>
     
@@ -57,7 +57,7 @@
                                 <img src="/FrontEnd/images/carteira-de-identidade 1.png" class="card-icon" alt="">
                                 <p class="card-title">EDITAR FUNCIONÁRIOS</p>
                                 <p class="card-subtitle">Edite, Exclua e Atualize credenciais de um Funcionário.</p>
-                                <button id="btn-editar-servicos">EDITAR BARBEIRO</button>
+                                <button id="btn-editar-barbeiro">EDITAR BARBEIRO</button>
                             </div>
                         </div>
                         
@@ -80,7 +80,7 @@
                                 <img src="/FrontEnd/images/client 1.png" class="card-icon" alt="">
                                 <p class="card-title">CLIENTES CADASTRADOS</p>
                                 <p class="card-subtitle">Visualizar e Editar informações do Cliente.</p>
-                                <button id="btn-editar-servicos">VISUALIZAR CLIENTE</button>
+                                <button id="btn-visualizar-cliente">VISUALIZAR CLIENTE</button>
                             </div>
                         </div>
                     </div>
@@ -116,9 +116,9 @@
     </main>
     <!-- Modal de confirmação de exclusão -->
     
-    <div class="modal">
+    <div class="modal_CriarFuncionario">
         <div class="card" style="margin:130px auto; width: 300px;">
-            <button id="fechar_agendamento_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <button id="fechar_cadastrarFuncionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
             <h1 style="font-size: 1.5rem;">CRIAR FUNCIONÁRIO</h1>
                 <div class="modal-content">
                     <form>
@@ -133,9 +133,9 @@
                 </div>
         </div>
     </div>
-    <div class="modal3">
+    <div class="modal_EditarFuncionario">
         <div class="card" style="margin:130px auto; width: 300px;">
-            <button id="fechar_agendamento_btn2" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <button id="fechar_editarFuncionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
             <h1 style="font-size: 1.5rem;">FUNCIONÁRIOS</h1>
                 <div class="modal-content" id="funcionarios_cadastrados">
                 </div>
@@ -143,6 +143,6 @@
     </div>
 
     <script src="/FrontEnd/JS/gerente/pagina_gerente.js"></script>
-    <script src="/FrontEnd/JS/cliente/modal.js"></script>
+    <script src="/FrontEnd/JS/gerente/modal/modal_gerente.js"></script>
 </body>
 </html>

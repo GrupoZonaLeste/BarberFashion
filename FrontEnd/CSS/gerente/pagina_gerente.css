@@ -340,7 +340,7 @@ body {
 }
 
 /* Modal de confirmação */
-.modal {
+.modal_CriarFuncionario {
     display: none;
     position: fixed;
     z-index: 1;
@@ -351,7 +351,7 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal3 {
+.modal_EditarFuncionario {
     display: none;
     position: fixed;
     z-index: 1;
