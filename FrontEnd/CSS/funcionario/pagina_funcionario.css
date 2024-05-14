@@ -393,3 +393,24 @@ section{
     align-items: center;
     width: 100%;
 }
+
+#content_service{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 2rem;
+    border: 2px solid #111111;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+#text_service{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+
+#text_service > p{
+    margin: 0.6rem;
+}

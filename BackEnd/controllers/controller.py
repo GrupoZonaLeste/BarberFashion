@@ -51,6 +51,11 @@ class Controller:
         else:
             return {"status":"ID_NOT_FOUND"}
         
+    def retornar_nome_cliente(self, client_id):
+        usuario = self.get_current_collection().find_one({'client_id': int(client_id)})
+        user = { "name": usuario.get('name')}
+        return user
+
     def listar_funcionarios(self):
         funcionarios = []
         for i in self.get_current_collection().find({'funcionario_id': {'$exists': True}}):
