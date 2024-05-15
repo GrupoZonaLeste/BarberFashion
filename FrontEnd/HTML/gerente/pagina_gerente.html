@@ -109,7 +109,7 @@
                         <p>1</p>
                         <p>Total Ganho no mês:</p>
                         <p>R$ *******</p>
-                        <button class="btn-relat">RELATÓRIOS</button>
+                        <button id="btn-relat">RELATÓRIOS</button>
                     </div>
                 </div>
             </div>    
@@ -142,6 +142,29 @@
         </div>
     </div>
 
+    <div class="modal_Relatorio">
+        <div class="card_Relatorio" id="card_Relatorio" style="margin:130px auto; height: 10rem;">
+            <button id="fechar_relatorio_btn" type="button" class="btn-fechar" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <p class="title-relat">RELATÓRIOS DA BARBEARIA</p>
+                <div class="modal-content-relat">
+                    <p class="subtitle-relat">Selecione qual período você deseja visualizar o Relatório</p>
+                    <div class="navegacao">
+                        <button id="diario">DIÁRIO</button>
+                        <button id="mensal">MENSAL</button>
+                        <button id="anual">ANUAL</button>
+                    </div>
+                    <div class="relat-content" id="relat-content">
+                        <div class="navegacao2">
+                            <input type="date" name="" id="input_diario">
+                            <input type="month" name="" id="input_mensal">
+                            <input type="month" name="" id="input_anual">
+                            <button type="submit" id="pesquisar">PESQUISAR</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script src="/FrontEnd/JS/gerente/relatorio_gerente.js"></script>
     <script src="/FrontEnd/JS/gerente/pagina_gerente.js"></script>
     <script src="/FrontEnd/JS/gerente/modal/modal_gerente.js"></script>
 </body>

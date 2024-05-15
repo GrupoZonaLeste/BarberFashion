@@ -28,6 +28,21 @@ btnFechar_editarfuncionario.addEventListener('click', ()=> {
     modalEditarFuncionario.style.display = 'none'
 })
 
+/* FUNÇÃO DE ATIVAR E DESATIVAR MODAL DE RELATÓRIO*/
+const modalRelatorio = document.querySelector('.modal_Relatorio')
+
+const switchModal5 = () =>{
+    modalRelatorio.style.display = 'block'
+}
+
+const btnRelatorio = document.getElementById('btn-relat')
+btnRelatorio.addEventListener('click', switchModal5)
+
+const btnFechar_relatorio = document.getElementById('fechar_relatorio_btn')
+btnFechar_relatorio.addEventListener('click', ()=> {
+    modalRelatorio.style.display = 'none'
+})
+
 
 /*
 const btn3teste = document.getElementById('fechar_servicos_btn')
