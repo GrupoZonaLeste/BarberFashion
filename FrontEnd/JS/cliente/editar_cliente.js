@@ -5,6 +5,32 @@ const token = localStorage.getItem("token");
 const token_decoded = parseJwt(token)
 id = token_decoded.sub
 
+function buscarImagemCliente(cliente_id) {
+    console.log(cliente_id);
+  
+    // Constrói o nome do arquivo
+    const filename = `user_${cliente_id}.jpg`;
+    console.log(filename);
+  
+  
+    const imageUrl = `/BackEnd/clientes_pictures/${filename}`;
+  
+  
+    const imgElement = document.getElementById('image_user');
+  
+    // Define a nova url na imagem 
+    imgElement.src = imageUrl;
+  
+    // Caso de algum erro
+    imgElement.onerror = function() {
+  
+        // URL Dos icones padroes do Gui
+        const urlImagemAlternativa = '/FrontEnd/images/profile.png';
+  
+        imgElement.src = urlImagemAlternativa;
+    };
+  }
+
 async function getDataUsuario(){
     const options2 = {
         method: 'GET',
@@ -18,17 +44,18 @@ async function getDataUsuario(){
         nomeuser = response.data.name,
         emailuser = response.data.email,
         phoneuser = response.data.phone
-        PutData(nomeuser, emailuser, phoneuser)
+        PutData(id,nomeuser, emailuser, phoneuser)
     }).catch(function (error) {
         console.error(error);
     });
 
 }
 
-function PutData(nome,email1,phone){
+function PutData(id,nome,email1,phone){
     document.getElementById('name').value = nome
     document.getElementById('email').value = email1
     document.getElementById('phone').value = phone
+    buscarImagemCliente(id)
 }
 
 const btn_update = document.getElementById('btnupdate')
@@ -69,31 +96,5 @@ function parseJwt (token) {
 
     return JSON.parse(jsonPayload);
 }
-
-const inputFile = document.querySelector('#picture_input');
-const pictureImage = document.querySelector('.picture_image');
-const pictureImageTXT = 'Escolha uma Foto';
-pictureImage.innerHTML = pictureImageTXT;
-
-inputFile.addEventListener('change', function(e) {
-    const inputTarget = e.target;
-    const file = inputTarget.files[0];
-    
-    if (file){
-        const reader = new FileReader();
-        reader.addEventListener('load', function(e) {
-            const readerTarget = e.target;       
-            const img = document.createElement('img');
-            img.src = readerTarget.result;
-            img.classList.add('picture_img');
-            pictureImage.innerHTML = '';
-            pictureImage.appendChild(img);
-        
-        })
-        reader.readAsDataURL(file);
-    } else{
-
-    }
-})
 
 document.addEventListener('DOMContentLoaded', getDataUsuario)

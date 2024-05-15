@@ -110,9 +110,10 @@ async function inserir(){
             btnOk.style.borderColor = '#00D446'
             btnOk.style.boxShadow = '0px 0px 16px -5px #00D446'
             //alert(`Você se Cadastrou com sucesso`);
-            location.replace("http:/FrontEnd/HTML/cliente/login_cliente.html")
+            
             btnOk.addEventListener('click', () =>{
                 div_alerta.style.display = 'none'
+                location.replace("http:/FrontEnd/HTML/cliente/login_cliente.html")
             });
             
         } else if(response.data.status === "EMAIL CADASTRADO") {

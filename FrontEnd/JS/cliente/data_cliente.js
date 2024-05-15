@@ -1,3 +1,11 @@
+function retornarIdUsuario(){
+  const token = localStorage.getItem('token')
+  const token_decoded = parseJwt(token)
+  const id = token_decoded.sub
+  return id
+}
+
+
 function GetData(iduser){
 const options = {
   method: 'GET',
@@ -23,10 +31,42 @@ function PutData(name,email,phone){
     var phone_campo = document.getElementById("phone")
     var apresentation = document.getElementById("apresentation")
     let NameTitle = name.charAt(0).toUpperCase() + name.slice(1);
+    
+    //imagem
+    
+    cliente_id = retornarIdUsuario()
+    buscarImagemCliente(cliente_id)
 
+    //texto
     nome_campo.textContent = NameTitle
-    email_campo.textContent = ("Email:"+email)
-    phone_campo.textContent = ("Telfone:"+phone)
+    email_campo.textContent = ("Email: "+email)
+    phone_campo.textContent = ("Telefone: "+phone)
     apresentation.textContent = ("Olá "+NameTitle+", Bem-vindo à Barbearia!")
+}
+
+function buscarImagemCliente(cliente_id) {
+  console.log(cliente_id);
+
+  // Constrói o nome do arquivo
+  const filename = `user_${cliente_id}.jpg`;
+  console.log(filename);
+
+
+  const imageUrl = `/BackEnd/clientes_pictures/${filename}`;
+
+
+  const imgElement = document.getElementById('image_user');
+
+  // Define a nova url na imagem 
+  imgElement.src = imageUrl;
+
+  // Caso de algum erro
+  imgElement.onerror = function() {
+
+      // URL Dos icones padroes do Gui
+      const urlImagemAlternativa = '/FrontEnd/images/profile.png';
+
+      imgElement.src = urlImagemAlternativa;
+  };
 }
 
