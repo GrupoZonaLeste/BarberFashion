@@ -56,6 +56,14 @@ class Controller:
         user = { "name": usuario.get('name')}
         return user
 
+    def listar_usuarios(self):
+        usuarios = []
+        for i in self.get_current_collection().find({'client_id': {'$exists': True}}):
+            usuarios.append(i)
+        for i in usuarios:
+            i["_id"] = f"ObjectId({str(i['_id'])})"
+        return usuarios
+
     def listar_funcionarios(self):
         funcionarios = []
         for i in self.get_current_collection().find({'funcionario_id': {'$exists': True}}):

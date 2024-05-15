@@ -116,5 +116,7 @@ async def delete_funcionarios(funcid: int):
 @app.post('/editar_cliente/')
 async def editar_cliente(id: int, name: str , email: str, phone: str ):
     return controller.editar_cliente(id,name,email ,phone)
-    
-    
+
+@app.get('/listar_usuarios/')
+async def listar_todos_usuarios():
+    return controller.listar_usuarios()

@@ -113,4 +113,24 @@ async function addDivFuncionarios(){
     .catch(erro => console.log(`erro: ${erro}`))
 }
 
+const divClientesCadastrados = document.getElementById('clientes_cadastrados')
+
+async function addDivClientes(){
+    await fetch('http://localhost:8000/listar_usuarios/')
+    .then(response => response.json())
+    .then(response => {
+        response.forEach(element => {
+            textNode = `<b style="font-size: 120%">Nome:</b> ${element.name} <b style="font-size: 120%">Email:</b> ${element.email}<br><hr><br>`
+            const p = document.createElement('p')
+            p.innerHTML = textNode
+            p.style.margin = '5px'
+            p.style.fontSize = '110%'
+
+            divClientesCadastrados.appendChild(p)
+        })
+    })
+    .catch(erro => console.log(erro))
+}
+
+document.addEventListener("DOMContentLoaded",addDivClientes)
 document.addEventListener("DOMContentLoaded", addDivFuncionarios)
