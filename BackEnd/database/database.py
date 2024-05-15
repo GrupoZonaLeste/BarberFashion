@@ -11,6 +11,7 @@ async def adicionar_corte(corte: dict):
 
 async def pegar_cortes(client_id):
     datas = []
+    print(client_id)
     for i in collection_cortes.find({'client_id': int(client_id)}):
         i["_id"] = f"ObjectId({str(i['_id'])})"
         datas.append(i)

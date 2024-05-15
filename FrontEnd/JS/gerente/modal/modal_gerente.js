@@ -36,6 +36,18 @@ btn3teste.addEventListener('click', ()=> {
 })
 */
 
+//FUNCÇAO ABRIR E FECHAR MODAL DE VISUALIZAÇÃO DE CLIENTES
+const modalVisualizarClientes = document.querySelector('.modal_visualizar_clientes')
 
+const switchModal3 = () => {
+    modalVisualizarClientes.style.display = 'block'
+}
+const btnAbrirFecharClientes = document.getElementById('btn-visualizar-cliente')
+btnAbrirFecharClientes.addEventListener('click', switchModal3)
+
+const fecharClientes = document.getElementById('fechar_clientes_btn')
+fecharClientes.addEventListener('click', () => {
+    modalVisualizarClientes.style.display = 'none'
+})
 
 
