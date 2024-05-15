@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnFecharEditarFuncionario = document.getElementById('fechar_editarFuncionario_btn');
     addModalEventListeners(btnEditarBarbeiro, btnFecharEditarFuncionario, modalEditarFuncionario);
 
-    // MODAL: Servicos Agendados
-    const modalServicos = document.getElementById('modal_servicos');
-    const btnAgendamentos = document.getElementById('btn-visualizar-cliente');
-    const btnFecharServicos = document.getElementById('fechar_servicos_btn');
-    addModalEventListeners(btnAgendamentos, btnFecharServicos, modalServicos);
+    // MODAL: Servicos Agendados (NAO ESTA FUNCIONANDO!)
+    //const modalServicos = document.getElementById('modal_servicos');
+    //const btnAgendamentos = document.getElementById('btn-agendamentos');
+    //const btnFecharServicos = document.getElementById('fechar_servicos_btn');
+    //addModalEventListeners(btnAgendamentos, btnFecharServicos, modalServicos);
 
     // MODAL: Visualizar Clientes
     const modalVisualizarClientes = document.querySelector('.modal_visualizar_clientes');
