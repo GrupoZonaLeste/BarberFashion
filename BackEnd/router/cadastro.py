@@ -51,6 +51,11 @@ async def pegarCortes(client_id):
     dados = await pegar_cortes(client_id) 
     return dados
 
+@app.get('/pegartodoscortes/')
+async def PegarTodosCortes():
+    dados = await pegar_todos_cortes()
+    return dados
+
 @app.delete('/deletarcorte/{id}')
 async def deletecorte(id):
     await deletar_cortes(id)
@@ -95,6 +100,10 @@ def login(email: str, senha: str, request: Request):
 @app.get('/usuario')
 async def get_usuario(id: int):
     return controller.listar_usuario_por_id(id)
+
+@app.get('/usuarionames/{id}')
+async def getUsuarioNome(id):
+    return controller.retornar_nome_cliente(id)
 
 @app.get('/listar_funcionarios/')
 async def get_funcionarios():

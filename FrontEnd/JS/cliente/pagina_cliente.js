@@ -35,7 +35,6 @@ btn_agendar.addEventListener('click', async () => {
         //alert("preencha os campos")
         return
     }
-    console.log("ID DO USUARIO: " + retornarIdUsuario())
 
     await fetch("http://localhost:8000/marcarcorte", {
         method: "POST",
