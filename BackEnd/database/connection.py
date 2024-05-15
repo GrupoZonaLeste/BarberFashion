@@ -1,11 +1,12 @@
 from pymongo import MongoClient
+from pymongo.server_api import ServerApi
 from config.mongo_db_config import mongo_db_meta
-
+from pymongo.mongo_client import MongoClient
 class DBConnectionHandler:
     def __init__(self) -> None:
-        #CONEXAO ATLAS
-        #self.__connection_string ='mongodb+srv://Adm:admbarbearia@barbearia.xhdorgr.mongodb.net/'
-        #CONEXAO LOCAL
+        #CONEXAO ATLASs
+        #self.__connection_string ='mongodb+srv://Adm:<Adm>@barbearia.xhdorgr.mongodb.net/?retryWrites=true&w=majority&appName=Barbearia'
+        #CONEXAO LOCAL  
         self.__connection_string ='mongodb://{}:{}/'.format(
         mongo_db_meta["HOST"],
         mongo_db_meta["PORT"]

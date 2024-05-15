@@ -63,12 +63,12 @@ header {
     display: flex;
     justify-content: center;
 }
-/*
+
 .foto-perfil > img{
     height: 8rem;
     width: 8rem;
 }
-*/
+
 
 #picture_input{
     display: none;
@@ -110,7 +110,9 @@ header {
     justify-content: space-around;
     height: 15rem;
 }
-
+img#image_user {
+    border-radius: 100%;
+}
 .user-details p {
     color: #f9f9f9;
 }
