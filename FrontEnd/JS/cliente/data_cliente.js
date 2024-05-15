@@ -47,13 +47,26 @@ function PutData(name,email,phone){
 function buscarImagemCliente(cliente_id) {
   console.log(cliente_id);
 
-  // Constrói o nome do 
+  // Constrói o nome do arquivo
   const filename = `user_${cliente_id}.jpg`;
   console.log(filename);
 
+
   const imageUrl = `http://127.0.0.1:51982/BackEnd/clientes_pictures/${filename}`;
+
 
   const imgElement = document.getElementById('image_user');
 
+  // Define a nova url na imagem 
   imgElement.src = imageUrl;
+
+  // Caso de algum erro
+  imgElement.onerror = function() {
+
+      // URL Dos icones padroes do Gui
+      const urlImagemAlternativa = 'http://127.0.0.1:51982/FrontEnd/images/profile.png';
+
+      imgElement.src = urlImagemAlternativa;
+  };
 }
+
