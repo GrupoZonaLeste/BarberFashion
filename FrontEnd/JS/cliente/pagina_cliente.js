@@ -81,7 +81,16 @@ async function addDivCortes() {
         .then(res => res.json())
         .then(data => {
             data.forEach(element => {
-                textDATA = `<h4>DATA:</h4> ${element.data} ; ${element.hora} `;
+                textDATA = ""
+                const btn_editar = document.createElement('button')
+                const btn_delete = document.createElement('button')
+                if(element.funcionario_id){
+                    textDATA = `<h4>DATA:</h4> ${element.data} ; ${element.hora} <h4>FUNCIONARIO: </h4> ${element.funcionario_id} `;
+                    btn_editar.style.display = 'none'
+                    btn_delete.innerHTML = "CANCELAR AGENDAMENTO"
+                } else {
+                    textDATA = `<h4>DATA:</h4> ${element.data} ; ${element.hora} `;
+                }
                 textDESCRIPTION = `<h4>DESCRIÇÃO:</h4>${element.servico}`;
 
                 const p = document.createElement('p')
@@ -90,8 +99,6 @@ async function addDivCortes() {
                 const div_contentService = document.createElement('div')
                 const div_textos = document.createElement('div')
                 const div_btn = document.createElement('div')
-                const btn_delete = document.createElement('button')
-                const btn_editar = document.createElement('button')
                 btn_delete.innerHTML = "DELETAR"
                 btn_editar.innerHTML = "EDITAR"
                 div_textos.id = 'text_service'
