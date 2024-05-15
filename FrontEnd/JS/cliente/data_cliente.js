@@ -52,7 +52,7 @@ function buscarImagemCliente(cliente_id) {
   console.log(filename);
 
 
-  const imageUrl = `http://127.0.0.1:51982/BackEnd/clientes_pictures/${filename}`;
+  const imageUrl = `/BackEnd/clientes_pictures/${filename}`;
 
 
   const imgElement = document.getElementById('image_user');
@@ -64,7 +64,7 @@ function buscarImagemCliente(cliente_id) {
   imgElement.onerror = function() {
 
       // URL Dos icones padroes do Gui
-      const urlImagemAlternativa = 'http://127.0.0.1:51982/FrontEnd/images/profile.png';
+      const urlImagemAlternativa = '/FrontEnd/images/profile.png';
 
       imgElement.src = urlImagemAlternativa;
   };
