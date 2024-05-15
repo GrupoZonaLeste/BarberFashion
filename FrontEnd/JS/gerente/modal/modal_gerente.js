@@ -28,6 +28,51 @@ btnFechar_editarfuncionario.addEventListener('click', ()=> {
     modalEditarFuncionario.style.display = 'none'
 })
 
+/* FUNÇÃO DE ATIVAR E DESATIVAR MODAL DE SERVIÇOS AGENDADOS*/
+const modalServicos = document.querySelector('.modal_servicos')
+
+const switchModal3 = () =>{
+    modalServicos.style.display = 'block'
+}
+
+const btnAgendamentos = document.getElementById('btn-agendamentos')
+btnAgendamentos.addEventListener('click', switchModal3)
+
+const btnFechar_servicos = document.getElementById('fechar_servicos_btn')
+btnFechar_servicos.addEventListener('click', ()=> {
+    modalServicos.style.display = 'none'
+})
+
+/* FUNÇÃO DE ATIVAR E DESATIVAR MODAL DE CLIENTES CADASTRADOS*/
+const modalVisualizar = document.querySelector('.modal_visualizar')
+
+const switchModal4 = () =>{
+    modalVisualizar.style.display = 'block'
+}
+
+const btnVisualizar = document.getElementById('btn-visualizar-cliente')
+btnVisualizar.addEventListener('click', switchModal4)
+
+const btnFechar_visualizar = document.getElementById('fechar_visualizar_btn')
+btnFechar_visualizar.addEventListener('click', ()=> {
+    modalVisualizar.style.display = 'none'
+})
+
+/* FUNÇÃO DE ATIVAR E DESATIVAR MODAL DE RELATÓRIO*/
+const modalRelatorio = document.querySelector('.modal_Relatorio')
+
+const switchModal5 = () =>{
+    modalRelatorio.style.display = 'block'
+}
+
+const btnRelatorio = document.getElementById('btn-relat')
+btnRelatorio.addEventListener('click', switchModal5)
+
+const btnFechar_relatorio = document.getElementById('fechar_relatorio_btn')
+btnFechar_relatorio.addEventListener('click', ()=> {
+    modalRelatorio.style.display = 'none'
+})
+
 
 /*
 const btn3teste = document.getElementById('fechar_servicos_btn')

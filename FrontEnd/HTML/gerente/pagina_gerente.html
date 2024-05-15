@@ -70,7 +70,7 @@
                                 <img src="/FrontEnd/images/agenda 1.png" class="card-icon" alt="">
                                 <p class="card-title">SERVIÇOS AGENDADOS</p>
                                 <p class="card-subtitle">Visualize Todos os serviços agendados na sua Barbearia.</p>
-                                <button class="modalBtn">AGENDAMENTOS</button>
+                                <button id="btn-agendamentos">AGENDAMENTOS</button>
                             </div>
                         </div>
     
@@ -109,7 +109,7 @@
                         <p>1</p>
                         <p>Total Ganho no mês:</p>
                         <p>R$ *******</p>
-                        <button class="btn-relat">RELATÓRIOS</button>
+                        <button id="btn-relat">RELATÓRIOS</button>
                     </div>
                 </div>
             </div>    
@@ -133,6 +133,7 @@
                 </div>
         </div>
     </div>
+
     <div class="modal_EditarFuncionario">
         <div class="card" style="margin:130px auto; width: 300px;">
             <button id="fechar_editarFuncionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
@@ -141,16 +142,63 @@
                 </div>
         </div>
     </div>
-
     <div class="modal_visualizar_clientes">
         <div class="card" style="margin:130px auto; width: 36%;">
             <button id="fechar_clientes_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
             <h1 style="font-size: 1.5rem;">CLIENTES</h1>
                 <div class="modal-content" id="clientes_cadastrados">
+
+ 
                 </div>
         </div>
     </div>
-
+    <div class="modal_Relatorio">
+        <div class="card_Relatorio" id="card_Relatorio" style="margin:130px auto; height: 10rem;">
+            <button id="fechar_relatorio_btn" type="button" class="btn-fechar" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <p class="title-relat">RELATÓRIOS DA BARBEARIA</p>
+                <div class="modal-content-relat">
+                    <p class="subtitle-relat">Selecione qual período você deseja visualizar o Relatório</p>
+                    <div class="navegacao">
+                        <button id="diario">DIÁRIO</button>
+                        <button id="mensal">MENSAL</button>
+                        <button id="anual">ANUAL</button>
+                    </div>
+                    <div class="relat-content" id="relat-content">
+                        <div class="navegacao2">
+                            <input type="date" name="" id="input_diario">
+                            <input type="month" name="" id="input_mensal">
+                            <input type="month" name="" id="input_anual">
+                            <button type="submit" id="pesquisar" style="align-items: center;">PESQUISAR</button>
+                        </div>
+                        <div class="avaliacao">
+                            <div class="esquerdo">
+                                <p>Horários que foram marcados:</p>
+                                <h3>RESPOSTA</h3>
+                                <p>Clientes que foram atendidos:</p>
+                                <h3>RESPOSTA</h3>
+                                <p>Serviços que foram realizados no total:</p>
+                                <h3>RESPOSTA</h3>
+                                <p>Clientes que não compareceram:</p>
+                                <h3>RESPOSTA</h3>
+                                <p>Total ganho:</p>
+                                <h3>RESPOSTA</h3>
+                            </div>
+                            <div class="direito">
+                                <p>Serviço de maior Valor:</p>
+                                <h3>RESPOSTA</h3>
+                                <p>Quantidade de feedbacks recebidos:</p>
+                                <h3>RESPOSTA</h3>
+                                <p>Quantos barbeiros ativos?</p>
+                                <h3>RESPOSTA</h3>
+                                <p>Media de clientes atendidos por cliente</p>
+                                <h3>RESPOSTA</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script src="/FrontEnd/JS/gerente/relatorio_gerente.js"></script>
     <script src="/FrontEnd/JS/gerente/pagina_gerente.js"></script>
     <script src="/FrontEnd/JS/gerente/modal/modal_gerente.js"></script>
 </body>
