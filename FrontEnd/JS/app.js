@@ -27,3 +27,18 @@ const typed = new Typed(".placeholder-search",{
     backSpeed:100, 
     loop: true
 })
+
+window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("voltarAoTopo").style.display = "block";
+    } else {
+      document.getElementById("voltarAoTopo").style.display = "none";
+    }
+  }
+
+  function voltarAoTopo() {
+    document.body.scrollTop = 0; // Para navegadores Safari
+    document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE e Opera
+  }
