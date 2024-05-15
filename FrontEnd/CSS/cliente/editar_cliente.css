@@ -53,22 +53,34 @@ form{
     border-radius: 100%;
     padding: 0.5rem;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    
 }
 
 .img_foto{
-    height: 8rem;
-    width: 8rem;
+    height: 100%;
+    width: 100%;
 }
-
+img{
+    object-fit: cover;
+}
 #picture_input{
     display: none;
-    height: 8rem;
-    width: 8rem;
+    
+    
 }
-
+img.picture_img {
+    border-radius: 80px;
+    width: 150px;
+    object-position: bottom;
+    object-fit: cover;
+    text-align: center;
+}
 .picture{
-    height: 8rem;
-    width: 8rem;
+    height: 7.5rem;
+    width: 7.5rem;
     aspect-ratio: 16/9;
     background-color: #ddd;
     display: flex;
@@ -82,6 +94,7 @@ form{
     text-align: center;
     transition: 0.3s all;
     padding: 0.5rem;
+    
 }
 
 .picture:hover {
@@ -92,8 +105,9 @@ form{
     border-color: #FF9800;
     color: #FF9800;
 }
-
-
+.picture_img {
+    object-fit: cover;
+}
 input.form-control{
     padding: 0.8rem;
     border: #585858 solid 0.15rem;
