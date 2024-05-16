@@ -17,13 +17,14 @@ async function checkTokenValidity() {
         const response = await axios.request(options);
         console.log(response.data);
         if(response.data.status == "Token válido") {
-            roleuser = retornarRoleUsuario
-            if (roleuser == 1){
+            roleuser = retornarRoleUsuario()
+            if (roleuser == 2){
                 token_decoded = parseJwt(token)
                 DataLoad()
             }else{
                 alert("Você não pode acessar esta página")
                 window.location.replace("http:/FrontEnd/HTML/index.html")
+                return false;
             }
             return true;    
         } else {

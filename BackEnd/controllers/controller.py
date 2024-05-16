@@ -73,6 +73,7 @@ class Controller:
         user_agent = request.headers.get("user-agent")
         client_ip = request.client.host
         usuario = self.listar_usuario_por_email(email)
+        print(usuario)
         if usuario:
             if tipousuario == {'cliente'}:
                 senha_armazenada = usuario.get('password')
@@ -86,7 +87,8 @@ class Controller:
                 return False
             elif tipousuario == {'funcionario'}:
                 senha_armazenada = usuario.get('password')
-                func_id = usuario.get('func_id')
+                func_id = usuario.get('funcionario_id')
+                print(str(func_id) + "olaaaaaaaaaaaa")
                 print(senha_armazenada)
                 senha_criptografada = hashlib.sha256(senha.encode()).hexdigest()
                 print(senha_criptografada)
@@ -101,7 +103,7 @@ class Controller:
                 senha_criptografada = hashlib.sha256(senha.encode()).hexdigest()
                 print(senha_criptografada)
                 if senha_armazenada == senha_criptografada:
-                    jwt = jwt_token.gerar_token_funcionario(usuario['name'], client_ip, adm_id) 
+                    jwt = jwt_token.gerar_token_gerente(usuario['name'], client_ip, adm_id) 
                     return [jwt]
                 return False
             else:

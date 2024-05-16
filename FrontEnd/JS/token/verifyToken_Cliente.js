@@ -17,7 +17,7 @@ async function checkTokenValidity() {
         const response = await axios.request(options);
         console.log(response.data);
         if(response.data.status == "Token válido") {
-            roleuser = retornarRoleUsuario
+            roleuser = retornarRoleUsuario()
             if (roleuser == 1){
                 token_decoded = parseJwt(token)
                 DataLoad()
