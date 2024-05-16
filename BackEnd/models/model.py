@@ -28,3 +28,9 @@ class Funcionario(BaseModel):
     email: Optional[str]
     password: str
     funcionario_id: int
+
+class Gerente(BaseModel):
+    name: str
+    email: Optional[str]
+    password: str
+    gerente_id: int

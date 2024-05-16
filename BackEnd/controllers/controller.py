@@ -75,32 +75,49 @@ class Controller:
     def excluir_funcionario(self, funcid):
         self.get_current_collection().delete_one({'funcionario_id': funcid})
 
-    def check_Login(self, cliente: ClienteLogin) -> dict:
-        filter={'$and': [{'email': cliente.email}, {'password': cliente.password}]}   
-
-        count = self.get_current_collection().count_documents(filter)
-        if(count > 0):
-            return {"status":"LOGIN CORRETO"}
-        else:
-            return{"status":"LOGIN NAO EXISTE"}
         
-    def login(self, email: str, senha: str, request) -> bool:
+    def login(self, email: str, senha: str,tipousuario:str,request) -> bool:
         jwt_token = Token()  
         user_agent = request.headers.get("user-agent")
         client_ip = request.client.host
         usuario = self.listar_usuario_por_email(email)
-
         print(usuario)
         if usuario:
-            senha_armazenada = usuario.get('password')
-            cliente_id = usuario.get('client_id')
-            print(senha_armazenada)
-            senha_criptografada = hashlib.sha256(senha.encode()).hexdigest()
-            print(senha_criptografada)
-            if senha_armazenada == senha_criptografada:
-                jwt = jwt_token.gerar_token(usuario['name'], client_ip, cliente_id) 
-                return [jwt]
-        return False
+            if tipousuario == {'cliente'}:
+                senha_armazenada = usuario.get('password')
+                cliente_id = usuario.get('client_id')
+                print(senha_armazenada)
+                senha_criptografada = hashlib.sha256(senha.encode()).hexdigest()
+                print(senha_criptografada)
+                if senha_armazenada == senha_criptografada:
+                    jwt = jwt_token.gerar_token(usuario['name'], client_ip, cliente_id) 
+                    return [jwt]
+                return False
+            elif tipousuario == {'funcionario'}:
+                senha_armazenada = usuario.get('password')
+                func_id = usuario.get('funcionario_id')
+                print(str(func_id) + "olaaaaaaaaaaaa")
+                print(senha_armazenada)
+                senha_criptografada = hashlib.sha256(senha.encode()).hexdigest()
+                print(senha_criptografada)
+                if senha_armazenada == senha_criptografada:
+                    jwt = jwt_token.gerar_token_funcionario(usuario['name'], client_ip, func_id) 
+                    return [jwt]
+                return False
+            elif tipousuario == {'adm'}:
+                senha_armazenada = usuario.get('password')
+                adm_id = usuario.get('adm_id')
+                print(senha_armazenada)
+                senha_criptografada = hashlib.sha256(senha.encode()).hexdigest()
+                print(senha_criptografada)
+                if senha_armazenada == senha_criptografada:
+                    jwt = jwt_token.gerar_token_gerente(usuario['name'], client_ip, adm_id) 
+                    return [jwt]
+                return False
+            else:
+                return ("Usuario sem permissão de acesso")
+        
+            
     
     def qtd_ids_cliente(self):
         return self.get_current_collection().count_documents({'client_id': {'$exists': True}}) + 1

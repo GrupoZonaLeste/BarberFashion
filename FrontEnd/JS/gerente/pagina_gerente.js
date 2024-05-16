@@ -41,7 +41,7 @@ btn_cadastrarFuncionario.addEventListener('click', async () => {
     }
 
     let data = fetchButtonData()
-    await fetch("http://localhost:8000/cadastrar_funcionario", {
+    await fetch("http://localhost:8000/cadastrar_funcionario/", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -75,7 +75,7 @@ btn_cadastrarFuncionario.addEventListener('click', async () => {
 const divFuncionariosCadastrados = document.getElementById('funcionarios_cadastrados')
 
 async function addDivFuncionarios(){
-    await fetch('http://localhost:8000/listar_funcionarios')
+    await fetch('http://localhost:8000/listar_funcionarios/')
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {

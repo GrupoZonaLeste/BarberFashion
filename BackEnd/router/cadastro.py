@@ -63,10 +63,6 @@ async def add_func(funcionario: Funcionario = Body(...)):
     funcionario.funcionario_id = controller.qtd_ids_funcionario()
     return controller.inserir_funcionario(funcionario)
 
-@app.post("/logar/")
-async def add_item(cliente: ClienteLogin):
-    return controller.check_Login(cliente)
-
 @app.post('/marcarcorte')
 async def addCorteNoBanco(corte: dict = Body(...)):
     await adicionar_corte(corte)
@@ -114,11 +110,10 @@ def verificar_token(token: str):
     
 @app.post("/login/")
 def login(email: str, senha: str, request: Request):
+    tipousuario = controller.tipoUsuario(email)
     email_decoded = unquote(email)
-    resultado = controller.login(email_decoded, senha, request)
+    resultado = controller.login(email_decoded, senha, tipousuario, request )
     if resultado:
-        tipousuario = controller.tipoUsuario(email)
-        print(resultado)
         return {"status": "Login bem-sucedido","token" : resultado, "tipo_usuario": tipousuario}
     else:
         raise HTTPException(status_code=401, detail="Credenciais inválidas")

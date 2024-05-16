@@ -22,9 +22,34 @@ class Token:
             "iss": client_ip,
             'sub': cliente_id,
             'name':nome,
-            'exp': datetime.now(timezone.utc) + timedelta(minutes=5) 
+            'exp': datetime.now(timezone.utc) + timedelta(minutes=5),
+            #role = 1 para identificar que é um cliente comum
+            'role': 1
 
+        }
+        jwt_token = jwt.encode(payload, self.secret_key, algorithm=self.algorithm)
+        return jwt_token
+    def gerar_token_funcionario(self, nome: str, client_ip: str, func_id: int) -> str:
+        payload = {
+            "iss": client_ip,
+            'sub': func_id,
+            'name':nome,
+            'exp': datetime.now(timezone.utc) + timedelta(minutes=5),
+            #role = 2 para identificar que é um funcionario
+            'role': 2
 
+        }
+        jwt_token = jwt.encode(payload, self.secret_key, algorithm=self.algorithm)
+        return jwt_token
+    
+    def gerar_token_gerente(self, nome: str, client_ip: str, gerente_id: int) -> str:
+        payload = {
+            "iss": client_ip,
+            'sub': gerente_id,
+            'name':nome,
+            'exp': datetime.now(timezone.utc) + timedelta(minutes=5) ,
+            #role = 3 para identificar que é um gerente
+            'role': 3
 
         }
         jwt_token = jwt.encode(payload, self.secret_key, algorithm=self.algorithm)
