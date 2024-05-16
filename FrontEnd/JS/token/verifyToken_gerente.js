@@ -18,9 +18,9 @@ async function checkTokenValidity() {
         console.log(response.data);
         if(response.data.status == "Token válido") {
             roleuser = retornarRoleUsuario()
-            if (roleuser == 2){
+            if (roleuser == 3){
                 token_decoded = parseJwt(token)
-                DataLoad()
+                
             }else{
                 alert("Acesso Negado!")
                 window.location.replace("http:/FrontEnd/HTML/index.html")

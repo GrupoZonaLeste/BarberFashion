@@ -42,7 +42,7 @@ class Controller:
     def listar_usuario_por_email(self, email):
         usuario = self.get_current_collection().find_one({'email': email})
         return usuario
-    
+    ##separar funções por busca e listagem, a função abaixo se enquadra melhor como busca
     def listar_usuario_por_id(self, id: int):
         usuario = self.get_current_collection().find_one({'client_id': id})
         if(usuario):

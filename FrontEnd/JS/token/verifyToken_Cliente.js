@@ -22,7 +22,7 @@ async function checkTokenValidity() {
                 token_decoded = parseJwt(token)
                 DataLoad()
             }else{
-                alert("Você não pode acessar esta página")
+                alert("Acesso Negado!")
                 window.location.replace("http:/FrontEnd/HTML/index.html")
             }
             return true;    
@@ -32,7 +32,7 @@ async function checkTokenValidity() {
             return false;
         }
     } catch (error) {
-        alert("Você não está autenticado");
+        alert("Você não está Autenticado!");
         console.error(error);
         window.location.replace("http:/FrontEnd/HTML/cliente/login_cliente.html");
         return false;

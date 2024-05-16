@@ -14,11 +14,26 @@ document.querySelectorAll('.nav-link').forEach(anchor =>{
 
 document.getElementById('agendar').onclick = function(){
     const token = localStorage.getItem("token"); 
-        if(token !== null && token !== undefined && token !== "") {
-            window.location.replace("http:/FrontEnd/HTML/cliente/pagina_cliente.html")
-        } else {
-            window.location.replace("http:/FrontEnd/HTML/cliente/login_cliente.html")
+    try{
+      token_decoded = parseJwt(token)
+      const role = token_decoded.role
+      if(token !== null && token !== undefined && token !== "") {
+        if(role == 1){
+          window.location.replace("http:/FrontEnd/HTML/cliente/pagina_cliente.html")
+        }else if(role == 2){
+          window.location.replace("http:/FrontEnd/HTML/funcionario/pagina_funcionario.html")
+        }else if(role == 3){
+          window.location.replace("http:/FrontEnd/HTML/gerente/pagina_gerente.html")
+        }else{
+          window.location.replace("http:/FrontEnd/HTML/cliente/login_cliente.html")
         }
+    }
+    }catch{
+      window.location.replace("http:/FrontEnd/HTML/cliente/login_cliente.html")
+    }
+        
+        
+       
 }
 
 const typed = new Typed(".placeholder-search",{
