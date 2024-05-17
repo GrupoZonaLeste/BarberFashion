@@ -36,7 +36,7 @@ btn_agendar.addEventListener('click', async () => {
         return
     }
 
-    await fetch("http://localhost:8000/marcarcorte", {
+    await fetch("http://localhost:8000/client/marcarcorte", {
         method: "POST",
         body: JSON.stringify({
             "data": data_corte.value,

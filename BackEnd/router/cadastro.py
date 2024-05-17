@@ -32,6 +32,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 app.mount("/static", StaticFiles(directory="clientes_pictures"), name="static")
+
 @app.post("/upload/")
 async def upload_image(image: UploadFile = File(...), id: int = Optional):
     # Diretório onde as imagens serão salvas

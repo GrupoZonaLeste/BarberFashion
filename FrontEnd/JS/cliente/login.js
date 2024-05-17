@@ -8,7 +8,6 @@ const fetchButtonData = () => {
 const saveTokenToLocal = (token) => {
   localStorage.setItem('token', token);
 };
-const API_GATEWAY = "http://localhost:8000/login"
 
 const login_btn = document.getElementById('button-login')
 const email = document.getElementById('email')
@@ -42,9 +41,8 @@ login_btn.addEventListener('click', async () => {
   data = fetchButtonData()
   const options = {
       method: 'POST',
-      url: 'http://localhost:8000/login/',
+      url: 'http://localhost:8000/auth/login/',
       params: {email: data.email, senha: data.password, '': ''},
-      headers: {'User-Agent': 'insomnia/9.1.0'}
     };
     
         axios.request(options).then(function (response) {
