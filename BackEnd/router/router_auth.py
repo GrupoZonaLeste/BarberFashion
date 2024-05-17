@@ -9,11 +9,7 @@ from urllib.parse import unquote
 from controllers.tokens import Token
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from typing import Dict
-from fastapi import FastAPI, File, UploadFile
-from fastapi.responses import JSONResponse
-import shutil
-import os
-from fastapi.staticfiles import StaticFiles
+
 
 
 db_handle = DBConnectionHandler()

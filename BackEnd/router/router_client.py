@@ -9,7 +9,7 @@ from urllib.parse import unquote
 from controllers.tokens import Token
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from typing import Dict
-from fastapi import FastAPI, File, UploadFile
+from fastapi import File, UploadFile
 from fastapi.responses import JSONResponse
 import shutil
 import os
@@ -60,3 +60,12 @@ async def editar_cliente(id: int, name: str , email: str, phone: str ):
 async def addCorteNoBanco(corte: dict = Body(...)):
     await adicionar_corte(corte)
     return "CORTE MARCARDO E ENVIADO AO BANCO"
+
+@router.get('/pegarcortes/{client_id}')
+async def pegarCortes(client_id):
+    dados = await pegar_cortes(client_id) 
+    return dados
+
+@router.get('/usuario')
+async def get_usuario(id: int):
+    return controller.listar_usuario_por_id(id)

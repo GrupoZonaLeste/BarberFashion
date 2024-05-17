@@ -9,11 +9,8 @@ from urllib.parse import unquote
 from controllers.tokens import Token
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from typing import Dict
-from fastapi import FastAPI, File, UploadFile
-from fastapi.responses import JSONResponse
-import shutil
-import os
-from fastapi.staticfiles import StaticFiles
+
+
 
 
 db_handle = DBConnectionHandler()
@@ -23,10 +20,6 @@ controller = Controller(db_connection)
 security = HTTPBearer()
 jwt_token = Token()
 router = APIRouter()
-
-@router.get('/usuario')
-async def get_usuario(id: int):
-    return controller.listar_usuario_por_id(id)
 
 @router.get('/listar_funcionarios/')
 async def get_funcionarios():

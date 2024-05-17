@@ -8,12 +8,7 @@ from datetime import datetime, timezone
 from urllib.parse import unquote
 from controllers.tokens import Token
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from typing import Dict
-from fastapi import FastAPI, File, UploadFile
-from fastapi.responses import JSONResponse
-import shutil
-import os
-from fastapi.staticfiles import StaticFiles
+
 
 
 db_handle = DBConnectionHandler()
@@ -24,8 +19,13 @@ security = HTTPBearer()
 jwt_token = Token()
 router = APIRouter()
 
-@router.get('/pegarcortes/{client_id}')
-async def pegarCortes(client_id):
-    dados = await pegar_cortes(client_id) 
-    return dados
 
+@router.put('/atualizarcortes/{id}')
+async def atualizarCortes(id , dados: dict = Body(...)):
+    await atualizar_cortes(id, dados)
+    return "CORTE ATUALIZADO"
+
+@router.delete('/deletarcorte/{id}')
+async def deletecorte(id):
+    await deletar_cortes(id)
+    return "CORTE DELETADO"
