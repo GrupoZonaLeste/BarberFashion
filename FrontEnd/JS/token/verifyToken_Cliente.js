@@ -10,7 +10,6 @@ async function checkTokenValidity() {
         method: 'GET',
         url: 'http://localhost:8000/auth/verificar-token/',
         params: {token: token},
-        headers: {'User-Agent': 'insomnia/9.1.0'}
     };
 
     try {

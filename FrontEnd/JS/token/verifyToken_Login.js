@@ -8,7 +8,7 @@ async function checkTokenValidityLogin() {
     method: 'GET',
     url: 'http://localhost:8000/verificar-token/',
     params: {token: token},
-    headers: {'User-Agent': 'insomnia/9.1.0'}
+    
     };
     tokenChecked = true;
     axios.request(options).then(function (response) {

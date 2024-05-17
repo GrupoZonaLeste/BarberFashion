@@ -11,7 +11,7 @@ const options = {
   method: 'GET',
   url: 'http://localhost:8000/usuario/',
   params: {id: iduser},
-  headers: {'User-Agent': 'insomnia/9.1.0'}
+  
 };
 
 axios.request(options).then(function (response) {

@@ -40,7 +40,7 @@ function enviarImagem() {
             params: {id: user_id},
             headers: {
                 'Content-Type': 'multipart/form-data',
-                'User-Agent': 'insomnia/9.1.1'
+                
             },
             data: formData
         };
