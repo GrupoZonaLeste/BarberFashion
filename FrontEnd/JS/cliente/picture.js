@@ -1,3 +1,6 @@
+const API_upload = getEndpoint_client("upload")
+//API_Gateway definindo endereço para realizar o fetch
+
 document.addEventListener("DOMContentLoaded", function() {
     const fileInput = document.getElementById('picture_input');
 
@@ -36,7 +39,7 @@ function enviarImagem() {
         // Configura as opções da requisição Axios
         const options = {
             method: 'POST',
-            url: 'http://localhost:8000/upload/',
+            url: API_upload,
             params: {id: user_id},
             headers: {
                 'Content-Type': 'multipart/form-data',

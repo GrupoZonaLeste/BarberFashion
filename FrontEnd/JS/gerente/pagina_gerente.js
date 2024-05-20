@@ -1,3 +1,8 @@
+const API_cadastrar_funcionario = getEndpoint_manager("cadastrar")
+const API_listar_funcionarios = getEndpoint_manager("listar_funcionarios")
+const API_deletar_funcionario = getEndpoint_manager("deletar_funcionario")
+const API_listar_usuarios = getEndpoint_manager("listar_usuarios")
+// Utilizando os endpoints para definir o endereço para realizar o fetch
 const nomeInput = document.getElementById('nome')
 const emailInput = document.getElementById('email')
 const senhaInput = document.getElementById('senha')
@@ -41,7 +46,7 @@ btn_cadastrarFuncionario.addEventListener('click', async () => {
     }
 
     let data = fetchButtonData()
-    await fetch("http://localhost:8000/cadastrar_funcionario/", {
+    await fetch(API_cadastrar_funcionario, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -75,7 +80,7 @@ btn_cadastrarFuncionario.addEventListener('click', async () => {
 const divFuncionariosCadastrados = document.getElementById('funcionarios_cadastrados')
 
 async function addDivFuncionarios(){
-    await fetch('http://localhost:8000/listar_funcionarios/')
+    await fetch(API_listar_funcionarios)
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
@@ -100,12 +105,14 @@ async function addDivFuncionarios(){
             divFuncionariosCadastrados.appendChild(p)
 
             btn_deletar.addEventListener('click', async ()=> {
-                await fetch(`http://localhost:8000/deletar_funcionario/${btn_deletar.id}`, {
+                
+                await fetch(API_deletar_funcionario({funcid: btn_deletar.id}), {
                     method: "DELETE",
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 })
+                alert("Funcionário excluido com Sucesso!")
                 location.reload()
             })
         });
@@ -116,7 +123,7 @@ async function addDivFuncionarios(){
 const divClientesCadastrados = document.getElementById('clientes_cadastrados')
 
 async function addDivClientes(){
-    await fetch('http://localhost:8000/listar_usuarios/')
+    await fetch(API_listar_usuarios)
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {

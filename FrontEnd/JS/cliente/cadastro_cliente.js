@@ -1,3 +1,5 @@
+const API_cadastrar = getEndpoint_client("cadastrar")
+//API_Gateway definindo endereço para realizar o fetch
 const fetchButtonData = () => {
     return {
       name: document.getElementById('name').value,
@@ -7,8 +9,6 @@ const fetchButtonData = () => {
       client_id: 0,
     };
   };
-
-const API_GATEWAY = getEndpoint_client("cadastrar")
 
 const cadastar_btn = document.getElementById('button-cadastar')
 const nome_input = document.getElementById('name')
@@ -92,7 +92,7 @@ async function inserir(){
         try{
             const response = await axios({
             method: "POST",
-            url: API_GATEWAY,
+            url: API_cadastrar,
             contentType: "application/json",
             data:data,
           });

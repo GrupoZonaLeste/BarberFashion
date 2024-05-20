@@ -1,3 +1,6 @@
+const API_usuario = getEndpoint_client("get_usuario")
+//API_Gateway definindo endereço para realizar o fetch
+
 function retornarIdUsuario(){
   const token = localStorage.getItem('token')
   const token_decoded = parseJwt(token)
@@ -5,11 +8,10 @@ function retornarIdUsuario(){
   return id
 }
 
-
 function GetData(iduser){
 const options = {
   method: 'GET',
-  url: 'http://localhost:8000/usuario/',
+  url: API_usuario,
   params: {id: iduser},
   
 };

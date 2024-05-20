@@ -9,12 +9,12 @@ const employee_prefix = "/employee"
 // Define API endpoints for different prefixes
 const endpoints = {
   auth: {
-    verifyToken: `${baseURL}${auth_prefix}/verificar-token/`,
+    verificar: `${baseURL}${auth_prefix}/verificar-token/`,
     login: `${baseURL}${auth_prefix}/login/`,
   },
   client: {
     marcar_corte: `${baseURL}${client_prefix}/marcarcorte/`,
-    usuario: `${baseURL}${client_prefix}/usuario/`,
+    get_usuario: `${baseURL}${client_prefix}/usuario/`,
     pegar_cortes: ({ client_id }) => `${baseURL}${client_prefix}/pegarcortes/${client_id}`,
     editar: `${baseURL}${client_prefix}/editar_cliente/`,
     cadastrar: `${baseURL}${client_prefix}/cadastrar/`,
@@ -27,32 +27,28 @@ const endpoints = {
     listar_funcionarios: `${baseURL}${manager_prefix}/listar_funcionarios/`,
   },
   schedule: {
-    deletar: ({ id }) => `${baseURL}${schedule_prefix}/deletarcorte/${id}`,
-    atualizar: ({ id }) => `${baseURL}${schedule_prefix}/atualizarcortes/${id}`,
+    deletar: ({id}) => `${baseURL}${schedule_prefix}/deletarcorte/${id}`,
+    atualizar: ({id}) => `${baseURL}${schedule_prefix}/atualizarcortes/${id}`,
   },
   employee: {
-    pegarTodosCortes: `${baseURL}${employee_prefix}/pegartodoscortes/`,
-    pegarNomesUsuario: ({ id }) => `${baseURL}${employee_prefix}/usuarionames/${id}`,
+    pegar_todos_cortes: `${baseURL}${employee_prefix}/pegartodoscortes/`,
+    pegar_nomes_usuario: ({id}) => `${baseURL}${employee_prefix}/usuarionames/${id}`,
   },
 };
 
 function getEndpoint_auth(name) {
-  var path = endpoints.auth[name]
-  return path
+  return endpoints.auth[name]
+  
 }
 function getEndpoint_client(name) {
-  var path = endpoints.client[name]
-  return path
+  return endpoints.client[name]
 }
 function getEndpoint_manager(name) {
-  var path = endpoints.manager[name]
-  return path
+  return endpoints.manager[name]
 }
 function getEndpoint_schedule(name) {
-  var path = endpoints.manager[name]
-  return path
+  return endpoints.schedule[name]
 }
 function getEndpoint_employee(name) {
-  var path = endpoints.employee[name]
-  return path
+  return endpoints.employee[name]
 }

@@ -1,3 +1,6 @@
+const API_login = getEndpoint_auth("login")
+//API_Gateway definindo endereço para realizar o fetch atraves dos endpoints prédefinidos no arquivo endpoint.js
+
 const fetchButtonData = () => {
   return {
       email: document.getElementById('email').value,
@@ -41,7 +44,7 @@ login_btn.addEventListener('click', async () => {
   data = fetchButtonData()
   const options = {
       method: 'POST',
-      url: 'http://localhost:8000/auth/login/',
+      url: API_login,
       params: {email: data.email, senha: data.password, '': ''},
     };
     

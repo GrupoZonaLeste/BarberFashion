@@ -1,5 +1,7 @@
-//rota:
-const API_GATEWAY = "http://localhost:8000/editar_cliente";
+const API_editar = getEndpoint_client("editar")
+const API_usuario = getEndpoint_client("get_usuario")
+//API_Gateway definindo endereço para realizar o fetch
+
 //token: pegar o id do usuário
 const token = localStorage.getItem("token");
 const token_decoded = parseJwt(token)
@@ -34,7 +36,7 @@ function buscarImagemCliente(cliente_id) {
 async function getDataUsuario(){
     const options2 = {
         method: 'GET',
-        url: 'http://localhost:8000/usuario/',
+        url: API_usuario,
         params: {id: id},
         headers: {'User-Agent': 'insomnia/9.1.0'}
       };
@@ -73,7 +75,7 @@ btn_update.addEventListener('click', async function(){
     
     const options = {
     method: 'POST',
-    url: API_GATEWAY,
+    url: API_editar,
     params: params
     } 
 

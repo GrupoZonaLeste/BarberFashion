@@ -1,3 +1,5 @@
+const API_verificar_token = getEndpoint_auth("verificar")
+// Utilizando os endpoints para definir o endereço para realizar o fetch
 let tokenChecked = false;
 async function checkTokenValidity() {
     if (tokenChecked) {
@@ -8,7 +10,7 @@ async function checkTokenValidity() {
 
     const options = {
         method: 'GET',
-        url: 'http://localhost:8000/verificar-token/',
+        url: API_verificar_token,
         params: {token: token},
         
     };

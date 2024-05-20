@@ -1,3 +1,9 @@
+const API_pegar_todos_cortes = getEndpoint_employee("pegar_todos_cortes")
+const API_atualizar_cortes = getEndpoint_schedule("atualizar")
+const API_deletar_cortes = getEndpoint_schedule("deletar")
+const API_pegar_nomes_usuarios = getEndpoint_employee("pegar_nomes_usuario")
+// Utilizando os endpoints para definir o endereço para realizar o fetch
+
 const div_cortes_marcados = document.getElementById('agendamentos_marcados')
 const divagenda = document.getElementById('agenda_div')
 
@@ -9,11 +15,11 @@ var mensagem = document.createElement("p")
 const div_confirmacao = document.getElementById('confirm')
 
 async function addDivCortes(){
-    await fetch("http://localhost:8000/pegartodoscortes")
+    await fetch(API_pegar_todos_cortes)
     .then(res => res.json())
     .then(data => {
         data.forEach(async element => {
-            nome_data = await fetch(`http://localhost:8000/usuarionames/${element.client_id}`).then(data => data.json()).then(data => {return data.name})
+            nome_data = await fetch(API_pegar_nomes_usuarios({id : element.client_id})).then(data => data.json()).then(data => {return data.name})
             if(element.funcionario_id){
                 textDATA = `<h4>DATA:</h4> ${element.data} ; ${element.hora} <h4>CLIENTE:</h4> ${nome_data}`;
                 textDESCRIPTION = `<h4>DESCRIÇÃO:</h4>${element.servico}`;
@@ -64,7 +70,7 @@ async function addDivCortes(){
                     div_confirmacao.append(mensagem);
                     
                     btnDeletar.addEventListener('click', async () =>{
-                            await fetch(`http://localhost:8000/deletarcorte/${btn_delete.id}`, {
+                            await fetch(API_deletar_cortes({id:btn_delete.id}), {
                                 method: "DELETE",
                                 headers: {
                                     'Content-Type': 'application/json'
@@ -123,7 +129,7 @@ async function addDivCortes(){
 
 
             btn_aceitar.addEventListener('click', async () => {
-                await fetch(`http://localhost:8000/atualizarcortes/${btn_aceitar.id}`,{
+                await fetch(API_atualizar_cortes({id: btn_aceitar.id}),{
                     method: 'PUT',
                     body: JSON.stringify({
                         "funcionario_id": "teste"
