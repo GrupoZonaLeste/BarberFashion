@@ -1,3 +1,5 @@
+const API_verificar_token = getEndpoint_auth("verificar")
+// Utilizando os endpoints para definir o endereço para realizar o fetch
 let tokenChecked = false;
 async function checkTokenValidity() {
     if (tokenChecked) {
@@ -8,9 +10,8 @@ async function checkTokenValidity() {
 
     const options = {
         method: 'GET',
-        url: 'http://localhost:8000/verificar-token/',
+        url: API_verificar_token,
         params: {token: token},
-        headers: {'User-Agent': 'insomnia/9.1.0'}
     };
 
     try {
@@ -36,8 +37,8 @@ async function checkTokenValidity() {
         console.error(error);
         window.location.replace("http:/FrontEnd/HTML/cliente/login_cliente.html");
         return false;
+        
     }
-
 }
 
 checkTokenValidity();

@@ -1,3 +1,10 @@
+const API_marcar_corte = getEndpoint_client("marcar_corte")
+const API_pegar_cortes = getEndpoint_client("pegar_cortes")
+const API_atualizar_cortes = getEndpoint_schedule("atualizar")
+const API_deletar_cortes = getEndpoint_schedule("deletar")
+
+//API_Gateway definindo endereço para realizar o fetch
+
 const data_corte = document.getElementById('data')
       data_corte.min = dataHoje()
 const hora_corte = document.getElementById('horario')
@@ -36,7 +43,7 @@ btn_agendar.addEventListener('click', async () => {
         return
     }
 
-    await fetch("http://localhost:8000/marcarcorte", {
+    await fetch(API_marcar_corte, {
         method: "POST",
         body: JSON.stringify({
             "data": data_corte.value,
@@ -77,7 +84,7 @@ const divCortes = document.getElementById('servicos_agendados')
 const dadosDivCortes = document.getElementById('dados_servicos_marcados')
 
 async function addDivCortes() {
-    await fetch(`http://localhost:8000/pegarcortes/${retornarIdUsuario()}`)
+    await fetch(API_pegar_cortes({client_id: retornarIdUsuario()}))
         .then(res => res.json())
         .then(data => {
             data.forEach(element => {
@@ -150,7 +157,7 @@ async function addDivCortes() {
                         div_confirmacao.append(mensagem);
 
                         btnDeletar.addEventListener('click', async () =>{
-                            await fetch(`http://localhost:8000/deletarcorte/${btn_delete.id}`, {
+                            await fetch(API_deletar_cortes({id : btn_delete.id}), {
                             method: "DELETE",
                             headers: {
                                 'Content-Type': 'application/json'
@@ -217,7 +224,7 @@ async function addDivCortes() {
                     })
 
                     btn_confimar_editar.addEventListener('click', async () => {
-                        await fetch(`http://localhost:8000/atualizarcortes/${btn_editar.id}`,{
+                        await fetch(API_atualizar_cortes({id : btn_editar.id}),{
                             method: 'PUT',
                             body: JSON.stringify({
                                 "data": dataInput.value,

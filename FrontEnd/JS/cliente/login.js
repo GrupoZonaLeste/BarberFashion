@@ -1,3 +1,6 @@
+const API_login = getEndpoint_auth("login")
+//API_Gateway definindo endereço para realizar o fetch atraves dos endpoints prédefinidos no arquivo endpoint.js
+
 const fetchButtonData = () => {
   return {
       email: document.getElementById('email').value,
@@ -8,7 +11,6 @@ const fetchButtonData = () => {
 const saveTokenToLocal = (token) => {
   localStorage.setItem('token', token);
 };
-const API_GATEWAY = "http://localhost:8000/login"
 
 const login_btn = document.getElementById('button-login')
 const email = document.getElementById('email')
@@ -42,9 +44,8 @@ login_btn.addEventListener('click', async () => {
   data = fetchButtonData()
   const options = {
       method: 'POST',
-      url: 'http://localhost:8000/login/',
+      url: API_login,
       params: {email: data.email, senha: data.password, '': ''},
-      headers: {'User-Agent': 'insomnia/9.1.0'}
     };
     
         axios.request(options).then(function (response) {
