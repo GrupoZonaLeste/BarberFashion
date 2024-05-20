@@ -1,6 +1,5 @@
 from fastapi import FastAPI, Body, APIRouter, HTTPException,Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
-from controllers.controller import Controller
 from models.model import *
 from database.connection import *
 from database.database import *

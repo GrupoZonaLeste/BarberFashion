@@ -5,16 +5,15 @@ from urllib.parse import unquote
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from typing import Dict
 ##Classes locais
-from controllers.controller import Controller
+from controllers.login import Controller_auth
 from models.model import *
 from database.connection import *
-from database.database import *
 from controllers.tokens import Token
 
 db_handle = DBConnectionHandler()
 db_handle.connect_to_db()
 db_connection = db_handle.get_db_connection()
-controller = Controller(db_connection)
+controller = Controller_auth(db_connection)
 security = HTTPBearer()
 jwt_token = Token()
 router = APIRouter()

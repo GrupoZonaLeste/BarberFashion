@@ -10,10 +10,10 @@ import shutil
 import os
 from fastapi.staticfiles import StaticFiles
 ##Classes locais
-from controllers.client_controller import Controller_client
+from controllers.client import Controller_client
 from models.model import *
 from database.connection import *
-from database.database import *
+from controllers.schedule import *
 from controllers.tokens import Token
 
 db_handle = DBConnectionHandler()

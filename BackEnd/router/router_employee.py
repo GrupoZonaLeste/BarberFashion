@@ -6,16 +6,16 @@ from controllers.tokens import Token
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from typing import Dict
 ##Classes locais
-from controllers.controller import Controller
+from controllers.employee import Controller_employee
 from models.model import *
 from database.connection import *
-from database.database import *
+from controllers.schedule import *
 
 
 db_handle = DBConnectionHandler()
 db_handle.connect_to_db()
 db_connection = db_handle.get_db_connection()
-controller = Controller(db_connection)
+controller = Controller_employee(db_connection)
 security = HTTPBearer()
 jwt_token = Token()
 router = APIRouter()

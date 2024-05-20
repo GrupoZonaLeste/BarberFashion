@@ -47,4 +47,9 @@ class Controller_client:
             return({"status":"OK"})
         except:
             return({"status":"ERROR"})
+    ##operacional    
+    def qtd_ids_cliente(self):
+        return self.get_current_collection().count_documents({'client_id': {'$exists': True}}) + 1
+    def _hash_password(self, password):
+        return hashlib.sha256(password.encode()).hexdigest()
 
