@@ -93,7 +93,7 @@ caso o ambiente virtual não identifique o arquivo requirements.txt*
 | `router` | `router_manager.py` | Define as rotas do gerente |
 | `router` | `router_schedule` | Define as rotas de agendamento |
 | `service` | `cors.py` |Configura as permissões de Cors do sistema |
-| `BackEnd` | `main.py` | **Obrigatório**. A chave da sua API |
+| `BackEnd` | `main.py` | Este arquivo define a aplicação FastAPI principal e inclui as rotas do projeto|
 
  ## licença 
 
