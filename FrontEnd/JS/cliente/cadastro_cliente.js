@@ -7,7 +7,8 @@ const fetchButtonData = () => {
       client_id: 0,
     };
   };
-const API_GATEWAY = "http://localhost:8000/cadastrar";
+
+const API_GATEWAY = getEndpoint_client("cadastrar")
 
 const cadastar_btn = document.getElementById('button-cadastar')
 const nome_input = document.getElementById('name')
