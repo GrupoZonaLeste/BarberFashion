@@ -66,6 +66,35 @@ caso o ambiente virtual não identifique o arquivo requirements.txt*
    ```sh
    uvicorn main:app --reload
    ```
+## Documentação Backend
+
+#### Visualize a Documentação automatica do Swagger
+
+```http
+  http://127.0.0.1:8000/docs#/
+```
+#### BACKEND:
+| Pasta   | Arquivo      | Descrição                           |
+| :---------- | :--------- | :---------------------------------- |
+| `clientes_pictures` | `*` | Armazena as fotos de perfil dos usuários  |
+| `config` | `mongo_db_config.py` | Define a conexão com o mongodb |
+| `Controller` | `client.py` | Implementação das funcionalidades do usuário |
+| `Controller` | `employee.py` | Implementação das funcionalidades do funcionário |
+| `Controller` | `login.py` |Implementação da lógica de login |
+| `Controller` | `manager.py` | Implementação das funcionalidades do gerente |
+| `Controller` | `schedule.py` | Implementação das funcionalidades de agendamento |
+| `Controller` | `tokens.py` | Implementação da geração de token |
+| `database` | `connection.py` | Implementa as funções de conexão com o banco (depende da mongo_db_config.py) |
+| `database` | `database.py` | Classe para testes|
+| `models` | `model.py` | Define o modelo de dados para as entidades do sistema(cliente,gerente,funcionário etc...) |
+| `router` | `router_auth` | Define as rotas de autenticação |
+| `router` | `router_client.py` | Define as rotas do cliente |
+| `router` | `router_employee.py` | Define as rotas do funcionário |
+| `router` | `router_manager.py` | Define as rotas do gerente |
+| `router` | `router_schedule` | Define as rotas de agendamento |
+| `service` | `cors.py` |Configura as permissões de Cors do sistema |
+| `BackEnd` | `main.py` | **Obrigatório**. A chave da sua API |
+
  ## licença 
 
 Distributed under the MIT License. See [MIT License](https://opensource.org/licenses/MIT) for more information.
