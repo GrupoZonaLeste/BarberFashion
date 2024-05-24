@@ -217,6 +217,172 @@ footer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.card_agendar{
+    display: flex;
+    flex-direction: column;
+    border-top: solid 0.3rem #FF9800;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    width: 80rem;
+    max-height: 90rem;
+    height: 50rem;
+    overflow-y: scroll;
+}
+
+.conteudo-servico{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    width: 90%;
+}
+
+.navegacao{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.3rem;
+    border: solid 0.2rem #FFC672;
+    width: 100%;
+    border-radius: 2rem;
+    background-color: #111111;
+}
+
+#btnservicos, #btnhorarios, #btnbarbeiros, #btnconfirmacao{
+    margin: 0;
+    padding: 1.2rem;
+    border-radius: 2rem;
+    width: 12rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+#btnservicos{
+    background-color: #FF9800;
+    color: #111111;
+}
+
+#btnhorarios, #btnbarbeiros, #btnconfirmacao{
+    background-color: #333;
+    color: #f9f9f9;
+}
+
+.btn-fechar{
+    align-self: flex-end; 
+    position: absolute; 
+    margin-top: -10px; 
+    padding: 10px;
+    background-color: #FF9800;
+    color: #111111;
+    cursor: pointer;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: 0.3s all;
+}
+
+.btn-fechar:hover{
+    background-color: #ff99007a;
+}
+
+.serviços{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 35rem;
+    width: 100%;
+}
+
+.cortes{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    height: 95%;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.cards-cortes{
+    display: flex;
+
+    justify-content: space-between;
+    width: 100%;
+}
+
+.serv1, .serv2, .serv3{
+    display: flex;
+    flex-direction: column;
+    height: 24rem;
+    align-items: center;
+    border-radius: 2rem;
+    justify-content: space-around;
+    padding: 1.2rem;
+    width: 17rem;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 5px #b4b4b4;
+    transition: 0.3s all;
+}
+
+.serv1:hover, .serv2:hover, .serv3:hover{
+    opacity: 0.5;
+}
+
+.title-corte{
+    font-size: 2rem;
+}
+
+.descricao-corte{
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: 500;
+    width: 70%;
+}
+
+.title-degrade{
+    font-size: 2.2rem;
+    font-weight: 500;
+    padding: 1rem;
+}
+
+.img-servico{
+    height: 12rem;
+}
+.barbas{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    height: 95%;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+.bigodes{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    height: 95%;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+.tratamentos{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    height: 95%;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+
 .card-body{
     display: flex;
     flex-direction: column;
@@ -333,7 +499,7 @@ footer {
 }
 
 .modal_agendar{
-    display: none;
+    display: block;
     z-index: 1;
     position: absolute;
     height: 100vh;

@@ -97,28 +97,111 @@
     </div>
     
     <div class="modal_agendar">
-        <div class="card" style="margin:130px auto; width: 300px;">
-                <button id="fechar_agendamento_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-                <h3>Agendar Serviço</h3><br>
-                <form>
-                    <label for="data">Data:</label>
-                    <input type="date" id="data" name="data" required><br><br>
+        <div class="card_agendar" style="margin:130px auto; width: 80rem;">
+                <button id="fechar_agendamento_btn" type="button" class="btn-fechar" >X</button>
+                <p style="font-size: 2.5rem;">Agendar Serviço</p><br>
+                <div class="conteudo-servico">
+                <div class="navegacao">
+                    <button id="btnservicos">SERVIÇOS</button>
+                    <button id="btnhorarios">HORÁRIOS</button>
+                    <button id="btnbarbeiros">BARBEIROS</button>
+                    <button id="btnconfirmacao">CONFIRMAÇÃO</button>
+                </div>
+                <div class="serviços">
+                
+                    <div class="cortes" id="cortes">
+                        <p class="title-degrade">Degradês:</p>
+                        <div class="cards-cortes">
+                            
+                            <div class="serv1">
+                                <p class="title-corte">Low-Fade</p>
+                                <img src="/FrontEnd/images/cabelos/low-fade.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Corte com desfarce mais baixo, com mais volumes nas laterais.</p>
+                            </div>
+                            <div class="serv2">
+                                <p class="title-corte">Mid-Fade</p>
+                                <img src="/FrontEnd/images/cabelos/mid-fade 1.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Corte com desfarce médio, com volume mediano nas laterais.</p>
+                            </div>
+                            <div class="serv3">
+                                <p class="title-corte">High-Fade</p>
+                                <img src="/FrontEnd/images/cabelos/high-fade.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Corte com desfarce médio, com pouco volume nas laterais.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                    <label for="horario">Horário:</label>
-                    <input type="time" id="horario" name="horario" required><br><br>
+                    <div class="barbas">
+                        <p class="title-degrade">Barbas:</p>
+                        <div class="cards-cortes">
+                            
+                            <div class="serv1">
+                                <p class="title-corte">Barba Rala</p>
+                                <img src="/FrontEnd/images/barbas/barba-rala-desenhada.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Barba rala, bem contornado, Realça linha do rosto.</p>
+                            </div>
+                            <div class="serv2">
+                                <p class="title-corte">Barba Cheia</p>
+                                <img src="/FrontEnd/images/barbas/barba-grande.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Barba Cheia, deixando um modelo bem flexível e imponente.</p>
+                            </div>
+                            <div class="serv3">
+                                <p class="title-corte">Barba Grande</p>
+                                <img src="/FrontEnd/images/barbas/Barba-extraGrande.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Barba muito Grande, indicado para homens maduros</p>
+                            </div>
+                        </div>
+                    </div>
 
-                    <label for="servico">Serviço:</label>
-                    <select id="servico" name="servico" required>
-                        <option value="" disabled selected>Selecione um serviço</option>
-                        <option value="corte de cabelo">Corte</option>
-                        <option value="barba">Barba</option>
-                        <option value="sobrancelha">Sobrancelha</option>
-                        <option value="progressiva">Progressiva</option>
-                        <option value="coloração de cabelo">Coloração</option>
-                    </select><br><br>
-                </form>
-                <button id="input_agendar" type="submit">Agendar</button> 
-            
+                    <div class="bigodes">
+                        <p class="title-degrade">Bigodes:</p>
+                        <div class="cards-cortes">
+                            
+                            <div class="serv1">
+                                <p class="title-corte">Bigode Francês</p>
+                                <img src="/FrontEnd/images/barbas/bigode-frances.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Pontas mais alongadas, sua elegância se destaca.</p>
+                            </div>
+                            <div class="serv2">
+                                <p class="title-corte">Bigode Grosso</p>
+                                <img src="/FrontEnd/images/barbas/bigode-grosso-naorachado.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Estilo muito preponderante, traz muita força e casualidade.</p>
+                            </div>
+                            <div class="serv3">
+                                <p class="title-corte">Bigode Rachado</p>
+                                <img src="/FrontEnd/images/barbas/bigode-grosso-rachado.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Bigode rachado, ousadia é a sua identidade.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tratamentos">
+                        <p class="title-degrade">Tratamento:</p>
+                        <div class="cards-cortes">
+                            
+                            <div class="serv1">
+                                <p class="title-corte">Pintar Cabelo</p>
+                                <img src="/FrontEnd/images/cabelos/cabelo-pintado.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Pinturas das mais diversas cores, deixe seu mundo colorido e alegre.</p>
+                            </div>
+                            <div class="serv2">
+                                <p class="title-corte">Hidratação</p>
+                                <img src="/FrontEnd/images/cabelos/hidratacao.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Trate seu cabelo com o seu devido cuidado.</p>
+                            </div>
+                            <div class="serv3">
+                                <p class="title-corte">Aguarde</p>
+                                <img src="/FrontEnd/images/cabelos/" alt="" class="img-servico">
+                                <p class="descricao-corte">A qualquer momento sugirá um corte novo, fique atento na BARBERFASHION.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="barbas" id="barbas"></div>
+                    <div class="sobrancelha" id="sobrancelha"></div>
+                    <div class="tratamentos" id="tratamentos"></div>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -145,7 +228,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+    <script src="/FrontEnd/JS/cliente/opcoes_servicos.js"></script>
     <script src="/FrontEnd/JS/endpoints.js"></script>
     <script src="/FrontEnd/JS/cliente/modal/modal_cliente.js"></script>
     <script src="/FrontEnd/JS/cliente/pagina_cliente.js"></script>
