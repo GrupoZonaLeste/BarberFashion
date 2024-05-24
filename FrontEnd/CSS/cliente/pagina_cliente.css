@@ -258,7 +258,7 @@ footer {
     border-radius: 2rem;
     width: 12rem;
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 500;
     border: none;
     cursor: pointer;
 }
@@ -300,6 +300,7 @@ footer {
     width: 100%;
 }
 
+
 .cortes{
     display: flex;
     flex-direction: column;
@@ -317,7 +318,7 @@ footer {
     width: 100%;
 }
 
-.serv1, .serv2, .serv3{
+.servico-checkbox{
     display: flex;
     flex-direction: column;
     height: 24rem;
@@ -331,13 +332,23 @@ footer {
     transition: 0.3s all;
 }
 
-.serv1:hover, .serv2:hover, .serv3:hover{
+.servico-checkbox:hover, .servico-checkbox:hover, .servico-checkbox:hover{
     opacity: 0.5;
+}
+
+.servico-checkbox[data-selected="true"]{
+    background-color: #e79f33;
+    box-shadow: 0px 0px 20px 5px #e79f33;
+}
+
+.section{
+    margin: 2rem;
 }
 
 .title-corte{
     font-size: 2rem;
 }
+
 
 .descricao-corte{
     font-size: 1.2rem;
@@ -381,6 +392,35 @@ footer {
     justify-content: space-around;
     align-items: flex-start;
     width: 100%;
+}
+
+.barbeiros{
+    display: none;
+}
+
+.div-nome{
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    /* align-items: center; */
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nome-barbeiro{
+    font-size: 2rem;
+}
+
+.estrelas{
+    height: 4rem;
+}
+
+.horarios{
+    display: none;
+}
+
+.confirmacao{
+    display: none;
 }
 
 .card-body{

@@ -1,38 +1,96 @@
-const btnservicos = document.getElementById('btnservicos')
-const btnhorarios = document.getElementById('btnhorarios')
-const btnbarbeiros = document.getElementById('btnbarbeiros')
-const btnconfirmacao = document.getElementById('btnconfirmacao')
+document.addEventListener('DOMContentLoaded', () => {
+    const btnServicos = document.getElementById('btnservicos');
+    const btnHorarios = document.getElementById('btnhorarios');
+    const btnBarbeiros = document.getElementById('btnbarbeiros');
+    const btnConfirmacao = document.getElementById('btnconfirmacao');
 
-const cortes = document.getElementById('cortes')
-const barbas = document.getElementById('barbas')
-barbas.style.display = 'none';
-const sobrancelha = document.getElementById('sobrancelha')
-sobrancelha.style.display = 'none';
-const tratamentos = document.getElementById('tratamentos')
-tratamentos.style.display = 'none';
+    const navegacao = document.querySelector('.navegacao');
+    const servicos = document.querySelector('.serviços');
+    const horarios = document.querySelector('.horarios');
+    const barbeiros = document.querySelector('.barbeiros');
+    const confirmacao = document.querySelector('.confirmacao');
 
-btnservicos.addEventListener('click', () =>{
-    dis
-})
+    const sections = document.querySelectorAll('.section');
 
-btnservicos.onmousemove = function () {
-    btnservicos.style.opacity = 0.5
-}
-btnservicos.onmouseout = function () {
-    btnservicos.style.opacity = 1
-}
-btnservicos.addEventListener('click', () =>{
+    let selectedBarbaBigode = null;
 
-})
+    function resetBtnStyles() {
+        [btnServicos, btnHorarios, btnBarbeiros, btnConfirmacao].forEach(btn => {
+            btn.style.backgroundColor = '#333';
+            btn.style.color = '#f9f9f9';
+        });
+    }
 
-btnhorarios.addEventListener('click', () =>{
+    function hideAllSections() {
+        [servicos, horarios, barbeiros, confirmacao].forEach(section => {
+            section.style.display = 'none';
+        });
+    }
 
-})
+    function showSelectedSection(section) {
+        hideAllSections();
+        section.style.display = 'block';
+    }
 
-btnbarbeiros.addEventListener('click', () =>{
+    function selectButton(btn) {
+        resetBtnStyles();
+        btn.style.backgroundColor = '#00D446';
+        btn.style.color = '#111111';
+    }
 
-})
+    function selectBarbaBigode(section) {
+        selectedBarbaBigode = section;
+        const otherSection = selectedBarbaBigode === 'barbas' ? 'bigodes' : 'barbas';
+        document.getElementById(otherSection).querySelectorAll('.servico-checkbox').forEach(checkbox => {
+            checkbox.setAttribute('data-selected', 'false');
+        });
+    }
 
-btnFechar_relat.addEventListener('click', () => {
-   
-})
+    btnServicos.addEventListener('click', () => {
+        selectButton(btnServicos);
+        showSelectedSection(servicos);
+    });
+
+    btnHorarios.addEventListener('click', () => {
+        selectButton(btnHorarios);
+        showSelectedSection(horarios);
+    });
+
+    btnBarbeiros.addEventListener('click', () => {
+        selectButton(btnBarbeiros);
+        showSelectedSection(barbeiros);
+    });
+
+    btnConfirmacao.addEventListener('click', () => {
+        selectButton(btnConfirmacao);
+        showSelectedSection(confirmacao);
+    });
+
+    sections.forEach(section => {
+        section.addEventListener('click', function(event) {
+            const clickedCheckbox = event.target.closest('.servico-checkbox');
+            if (!clickedCheckbox) return;
+
+            const selected = clickedCheckbox.getAttribute('data-selected') === 'true';
+            const currentSectionId = section.id;
+
+            // If selecting from barbas or bigodes, ensure only one of these sections is selected
+            if (currentSectionId === 'barbas' || currentSectionId === 'bigodes') {
+                selectBarbaBigode(currentSectionId);
+            }
+
+            // Deselect all checkboxes in the current section
+            section.querySelectorAll('.servico-checkbox').forEach(checkbox => {
+                checkbox.setAttribute('data-selected', 'false');
+            });
+
+            // Select the clicked checkbox if it was not previously selected
+            if (!selected) {
+                clickedCheckbox.setAttribute('data-selected', 'true');
+                if (currentSectionId === 'barbas' || currentSectionId === 'bigodes') {
+                    selectBarbaBigode(currentSectionId);
+                }
+            }
+        });
+    });
+});
