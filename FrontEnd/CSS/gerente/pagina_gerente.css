@@ -395,6 +395,88 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.modal_Servicos {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content-servicos {
+    background-color: #fefefe;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-top: 10px;
+}
+
+.div-criar-servicos {
+    border-right: solid 0.15rem #585858;
+    max-width: 350px;
+    top: 100%;
+    position: sticky;
+}
+
+.form-servicos {
+    margin-top: 0;
+}
+
+.form-servicos label {
+    margin-top: 15px;
+    align-self: start;
+}
+
+.form-servicos input {
+    max-width: auto;
+    height: 20px;
+    margin-right: 30px;
+}
+.form-servicos textarea {
+    max-width: auto;
+    margin-right: 30px;
+}
+
+#servicos-cadastrados{
+    display: flex;
+    flex-direction: column;
+}
+
+#servicos_agendados{
+    overflow-y: scroll;
+    margin: 130px auto;
+    width: 300px;
+    height: 32rem;
+    max-height: 100%;
+}
+
+#content_service{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 2rem;
+    border: 2px solid #111111;
+    padding: 1rem;
+    border-radius: 1rem;
+    /*
+    overflow-y:scroll;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 2rem;
+    */
+}
+
+#btn-add-servico {
+    width: 310px;
+    display:flex;
+    align-self: start; 
+}
 .card_Relatorio{
     display: flex;
     flex-direction: column;

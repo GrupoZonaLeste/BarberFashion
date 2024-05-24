@@ -21,12 +21,16 @@
 
     <main class="container">
 
-            <div class="sidebar">
+        <div class="sidebar">
+                <div class="config" style="cursor: pointer;">
+                    <a ><img src="/FrontEnd/images/icone_editar.png" id="editar-barbearia-btn" alt="botão para editar barbearia"></a>
+                    <a  class="link-config" id="editar-barbearia-btn">EDITAR SERVIÇOS</a>
+                </div>            
                 <div class="config">
                     <a href=""><img src="/FrontEnd/images/setting-wh.png" alt=""></a>
                     <a href="" class="link-config">CONFIGURAÇÕES</a>
                 </div>
-                <div class="sair">
+                <div class="sair" style="cursor: pointer;">
                     <a ><img src="/FrontEnd/images/sair-red.png" id="logout" alt="botão de sair da página"></a>
                     <a  class="link-sair">SAIR</a>
                 </div>            
@@ -152,6 +156,36 @@
                 </div>
         </div>
     </div>
+
+    <div class="modal_Servicos">
+        <div class="card" style="margin:130px auto; width: 800px;" id="servicos_agendados">
+            <button id="fechar_servicos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <h1 style="font-size: 1.5rem;">CONTROLE DE SERVIÇOS</h1>
+                <div class="modal-content-servicos" id="servicos">
+                    <div id="formulario-servicos" class="div-criar-servicos">
+                        <form class="form-servicos">
+                            <label for="nome-servico">Nome:</label>
+                            <input id="nome-servico">
+
+                            <label for="descricao-servico">Descrição:</label>
+                            <textarea id="descricao-servico" rows="5" cols="50" maxlength="150" minlength="10" autocomplete="on" style="resize: none; padding: 6px;"></textarea>
+
+                            <label for="tempo-servico">Tempo estimado: (Em minutos)</label>
+                            <input id="tempo-servico" type="number">
+
+                            <label for="preco-servico">Preço: (Em R$)</label>
+                            <input id="preco-servico" type="number">
+                        </form>
+                        <button id="btn-add-servico">Adicionar serviço</button>
+                    </div>
+
+                    <div id="servicos-cadastrados">
+                    </div>
+
+                </div>
+        </div>
+    </div>
+
     <div class="modal_Relatorio">
         <div class="card_Relatorio" id="card_Relatorio" style="margin:130px auto; height: 10rem;">
             <button id="fechar_relatorio_btn" type="button" class="btn-fechar" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>

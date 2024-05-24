@@ -34,3 +34,11 @@ async def listar_todos_usuarios():
 async def add_func(funcionario: Funcionario = Body(...)):
     funcionario.funcionario_id = controller.qtd_ids_funcionario()
     return controller.inserir_funcionario(funcionario)
+
+@router.post("/cadastrar_servico")
+async def add_servico(servico: dict = Body(...)):
+    return controller.criar_servicos(servico)
+
+@router.get("/listar_servicos")
+async def listar_todos_servicos():
+    return controller.listar_servicos()
