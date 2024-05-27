@@ -49,7 +49,14 @@ class Controller_manager:
             return{"status": "OK"}
         
     def criar_servicos(self, servico):
-        self.get_current_collection_services().insert_one(servico)
+        if len(self.listar_servicos()) > 0:
+            for i in self.listar_servicos():
+                if i.get('nome') == servico.get("nome"):
+                    return
+            self.get_current_collection_services().insert_one(servico)
+        else:
+            self.get_current_collection_services().insert_one(servico)
+
     
     def listar_servicos(self):
         servicos = []
@@ -58,6 +65,12 @@ class Controller_manager:
         for i in servicos:
             i["_id"] = f"ObjectId({str(i['_id'])})"
         return servicos
+    
+    def editar_servico(self, nome: str, data: dict):
+        self.get_current_collection_services().update_one({"nome": nome}, {"$set": data})
+    
+    def excluir_servico(self, nome: str):
+        self.get_current_collection_services().delete_one({"nome": nome})
     
     ##operacional
     def qtd_ids_funcionario(self):

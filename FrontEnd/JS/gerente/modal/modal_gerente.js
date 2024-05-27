@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // MODAL: Serviços
     const modalServicos = document.querySelector('.modal_Servicos');
-    const btnServicos = document.getElementById('editar-barbearia-btn');
+    const btnServicos = document.querySelector("[name=editar-barbearia-btn]");
     const btnFecharServicos = document.getElementById('fechar_servicos_btn');
     addModalEventListeners(btnServicos, btnFecharServicos, modalServicos);
 });

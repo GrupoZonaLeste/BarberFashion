@@ -42,3 +42,11 @@ async def add_servico(servico: dict = Body(...)):
 @router.get("/listar_servicos")
 async def listar_todos_servicos():
     return controller.listar_servicos()
+
+@router.delete("/deletar_servico/{nome}")
+async def deletar_servico(nome):
+    return controller.excluir_servico(nome)
+
+@router.put("/editar_servico/{nome}")
+async def edit_servico(nome: str , data: dict = Body(...)):
+    return controller.editar_servico(nome, data)

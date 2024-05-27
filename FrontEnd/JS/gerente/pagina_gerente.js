@@ -4,6 +4,8 @@ const API_deletar_funcionario = getEndpoint_manager("deletar_funcionario")
 const API_listar_usuarios = getEndpoint_manager("listar_usuarios")
 const API_cadastrar_servicos = getEndpoint_manager("cadastrar_servicos")
 const API_listar_servicos = getEndpoint_manager("listar_servicos")
+const API_excluir_servicos = getEndpoint_manager("deletar_servicos")
+const API_editar_servicos = getEndpoint_manager("editar_servicos")
 // Utilizando os endpoints para definir o endereço para realizar o fetch
 const nomeInput = document.getElementById('nome')
 const emailInput = document.getElementById('email')
@@ -129,11 +131,12 @@ async function addDivClientes(){
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
-            textNode = `<b style="font-size: 120%">Nome:</b> ${element.name} <b style="font-size: 120%">Email:</b> ${element.email}<br><hr><br>`
+            textNode = `<b style="font-size: 120%">Nome:</b> ${element.name} <b style="font-size: 120%">Email:</b> ${element.email}<br><br>`
             const p = document.createElement('p')
             p.innerHTML = textNode
             p.style.margin = '5px'
             p.style.fontSize = '110%'
+            p.id = 'content_service'
 
             divClientesCadastrados.appendChild(p)
         })
@@ -146,39 +149,43 @@ const descricaoServico = document.getElementById('descricao-servico')
 const tempoServico = document.getElementById('tempo-servico')
 const precoServico = document.getElementById('preco-servico')
 const btnAddServico = document.getElementById('btn-add-servico')
-
+    
+    
 btnAddServico.addEventListener('click', async () => {
-    if (nomeServico.value === '' || descricaoServico === '' || tempoServico === '' || precoServico === ''){
-        alert('PREENCHA TODOS OS DADOS')
-        return
-    }
-
-    data = {
-        "nome": nomeServico.value,
-        "descricao": descricaoServico.value,
-        "tempo": tempoServico.value,
-        "preco": precoServico.value,
-    }
-
-    await fetch(API_cadastrar_servicos , {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
+        if (nomeServico.value === '' || descricaoServico === '' || tempoServico === '' || precoServico === ''){
+            alert('PREENCHA TODOS OS DADOS')
+            return
         }
-    })
-
-    location.reload()
-})
-
+        
+        nomeServico.value = nomeServico.value.toUpperCase()
+              
+            data = {
+                "nome": nomeServico.value,
+                "descricao": descricaoServico.value,
+                "tempo": tempoServico.value,
+                "preco": precoServico.value,
+            }
+            
+            await fetch(API_cadastrar_servicos , {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+            location.reload()         
+        })
+        
 const divServicosCadastrados = document.getElementById('servicos-cadastrados')
+const divEditarServicos = document.querySelector('.modal_editar_Servicos')
+
 
 async function AddDivServicos(){
     await fetch(API_listar_servicos)
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
-            textDATA = `<h4>${element.nome}<h4><hr><br><h4>DESCRIÇÃO:</h4> ${element.descricao} <h4>TEMPO:<h4> ${element.tempo} <h4>PREÇO:<h4> ${element.preco} `;
+            textDATA = `<h4>${element.nome}<h4><hr><br> <p>${element.descricao}</p><br> <h4>TEMPO: ${element.tempo} min</h4>  <h4>PREÇO: R$ ${element.preco}<h4>`;
             
             const btn_editar = document.createElement('button')
             const btn_delete = document.createElement('button')
@@ -193,7 +200,7 @@ async function AddDivServicos(){
             id_corte = element._id
             btn_delete.id = id_corte.slice(9, 33)
             btn_editar.id = id_corte.slice(9, 33)
-
+            
             div_btn.style.display = 'flex'
             div_btn.style.flexDirection = 'row'
             div_btn.style.justifyContent = 'space-around'
@@ -205,7 +212,129 @@ async function AddDivServicos(){
             btn_delete.onmouseout = function(){
                 btn_delete.style.opacity = 1
             };
+            
+            btn_delete.addEventListener('click', async () => {
+                await fetch(API_excluir_servicos( {nome: element.nome}) , {
+                    method: "DELETE",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                alert("Serviço excluido com Sucesso!")
+                location.reload()
+            })
+            
+            btn_editar.name = "btn-editar-servico"
+            btn_editar.addEventListener('click', () => {
+               const nomeapi = element.nome
+               
+               divEditarServicos.style.display = 'block'
 
+               const divEditarServicos2 = document.getElementById('editar_servicos')
+               const formEditarCorte = document.createElement('form')
+               const btn_fechar_editar = document.createElement('button')
+               const btn_confimar_editar = document.createElement('button')
+               btn_confimar_editar.innerText = "Confirmar"
+               btn_fechar_editar.innerText = "Cancelar"
+               btn_fechar_editar.style.backgroundColor = '#E74040'
+               btn_fechar_editar.style.color = '#ffffff'
+               btn_fechar_editar.onmousemove = function(){
+                   btn_fechar_editar.style.opacity = 0.5
+               };
+               btn_fechar_editar.onmouseout = function(){
+                   btn_fechar_editar.style.opacity = 1
+               };
+
+               const LabelNome = document.createElement('label')
+               LabelNome.innerText = 'Editar nome'
+               const LabelDescricao = document.createElement('label')
+               LabelDescricao.innerText = 'Editar descricao'
+               const LabelTempo = document.createElement('label')
+               LabelTempo.innerText = 'Editar tempo'
+               const LabelPreco = document.createElement('label')
+               LabelPreco.innerText = 'Editar preço'
+
+               const NomeInput = document.createElement('input')
+               NomeInput.required = true
+               NomeInput.value = element.nome
+               NomeInput.style.height = '20px';
+               
+               const DescricaoInput = document.createElement('textarea')
+               DescricaoInput.required = true
+               DescricaoInput.value = element.descricao
+               DescricaoInput.rows= "5"
+               DescricaoInput.style.resize= 'none';
+               
+               const TempoInput = document.createElement('input')
+               TempoInput.required = true
+               TempoInput.value = element.tempo
+               TempoInput.type = 'number'
+
+               const PrecoInput = document.createElement('input')
+               PrecoInput.required = true
+               PrecoInput.value = element.preco
+               PrecoInput.type = 'number'
+
+               formEditarCorte.appendChild(LabelNome)
+               formEditarCorte.appendChild(NomeInput)
+
+               formEditarCorte.appendChild(LabelDescricao)
+               formEditarCorte.appendChild(DescricaoInput)
+               
+               formEditarCorte.appendChild(LabelTempo)
+               formEditarCorte.appendChild(TempoInput)
+               
+               formEditarCorte.appendChild(LabelPreco)
+               formEditarCorte.appendChild(PrecoInput)
+               
+               divEditarServicos2.appendChild(formEditarCorte)
+               divEditarServicos2.appendChild(btn_fechar_editar)
+               divEditarServicos2.appendChild(btn_confimar_editar)
+
+               
+               document.getElementById('fechar_editarServicos_btn').addEventListener('click', () => {
+                   divEditarServicos.style.display = 'none'
+                   while (divEditarServicos2.firstChild) {
+                       divEditarServicos2.removeChild(divEditarServicos2.firstChild)
+                    }
+                })
+                
+                btn_fechar_editar.addEventListener('click', () => {
+                    divEditarServicos.style.display = 'none'
+                   
+                   while (divEditarServicos2.firstChild) {
+                       divEditarServicos2.removeChild(divEditarServicos2.firstChild)
+                    }
+                })
+                
+                btn_confimar_editar.addEventListener('click', async () => {
+                    if(NomeInput.value == '' || DescricaoInput.value == '' || TempoInput.value == '' || PrecoInput.value == ''){
+                        alert("CAMPOS NÃO PODEM SER VAZIOS")
+                        return
+                    }
+
+                    await fetch(API_editar_servicos( {nome: nomeapi} ), {
+                        method: 'PUT',
+                        body: JSON.stringify({
+                            "nome": NomeInput.value,
+                            "descricao": DescricaoInput.value,
+                            "tempo": TempoInput.value,
+                            "preco": PrecoInput.value
+                        }),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+
+                    divEditarServicos.style.display = 'none'
+                    while (divEditarServicos2.firstChild) {
+                        divEditarServicos2.removeChild(divEditarServicos2.firstChild)
+                    }
+                    location.reload()
+                })
+            
+            })
+            
             p.innerHTML = textDATA
             div_textos.append(p)
             div_btn.appendChild(btn_delete)
@@ -216,6 +345,13 @@ async function AddDivServicos(){
         })
     })
 }
+
+document.getElementById('fechar_servicos_btn').addEventListener('click', () => {
+    nomeServico.value = '' 
+    descricaoServico.value = '' 
+    tempoServico.value = ''
+    precoServico.value = ''
+})
 
 document.addEventListener("DOMContentLoaded", AddDivServicos)
 document.addEventListener("DOMContentLoaded",addDivClientes)

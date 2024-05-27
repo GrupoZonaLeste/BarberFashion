@@ -27,7 +27,9 @@ const endpoints = {
     deletar_funcionario: ({ funcid }) => `${baseURL}${manager_prefix}/deletar_funcionario/${funcid}`,
     listar_funcionarios: `${baseURL}${manager_prefix}/listar_funcionarios/`,
     cadastrar_servicos: `${baseURL}${manager_prefix}/cadastrar_servico/`,
-    listar_servicos: `${baseURL}${manager_prefix}/listar_servicos`
+    listar_servicos: `${baseURL}${manager_prefix}/listar_servicos`,
+    deletar_servicos: ({ nome }) => `${baseURL}${manager_prefix}/deletar_servico/${nome}`,
+    editar_servicos: ({ nome }) => `${baseURL}${manager_prefix}/editar_servico/${nome}`
   },
   schedule: {
     deletar: ({id}) => `${baseURL}${schedule_prefix}/deletarcorte/${id}`,
