@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,72 +8,161 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/FrontEnd/CSS/cliente/cadastro_cliente.css">
 </head>
-<body>
 
-  <body>
-    <nav class="navbar navbar-expand-lg container-fluid">
-      <div class="container-fluid" style="color: #FF9800; display: flex; align-items: center; margin-left: 20px; font-size: xx-large; font-weight: bold;"> 
-        BARBERFASHION
+<body>
+  <nav class="navbar navbar-expand-lg container-fluid">
+    <div class="container-fluid"
+      style="color: #FF9800; display: flex; align-items: center; margin-left: 20px; font-size: xx-large; font-weight: bold;">
+      BARBERFASHION
     </div>
   </nav>
 
-
-  <div class="centralizador">
-    <div class="alert" id="alert">
-      <button id="btn-ok">OK</button>
-    </div>
-  </div>  
-
-<div class=" container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header bg-yellow text-white text-center">
-          <a href="/FrontEnd/HTML/cliente/login_cliente.html" class="voltar"><img src="/FrontEnd/images/right-arrow.png" class="btn-voltar" alt=""></a>
-          <h4 class="title">Cadastro de Usuário</h4>
-        </div>
-        <div class="card-body">
-          <form id="form">
-            <div class="form-group">
-              <label for="name">Nome:</label>
-              <input type="text" class="form-control required" id="name" placeholder="Digite seu nome" oninput="nameValidate()">
-              <span class="span-required">Seu nome deve ter pelo menos 3 caracteres</span>
-            </div>
-            <div class="form-group">
-              <label for="email">E-mail:</label>
-              <input type="email" class="form-control required" id="email" placeholder="Digite seu email" oninput="emailValidate()">
-              <span class="span-required">Digite um email válido</span>
-            </div>
-            <div class="form-group">
-              <label for="phone">Telefone de Contato:</label>
-              <input type="text" class="form-control required" id="phone" placeholder="Digite seu telefone" oninput="phoneValidate()">
-              <span class="span-required">Digite um telefone válido</span>
-            </div>
-            <div class="form-group">
-              <label for="password">Senha:</label>
-              <input type="password" class="form-control required" id="password" placeholder="Digite sua senha" oninput="passwordValidate()">
-              <span class="span-required">Sua senha deve ter pelo menos 8 caracteres</span>
-            </div>
-            <div class="form-group">
-              <label for="confirm_password">Confirmar Senha:</label>
-              <input type="password" class="form-control required" id="confirm_password" placeholder="Confirme sua senha" oninput="confirmPassword()">
-              <span class="span-required">Sua senha deve ser compatível</span>
-            </div>
-          <input type="button" id="button-cadastar" class="btn btn-warning btn-block" value=" Concluir Cadastro">
-        </form>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-yellow text-white text-center">
+            <a href="/FrontEnd/HTML/cliente/login_cliente.html" class="voltar"><img
+                src="/FrontEnd/images/right-arrow.png" class="btn-voltar" alt=""></a>
+            <h4 class="title">Cadastro de Usuário</h4>
+          </div>
+          <div class="card-body">
+            <form id="form">
+              <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" class="form-control required" id="name" placeholder="Digite seu nome"
+                  oninput="nameValidate()">
+                <span class="span-required">Seu nome deve ter pelo menos 3 caracteres</span>
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" class="form-control required" id="email" placeholder="Digite seu email"
+                  oninput="emailValidate()">
+                <span class="span-required">Digite um email válido</span>
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefone de Contato:</label>
+                <input type="text" class="form-control required" id="phone" placeholder="Digite seu telefone"
+                  oninput="phoneValidate()">
+                <span class="span-required">Digite um telefone válido</span>
+              </div>
+              <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" class="form-control required" id="password" placeholder="Digite sua senha"
+                  oninput="passwordValidate()">
+                <span class="span-required">Sua senha deve ter pelo menos 8 caracteres</span>
+              </div>
+              <div class="form-group">
+                <label for="confirm_password">Confirmar Senha:</label>
+                <input type="password" class="form-control required" id="confirm_password"
+                  placeholder="Confirme sua senha" oninput="confirmPassword()">
+                <span class="span-required">Sua senha deve ser compatível</span>
+              </div>
+              <input type="button" id="button-cadastrar" class="btn btn-warning btn-block" value="Concluir Cadastro"
+                onclick="validateForm()">
+            </form>
+          </div>
         </div>
       </div>
     </div>
-    <ul>
-  </ul>
   </div>
-  
-</div>
-<script src="/FrontEnd/JS/cliente/data_validation.js"></script>
-<script src="/FrontEnd/JS//cliente/cadastro_cliente.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="/FrontEnd/JS/cliente/data_validation.js"></script>
+  <script src="/FrontEnd/JS/cliente/cadastro_cliente.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    function passwordValidate() {
+      const password = document.getElementById('password').value;
+      const span = document.querySelector('#password + .span-required');
+      if (password.length < 8) {
+        span.style.display = 'inline';
+        return false;
+      } else {
+        span.style.display = 'none';
+        return true;
+      }
+    }
+
+    function confirmPassword() {
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm_password').value;
+      const span = document.querySelector('#confirm_password + .span-required');
+      if (password !== confirmPassword) {
+        span.style.display = 'inline';
+        return false;
+      } else {
+        span.style.display = 'none';
+        return true;
+      }
+    }
+
+    function nameValidate() {
+      const name = document.getElementById('name').value;
+      const span = document.querySelector('#name + .span-required');
+      if (name.length < 3) {
+        span.style.display = 'inline';
+        return false;
+      } else {
+        span.style.display = 'none';
+        return true;
+      }
+    }
+
+    function emailValidate() {
+      const email = document.getElementById('email').value;
+      const span = document.querySelector('#email + .span-required');
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        span.style.display = 'inline';
+        return false;
+      } else {
+        span.style.display = 'none';
+        return true;
+      }
+    }
+
+    function phoneValidate() {
+      const phone = document.getElementById('phone').value;
+      const span = document.querySelector('#phone + .span-required');
+      const phonePattern = /^\d{10,11}$/;
+      if (!phonePattern.test(phone)) {
+        span.style.display = 'inline';
+        return false;
+      } else {
+        span.style.display = 'none';
+        return true;
+      }
+    }
+
+    function validateForm() {
+      const isNameValid = nameValidate();
+      const isEmailValid = emailValidate();
+      const isPhoneValid = phoneValidate();
+      const isPasswordValid = passwordValidate();
+      const isConfirmPasswordValid = confirmPassword();
+
+      if (!isNameValid || !isEmailValid || !isPhoneValid || !isPasswordValid || !isConfirmPasswordValid) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Há erros no formulário. Por favor, corrija-os antes de prosseguir.",
+        });
+      } else {
+        Swal.fire({
+          icon: "success",
+          title: "Cadastro Concluído",
+          text: "Seu cadastro foi realizado com sucesso!",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    }
+  </script>
 </body>
+
 </html>
