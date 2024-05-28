@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function OkaySelected(btn){
+        btn.style.backgroundColor = '#00D446';
+        btn.style.color = '#111111';
+    }
+
     function showSelectedSection(section) {
         hideAllSections();
         section.style.display = 'block';
@@ -34,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function selectButton(btn) {
         resetBtnStyles();
-        btn.style.backgroundColor = '#00D446';
+        btn.style.backgroundColor = '#e79f33';
         btn.style.color = '#111111';
     }
 
@@ -71,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const clickedCheckbox = event.target.closest('.servico-checkbox');
             if (!clickedCheckbox) return;
 
+
             const selected = clickedCheckbox.getAttribute('data-selected') === 'true';
             const currentSectionId = section.id;
 
@@ -82,11 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Deselect all checkboxes in the current section
             section.querySelectorAll('.servico-checkbox').forEach(checkbox => {
                 checkbox.setAttribute('data-selected', 'false');
+                selectButton(btnServicos)
             });
 
             // Select the clicked checkbox if it was not previously selected
             if (!selected) {
                 clickedCheckbox.setAttribute('data-selected', 'true');
+                OkaySelected(btnServicos);
                 if (currentSectionId === 'barbas' || currentSectionId === 'bigodes') {
                     selectBarbaBigode(currentSectionId);
                 }

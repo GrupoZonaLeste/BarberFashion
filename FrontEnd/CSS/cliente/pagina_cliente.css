@@ -396,6 +396,81 @@ footer {
 
 .barbeiros{
     display: none;
+    width: 100%;
+}
+
+.tit-mod{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.4rem;
+    font-size: 2rem;
+}
+
+.form-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 30rem;
+    width: 100%;
+    padding: 1rem;
+}
+
+.label{
+    font-size: 2rem;
+    text-align: center;
+   
+}
+
+#data, #horario{
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btns{
+    display: flex;
+    justify-content:space-around;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 2rem;
+}
+
+.title-conf{
+    font-size: 1.8rem;
+}
+
+.btn-confirmar{
+    padding: 1rem;
+    width: 12rem;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+    background-color: #e79f33;
+    cursor: pointer;
+    border: solid transparent;
+    box-shadow: 0px 0px 20px 5px #e79f33;
+    transition: 0.2s all;
+}
+
+.btn-confirmar:hover, .btn-cancelar:hover{
+    opacity: 0.7;
+}
+
+.btn-cancelar{
+    padding: 1rem;
+    width: 12rem;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+    background-color: #E74040;
+    cursor: pointer;
+    border: solid transparent;
+    box-shadow: 0px 0px 20px 5px #E74040;
+    transition: 0.2s all;
 }
 
 .div-nome{
@@ -421,6 +496,99 @@ footer {
 
 .confirmacao{
     display: none;
+    width: 100%;
+    height: 30rem;
+}
+
+.div-conf{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.alinhamento{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: solid 0.1rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 3rem;
+}
+
+.img-conf{
+    height: 7rem;
+}
+
+.divison1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 40rem;
+}
+
+.elementos{
+    font-size: 1.8rem;
+}
+
+.data-conf{
+    display: flex; 
+    flex-direction: column;
+    width: 100%;
+    height: 10rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ft-barbeiro{
+    width: 5rem;
+}
+
+.img-estrela{
+    width: 10rem;
+}
+
+.card-barb{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.1rem solid;
+    border-radius: 2rem;
+    padding: 3rem;
+    background-color: #e79f33;
+    border: solid 1px #e79f33;
+}
+
+.serv-conf{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border: solid 1px #e79f33;
+    width: 80%;
+    padding: 2.3rem;
+    height: 6rem;
+    border-radius: 1rem;
+    background-color: #e79f33;
+}
+
+.card-conf{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between;
+}
+
+.conf-info{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+}
+
+.sub-elementos{
+    font-size: 1.2rem;
 }
 
 .card-body{

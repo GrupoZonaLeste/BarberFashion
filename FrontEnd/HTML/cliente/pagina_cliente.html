@@ -108,7 +108,7 @@
                     <button id="btnconfirmacao">CONFIRMAÇÃO</button>
                 </div>
                 <div class="serviços">
-                
+                <p class="tit-mod">Selecione os Serviços Desejados:</p>
                     <div class="section" id="cortes">
                         <p class="title-degrade">Degradês:</p>
                         <div class="cards-cortes">
@@ -199,26 +199,18 @@
                 </div>
 
                 <div class="horarios">
-                    <form>
-                        <label for="data">Data:</label>
+                    <p class="tit-mod">Selecione a Data e o Horário para seu Agendamento:</p>
+                    <form class="form-data">
+                        <label for="data" class="label">Data:</label>
                         <input type="date" id="data" name="data" required><br><br>
     
-                        <label for="horario">Horário:</label>
+                        <label for="horario" class="label">Horário:</label>
                         <input type="time" id="horario" name="horario" required><br><br>
-    
-                        <label for="servico">Serviço:</label>
-                        <select id="servico" name="servico" required>
-                            <option value="" disabled selected>Selecione um serviço</option>
-                            <option value="corte de cabelo">Corte</option>
-                            <option value="barba">Barba</option>
-                            <option value="sobrancelha">Sobrancelha</option>
-                            <option value="progressiva">Progressiva</option>
-                            <option value="coloração de cabelo">Coloração</option>
-                        </select><br><br>
                     </form>
                 </div>
 
                 <div class="barbeiros">
+                    <p class="tit-mod">Selecione o Barbeiro de sua Confiança:</p>
                     <div class="section" id="barbeiros">
                         <p class="title-degrade">Barbeiros:</p>
                         <div class="cards-cortes">
@@ -253,7 +245,76 @@
                     </div>
                 </div>
 
-                <div class="confirmacao"></div>
+                <div class="confirmacao">
+                    <div class="div-conf">
+                        <p class="tit-mod">Confirme os Dados do Agendamento:</p>
+
+                        <div class="alinhamento">
+                            <div class="divison1">
+                                <p class="title-conf">Serviços Selecionados:</p>
+
+                                <div class="serv-conf">
+                                    <div class="card-conf">
+                                        <img src="/FrontEnd/images/cabelos/low-fade.png" alt="" class="img-conf">
+                                        <div class="conf-info">
+                                            <p class="elementos">Low Fade</p>
+                                            <p class="sub-elementos">Tempo Estimado:</p>
+                                            <p class="sub-elementos">50 minutos</p>
+                                        </div>
+                                    </div>            
+                                </div>
+
+                                <div class="serv-conf">
+                                    <div class="card-conf">
+                                        <img src="/FrontEnd/images/barbas/barba-grande.png" alt="" class="img-conf">
+                                        <div class="conf-info"> 
+                                            <p class="elementos">Barbas</p>
+                                            <p class="sub-elementos">Tempo Estimado:</p>
+                                            <p class="sub-elementos">30 minutos</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="serv-conf">
+                                    <div class="card-conf">
+                                        <img src="/FrontEnd/images/cabelos/hidratacao.png" alt="" class="img-conf">
+                                        <div class="conf-info">
+                                            <p class="elementos">Hidratação</p>
+                                            <p class="sub-elementos">Tempo Estimado:</p>
+                                            <p class="sub-elementos">25 minutos</p>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                            </div>
+                            
+                            <div class="divison1">
+                                <p class="title-conf">Tempo Total Estimado:</p>
+                                <p class="sub-elementos">105 minutos</p>
+                                <div class="data-conf" style="">
+                                    <p class="elementos">Data:</p> <p>RESPOSTA</p>
+                                    <p class="elementos">Horário:</p> <p>RESPOSTA</p>
+                                </div>
+                                
+                                <p class="title-conf">Barbeiro:</p>
+                                <div class="card-barb" style="    ">
+                                    
+                                    <p class="elementos">Gustavo Garnacho</p>
+                                    <img src="/FrontEnd/images/estrela.png" alt="" class="img-estrela">
+                                    <img src="/FrontEnd/images/profile.png" alt="" class="ft-barbeiro">
+                                </div>
+                                
+                            </div>
+                        
+                        </div>
+
+                        <div class="btns">
+                            <button class="btn-confirmar">Confirmar</button>
+                            <button class="btn-cancelar">Cancelar</button>
+                        </div>
+                        
+                    </div>
+                </div>
 
             </div>
         </div>
