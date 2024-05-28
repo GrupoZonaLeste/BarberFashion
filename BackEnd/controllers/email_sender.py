@@ -14,14 +14,17 @@ MONGO_CONNECTION_STRING = MongoClient("mongodb://localhost:27017")
 database = MONGO_CONNECTION_STRING['Barbearia']
 collection = database['cliente']
 
-def send_email(to_email: str, subject: str, message: str):
+def send_email(to_email: str, subject: str, html_message: str):
     try:
         # Configura a mensagem
-        msg = MIMEMultipart()
+        msg = MIMEMultipart('alternative')
         msg['From'] = SMTP_USERNAME
         msg['To'] = to_email
         msg['Subject'] = subject
-        msg.attach(MIMEText(message, 'plain'))
+        
+        # Parte do HTML
+        part = MIMEText(html_message, 'html')
+        msg.attach(part)
         
         # Conecta ao servidor SMTP
         server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
@@ -29,7 +32,7 @@ def send_email(to_email: str, subject: str, message: str):
         server.login(SMTP_USERNAME, SMTP_PASSWORD)
         
         # Envia o email
-        server.send_message(msg)
+        server.sendmail(SMTP_USERNAME, to_email, msg.as_string())
         server.quit()
         print("Email enviado com sucesso")
     except Exception as e:
@@ -41,8 +44,21 @@ def gerar_codigo(email: str):
         print(usuario)
         code = store_temporary_code(email)
         subject = "Recuperação de Senha"
-        message = f"Seu código de recuperação de senha é: {code}"
-        send_email(email, subject, message)
+        html_message = f"""
+    <html>
+      <body>
+        <p>Olá,</p>
+        <p>Seu código de recuperação de senha é:</p>
+        <p style="font-size: 24px; font-weight: bold;">{code}</p>
+        <p>Este código é válido por 5 minutos.</p>
+        <p>Se você não solicitou a recuperação de senha, por favor ignore este email.</p>
+        <br>
+        <p>Atenciosamente,</p>
+        <p>Sua Equipe</p>
+      </body>
+    </html>
+    """
+        send_email(email, subject, html_message)
         return usuario
     else:
         return "usuário não encontrado"
