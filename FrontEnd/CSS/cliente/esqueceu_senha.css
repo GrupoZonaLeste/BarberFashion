@@ -20,11 +20,16 @@ body {
     background-color: #111111;
 }
 
-
 .card {
     border: none;
 }
-
+span{
+    display: none ;
+}
+#span_email{
+    font-size: 15px;
+    color: #e63636;
+}
 .card-header {
     display: flex;
     flex-direction: row;
