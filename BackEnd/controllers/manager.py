@@ -26,6 +26,9 @@ class Controller_manager:
             i["_id"] = f"ObjectId({str(i['_id'])})"
         return funcionarios
     
+    def editar_funcionario(self, funcid, data: dict):
+        self.get_current_collection().update_one({"funcionario_id": int(funcid)}, {"$set": data})
+    
     def excluir_funcionario(self, funcid):
         self.get_current_collection().delete_one({'funcionario_id': funcid})
 

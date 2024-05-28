@@ -26,6 +26,10 @@ async def get_funcionarios():
 async def delete_funcionarios(funcid: int):
     return controller.excluir_funcionario(funcid)
 
+@router.put('/editar_funcionario/{funcid}')
+async def editar_funcionarios(funcid, data = Body(...)):
+    return controller.editar_funcionario(funcid, data)
+
 @router.get('/listar_usuarios/')
 async def listar_todos_usuarios():
     return controller.listar_usuarios()

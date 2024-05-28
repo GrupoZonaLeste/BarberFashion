@@ -1,6 +1,7 @@
 const API_cadastrar_funcionario = getEndpoint_manager("cadastrar")
 const API_listar_funcionarios = getEndpoint_manager("listar_funcionarios")
 const API_deletar_funcionario = getEndpoint_manager("deletar_funcionario")
+const API_editar_funcionario = getEndpoint_manager('editar_funcinoario')
 const API_listar_usuarios = getEndpoint_manager("listar_usuarios")
 const API_cadastrar_servicos = getEndpoint_manager("cadastrar_servicos")
 const API_listar_servicos = getEndpoint_manager("listar_servicos")
@@ -82,6 +83,7 @@ btn_cadastrarFuncionario.addEventListener('click', async () => {
 })
 
 const divFuncionariosCadastrados = document.getElementById('funcionarios_cadastrados')
+const divEditarFuncionarios = document.querySelector('.modal_editar_Funcionario')
 
 async function addDivFuncionarios(){
     await fetch(API_listar_funcionarios)
@@ -90,7 +92,7 @@ async function addDivFuncionarios(){
         response.forEach(element => {
             textNode = `<b style="font-size: 120%">Nome:</b> ${element.name} <b style="font-size: 120%">Email:</b> ${element.email}<br>`
             const p = document.createElement('p')
-
+            
             const btn_editar = document.createElement('button')
             const btn_deletar = document.createElement('button')
             btn_editar.innerText = "Editar"
@@ -101,13 +103,13 @@ async function addDivFuncionarios(){
             btn_deletar.id = element.funcionario_id
             btn_deletar.style.cursor = "pointer"
             
-
+            
             p.innerHTML = textNode
             p.appendChild(btn_editar)
             p.appendChild(btn_deletar)
-
+            
             divFuncionariosCadastrados.appendChild(p)
-
+            
             btn_deletar.addEventListener('click', async ()=> {
                 
                 await fetch(API_deletar_funcionario({funcid: btn_deletar.id}), {
@@ -119,6 +121,94 @@ async function addDivFuncionarios(){
                 alert("Funcionário excluido com Sucesso!")
                 location.reload()
             })
+            
+            btn_editar.addEventListener('click', async () => {
+                divEditarFuncionarios.style.display = 'block'
+
+               const divEditarFuncionarios2 = document.getElementById('editar_Funcionario')
+               const formEditarCorte = document.createElement('form')
+               const btn_fechar_editar = document.createElement('button')
+               const btn_confimar_editar = document.createElement('button')
+               btn_confimar_editar.innerText = "Confirmar"
+               btn_fechar_editar.innerText = "Cancelar"
+               btn_fechar_editar.style.backgroundColor = '#E74040'
+               btn_fechar_editar.style.color = '#ffffff'
+               btn_fechar_editar.onmousemove = function(){
+                   btn_fechar_editar.style.opacity = 0.5
+               };
+               btn_fechar_editar.onmouseout = function(){
+                   btn_fechar_editar.style.opacity = 1
+               };
+
+               const LabelNome = document.createElement('label')
+               LabelNome.innerText = 'Editar nome'
+
+               const LabelEmail = document.createElement('label')
+               LabelEmail.innerText = 'Editar email'
+
+               const NomeInput = document.createElement('input')
+               NomeInput.required = true
+               NomeInput.value = element.name
+               NomeInput.style.height = '20px';
+               
+               const EmailInput = document.createElement('input')
+               EmailInput.required = true
+               EmailInput.value = element.email
+               EmailInput.style.height = '20px';
+
+
+               formEditarCorte.appendChild(LabelNome)
+               formEditarCorte.appendChild(NomeInput)
+
+               formEditarCorte.appendChild(document.createElement('br'))
+
+               formEditarCorte.appendChild(LabelEmail)
+               formEditarCorte.appendChild(EmailInput)
+               
+               divEditarFuncionarios2.appendChild(formEditarCorte)
+
+               divEditarFuncionarios2.appendChild(document.createElement('br'))
+               divEditarFuncionarios2.appendChild(await listarServicosCheckbox())
+               divEditarFuncionarios2.appendChild(btn_fechar_editar)
+               divEditarFuncionarios2.appendChild(btn_confimar_editar)
+
+
+                btn_fechar_editar.addEventListener('click', () => {
+                    divEditarFuncionarios.style.display = 'none'
+               
+                    while (divEditarFuncionarios2.firstChild) {
+                        divEditarFuncionarios2.removeChild(divEditarFuncionarios2.firstChild)
+                    }
+                })
+                
+                document.getElementById('fechar_editar_Funcionario_btn').addEventListener('click', () => {
+                    divEditarFuncionarios.style.display = 'none'
+                    
+                    while (divEditarFuncionarios2.firstChild) {
+                        divEditarFuncionarios2.removeChild(divEditarFuncionarios2.firstChild)
+                    }
+                 })
+
+                btn_confimar_editar.addEventListener('click', () => {
+                    if(NomeInput.value == '' || EmailInput.value == ''){
+                        alert("campos não podem ser vazios")
+                        return
+                    }
+                    fetch(API_editar_funcionario( {funcid: element.funcionario_id} ), {
+                        method: "PUT",
+                        body: JSON.stringify({
+                            "name": NomeInput.value,
+                            "email": EmailInput.value,
+                        }),
+                        headers: {
+                            "Content-type": "application/json; charset=UTF-8"
+                        }
+                    })
+                    alert("atualizado com sucesso")
+                    location.reload()
+                })
+            })
+            
         });
     })
     .catch(erro => console.log(`erro: ${erro}`))
@@ -352,6 +442,33 @@ document.getElementById('fechar_servicos_btn').addEventListener('click', () => {
     tempoServico.value = ''
     precoServico.value = ''
 })
+
+async function listarServicosCheckbox(){
+    const divCheckboxServicos = document.createElement('div')
+    const titulo = "<h4>Adicionar serviços</h4>" 
+    divCheckboxServicos.innerHTML = titulo
+    
+    await fetch(API_listar_servicos)
+    .then(response => response.json())
+    .then(response => {
+        response.forEach(element => {
+            const checkbox = document.createElement('input')
+            checkbox.type = "checkbox"
+            checkbox.id = element.nome
+
+            const labelCheckbox = document.createElement('label')
+            labelCheckbox.for = checkbox.id
+            labelCheckbox.innerText = element.nome
+            divCheckboxServicos.appendChild(document.createElement('br'))
+            divCheckboxServicos.appendChild(checkbox)
+            divCheckboxServicos.appendChild(labelCheckbox)
+            divCheckboxServicos.appendChild(document.createElement('br'))
+        })
+    })
+    console.log(divCheckboxServicos)
+    return divCheckboxServicos
+}
+
 
 document.addEventListener("DOMContentLoaded", AddDivServicos)
 document.addEventListener("DOMContentLoaded",addDivClientes)
