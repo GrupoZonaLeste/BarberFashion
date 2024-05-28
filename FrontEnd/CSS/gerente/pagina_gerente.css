@@ -706,7 +706,7 @@ input[type="month"] {
     margin: 15% auto;
     border-radius: 5px;
     width: 100%;
-    text-align: center;
+    text-align: start;
 }
 
 .modal-content h4 {
@@ -721,8 +721,25 @@ input[type="month"] {
     border-radius: 5px;
 }
 
-.modal-content button:hover {
+.modal-content-funcionario {
+    background-color: #fefefe;
+    margin: 15% auto;
+    border-radius: 5px;
+    width: 100%;
+    text-align: start;
+}
+.modal-content-funcionario h4 {
+    margin-top: 0;
+}
+.modal-content-funcionario button:hover {
     background-color: #555;
+}
+.modal-content-funcionario button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .centralizador{

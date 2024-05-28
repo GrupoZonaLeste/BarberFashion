@@ -11,15 +11,18 @@ const API_editar_servicos = getEndpoint_manager("editar_servicos")
 const nomeInput = document.getElementById('nome')
 const emailInput = document.getElementById('email')
 const senhaInput = document.getElementById('senha')
+const cadastarServicosFuncionario = document.getElementById('div_cadastrar_servicos_funcionario')
 
+var objServicosSelecionados = {}
 const fetchButtonData = () => {
     return {
-      name: nomeInput.value,
-      email: emailInput.value,
-      password: senhaInput.value,
-      funcionario_id: 0,
+        name: nomeInput.value,
+        email: emailInput.value,
+        password: senhaInput.value,
+        servicos: objServicosSelecionados,
+        funcionario_id: 0,
     };
-  };
+};
 const btn_cadastrarFuncionario = document.getElementById('cadastrarFuncionario')  
 
 const div_alerta = document.getElementById('alert')
@@ -30,6 +33,16 @@ var mensagem = document.createElement("p")
 const div_confirmacao = document.getElementById('confirm')
 
 btn_cadastrarFuncionario.addEventListener('click', async () => {
+    const checkboxes = document.querySelectorAll('input[name="checkbox-cadastro-servico-funcionario"]');
+    for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            objServicosSelecionados[checkboxes[i].value] = 1
+            console.log(objServicosSelecionados)
+        } else {
+            objServicosSelecionados[checkboxes[i].value] = 0
+        }
+    }
+    
     if(nomeInput.value == '' || emailInput.value == '' || senhaInput.value == ''){
         div_alerta.style.display = 'flex'
         div_alerta.style.flexDirection = 'column-reverse'
@@ -37,11 +50,11 @@ btn_cadastrarFuncionario.addEventListener('click', async () => {
         div_alerta.style.borderColor = '#E74040'
         mensagem.style.marginBottom = '1rem'
         mensagem.style.color = '#E74040'
-
+        
         btnOk.style.backgroundColor = '#E74040'
         btnOk.style.borderColor = '#E74040'
         btnOk.style.boxShadow = '0px 0px 16px -5px #E74040'
-
+        
         mensagem.innerHTML = "Preencha os Campos do Cadastro!";
         div_alerta.append(mensagem);
         btnOk.addEventListener('click', () =>{
@@ -49,7 +62,7 @@ btn_cadastrarFuncionario.addEventListener('click', async () => {
         });
         return
     }
-
+    
     let data = fetchButtonData()
     await fetch(API_cadastrar_funcionario, {
         method: "POST",
@@ -64,21 +77,22 @@ btn_cadastrarFuncionario.addEventListener('click', async () => {
         try {
             if (response.status === "OK") {
                 alert(`Funcionário cadastrado com sucesso`);
-        } else if(response.status === "EMAIL CADASTRADO") {
-            alert(`O Email "${data.email}" já está Cadastrado.`);
-        }
+            } else if(response.status === "EMAIL CADASTRADO") {
+                alert(`O Email "${data.email}" já está Cadastrado.`);
+            }
         } catch (error) {
-        if (error.response && error.response.status === 422) {
+            if (error.response && error.response.status === 422) {
                 alert('Dados incorretos');
             } else {
                 console.log('Erro ao atualizar o item:', error);
             }
         }
     })
-
+    
     nomeInput.value = ''
     emailInput.value = ''
     senhaInput.value = ''
+    objServicosSelecionados = {}
     location.reload()
 })
 
@@ -90,25 +104,43 @@ async function addDivFuncionarios(){
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
-            textNode = `<b style="font-size: 120%">Nome:</b> ${element.name} <b style="font-size: 120%">Email:</b> ${element.email}<br>`
+            textNode = `<b style="font-size: 120%">Nome:</b> ${element.name}<br><br><b style="font-size: 120%">Email:</b> ${element.email}<br>`
             const p = document.createElement('p')
-            
+
             const btn_editar = document.createElement('button')
             const btn_deletar = document.createElement('button')
-            btn_editar.innerText = "Editar"
+            const div_contentService = document.createElement('div')
+            const div_textos = document.createElement('div')
+            const div_btn = document.createElement('div')
+            btn_editar.innerText = "EDITAR"
             btn_editar.id = element.funcionario_id
             btn_editar.style.cursor = "pointer"
             
-            btn_deletar.innerText = "Deletar"
+            btn_deletar.innerText = "DELETAR"
             btn_deletar.id = element.funcionario_id
             btn_deletar.style.cursor = "pointer"
-            
+            btn_deletar.style.backgroundColor = '#E74040'
+            btn_deletar.style.color = '#ffffff'
+            btn_deletar.onmousemove = function(){
+                btn_deletar.style.opacity = 0.5
+            };
+            btn_deletar.onmouseout = function(){
+                btn_deletar.style.opacity = 1
+            };
+    
+            div_btn.style.display = 'flex'
+            div_btn.style.flexDirection = 'row'
+            div_btn.style.justifyContent = 'space-around'
+            div_textos.id = 'text_service'
+            div_contentService.id = 'content_service'
             
             p.innerHTML = textNode
-            p.appendChild(btn_editar)
-            p.appendChild(btn_deletar)
-            
-            divFuncionariosCadastrados.appendChild(p)
+            div_textos.append(p)
+            div_btn.appendChild(btn_deletar)
+            div_btn.appendChild(btn_editar)
+            div_contentService.append(div_textos)
+            div_contentService.append(div_btn)
+            divFuncionariosCadastrados.append(div_contentService)
             
             btn_deletar.addEventListener('click', async ()=> {
                 
@@ -171,7 +203,17 @@ async function addDivFuncionarios(){
                divEditarFuncionarios2.appendChild(await listarServicosCheckbox())
                divEditarFuncionarios2.appendChild(btn_fechar_editar)
                divEditarFuncionarios2.appendChild(btn_confimar_editar)
-
+                
+                    const checkboxes = document.querySelectorAll('input[name="checkbox-cadastro-servico-funcionario"]');
+                    for (const [key, value] of Object.entries(element.servicos)) {
+                        for(let i=0 ; i< checkboxes.length; i++){
+                            if(key == checkboxes[i].value){
+                                if(value == 1)
+                                checkboxes[i].checked = 'true'
+                                console.log(key, checkboxes[i].value)
+                            }
+                        }
+                    }
 
                 btn_fechar_editar.addEventListener('click', () => {
                     divEditarFuncionarios.style.display = 'none'
@@ -190,6 +232,16 @@ async function addDivFuncionarios(){
                  })
 
                 btn_confimar_editar.addEventListener('click', () => {
+                    const checkboxes = document.querySelectorAll('input[name="checkbox-cadastro-servico-funcionario"]');
+                    for (let i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i].checked) {
+                            objServicosSelecionados[checkboxes[i].value] = 1
+                            console.log(objServicosSelecionados)
+                        } else {
+                            objServicosSelecionados[checkboxes[i].value] = 0
+                        }
+                    }
+
                     if(NomeInput.value == '' || EmailInput.value == ''){
                         alert("campos não podem ser vazios")
                         return
@@ -199,6 +251,7 @@ async function addDivFuncionarios(){
                         body: JSON.stringify({
                             "name": NomeInput.value,
                             "email": EmailInput.value,
+                            "servicos": objServicosSelecionados
                         }),
                         headers: {
                             "Content-type": "application/json; charset=UTF-8"
@@ -221,13 +274,13 @@ async function addDivClientes(){
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
-            textNode = `<b style="font-size: 120%">Nome:</b> ${element.name} <b style="font-size: 120%">Email:</b> ${element.email}<br><br>`
+            textNode = `<b style="font-size: 120%">Nome: ${element.name}</b> <b style="font-size: 120%">Email: ${element.email}</b>`
             const p = document.createElement('p')
             p.innerHTML = textNode
             p.style.margin = '5px'
             p.style.fontSize = '110%'
             p.id = 'content_service'
-
+            p.style.alignItems = 'start'
             divClientesCadastrados.appendChild(p)
         })
     })
@@ -455,21 +508,25 @@ async function listarServicosCheckbox(){
             const checkbox = document.createElement('input')
             checkbox.type = "checkbox"
             checkbox.id = element.nome
+            checkbox.value = element.nome
+            checkbox.name = "checkbox-cadastro-servico-funcionario"
 
             const labelCheckbox = document.createElement('label')
             labelCheckbox.for = checkbox.id
-            labelCheckbox.innerText = element.nome
+            labelCheckbox.innerText = ` ${element.nome}`
+
             divCheckboxServicos.appendChild(document.createElement('br'))
             divCheckboxServicos.appendChild(checkbox)
             divCheckboxServicos.appendChild(labelCheckbox)
             divCheckboxServicos.appendChild(document.createElement('br'))
         })
     })
-    console.log(divCheckboxServicos)
+    cadastarServicosFuncionario.appendChild(divCheckboxServicos)
     return divCheckboxServicos
 }
 
 
 document.addEventListener("DOMContentLoaded", AddDivServicos)
+document.addEventListener("DOMContentLoaded", listarServicosCheckbox)
 document.addEventListener("DOMContentLoaded",addDivClientes)
 document.addEventListener("DOMContentLoaded", addDivFuncionarios)
