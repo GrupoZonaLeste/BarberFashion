@@ -76,12 +76,12 @@
   <script src="/FrontEnd/JS/token/verifyToken_Login.js"></script>
   <script>
     document.getElementById('login-form').addEventListener('submit', function (event) {
-      event.preventDefault(); // Impede o envio do formulário
+      event.preventDefault();
 
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
 
-      // Simulação de uma validação simples
+
       if (email === 'test@example.com' && password === 'password123') {
         Swal.fire({
           icon: 'success',
@@ -99,6 +99,19 @@
       }
     });
   </script>
+
+  <!-- VLibras API -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
 </body>
 
 </html>

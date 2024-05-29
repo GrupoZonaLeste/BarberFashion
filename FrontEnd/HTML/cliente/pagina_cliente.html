@@ -7,36 +7,26 @@
     <link rel="stylesheet" href="/FrontEnd/CSS/cliente/pagina_cliente.css">
     <script src="/FrontEnd/JS/token/token_decode.js"></script>
     <title>Minha Conta</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg container-fluid">
-        <div class="container-fluid" style="color: #FF9800; display: flex; align-items: center; margin-left: 20px; font-size: xx-large; font-weight: bold;"> 
+        <div class="container-fluid"
+            style="color: #FF9800; display: flex; align-items: center; margin-left: 20px; font-size: xx-large; font-weight: bold;">
             BARBERFASHION
         </div>
     </nav>
 
-    <div class="centralizador">
-        <div class="alert" id="alert">
-          <button id="btn-ok">OK</button>
-        </div>
-        <div class="confirm" id="confirm">
-            <div class="btn-options">
-                <button id="btn-conf">DELETAR</button>
-                <button id="btn-canc">CANCELAR</button>
-            </div>
-          </div>
-        </div>  
-
     <div class="container">
         <div class="user-info">
-            
+
             <div class="foto-perfil">
                 <img src="" width="150" height="150" id="image_user" class="picture_img">
                 <!--<img src="/FrontEnd/images/profile.png" alt="Foto do Cliente">-->
             </div>
             <div class="user-details">
-                <p id="name"class="nome-cliente">Nome do Cliente</p>
+                <p id="name" class="nome-cliente">Nome do Cliente</p>
                 <p id="email" class="email-cliente">Email: cliente@email.com</p>
                 <p id="phone" class="tel-cliente">Telefone: (00) 1234-5678</p>
                 <a class="sair" id="logout">SAIR</a>
@@ -45,7 +35,8 @@
         <main>
             <section class="apresentation">
                 <p id="apresentation" class="apres-title">Olá (nome do cliente), Bem-vindo à Barbearia!</p>
-                <p class="apres-subtitle">Aqui você pode gerenciar seu perfil, visualizar seus pedidos e configurar suas preferências.</p>
+                <p class="apres-subtitle">Aqui você pode gerenciar seu perfil, visualizar seus pedidos e configurar suas
+                    preferências.</p>
             </section>
             <section>
                 <h2></h2>
@@ -56,11 +47,12 @@
                                 <div class="detail"></div>
                                 <img src="/FrontEnd/images/penteado 1.png" class="card-icon" alt="">
                                 <p class="card-title">AGENDE UM SERVIÇO</p>
-                                <p class="card-subtitle">Agende o melhor horário disponível para realizar o corte de cabelo.</p>
+                                <p class="card-subtitle">Agende o melhor horário disponível para realizar o corte de
+                                    cabelo.</p>
                                 <button class="btn_agendar">AGENDAR</button>
                             </div>
                         </div>
-    
+
                         <div class="card">
                             <div class="card-body" id="servicos_agendados1">
                                 <div class="detail"></div>
@@ -77,11 +69,12 @@
                                 <img src="/FrontEnd/images/perfil-pessoal.png" class="card-icon" alt="">
                                 <p class="card-title">EDITAR PERFIL</p>
                                 <p class="card-subtitle">Edite seus Dados e Informações Pessoais</p>
-                                <a href="/FrontEnd/HTML/cliente/editar_cliente.html" class="editar-perfil">EDITAR PERFIL</a>
+                                <a href="/FrontEnd/HTML/cliente/editar_cliente.html" class="editar-perfil">EDITAR
+                                    PERFIL</a>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="inferior">
                         <div class="card-inferior">
                             <p class="card-title">HISTÓRICO DE SERVIÇOS</p>
@@ -90,45 +83,47 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </section>
         </main>
     </div>
-    
+
     <div class="modal_agendar">
         <div class="card" style="margin:130px auto; width: 300px;">
-                <button id="fechar_agendamento_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-                <h3>Agendar Serviço</h3><br>
-                <form>
-                    <label for="data">Data:</label>
-                    <input type="date" id="data" name="data" required><br><br>
+            <button id="fechar_agendamento_btn" type="button" class="btn btn-danger"
+                style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <h3>Agendar Serviço</h3><br>
+            <form>
+                <label for="data">Data:</label>
+                <input type="date" id="data" name="data" required><br><br>
 
-                    <label for="horario">Horário:</label>
-                    <input type="time" id="horario" name="horario" required><br><br>
+                <label for="horario">Horário:</label>
+                <input type="time" id="horario" name="horario" required><br><br>
 
-                    <label for="servico">Serviço:</label>
-                    <select id="servico" name="servico" required>
-                        <option value="" disabled selected>Selecione um serviço</option>
-                        <option value="corte de cabelo">Corte</option>
-                        <option value="barba">Barba</option>
-                        <option value="sobrancelha">Sobrancelha</option>
-                        <option value="progressiva">Progressiva</option>
-                        <option value="coloração de cabelo">Coloração</option>
-                    </select><br><br>
-                </form>
-                <button id="input_agendar" type="submit">Agendar</button> 
-            
+                <label for="servico">Serviço:</label>
+                <select id="servico" name="servico" required>
+                    <option value="" disabled selected>Selecione um serviço</option>
+                    <option value="corte de cabelo">Corte</option>
+                    <option value="barba">Barba</option>
+                    <option value="sobrancelha">Sobrancelha</option>
+                    <option value="progressiva">Progressiva</option>
+                    <option value="coloração de cabelo">Coloração</option>
+                </select><br><br>
+            </form>
+            <button id="input_agendar" type="submit">Agendar</button>
+
         </div>
     </div>
-    
-        <div class="modal_servico">
-            <div id="servicos_agendados" class="card">
-                <button id="fechar_servicos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-                <h3>Serviços Agendados</h3><br>
-                    <div id="card_service"></div>
-            </div>
+
+    <div class="modal_servico">
+        <div id="servicos_agendados" class="card">
+            <button id="fechar_servicos_btn" type="button" class="btn btn-danger"
+                style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <h3>Serviços Agendados</h3><br>
+            <div id="card_service"></div>
         </div>
+    </div>
 
 
     <div id="editar-corte">
@@ -138,7 +133,8 @@
         </div>
     </div>
 
-    <div id="editar-corte" style="visibility:hidden; z-index: 3;position: absolute;height: 100vh;width: 100%; background:radial-gradient(circle, rgba(0,0,0,0.5694327389158788) 0%, rgba(0,0,0,0.62405458765537467) 35%);">
+    <div id="editar-corte"
+        style="visibility:hidden; z-index: 3;position: absolute;height: 100vh;width: 100%; background:radial-gradient(circle, rgba(0,0,0,0.5694327389158788) 0%, rgba(0,0,0,0.62405458765537467) 35%);">
         <div id="sub-editar-corte" class="card" style="margin:130px auto; width: 300px;">
             <h3>Editar Serviço</h3>
             <form id="form-editar-corte"></form>
@@ -149,12 +145,67 @@
     <script src="/FrontEnd/JS/cliente/pagina_cliente.js"></script>
     <script src="/FrontEnd//JS/cliente/data_cliente.js"></script>
     <script src="/FrontEnd/JS/token/verifyToken_Cliente.js"></script>
+    -
+
+
     <script src="/FrontEnd/JS/token/token_decode.js"></script>
     <script src="/FrontEnd/JS/cliente/logout.js"></script>
-  
-    
-    
-    
+
+    <script>
+        document.getElementById('input_agendar').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const data = document.getElementById('data').value;
+            const horario = document.getElementById('horario').value;
+            const servico = document.getElementById('servico').value;
+
+            if (!data || !horario || !servico) {
+                Swal.fire({
+                    title: 'Erro',
+                    text: 'Por favor, preencha todos os campos.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+
+            Swal.fire({
+                title: 'Agendar Serviço',
+                text: 'Tem certeza de que deseja agendar este serviço?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, agendar!',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Agendado!',
+                        'Seu serviço foi agendado com sucesso.',
+                        'success'
+                    );
+                }
+            });
+        });
+
+    </script>
+
+    <!-- VLibras API -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+
+
+
 </body>
 
 </html>
