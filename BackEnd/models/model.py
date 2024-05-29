@@ -17,6 +17,7 @@ class Funcionario(BaseModel):
     name: str
     email: Optional[str]
     password: str
+    servicos: dict
     funcionario_id: int
 
 class Gerente(BaseModel):
