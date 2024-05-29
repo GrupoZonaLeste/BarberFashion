@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /*
     btnServicos.addEventListener('click', () => {
         selectButton(btnServicos);
         showSelectedSection(servicos);
@@ -100,5 +101,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-    });
+    });*/
 });

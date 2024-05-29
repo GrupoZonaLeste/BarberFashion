@@ -257,8 +257,7 @@ footer {
     padding: 1.2rem;
     border-radius: 2rem;
     width: 12rem;
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 1rem;
     border: none;
     cursor: pointer;
 }
@@ -296,7 +295,6 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 35rem;
     width: 100%;
 }
 
@@ -321,12 +319,12 @@ footer {
 .servico-checkbox{
     display: flex;
     flex-direction: column;
-    height: 24rem;
+    height: 20rem;
     align-items: center;
     border-radius: 2rem;
     justify-content: space-around;
     padding: 1.2rem;
-    width: 17rem;
+    width: 16rem;
     cursor: pointer;
     box-shadow: 0px 0px 20px 5px #b4b4b4;
     transition: 0.3s all;
@@ -346,25 +344,24 @@ footer {
 }
 
 .title-corte{
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 
 .descricao-corte{
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: center;
-    font-weight: 500;
-    width: 70%;
+    width: 100%;
 }
 
 .title-degrade{
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     font-weight: 500;
     padding: 1rem;
 }
 
 .img-servico{
-    height: 12rem;
+    height: 10rem;
 }
 .barbas{
     display: flex;
@@ -405,7 +402,7 @@ footer {
     justify-content: center;
     align-items: center;
     margin-top: 2.4rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .form-data{
@@ -418,7 +415,7 @@ footer {
 }
 
 .label{
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
    
 }
@@ -483,7 +480,7 @@ footer {
 }
 
 .nome-barbeiro{
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .estrelas{
@@ -531,7 +528,7 @@ footer {
 }
 
 .elementos{
-    font-size: 1.8rem;
+    font-size: 1.5rem;
 }
 
 .data-conf{
@@ -710,7 +707,6 @@ footer {
     display: block;
     z-index: 1;
     position: absolute;
-    height: 100vh;
     width: 100%; 
     background:radial-gradient(circle, rgba(0,0,0,0.9694327389158788) 0%, rgba(0,0,0,0.82405458765537467) 35%);
 }
