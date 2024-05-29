@@ -47,6 +47,12 @@ class Controller_client:
             return({"status":"OK"})
         except:
             return({"status":"ERROR"})
+        
+    def retornar_nome_funcionario(self, funcionario_id):
+        funcionario = self.get_current_collection().find_one({'funcionario_id': int(funcionario_id)})
+        user = { "name": funcionario.get('name')}
+        return user
+
     ##operacional    
     def qtd_ids_cliente(self):
         return self.get_current_collection().count_documents({'client_id': {'$exists': True}}) + 1
