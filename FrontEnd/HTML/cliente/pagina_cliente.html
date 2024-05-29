@@ -97,28 +97,226 @@
     </div>
     
     <div class="modal_agendar">
-        <div class="card" style="margin:130px auto; width: 300px;">
-                <button id="fechar_agendamento_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-                <h3>Agendar Serviço</h3><br>
-                <form>
-                    <label for="data">Data:</label>
-                    <input type="date" id="data" name="data" required><br><br>
+        <div class="card_agendar" style="margin:130px auto; width: 80rem;">
+            <button id="fechar_agendamento_btn" type="button" class="btn-fechar" >X</button>
+            <p style="font-size: 2.5rem;">Agendar Serviço</p><br>
+                <div class="conteudo-servico">
+                <div class="navegacao">
+                    <button id="btnservicos">SERVIÇOS</button>
+                    <button id="btnhorarios">HORÁRIOS</button>
+                    <button id="btnbarbeiros">BARBEIROS</button>
+                    <button id="btnconfirmacao">CONFIRMAÇÃO</button>
+                </div>
+                <div class="serviços">
+                <p class="tit-mod">Selecione os Serviços Desejados:</p>
+                    <div class="section" id="cortes">
+                        <p class="title-degrade">Degradês:</p>
+                        <div class="cards-cortes">
+                            
+                            <div class="servico-checkbox" data-selected="false">
+                                <p class="title-corte">Low-Fade</p>
+                                <img src="/FrontEnd/images/cabelos/low-fade.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Corte com desfarce mais baixo, com mais volumes nas laterais.</p>
+                            </div>
+                            <div class="servico-checkbox" data-selected="false">
+                                <p class="title-corte">Mid-Fade</p>
+                                <img src="/FrontEnd/images/cabelos/mid-fade 1.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Corte com desfarce médio, com volume mediano nas laterais.</p>
+                            </div>
+                            <div class="servico-checkbox" data-selected="false">
+                                <p class="title-corte">High-Fade</p>
+                                <img src="/FrontEnd/images/cabelos/high-fade.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Corte com desfarce médio, com pouco volume nas laterais.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                    <label for="horario">Horário:</label>
-                    <input type="time" id="horario" name="horario" required><br><br>
+                    <div class="section" id="barbas">
+                        <p class="title-degrade">Barbas:</p>
+                        <div class="cards-cortes">
+                            
+                            <div class="servico-checkbox" data-selected="false">
+                                <p class="title-corte">Barba Rala</p>
+                                <img src="/FrontEnd/images/barbas/barba-rala-desenhada.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Barba rala, bem contornado, Realça linha do rosto.</p>
+                            </div>
+                            <div class="servico-checkbox" data-selected="false">
+                                <p class="title-corte">Barba Cheia</p>
+                                <img src="/FrontEnd/images/barbas/barba-grande.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Barba Cheia, deixando um modelo bem flexível e imponente.</p>
+                            </div>
+                            <div class="servico-checkbox" data-selected="false">
+                                <p class="title-corte">Barba Grande</p>
+                                <img src="/FrontEnd/images/barbas/Barba-extraGrande.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Barba muito Grande, indicado para homens maduros</p>
+                            </div>
+                        </div>
+                    </div>
 
-                    <label for="servico">Serviço:</label>
-                    <select id="servico" name="servico" required>
-                        <option value="" disabled selected>Selecione um serviço</option>
-                        <option value="corte de cabelo">Corte</option>
-                        <option value="barba">Barba</option>
-                        <option value="sobrancelha">Sobrancelha</option>
-                        <option value="progressiva">Progressiva</option>
-                        <option value="coloração de cabelo">Coloração</option>
-                    </select><br><br>
-                </form>
-                <button id="input_agendar" type="submit">Agendar</button> 
-            
+                    <div class="section" id="bigodes">
+                        <p class="title-degrade">Bigodes:</p>
+                        <div class="cards-cortes">
+                            
+                            <div class="servico-checkbox" data-selected="false">
+                                <p class="title-corte">Bigode Francês</p>
+                                <img src="/FrontEnd/images/barbas/bigode-frances.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Pontas mais alongadas, sua elegância se destaca.</p>
+                            </div>
+                            <div class="servico-checkbox" data-selected="false">
+                                <p class="title-corte">Bigode Grosso</p>
+                                <img src="/FrontEnd/images/barbas/bigode-grosso-naorachado.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Estilo muito preponderante, traz muita força e casualidade.</p>
+                            </div>
+                            <div class="servico-checkbox" data-selected="false">
+                                <p class="title-corte">Bigode Rachado</p>
+                                <img src="/FrontEnd/images/barbas/bigode-grosso-rachado.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Bigode rachado, ousadia é a sua identidade.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section" id="tratamentos">
+                        <p class="title-degrade">Tratamento:</p>
+                        <div class="cards-cortes">
+                            
+                            <div class="servico-checkbox" data-selected="false">
+                                <p class="title-corte">Pinturas</p>
+                                <img src="/FrontEnd/images/cabelos/cabelo-pintado.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Pinturas das mais diversas cores, deixe seu mundo colorido e alegre.</p>
+                            </div>
+                            <div class="servico-checkbox" data-selected="false">
+                                <p class="title-corte">Hidratação</p>
+                                <img src="/FrontEnd/images/cabelos/hidratacao.png" alt="" class="img-servico">
+                                <p class="descricao-corte">Trate seu cabelo com o seu devido cuidado.</p>
+                            </div>
+                            <div class="servico-checkbox" data-selected="false">
+                                <p class="title-corte">Alisamento</p>
+                                <img src="/FrontEnd/images/cabelos/" alt="" class="img-servico">
+                                <p class="descricao-corte">Deixe seu cabelo liso, democrático para todas as ocasiões.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="horarios">
+                    <p class="tit-mod">Selecione a Data e o Horário para seu Agendamento:</p>
+                    <form class="form-data">
+                        <label for="data" class="label">Data:</label>
+                        <input type="date" id="data" name="data" required><br><br>
+    
+                        <label for="horario" class="label">Horário:</label>
+                        <input type="time" id="horario" name="horario" required><br><br>
+                    </form>
+                </div>
+
+                <div class="barbeiros">
+                    <p class="tit-mod">Selecione o Barbeiro de sua Confiança:</p>
+                    <div class="section" id="barbeiros">
+                        <p class="title-degrade">Barbeiros:</p>
+                        <div class="cards-cortes">
+                            
+                            <div class="servico-checkbox" data-selected="false">
+                                <div class="div-nome">
+                                    <p class="nome-barbeiro">Brenudo Fernandes</p><img src="/FrontEnd/images/estrela.png" alt="" class="estrelas">
+                                </div>
+                                <img src="/FrontEnd/images/" alt="" class="img-servico">
+                                <p class="descricao-corte">Idade: 25</p>
+                                <p class="descricao-corte">Clique aqui para Ver suas Avaliações</p>
+                            </div>
+
+                            <div class="servico-checkbox" data-selected="false">
+                                <div class="div-nome">
+                                    <p class="nome-barbeiro">Diego Bicelli</p><img src="/FrontEnd/images/estrela.png" alt="" class="estrelas">
+                                </div>
+                                <img src="/FrontEnd/images/" alt="" class="img-servico">
+                                <p class="descricao-corte">Idade: 20</p>
+                                <p class="descricao-corte">Clique aqui para Ver suas Avaliações</p>
+                            </div>
+
+                            <div class="servico-checkbox" data-selected="false">
+                                <div class="div-nome">
+                                    <p class="nome-barbeiro">Gustavo Garnacho</p><img src="/FrontEnd/images/estrela.png" alt="" class="estrelas">
+                                </div>
+                                <img src="/FrontEnd/images/" alt="" class="img-servico">
+                                <p class="descricao-corte">Idade: 21</p>
+                                <p class="descricao-corte">Clique aqui para Ver suas Avaliações</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="confirmacao">
+                    <div class="div-conf">
+                        <p class="tit-mod">Confirme os Dados do Agendamento:</p>
+
+                        <div class="alinhamento">
+                            <div class="divison1">
+                                <p class="title-conf">Serviços Selecionados:</p>
+
+                                <div class="serv-conf">
+                                    <div class="card-conf">
+                                        <img src="/FrontEnd/images/cabelos/low-fade.png" alt="" class="img-conf">
+                                        <div class="conf-info">
+                                            <p class="elementos">Low Fade</p>
+                                            <p class="sub-elementos">Tempo Estimado:</p>
+                                            <p class="sub-elementos">50 minutos</p>
+                                        </div>
+                                    </div>            
+                                </div>
+
+                                <div class="serv-conf">
+                                    <div class="card-conf">
+                                        <img src="/FrontEnd/images/barbas/barba-grande.png" alt="" class="img-conf">
+                                        <div class="conf-info"> 
+                                            <p class="elementos">Barbas</p>
+                                            <p class="sub-elementos">Tempo Estimado:</p>
+                                            <p class="sub-elementos">30 minutos</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="serv-conf">
+                                    <div class="card-conf">
+                                        <img src="/FrontEnd/images/cabelos/hidratacao.png" alt="" class="img-conf">
+                                        <div class="conf-info">
+                                            <p class="elementos">Hidratação</p>
+                                            <p class="sub-elementos">Tempo Estimado:</p>
+                                            <p class="sub-elementos">25 minutos</p>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                            </div>
+                            
+                            <div class="divison1">
+                                <p class="title-conf">Tempo Total Estimado:</p>
+                                <p class="sub-elementos">105 minutos</p>
+                                <div class="data-conf" style="">
+                                    <p class="elementos">Data:</p> <p>RESPOSTA</p>
+                                    <p class="elementos">Horário:</p> <p>RESPOSTA</p>
+                                </div>
+                                
+                                <p class="title-conf">Barbeiro:</p>
+                                <div class="card-barb" style="    ">
+                                    
+                                    <p class="elementos">Gustavo Garnacho</p>
+                                    <img src="/FrontEnd/images/estrela.png" alt="" class="img-estrela">
+                                    <img src="/FrontEnd/images/profile.png" alt="" class="ft-barbeiro">
+                                </div>
+                                
+                            </div>
+                        
+                        </div>
+
+                        <div class="btns">
+                            <button class="btn-confirmar">Confirmar</button>
+                            <button class="btn-cancelar">Cancelar</button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
     
@@ -145,7 +343,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+    <script src="/FrontEnd/JS/cliente/opcoes_servicos.js"></script>
     <script src="/FrontEnd/JS/endpoints.js"></script>
     <script src="/FrontEnd/JS/cliente/modal/modal_cliente.js"></script>
     <script src="/FrontEnd/JS/cliente/pagina_cliente.js"></script>
