@@ -1,5 +1,6 @@
 const API_marcar_corte = getEndpoint_client("marcar_corte")
 const API_pegar_cortes = getEndpoint_client("pegar_cortes")
+const API_nome_funcionario = getEndpoint_client("funcionario_nome")
 const API_atualizar_cortes = getEndpoint_schedule("atualizar")
 const API_deletar_cortes = getEndpoint_schedule("deletar")
 
@@ -87,16 +88,17 @@ async function addDivCortes() {
     await fetch(API_pegar_cortes({client_id: retornarIdUsuario()}))
         .then(res => res.json())
         .then(data => {
-            data.forEach(element => {
+            data.forEach(async element => {
                 textDATA = ""
                 const btn_editar = document.createElement('button')
                 const btn_delete = document.createElement('button')
                 if(element.funcionario_id){
-                    textDATA = `<h4>DATA:</h4> ${element.data} ; ${element.hora} <h4>FUNCIONARIO: </h4> ${element.funcionario_id} `;
+                    nome_data = await fetch(API_nome_funcionario({funcionario_id : element.funcionario_id})).then(data => data.json()).then(data => {return data.name})
+                    textDATA = `<h4>SERVIÇO CONFIRMADO ✓</h4><hr><br> <h4>DATA:</h4> ${element.data} ; ${element.hora} <h4><br>FUNCIONARIO: </h4> ${nome_data} `;
                     btn_editar.style.display = 'none'
                     btn_delete.innerHTML = "CANCELAR AGENDAMENTO"
                 } else {
-                    textDATA = `<h4>DATA:</h4> ${element.data} ; ${element.hora} `;
+                    textDATA = `<h4>ESPERANDO CONFIRMAÇÃO ... <h4><hr><br>DATA:</h4> ${element.data} ; ${element.hora} `;
                 }
                 textDESCRIPTION = `<h4>DESCRIÇÃO:</h4>${element.servico}`;
 

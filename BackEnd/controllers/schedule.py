@@ -20,7 +20,7 @@ async def pegar_cortes(client_id):
     print(client_id)
     for i in collection_cortes.find({'client_id': int(client_id)}):
         i["_id"] = f"ObjectId({str(i['_id'])})"
-    datas.append(i)
+        datas.append(i)
     return datas
 
 async def pegar_todos_cortes():

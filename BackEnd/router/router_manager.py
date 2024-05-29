@@ -26,6 +26,10 @@ async def get_funcionarios():
 async def delete_funcionarios(funcid: int):
     return controller.excluir_funcionario(funcid)
 
+@router.put('/editar_funcionario/{funcid}')
+async def editar_funcionarios(funcid, data = Body(...)):
+    return controller.editar_funcionario(funcid, data)
+
 @router.get('/listar_usuarios/')
 async def listar_todos_usuarios():
     return controller.listar_usuarios()
@@ -34,3 +38,19 @@ async def listar_todos_usuarios():
 async def add_func(funcionario: Funcionario = Body(...)):
     funcionario.funcionario_id = controller.qtd_ids_funcionario()
     return controller.inserir_funcionario(funcionario)
+
+@router.post("/cadastrar_servico")
+async def add_servico(servico: dict = Body(...)):
+    return controller.criar_servicos(servico)
+
+@router.get("/listar_servicos")
+async def listar_todos_servicos():
+    return controller.listar_servicos()
+
+@router.delete("/deletar_servico/{nome}")
+async def deletar_servico(nome):
+    return controller.excluir_servico(nome)
+
+@router.put("/editar_servico/{nome}")
+async def edit_servico(nome: str , data: dict = Body(...)):
+    return controller.editar_servico(nome, data)

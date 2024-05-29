@@ -69,3 +69,7 @@ async def pegarCortes(client_id):
 @router.get('/usuario')
 async def get_usuario(id: int):
     return controller.listar_usuario_por_id(id)
+
+@router.get('/funcionarionames/{id}')
+async def get_nome_funcionario(id):
+    return controller.retornar_nome_funcionario(id)
