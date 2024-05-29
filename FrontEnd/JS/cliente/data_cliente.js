@@ -50,7 +50,7 @@ function buscarImagemCliente(cliente_id) {
   console.log(cliente_id);
 
   // Constrói o nome do arquivo
-  const filename = `user_${cliente_id}.jpg`;
+  const filename = `user_${cliente_id}.webp`;
   console.log(filename);
 
 

@@ -9,3 +9,5 @@ fastapi_env
 /BackEnd/database/__pycache__/
 /BackEnd/models/__pycache__/
 /BackEnd/router/__pycache__/
+/BackEnd/clientes_pictures/
+/BackEnd/service/__pycache__/
