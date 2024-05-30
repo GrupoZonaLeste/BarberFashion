@@ -706,7 +706,7 @@ input[type="month"] {
     margin: 15% auto;
     border-radius: 5px;
     width: 100%;
-    text-align: start;
+    text-align: center;
 }
 
 .modal-content h4 {
@@ -827,4 +827,64 @@ input[type="month"] {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.foto-perfil{
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    
+}
+
+.foto-perfil-funcionario {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%;   
+}
+
+#picture_input{
+    display: none;
+}
+#picture_input_funcionario {
+    display: none;
+}
+
+img.picture_img {
+    width: 150px;
+    object-position: bottom;
+    object-fit: cover;
+    text-align: center;
+}
+.picture{
+    height: 7.5rem;
+    width: 7.5rem;
+    aspect-ratio: 16/9;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border: 2px dashed #aaa;
+    cursor: pointer;
+    font-weight: 500;
+    text-align: center;
+    transition: 0.3s all;
+    padding: 0.5rem;
+}
+
+.picture:hover {
+    opacity: 0.5;
+}
+
+.picture:active{
+    border-color: #FF9800;
+    color: #FF9800;
+}
+.picture_img {
+    object-fit: cover;
 }

@@ -5,6 +5,12 @@ from urllib.parse import unquote
 from controllers.tokens import Token
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from typing import Dict
+from fastapi.staticfiles import StaticFiles
+from fastapi import File, UploadFile
+import os
+import shutil
+from PIL import Image
+from fastapi.responses import JSONResponse  
 ##Classes locais
 from controllers.employee import Controller_employee
 from models.model import *

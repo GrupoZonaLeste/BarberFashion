@@ -126,6 +126,15 @@
             <h1 style="font-size: 1.5rem;">CRIAR FUNCIONÁRIO</h1>
                 <div class="modal-content-funcionario">
                     <form>
+
+                        <label>Adicionar foto:</label>
+                        <div class="foto-perfil">
+                            <label tabindex="0" class="picture">
+                                <input type="file" accept="image/*" id="picture_input_funcionario" >
+                                <img class="picture_img" src="/FrontEnd/images/profile.png"  width="130" height="130" id="image_user" name="imagem-funcionario">
+                            </label>
+                        </div>
+
                         <label for="nome">Nome:</label>
                         <input type="text" id="nome" name="nome" required>
                         <label for="cargo">Email:</label>
@@ -168,10 +177,12 @@
                     <div id="formulario-servicos" class="div-criar-servicos">
                         <form class="form-servicos">
 
-                            <div class="foto-perfil">
+                            
+                            <label>Adicionar foto:</label>
+                            <div class="foto-perfil-funcionario">
                                 <label tabindex="0" class="picture">
-                                    <input type="file" accept="image/*" id="picture_input">
-                                    <img class="picture_img" src="" alt="Envie sua foto" id="image_user">
+                                    <input type="file" accept="image/*" id="picture_input" >
+                                    <img class="picture_img" src="/FrontEnd/images/LogoMarca.png" width="150" height="150" id="image_user" name="imagem-servico">
                                 </label>
                             </div>
 
@@ -196,7 +207,7 @@
                 </div>
             </div>
         </div>
-
+        <img>
         <div class="modal_editar_Servicos">
             <div class="card" style="margin:130px auto; width: 300px;">
                 <button id="fechar_editarServicos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>

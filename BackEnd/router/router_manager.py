@@ -25,6 +25,7 @@ jwt_token = Token()
 router = APIRouter()
 
 router.mount("/static", StaticFiles(directory="pictures_servicos"), name="static")
+router.mount("/static", StaticFiles(directory="pictures_funcionarios"), name="static")
 
 
 @router.post("/upload/")
@@ -34,7 +35,7 @@ async def upload_image(image: UploadFile = File(...), id: str = None):
 
     # Diretório onde as imagens serão salvas
     upload_folder = "pictures_servicos"
-    file_extension = ".webp"
+    file_extension = ".jpeg"
 
     # Cria o novo nome do arquivo usando o ID do usuário e a extensão do arquivo original
     new_filename = f"servico_{id}{file_extension}"
@@ -52,7 +53,40 @@ async def upload_image(image: UploadFile = File(...), id: str = None):
 
     # Abre a imagem e a converte para WebP
     with Image.open(temp_path) as img:
-        img.save(image_path, format="webp")
+        img.save(image_path, format="jpeg")
+
+    # Remove a imagem temporária
+    os.remove(temp_path)
+
+    return JSONResponse({"filename": new_filename})
+
+
+@router.post("/upload_funcionario/")
+async def upload_image(image: UploadFile = File(...), id: int = None):
+    if id is None:
+        raise HTTPException(status_code=400, detail="ID is required")
+
+    # Diretório onde as imagens serão salvas
+    upload_folder = "pictures_funcionarios"
+    file_extension = ".jpeg"
+
+    # Cria o novo nome do arquivo usando o ID do usuário e a extensão do arquivo original
+    new_filename = f"funcionario_{id}{file_extension}"
+
+    # Caminho completo para salvar a imagem
+    image_path = os.path.join(upload_folder, new_filename)
+   
+    # Cria o diretório de upload se não existir
+    os.makedirs(upload_folder, exist_ok=True)
+
+    # Salva a imagem no diretório temporariamente
+    temp_path = os.path.join(upload_folder, f"temp_{id}{os.path.splitext(image.filename)[1]}")
+    with open(temp_path, "wb") as buffer:
+        shutil.copyfileobj(image.file, buffer)
+
+    # Abre a imagem e a converte para WebP
+    with Image.open(temp_path) as img:
+        img.save(image_path, format="jpeg")
 
     # Remove a imagem temporária
     os.remove(temp_path)
