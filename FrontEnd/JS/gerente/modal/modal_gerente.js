@@ -43,4 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnRelatorio = document.getElementById('btn-relat');
     const btnFecharRelatorio = document.getElementById('fechar_relatorio_btn');
     addModalEventListeners(btnRelatorio, btnFecharRelatorio, modalRelatorio);
+
+    // MODAL: Serviços
+    const modalServicos = document.querySelector('.modal_Servicos');
+    const btnServicos = document.querySelector("[name=editar-barbearia-btn]");
+    const btnFecharServicos = document.getElementById('fechar_servicos_btn');
+    addModalEventListeners(btnServicos, btnFecharServicos, modalServicos);
 });

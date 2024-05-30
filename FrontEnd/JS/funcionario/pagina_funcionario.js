@@ -21,7 +21,7 @@ async function addDivCortes(){
         data.forEach(async element => {
             nome_data = await fetch(API_pegar_nomes_usuarios({id : element.client_id})).then(data => data.json()).then(data => {return data.name})
             if(element.funcionario_id){
-                textDATA = `<h4>DATA:</h4> ${element.data} ; ${element.hora} <h4>CLIENTE:</h4> ${nome_data}`;
+                textDATA = `<h4>DATA:</h4> ${element.data} ; ${element.hora} <h4><br>CLIENTE:</h4> ${nome_data}`;
                 textDESCRIPTION = `<h4>DESCRIÇÃO:</h4>${element.servico}`;
                 
                 const p = document.createElement('p')
@@ -97,7 +97,7 @@ async function addDivCortes(){
                     return
             }
             if(!element.funcionario_id){
-            textDATA = `<h4>DATA:</h4> ${element.data} ; ${element.hora} <h4>CLIENTE:</h4> ${nome_data}`;
+            textDATA = `<h4>DATA:</h4> ${element.data} ; ${element.hora} <h4><br>CLIENTE:</h4> ${nome_data}`;
             textDESCRIPTION = `<h4>DESCRIÇÃO:</h4>${element.servico}`;
             const p = document.createElement('p')
             const p2 = document.createElement('p')
@@ -132,7 +132,7 @@ async function addDivCortes(){
                 await fetch(API_atualizar_cortes({id: btn_aceitar.id}),{
                     method: 'PUT',
                     body: JSON.stringify({
-                        "funcionario_id": "teste"
+                        "funcionario_id": retornarIdUsuario()
                     }),
                     headers: {
                         'Content-Type': 'application/json'

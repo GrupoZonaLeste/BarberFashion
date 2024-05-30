@@ -21,12 +21,16 @@
 
     <main class="container">
 
-            <div class="sidebar">
+        <div class="sidebar">
+                <div class="config" style="cursor: pointer;" name="editar-barbearia-btn">
+                    <a ><img src="/FrontEnd/images/icone_editar.png"  alt="botão para editar barbearia" name="editar-barbearia-btn"></a>
+                    <a  class="link-config" name="editar-barbearia-btn">EDITAR SERVIÇOS</a>
+                </div>            
                 <div class="config">
                     <a href=""><img src="/FrontEnd/images/setting-wh.png" alt=""></a>
                     <a href="" class="link-config">CONFIGURAÇÕES</a>
                 </div>
-                <div class="sair">
+                <div class="sair" style="cursor: pointer;">
                     <a ><img src="/FrontEnd/images/sair-red.png" id="logout" alt="botão de sair da página"></a>
                     <a  class="link-sair">SAIR</a>
                 </div>            
@@ -120,7 +124,7 @@
         <div class="card" style="margin:130px auto; width: 300px;">
             <button id="fechar_cadastrarFuncionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
             <h1 style="font-size: 1.5rem;">CRIAR FUNCIONÁRIO</h1>
-                <div class="modal-content">
+                <div class="modal-content-funcionario">
                     <form>
                         <label for="nome">Nome:</label>
                         <input type="text" id="nome" name="nome" required>
@@ -128,6 +132,9 @@
                         <input type="text" id="email" name="email" required>
                         <label for="cargo">Senha:</label>
                         <input type="text" id="senha" name="senha" required>
+
+                        <div id="div_cadastrar_servicos_funcionario" style="align-items: start;"></div>
+                        <br>    
                     </form>
                     <input type="submit" id="cadastrarFuncionario" value="Cadastrar" style="background-color: #FF9800;" class="button cadastrar">
                 </div>
@@ -152,6 +159,55 @@
                 </div>
         </div>
     </div>
+
+    <div class="modal_Servicos">
+        <div class="card" style="margin:130px auto; width: 800px;" id="servicos_agendados">
+            <button id="fechar_servicos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <h1 style="font-size: 1.5rem;">CONTROLE DE SERVIÇOS</h1>
+                <div class="modal-content-servicos" id="servicos">
+                    <div id="formulario-servicos" class="div-criar-servicos">
+                        <form class="form-servicos">
+                            <label for="nome-servico">Nome:</label>
+                            <input id="nome-servico">
+
+                            <label for="descricao-servico">Descrição:</label>
+                            <textarea id="descricao-servico" rows="5" cols="50" maxlength="150" minlength="10" autocomplete="on" style="resize: none; padding: 6px;"></textarea>
+
+                            <label for="tempo-servico">Tempo estimado: (Em minutos)</label>
+                            <input id="tempo-servico" type="number">
+
+                            <label for="preco-servico">Preço: (Em R$)</label>
+                            <input id="preco-servico" type="number">
+                        </form>
+                        <button id="btn-add-servico">Adicionar serviço</button>
+                    </div>
+                    
+                    <div id="servicos-cadastrados">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="modal_editar_Servicos">
+            <div class="card" style="margin:130px auto; width: 300px;">
+                <button id="fechar_editarServicos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+                <h1 style="font-size: 1.5rem;">EDITAR SERVIÇO</h1>
+                    <div class="modal-content" id="editar_servicos">
+                    </div>
+            </div>
+        </div>
+
+        <div class="modal_editar_Funcionario">
+            <div class="card" style="margin:130px auto; width: 300px;">
+                <button id="fechar_editar_Funcionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+                <h1 style="font-size: 1.5rem;">EDITAR FUNCIONÁRIO</h1>
+                    <div class="modal-content" id="editar_Funcionario">
+                    </div>
+            </div>
+        </div>
+        
+
     <div class="modal_Relatorio">
         <div class="card_Relatorio" id="card_Relatorio" style="margin:130px auto; height: 10rem;">
             <button id="fechar_relatorio_btn" type="button" class="btn-fechar" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
@@ -199,7 +255,6 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    
     <script src="/FrontEnd/JS/endpoints.js"></script>
     <script src="/FrontEnd/JS/token/token_decode.js"></script>
     <script src="/FrontEnd/JS/gerente/relatorio_gerente.js"></script>
