@@ -1,6 +1,5 @@
 const input_email = document.getElementById("email")
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const enviar_email = document.getElementById("enviar_email")
 const spans = document.getElementById('span_email');
 
 function emailValidate(){
@@ -17,21 +16,18 @@ function emailValidate(){
 function setError(){
     input_email.style.border = "2px solid #e63636";
     spans.style.display = 'block';
+    toggleButton(false)
 
  }
  //4.2 estiliza os inputs que não estão mais com erro
  function removeError(){
      input_email.style.border = "";
      spans.style.display = 'none';
+     toggleButton(true)
  }
 
- enviar_email.addEventListener('click',function() {
-    console.log();
-})
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Adiciona um ouvinte de eventos para o evento keypress
-    input_email.addEventListener('keypress', function() {
-        emailValidate()
-    });
-});
+function toggleButton(state) {
+    const btn_email = document.getElementById("btn_email");
+    btn_email.disabled = !state; // Se state for true, o botão é habilitado (disabled = false); se state for false, o botão é desabilitado (disabled = true)
+}

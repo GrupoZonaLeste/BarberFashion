@@ -69,3 +69,9 @@ async def pegarCortes(client_id):
 @router.get('/usuario')
 async def get_usuario(id: int):
     return controller.listar_usuario_por_id(id)
+
+@router.post("/alterar_senha/")
+async def alterar_senha(new_senha: AlterarSenha):
+    email = new_senha.email
+    nova_senha = new_senha.password
+    return controller.alterar_senha(email, nova_senha)

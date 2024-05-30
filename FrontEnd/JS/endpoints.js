@@ -11,6 +11,8 @@ const endpoints = {
   auth: {
     verificar: `${baseURL}${auth_prefix}/verificar-token/`,
     login: `${baseURL}${auth_prefix}/login/`,
+    solicitar_recuperacao: `${baseURL}${auth_prefix}/recuperar-senha/`,
+    verificar_codigo: `${baseURL}${auth_prefix}/verificar-codigo/`,
   },
   client: {
     marcar_corte: `${baseURL}${client_prefix}/marcarcorte/`,

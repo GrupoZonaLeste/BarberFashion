@@ -28,15 +28,25 @@
                 <form>
                 <div class="form-group">
                     <label for="username">Email:</label>
-                    <input type="text" class="form-control" id="email" placeholder="Digite seu email">
+                    <input type="text" class="form-control" id="email" placeholder="Digite seu email" oninput="emailValidate()" >
+                    <div id="loadingOverlay" class="loading-overlay" hidden>
+                        <div class="loading-spinner"></div>
+                    </div>
                     <span id="span_email">Digite um email válido</span>
                 </div>
+                
                 </form>
-                <button type="submit" class="btn btn-warning btn-block" id="enviar_email">Esqueci Senha</button>  
+                <button type="submit" class="btn btn-warning btn-block" id="btn_email" >Esqueci Senha</button> 
+                
             </div>
         </div>
     </div>
 </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/FrontEnd/JS/endpoints.js"></script>
 <script src="/FrontEnd/JS/login/recuperar_senha.js"></script>
+<script src="/FrontEnd/JS/login/solicitar_codigo.js"></script>
 </html>

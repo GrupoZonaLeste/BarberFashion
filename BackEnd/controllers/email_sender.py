@@ -61,7 +61,7 @@ def gerar_codigo(email: str):
         send_email(email, subject, html_message)
         return usuario
     else:
-        return "usuário não encontrado"
+        raise ValueError("EMAIL NOT FOUND")
 
     
 def verifica_email(email: str):

@@ -28,3 +28,6 @@ class Gerente(BaseModel):
 class CodeSchema(BaseModel):
     email: EmailStr
     code: str
+class AlterarSenha(BaseModel):
+    password: str
+    email: EmailStr

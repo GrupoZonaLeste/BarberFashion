@@ -11,6 +11,7 @@ from database.connection import *
 from controllers.tokens import Token
 from controllers.email_sender import *
 from models.model import CodeSchema
+from controllers import client
 
 db_handle = DBConnectionHandler()
 db_handle.connect_to_db()
@@ -55,6 +56,8 @@ def solicitar_recuperacao(email: str):
     try:
         gerar_codigo(email)
         return {"message": "Código de recuperação de senha enviado com sucesso"}
+    except ValueError as ve:
+        raise HTTPException(status_code=404, detail=str(ve))
     except Exception as e:
         raise HTTPException(status_code=500, detail="Falha ao enviar o código de recuperação")
 
@@ -76,3 +79,4 @@ async def verificar_codigo(code_data: CodeSchema):
             raise HTTPException(status_code=400, detail="Código inválido")
     else:
         raise HTTPException(status_code=400, detail="Nenhum código encontrado para este email")
+
