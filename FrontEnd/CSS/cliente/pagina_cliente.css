@@ -339,6 +339,28 @@ footer {
     box-shadow: 0px 0px 20px 5px #e79f33;
 }
 
+.servico-checkbox2{
+    display: flex;
+    flex-direction: column;
+    height: 20rem;
+    align-items: center;
+    border-radius: 2rem;
+    justify-content: space-around;
+    padding: 1.2rem;
+    width: 16rem;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 5px #b4b4b4;
+    transition: 0.3s all;
+}
+
+.servico-checkbox2:hover, .servico-checkbox2:hover, .servico-checkbox2:hover{
+    opacity: 0.5;
+}
+
+.servico-checkbox2[data-selected="true"]{
+    background-color: #e79f33;
+    box-shadow: 0px 0px 20px 5px #e79f33;
+}
 .section{
     margin: 2rem;
 }
