@@ -14,9 +14,6 @@ class Controller_client:
     def get_current_collection(self):
         return self.__db_connection.get_collection(self.__collection_name)
     
-    def _hash_password(self, password):
-        return hashlib.sha256(password.encode()).hexdigest()
-    
     def inserir_cliente(self,cliente: Cliente) -> dict:
         filter = {"email": cliente.email}
         count = self.get_current_collection().count_documents(filter)
@@ -56,6 +53,20 @@ class Controller_client:
     ##operacional    
     def qtd_ids_cliente(self):
         return self.get_current_collection().count_documents({'client_id': {'$exists': True}}) + 1
-    def _hash_password(self, password):
+    
+    def hash_password(self, password):
         return hashlib.sha256(password.encode()).hexdigest()
 
+    def alterar_senha(self, email:str, nova_senha:str):
+        nova_senha_cripto = hashlib.sha256(nova_senha.encode()).hexdigest()
+        try:
+            result = self.get_current_collection().update_one(
+                {'email': email},
+                {'$set': {'password': nova_senha_cripto}}
+            )
+            if result.matched_count > 0:
+                return {"status": "OK", "message": "Senha atualizada com sucesso."}
+            else:
+                return {"status": "ERROR", "message": "Email não encontrado."}
+        except Exception as e:
+            return {"status": "ERROR", "message": str(e)}
