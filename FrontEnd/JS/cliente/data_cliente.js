@@ -54,7 +54,7 @@ function buscarImagemCliente(cliente_id) {
   console.log(filename);
 
 
-  const imageUrl = `/BackEnd/clientes_pictures/${filename}`;
+  const imageUrl = `/BackEnd/pictures_clientes/${filename}`;
 
 
   const imgElement = document.getElementById('image_user');
@@ -71,4 +71,23 @@ function buscarImagemCliente(cliente_id) {
       imgElement.src = urlImagemAlternativa;
   };
 }
+/*
+import axios from "axios";
+
+const form = new FormData();
+form.append("image", "C:\\Users\\dti\\Pictures\\PAPEL_LABORATÓRIOS.png");
+input.files[0]
+const options = {
+  method: 'POST',
+  url: 'http://localhost:8000/manager/upload',
+  params: {id: 'strokes'},
+  data: '[form]'
+};
+
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});
+*/
 
