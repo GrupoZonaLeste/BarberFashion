@@ -30,6 +30,12 @@ async def pegar_todos_cortes():
         datas.append(i)
     return datas
      
+async def pegar_cortes_agendados():
+    datas = []
+    for i in collection_cortes.find({"$and": [{'client_id': {'$exists': True} , 'funcionario_id': {'$exists': True}}] } ):
+        i["_id"] = f"ObjectId({str(i['_id'])})"
+        datas.append(i)
+    return datas
 
 async def deletar_cortes(id: str):
     collection_cortes.delete_one({"_id": ObjectId(id)})

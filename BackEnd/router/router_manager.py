@@ -13,6 +13,7 @@ from fastapi.responses import JSONResponse
 ##Classes locais
 from controllers.tokens import Token
 from controllers.manager import Controller_manager
+from controllers.schedule import pegar_cortes_agendados
 from models.model import *
 from database.connection import *
 
@@ -129,3 +130,7 @@ async def deletar_servico(nome):
 @router.put("/editar_servico/{nome}")
 async def edit_servico(nome: str , data: dict = Body(...)):
     return controller.editar_servico(nome, data)
+
+@router.get("/listar_cortes_agendados")
+async def listar_agendamentos():
+    return await pegar_cortes_agendados()

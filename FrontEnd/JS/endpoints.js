@@ -32,8 +32,8 @@ const endpoints = {
     foto_servicos: `${baseURL}${manager_prefix}/upload/`,
     listar_servicos: `${baseURL}${manager_prefix}/listar_servicos`,
     deletar_servicos: ({ nome }) => `${baseURL}${manager_prefix}/deletar_servico/${nome}`,
-    editar_servicos: ({ nome }) => `${baseURL}${manager_prefix}/editar_servico/${nome}`
-    
+    editar_servicos: ({ nome }) => `${baseURL}${manager_prefix}/editar_servico/${nome}`,
+    listar_agendamentos: `${baseURL}${manager_prefix}/listar_cortes_agendados/`
   },
   schedule: {
     deletar: ({id}) => `${baseURL}${schedule_prefix}/deletarcorte/${id}`,

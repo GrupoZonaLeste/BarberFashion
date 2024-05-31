@@ -7,6 +7,11 @@ const API_cadastrar_servicos = getEndpoint_manager("cadastrar_servicos")
 const API_listar_servicos = getEndpoint_manager("listar_servicos")
 const API_excluir_servicos = getEndpoint_manager("deletar_servicos")
 const API_editar_servicos = getEndpoint_manager("editar_servicos")
+const API_listar_agendamentos = getEndpoint_manager("listar_agendamentos")
+
+// Nomes funcionario e clientes
+const API_pegar_nomes_usuarios = getEndpoint_employee("pegar_nomes_usuario")
+const API_nome_funcionario = getEndpoint_client("funcionario_nome")
 // Utilizando os endpoints para definir o endereço para realizar o fetch
 const nomeInput = document.getElementById('nome')
 const emailInput = document.getElementById('email')
@@ -127,7 +132,7 @@ async function addDivFuncionarios(){
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
-            textNode = `<img id="${element.funcionario_id}" style="width: 100px; height: 100px; object-fit: cover;"><br><br> <h4>${element.name}</h4><hr><br> <b style="font-size: 110%">Email:</b> ${element.email}<br>`
+            textNode = `<img id="image_funcionario_${element.funcionario_id}" style="width: 100px; height: 100px; object-fit: cover;"><br><br> <h4>${element.name}</h4><hr><br> <b style="font-size: 110%">Email:</b> ${element.email}<br>`
             const p = document.createElement('p')
 
             const btn_editar = document.createElement('button')
@@ -164,7 +169,8 @@ async function addDivFuncionarios(){
             div_contentService.append(div_textos)
             div_contentService.append(div_btn)
             divFuncionariosCadastrados.append(div_contentService)
-            buscarImagemFuncionario(element.funcionario_id)
+            const imgfunc = document.getElementById(`image_funcionario_${element.funcionario_id}`)
+            buscarImagemFuncionario(imgfunc, element.funcionario_id)
             
             btn_deletar.addEventListener('click', async ()=> {
                 
@@ -297,7 +303,8 @@ async function addDivClientes(){
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
-            textNode = `<b style="font-size: 120%">Nome: ${element.name}</b> <b style="font-size: 120%">Email: ${element.email}</b>`
+            textNode = `<img id="image_client_${element.client_id}" style="width: 100px; height: 100px; object-fit: cover;"><br> <b style="font-size: 120%">Nome: ${element.name}</b> <b style="font-size: 120%">Email: ${element.email}</b>`
+            
             const p = document.createElement('p')
             p.innerHTML = textNode
             p.style.margin = '5px'
@@ -305,6 +312,8 @@ async function addDivClientes(){
             p.id = 'content_service'
             p.style.alignItems = 'start'
             divClientesCadastrados.appendChild(p)
+            const imga = document.getElementById(`image_client_${element.client_id}`)
+            buscarImagemCliente(imga, element.client_id)
         })
     })
     .catch(erro => console.log(erro))
@@ -547,7 +556,43 @@ async function listarServicosCheckbox(){
     return divCheckboxServicos
 }
 
+async function addDivAgendamentos(){
+    const divAgendamentos = document.getElementById('div-agendamentos')
 
+    await fetch(API_listar_agendamentos)
+    .then(response => response.json())
+    .then(response => {
+        response.forEach(async element => {
+            nome_cliente = await fetch(API_pegar_nomes_usuarios({id : element.client_id})).then(data => data.json()).then(data => {return data.name})
+            nome_funcionario = await fetch(API_nome_funcionario({funcionario_id : element.funcionario_id})).then(data => data.json()).then(data => {return data.name})
+
+            textNode = `
+            <img name="image_client_service_${element.client_id}" style="width: 60px; height: 60px; object-fit: cover;"><br>
+            <h4>CLIENTE: ${nome_cliente}</h4><br> 
+            <img name="image_funcionario_service_${element.funcionario_id}" style="width: 60px; height: 60px; object-fit: cover;"><br>
+            <h4>FUNCIONÁRIO: ${nome_funcionario}</h4><br><br> 
+            <h4>DATA:</h4> ${element.data} ; ${element.hora} <h4><br>SERVIÇO:</h4>${element.servico}`
+
+            const imgCliente = document.getElementsByName(`image_client_service_${element.client_id}`)
+            const imgfunc = document.getElementsByName(`image_funcionario_service_${element.client_id}`)
+            const p = document.createElement('p')
+            p.innerHTML = textNode
+            p.style.margin = '5px'
+            p.style.fontSize = '110%'
+            p.id = 'content_service'
+            p.style.alignItems = 'start'
+            divAgendamentos.appendChild(p)
+
+            imgCliente.forEach(item =>{
+                buscarImagemCliente(item, element.client_id)
+            })
+            imgfunc.forEach(item => {
+                buscarImagemFuncionario(item, element.client_id)
+            })
+        })
+    })
+}
+document.addEventListener("DOMContentLoaded", addDivAgendamentos)
 document.addEventListener("DOMContentLoaded", AddDivServicos)
 document.addEventListener("DOMContentLoaded", listarServicosCheckbox)
 document.addEventListener("DOMContentLoaded",addDivClientes)

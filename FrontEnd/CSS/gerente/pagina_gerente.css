@@ -807,6 +807,17 @@ input[type="month"] {
     max-height: 100%;
 }
 
+.modal_Agendamentos {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 .modal_editar_Servicos {
     display: none;
     position: fixed;

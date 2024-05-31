@@ -75,50 +75,68 @@ function buscarImagemServico(servico_id) {
     };
 }
 
-function buscarImagemFuncionario(funcid) {
+function buscarImagemCliente(tag, cliente_id) {
+
     // Constrói o nome do arquivo
-    const filename = `funcionario_${funcid}.jpeg`;
-    const imageUrl = `/BackEnd/pictures_funcionarios/${filename}`;
-    const imgElement = document.getElementById(funcid);
+    const filename = `user_${cliente_id}.webp`;
+    const imageUrl = `/BackEnd/pictures_clientes/${filename}`;
 
     // Define a nova url na imagem 
-    imgElement.src = imageUrl;
-    
+    tag.src = imageUrl;
+  
     // Caso de algum erro
-    imgElement.onerror = function() {
-        const urlImagemAlternativa = '/FrontEnd/images/Profile.png';
-        imgElement.src = urlImagemAlternativa;
+    tag.onerror = function() {
+        // URL Dos icones padroes do Gui
+        const urlImagemAlternativa = '/FrontEnd/images/profile.png';
+        tag.src = urlImagemAlternativa;
     };
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    const fileInput = document.getElementById('picture_input_funcionario');
+function buscarImagemFuncionario(tag, funcid) {
 
-    fileInput.addEventListener('change', function(event) {
-        const file = event.target.files[0];
-        const reader = new FileReader();
+    // Constrói o nome do arquivo
+    const filename = `funcionario_${funcid}.jpeg`;
+    const imageUrl = `/BackEnd/pictures_funcionarios/${filename}`;
 
-        reader.onload = function(event) {
+    // Define a nova url na imagem 
+    tag.src = imageUrl;
+  
+    // Caso de algum erro
+    tag.onerror = function() {
+        // URL Dos icones padroes do Gui
+        const urlImagemAlternativa = '/FrontEnd/images/profile.png';
+        tag.src = urlImagemAlternativa;
+    };
+}
+
+  document.addEventListener("DOMContentLoaded", function() {
+      const fileInput = document.getElementById('picture_input_funcionario');
+
+      fileInput.addEventListener('change', function(event) {
+          const file = event.target.files[0];
+          const reader = new FileReader();
+          
+          reader.onload = function(event) {
             const imageUrl = event.target.result;
             document.querySelector('[name=imagem-funcionario]').setAttribute('src', imageUrl);
         };
-
+        
         reader.readAsDataURL(file);
     });
 });
 
 document.addEventListener("DOMContentLoaded", function() {
     const fileInput = document.getElementById('picture_input');
-
+    
     fileInput.addEventListener('change', function(event) {
         const file = event.target.files[0];
         const reader = new FileReader();
-
+        
         reader.onload = function(event) {
             const imageUrl = event.target.result;
             document.querySelector('[name=imagem-servico]').setAttribute('src', imageUrl);
         };
-
+        
         reader.readAsDataURL(file);
     });
 });
