@@ -27,3 +27,8 @@ async def atualizarCortes(id , dados: dict = Body(...)):
 async def deletecorte(id):
     await deletar_cortes(id)
     return "CORTE DELETADO"
+
+@router.get('/cortes_realizados/{clientid}/{funcid}/')
+async def cortesRealizados(clientid, funcid):
+    dados = await pegar_cortes_realizados(clientid, funcid)
+    return dados

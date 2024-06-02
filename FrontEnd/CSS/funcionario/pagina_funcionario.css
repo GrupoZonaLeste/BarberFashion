@@ -504,3 +504,29 @@ section{
     width: 100%;
     justify-content: space-around;
 }
+
+.inferior{
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+}
+
+.card-inferior{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    align-items: center;
+    border-top: solid 0.3rem #FF9800;
+    border-radius: 0.5rem;
+    padding: 1.3rem;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon-seta{
+    display: flex;
+    height: 2rem;
+    width: 2rem;
+}

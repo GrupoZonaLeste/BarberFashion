@@ -85,8 +85,8 @@
                     <div class="inferior">
                         <div class="card-inferior">
                             <p class="card-title">HISTÓRICO DE SERVIÇOS</p>
-                            <div>
-                                <img src="/FrontEnd/images/right-arrow-down.png" class="card-icon-seta" alt="">
+                            <div id="div-historico">
+                                <img src="/FrontEnd/images/right-arrow-down.png" class="card-icon-seta" id="seta" alt="">
                             </div>
                         </div>
                     </div>
@@ -98,102 +98,20 @@
     
     <div class="modal_agendar">
         <div class="card_agendar" style="margin:130px auto; width: 80rem; height: 100%;">
+            <button id="limpar_agendamento_btn" type="button" class="btn-limpar" >LIMPAR FORMUÁRIO</button>
             <button id="fechar_agendamento_btn" type="button" class="btn-fechar" >X</button>
             <p style="font-size: 2rem;">Agendar Serviço</p><br>
                 <div class="conteudo-servico">
-                <div class="navegacao">
+                <div class="navegacao" style="position: sticky;">
                     <button id="btnservicos">SERVIÇOS</button>
                     <button id="btnhorarios">HORÁRIOS</button>
                     <button id="btnbarbeiros">BARBEIROS</button>
                     <button id="btnconfirmacao">CONFIRMAÇÃO</button>
                 </div>
                 <div class="serviços">
-                <p class="tit-mod">Selecione os Serviços Desejados:</p>
+                    <p class="tit-mod">Selecione os Serviços Desejados:</p>
                     <div class="section" id="cortes">
-                        <p class="title-degrade">Degradês:</p>
-                        <div class="cards-cortes">
-                            
-                            <div class="servico-checkbox" data-selected="false">
-                                <p class="title-corte">Low-Fade</p>
-                                <img src="/FrontEnd/images/cabelos/low-fade.png" alt="" class="img-servico">
-                                <p class="descricao-corte">Corte com desfarce mais baixo, com mais volumes nas laterais.</p>
-                            </div>
-                            <div class="servico-checkbox" data-selected="false">
-                                <p class="title-corte">Mid-Fade</p>
-                                <img src="/FrontEnd/images/cabelos/mid-fade 1.png" alt="" class="img-servico">
-                                <p class="descricao-corte">Corte com desfarce médio, com volume mediano nas laterais.</p>
-                            </div>
-                            <div class="servico-checkbox" data-selected="false">
-                                <p class="title-corte">High-Fade</p>
-                                <img src="/FrontEnd/images/cabelos/high-fade.png" alt="" class="img-servico">
-                                <p class="descricao-corte">Corte com desfarce médio, com pouco volume nas laterais.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="section" id="barbas">
-                        <p class="title-degrade">Barbas:</p>
-                        <div class="cards-cortes">
-                            
-                            <div class="servico-checkbox" data-selected="false">
-                                <p class="title-corte">Barba Rala</p>
-                                <img src="/FrontEnd/images/barbas/barba-rala-desenhada.png" alt="" class="img-servico">
-                                <p class="descricao-corte">Barba rala, bem contornado, Realça linha do rosto.</p>
-                            </div>
-                            <div class="servico-checkbox" data-selected="false">
-                                <p class="title-corte">Barba Cheia</p>
-                                <img src="/FrontEnd/images/barbas/barba-grande.png" alt="" class="img-servico">
-                                <p class="descricao-corte">Barba Cheia, deixando um modelo bem flexível e imponente.</p>
-                            </div>
-                            <div class="servico-checkbox" data-selected="false">
-                                <p class="title-corte">Barba Grande</p>
-                                <img src="/FrontEnd/images/barbas/Barba-extraGrande.png" alt="" class="img-servico">
-                                <p class="descricao-corte">Barba muito Grande, indicado para homens maduros</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="section" id="bigodes">
-                        <p class="title-degrade">Bigodes:</p>
-                        <div class="cards-cortes">
-                            
-                            <div class="servico-checkbox" data-selected="false">
-                                <p class="title-corte">Bigode Francês</p>
-                                <img src="/FrontEnd/images/barbas/bigode-frances.png" alt="" class="img-servico">
-                                <p class="descricao-corte">Pontas mais alongadas, sua elegância se destaca.</p>
-                            </div>
-                            <div class="servico-checkbox" data-selected="false">
-                                <p class="title-corte">Bigode Grosso</p>
-                                <img src="/FrontEnd/images/barbas/bigode-grosso-naorachado.png" alt="" class="img-servico">
-                                <p class="descricao-corte">Estilo muito preponderante, traz muita força e casualidade.</p>
-                            </div>
-                            <div class="servico-checkbox" data-selected="false">
-                                <p class="title-corte">Bigode Rachado</p>
-                                <img src="/FrontEnd/images/barbas/bigode-grosso-rachado.png" alt="" class="img-servico">
-                                <p class="descricao-corte">Bigode rachado, ousadia é a sua identidade.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="section" id="tratamentos">
-                        <p class="title-degrade">Tratamento:</p>
-                        <div class="cards-cortes">
-                            
-                            <div class="servico-checkbox" data-selected="false">
-                                <p class="title-corte">Pinturas</p>
-                                <img src="/FrontEnd/images/cabelos/cabelo-pintado.png" alt="" class="img-servico">
-                                <p class="descricao-corte">Pinturas das mais diversas cores, deixe seu mundo colorido e alegre.</p>
-                            </div>
-                            <div class="servico-checkbox" data-selected="false">
-                                <p class="title-corte">Hidratação</p>
-                                <img src="/FrontEnd/images/cabelos/hidratacao.png" alt="" class="img-servico">
-                                <p class="descricao-corte">Trate seu cabelo com o seu devido cuidado.</p>
-                            </div>
-                            <div class="servico-checkbox" data-selected="false">
-                                <p class="title-corte">Alisamento</p>
-                                <img src="/FrontEnd/images/cabelos/" alt="" class="img-servico">
-                                <p class="descricao-corte">Deixe seu cabelo liso, democrático para todas as ocasiões.</p>
-                            </div>
+                        <div class="cards-cortes"  id="marcar-servico">
                         </div>
                     </div>
                 </div>
@@ -213,34 +131,9 @@
                     <p class="tit-mod">Selecione o Barbeiro de sua Confiança:</p>
                     <div class="section" id="barbeiros">
                         <p class="title-degrade">Barbeiros:</p>
-                        <div class="cards-cortes">
+                        <div class="cards-cortes" id="confirmar-barbeiro">
                             
-                            <div class="servico-checkbox2" data-selected="false">
-                                <div class="div-nome">
-                                    <p class="nome-barbeiro">Brenudo Fernandes</p><img src="/FrontEnd/images/estrela.png" alt="" class="estrelas">
-                                </div>
-                                <img src="/FrontEnd/images/" alt="" class="img-servico">
-                                <p class="descricao-corte">Idade: 25</p>
-                                <p class="descricao-corte">Clique aqui para Ver suas Avaliações</p>
-                            </div>
-
-                            <div class="servico-checkbox2" data-selected="false">
-                                <div class="div-nome">
-                                    <p class="nome-barbeiro">Diego Bicelli</p><img src="/FrontEnd/images/estrela.png" alt="" class="estrelas">
-                                </div>
-                                <img src="/FrontEnd/images/" alt="" class="img-servico">
-                                <p class="descricao-corte">Idade: 20</p>
-                                <p class="descricao-corte">Clique aqui para Ver suas Avaliações</p>
-                            </div>
-
-                            <div class="servico-checkbox2" data-selected="false">
-                                <div class="div-nome">
-                                    <p class="nome-barbeiro">Gustavo Garnacho</p><img src="/FrontEnd/images/estrela.png" alt="" class="estrelas">
-                                </div>
-                                <img src="/FrontEnd/images/" alt="" class="img-servico">
-                                <p class="descricao-corte">Idade: 21</p>
-                                <p class="descricao-corte">Clique aqui para Ver suas Avaliações</p>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -250,58 +143,24 @@
                         <p class="tit-mod">Confirme os Dados do Agendamento:</p>
 
                         <div class="alinhamento">
-                            <div class="divison1">
+                            <div class="divison1" id="servicos-selecionados">
                                 <p class="title-conf">Serviços Selecionados:</p>
-
-                                <div class="serv-conf">
-                                    <div class="card-conf">
-                                        <img src="/FrontEnd/images/cabelos/low-fade.png" alt="" class="img-conf">
-                                        <div class="conf-info">
-                                            <p class="elementos">Low Fade</p>
-                                            <p class="sub-elementos">Tempo Estimado:</p>
-                                            <p class="sub-elementos">50 minutos</p>
-                                        </div>
-                                    </div>            
-                                </div>
-
-                                <div class="serv-conf">
-                                    <div class="card-conf">
-                                        <img src="/FrontEnd/images/barbas/barba-grande.png" alt="" class="img-conf">
-                                        <div class="conf-info"> 
-                                            <p class="elementos">Barbas</p>
-                                            <p class="sub-elementos">Tempo Estimado:</p>
-                                            <p class="sub-elementos">30 minutos</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="serv-conf">
-                                    <div class="card-conf">
-                                        <img src="/FrontEnd/images/cabelos/hidratacao.png" alt="" class="img-conf">
-                                        <div class="conf-info">
-                                            <p class="elementos">Hidratação</p>
-                                            <p class="sub-elementos">Tempo Estimado:</p>
-                                            <p class="sub-elementos">25 minutos</p>
-                                        </div>
-                                    </div>
-                                </div> 
-
                             </div>
                             
-                            <div class="divison1">
+                            <div class="divison2">
                                 <p class="title-conf">Tempo Total Estimado:</p>
-                                <p class="sub-elementos">105 minutos</p>
+                                <p class="sub-elementos" id="tempo-estimado"></p>
                                 <div class="data-conf">
-                                    <p class="elementos">Data:</p> <p>RESPOSTA</p>
-                                    <p class="elementos">Horário:</p> <p>RESPOSTA</p>
+                                    <p class="elementos">Data:</p> <p id="data-confirmacao"></p>
+                                    <p class="elementos">Horário:</p> <p id="horario-confirmacao"></p>
                                 </div>
                                 
                                 <p class="title-conf">Barbeiro:</p>
                                 <div class="card-barb">
                                     
-                                    <p class="elementos">Gustavo Garnacho</p>
+                                    <p class="elementos" id="barbeiro-confirmacao"></p>
                                     <img src="/FrontEnd/images/estrela.png" alt="" class="img-estrela">
-                                    <img src="/FrontEnd/images/profile.png" alt="" class="ft-barbeiro">
+                                    <img src="" alt="" class="ft-barbeiro" id="foto-barbeiro-confirmacao">
                                 </div>
                                 
                             </div>
@@ -309,8 +168,8 @@
                         </div>
 
                         <div class="btns">
-                            <button class="btn-confirmar">Confirmar</button>
-                            <button class="btn-cancelar">Cancelar</button>
+                            <button class="btn-cancelar" id="cancelar-servico">Cancelar</button>
+                            <button class="btn-confirmar" id="confirmar-servico">Confirmar</button>
                         </div>
                         
                     </div>

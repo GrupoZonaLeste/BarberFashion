@@ -71,23 +71,36 @@ function buscarImagemCliente(cliente_id) {
       imgElement.src = urlImagemAlternativa;
   };
 }
-/*
-import axios from "axios";
 
-const form = new FormData();
-form.append("image", "C:\\Users\\dti\\Pictures\\PAPEL_LABORATÓRIOS.png");
-input.files[0]
-const options = {
-  method: 'POST',
-  url: 'http://localhost:8000/manager/upload',
-  params: {id: 'strokes'},
-  data: '[form]'
-};
+function buscarImagemServico(servico_id) {
+  // Constrói o nome do arquivo
+  const filename = `servico_${servico_id}.jpeg`;
+  const imageUrl = `/BackEnd/pictures_servicos/${filename}`;
+  const imgElement = document.getElementById(servico_id);
 
-axios.request(options).then(function (response) {
-  console.log(response.data);
-}).catch(function (error) {
-  console.error(error);
-});
-*/
+  // Define a nova url na imagem 
+  imgElement.src = imageUrl;
+  
+  // Caso de algum erro
+  imgElement.onerror = function() {
+      const urlImagemAlternativa = '/FrontEnd/images/LogoMarca.png';
+      imgElement.src = urlImagemAlternativa;
+  };
+}
 
+function buscarImagemFuncionario(tag, funcid) {
+
+  // Constrói o nome do arquivo
+  const filename = `funcionario_${funcid}.jpeg`;
+  const imageUrl = `/BackEnd/pictures_funcionarios/${filename}`;
+
+  // Define a nova url na imagem 
+  tag.src = imageUrl;
+
+  // Caso de algum erro
+  tag.onerror = function() {
+      // URL Dos icones padroes do Gui
+      const urlImagemAlternativa = '/FrontEnd/images/profile.png';
+      tag.src = urlImagemAlternativa;
+  };
+}

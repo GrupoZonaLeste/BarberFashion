@@ -267,7 +267,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 4rem;
+    height: auto;
     justify-content: space-between;
     align-items: center;
     border-top: solid 0.3rem #FF9800;

@@ -26,11 +26,15 @@ security = HTTPBearer()
 jwt_token = Token()
 router = APIRouter()
 
-@router.get('/pegartodoscortes/')
-async def PegarTodosCortes():
-    dados = await pegar_todos_cortes()
+@router.get('/pegartodoscortes/{id}')
+async def PegarTodosCortes(id):
+    dados = await pegar_todos_cortes(id)
     return dados
 
 @router.get('/usuarionames/{id}')
 async def getUsuarioNome(id):
     return controller.retornar_nome_cliente(id)
+
+@router.get('/listar_funcionarios_qualificados/{servico}')
+async def listar_funcionarios(servico):
+    return controller.funcionarios_qualificados(servico)

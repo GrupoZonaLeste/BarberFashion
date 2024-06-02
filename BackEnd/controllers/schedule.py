@@ -23,16 +23,16 @@ async def pegar_cortes(client_id):
         datas.append(i)
     return datas
 
-async def pegar_todos_cortes():
+async def pegar_todos_cortes(funcid):
     datas = []
-    for i in collection_cortes.find({}):
+    for i in collection_cortes.find({"funcionario_id": int(funcid)}):
         i["_id"] = f"ObjectId({str(i['_id'])})"
         datas.append(i)
     return datas
      
 async def pegar_cortes_agendados():
     datas = []
-    for i in collection_cortes.find({"$and": [{'client_id': {'$exists': True} , 'funcionario_id': {'$exists': True}}] } ):
+    for i in collection_cortes.find({"status": "confirmado"} ):
         i["_id"] = f"ObjectId({str(i['_id'])})"
         datas.append(i)
     return datas
@@ -42,5 +42,20 @@ async def deletar_cortes(id: str):
 
 async def atualizar_cortes(id: str , dados: str):
         collection_cortes.update_many({"_id": ObjectId(id)} , {"$set": dados})
+
+async def pegar_cortes_realizados(clientid, funcid):
+    filtro = {}
+    if(clientid == '0' and funcid != '0'):
+        filtro = {"funcionario_id": int(funcid), "status": "realizado"}
+    elif(funcid == '0' and clientid != '0'):
+        filtro = {"client_id": int(clientid), "status": "realizado"}
+    elif(clientid == '0' and funcid == '0'):
+        filtro = {"status": "realizado"}
+
+    datas = []
+    for i in collection_cortes.find(filtro):
+        i["_id"] = f"ObjectId({str(i['_id'])})"
+        datas.append(i)
+    return datas
     
     

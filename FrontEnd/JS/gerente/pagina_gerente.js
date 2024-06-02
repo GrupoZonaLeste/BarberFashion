@@ -8,6 +8,7 @@ const API_listar_servicos = getEndpoint_manager("listar_servicos")
 const API_excluir_servicos = getEndpoint_manager("deletar_servicos")
 const API_editar_servicos = getEndpoint_manager("editar_servicos")
 const API_listar_agendamentos = getEndpoint_manager("listar_agendamentos")
+const API_listar_cortes_realizados = getEndpoint_schedule("cortes_realizados")
 
 // Nomes funcionario e clientes
 const API_pegar_nomes_usuarios = getEndpoint_employee("pegar_nomes_usuario")
@@ -516,7 +517,7 @@ async function AddDivServicos(){
             div_contentService.append(div_textos)
             div_contentService.append(div_btn)
             divServicosCadastrados.append(div_contentService)
-            buscarImagemServico(element.nome)
+            buscarImagemServico(document.getElementById(element.nome), element.nome)
         })
     })
 }
@@ -592,8 +593,27 @@ async function addDivAgendamentos(){
         })
     })
 }
+
+async function addDivHistorico(){
+    await fetch(API_listar_cortes_realizados({clientid: 0, funcid: 0}))
+    .then(response => response.json())
+    .then(response => {
+        response.forEach(async element => {
+            nome_cliente = await fetch(API_pegar_nomes_usuarios({id : element.client_id})).then(data => data.json()).then(data => {return data.name})
+            nome_funcionario = await fetch(API_nome_funcionario({funcionario_id : element.funcionario_id})).then(data => data.json()).then(data => {return data.name})
+            const historico = document.getElementById('div-historico')
+            textDATA = `<br><b>SERVIÇO:</b> ${element.servico} | <b>DATA:</b> ${element.data} | <b>HORA:</b> ${element.hora} <br> <b>CLIENTE:</b> ${nome_cliente} | <b>FUNCIONÁRIO:</b> ${nome_funcionario}<br><hr>`
+            const p = document.createElement('p')
+            p.innerHTML = textDATA
+            historico.appendChild(p)
+            historico.removeChild(document.getElementById('seta'))
+        })
+    })
+}
+
 document.addEventListener("DOMContentLoaded", addDivAgendamentos)
 document.addEventListener("DOMContentLoaded", AddDivServicos)
 document.addEventListener("DOMContentLoaded", listarServicosCheckbox)
 document.addEventListener("DOMContentLoaded",addDivClientes)
 document.addEventListener("DOMContentLoaded", addDivFuncionarios)
+document.addEventListener("DOMContentLoaded", addDivHistorico)

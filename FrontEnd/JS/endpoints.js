@@ -26,7 +26,7 @@ const endpoints = {
     listar_usuarios: `${baseURL}${manager_prefix}/listar_usuarios/`,
     deletar_funcionario: ({ funcid }) => `${baseURL}${manager_prefix}/deletar_funcionario/${funcid}`,
     listar_funcionarios: `${baseURL}${manager_prefix}/listar_funcionarios/`,
-    editar_funcinoario: ({ funcid }) => `${baseURL}${manager_prefix}/editar_funcionario/${funcid}`,
+    editar_funcionario: ({ funcid }) => `${baseURL}${manager_prefix}/editar_funcionario/${funcid}`,
     foto_funcionarios: `${baseURL}${manager_prefix}/upload_funcionario/`,
     cadastrar_servicos: `${baseURL}${manager_prefix}/cadastrar_servico/`,
     foto_servicos: `${baseURL}${manager_prefix}/upload/`,
@@ -38,10 +38,12 @@ const endpoints = {
   schedule: {
     deletar: ({id}) => `${baseURL}${schedule_prefix}/deletarcorte/${id}`,
     atualizar: ({id}) => `${baseURL}${schedule_prefix}/atualizarcortes/${id}`,
+    cortes_realizados: ({clientid, funcid}) => `${baseURL}${schedule_prefix}/cortes_realizados/${clientid}/${funcid}/`
   },
   employee: {
-    pegar_todos_cortes: `${baseURL}${employee_prefix}/pegartodoscortes/`,
+    pegar_todos_cortes: ({funcid}) => `${baseURL}${employee_prefix}/pegartodoscortes/${funcid}`,
     pegar_nomes_usuario: ({id}) => `${baseURL}${employee_prefix}/usuarionames/${id}`,
+    funcionarios_qualificados: ({corte}) => `${baseURL}${employee_prefix}/listar_funcionarios_qualificados/${corte}`
   },
 };
 
