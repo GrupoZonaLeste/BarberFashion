@@ -93,8 +93,8 @@
                     <div class="inferior">
                         <div class="card-inferior">
                             <p class="card-title">HISTÓRICO DE SERVIÇOS</p>
-                            <div>
-                                <img src="/FrontEnd/images/right-arrow-down.png" class="card-icon-seta" alt="">
+                            <div id="div-historico">
+                                <img src="/FrontEnd/images/right-arrow-down.png" class="card-icon-seta" id="seta" alt="">
                             </div>
                         </div>
                     </div>
@@ -126,6 +126,15 @@
             <h1 style="font-size: 1.5rem;">CRIAR FUNCIONÁRIO</h1>
                 <div class="modal-content-funcionario">
                     <form>
+
+                        <label>Adicionar foto:</label>
+                        <div class="foto-perfil">
+                            <label tabindex="0" class="picture">
+                                <input type="file" accept="image/*" id="picture_input_funcionario" >
+                                <img class="picture_img" src="/FrontEnd/images/profile.png"  width="130" height="130" id="image_user" name="imagem-funcionario">
+                            </label>
+                        </div>
+
                         <label for="nome">Nome:</label>
                         <input type="text" id="nome" name="nome" required>
                         <label for="cargo">Email:</label>
@@ -167,6 +176,16 @@
                 <div class="modal-content-servicos" id="servicos">
                     <div id="formulario-servicos" class="div-criar-servicos">
                         <form class="form-servicos">
+
+                            
+                            <label>Adicionar foto:</label>
+                            <div class="foto-perfil-funcionario">
+                                <label tabindex="0" class="picture">
+                                    <input type="file" accept="image/*" id="picture_input" >
+                                    <img class="picture_img" src="/FrontEnd/images/LogoMarca.png" width="150" height="150" id="image_user" name="imagem-servico">
+                                </label>
+                            </div>
+
                             <label for="nome-servico">Nome:</label>
                             <input id="nome-servico">
 
@@ -188,7 +207,7 @@
                 </div>
             </div>
         </div>
-
+        <img>
         <div class="modal_editar_Servicos">
             <div class="card" style="margin:130px auto; width: 300px;">
                 <button id="fechar_editarServicos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
@@ -203,6 +222,15 @@
                 <button id="fechar_editar_Funcionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
                 <h1 style="font-size: 1.5rem;">EDITAR FUNCIONÁRIO</h1>
                     <div class="modal-content" id="editar_Funcionario">
+                    </div>
+            </div>
+        </div>
+
+        <div class="modal_Agendamentos">
+            <div class="card" style="margin:130px auto; width: 25%;">
+                <button id="fechar_agendamenos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+                <h1 style="font-size: 1.5rem;">AGENDAMENTOS</h1>
+                    <div class="modal-content" id="div-agendamentos">
                     </div>
             </div>
         </div>
@@ -263,5 +291,6 @@
     <script src="/FrontEnd/JS/gerente/logout_gerente.js"></script>
     <script src="/FrontEnd/JS/token/verifyToken_gerente.js"></script>
     <script src="/FrontEnd/JS/gerente/data_gerente.js"></script>
+    <script src="/FrontEnd/JS/cliente/picture.js"></script>
 </body>
 </html>

@@ -49,7 +49,7 @@ class Controller_manager:
         else:
             funcionario.password = self._hash_password(funcionario.password)
             self.get_current_collection().insert_one(funcionario.model_dump())
-            return{"status": "OK"}
+            return{"status": "OK", "funcid": funcionario.funcionario_id}
         
     def criar_servicos(self, servico):
         if len(self.listar_servicos()) > 0:

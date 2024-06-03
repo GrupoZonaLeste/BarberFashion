@@ -19,4 +19,10 @@ class Controller_employee:
         user = { "name": usuario.get('name')}
         return user
     
-
+    def funcionarios_qualificados(self, servico):
+        funcionario = []
+        for i in self.get_current_collection().find({f"servicos.{servico}": 1}):
+            funcionario.append(i)
+        for i in funcionario:
+            i["_id"] = f"ObjectId({str(i['_id'])})"
+        return funcionario
