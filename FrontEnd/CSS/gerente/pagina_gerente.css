@@ -4,9 +4,9 @@
     margin: 0;
     padding: 0;
     font-family: "League Spartan", sans-serif;
+    box-sizing: border-box;
 }
 
-/* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -20,95 +20,105 @@ body {
 .navbar {
     background: rgb(0, 0, 0);
     background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 15%, rgb(8, 8, 8) 50%);
-    border-color: solid none;
     display: flex;
-    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     height: 80px;
+    padding: 0 20px;
+}
+
+.navbar-brand {
+    color: #FF9800;
+    font-size: xx-large;
+    font-weight: bold;
 }
 
 .sidebar {
-    padding: 10px;
-    width: 8rem;
-    display: flex;
-    margin-top: 8rem;
-    height: 20rem;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    border-radius: 1rem;
-    border: solid 0.15rem #585858;
-    justify-content: space-evenly;
-    position: relative;
-    padding-left: 1.5rem;
-    right: 1rem;
+    width: 4rem;
+    position: fixed;
+    top: 80px;
+    bottom: 0;
+    left: 0;
+    background-color: #181818;
+    transition: width 0.3s;
+    overflow-x: hidden;
+    padding-top: 20px;
 }
 
-.config {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 5rem;
+.sidebar:hover {
+    width: 12rem;
 }
 
-.config>a {
-    display: flex;
-}
-
-.config>a>img {
-    display: flex;
-    height: 3rem;
-}
-
-.link-config {
-    color: #fff;
+.sidebar a {
+    padding: 8px 8px 8px 16px;
     text-decoration: none;
+    font-size: 1.2rem;
+    color: white;
+    display: block;
+    transition: 0.3s;
 }
 
-.config:hover,
-.sair:hover {
-    opacity: 0.5;
+.sidebar a:hover {
+    color: #FF9800;
 }
 
+.config,
 .sair {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 5rem;
+    margin-bottom: 1rem;
 }
 
+.config>a,
 .sair>a {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #fff;
 }
 
+.config>a>img,
 .sair>a>img {
-    display: flex;
     height: 3rem;
     width: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.link-config,
+.link-sair {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.sidebar:hover .link-config,
+.sidebar:hover .link-sair {
+    opacity: 1;
 }
 
 .link-sair {
     color: #E74040;
-    text-decoration: none;
 }
 
 .container {
     display: flex;
-    flex-direction: row;
     flex-grow: 1;
-    justify-content: space-between;
+    margin-left: 6rem;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
 }
 
 .apresentation {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     color: #ccc;
-    height: 4rem;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .apres-title {
@@ -119,34 +129,28 @@ body {
 .services {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 30rem;
-    padding: 2rem;
+    align-items: center;
     width: 100%;
 }
 
-.superior {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
+.superior,
 .superior2 {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .inferior {
     display: flex;
-    padding: 10px;
     justify-content: center;
+    width: 100%;
 }
 
 .services .card {
     padding: 10px;
-    margin: 0 10px;
+    margin: 10px;
+    flex: 1 1 300px;
+    max-width: 300px;
 }
 
 .card {
@@ -159,12 +163,85 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+}
+
+.detail {
+    position: relative;
+    height: 0.8rem;
+    width: 5rem;
+    background-color: #FF9800;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-weight: 600;
+    color: #111111;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.card-subtitle {
+    width: 80%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.card-icon {
+    height: 8rem;
+    width: 8rem;
+    margin-bottom: 1rem;
+}
+
+.card-inferior {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: solid 0.3rem #FF9800;
+    border-radius: 0.5rem;
+    padding: 1.3rem;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon-seta {
+    height: 2rem;
+    width: 2rem;
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.card button {
+    background-color: #FF9800;
+    color: #111111;
+    font-weight: 600;
+    border: none;
+    padding: 0.8rem;
+    cursor: pointer;
+    border-radius: 1rem;
+    transition: 0.2s all;
+}
+
+.card button:hover {
+    background-color: #ffca28;
+}
+
 .dashboard {
     display: flex;
     flex-direction: column;
-    margin-top: 8rem;
+    padding: 2rem;
     width: 100%;
-    height: auto;
+    background-color: #181818;
 }
 
 .card-dashboard {
@@ -174,16 +251,17 @@ body {
     justify-content: space-between;
     border-top: solid 0.3rem #FFC672;
     border-radius: 0.5rem;
-    height: 100%;
-    padding: 1.5rem;
-    background-color: #181818;
+    padding: 2rem;
+    background-color: #282828;
     box-shadow: 0px 0px 50px 2px #000000;
+    margin-bottom: 2rem;
 }
 
 .card-title-relat {
     font-weight: 600;
     color: #FFC672;
     font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 .card-subtitle-relat {
@@ -192,18 +270,37 @@ body {
     width: 90%;
     text-align: center;
     font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 .view-dashboard {
-    width: 75%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
     border: solid 1px #FFC672;
-    justify-content: space-around;
     border-radius: 1rem;
-    padding: 1.5rem;
+    padding: 1rem;
     color: #FFC672;
+}
+
+.chart-row {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.chart-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
     align-items: center;
+}
+
+.chart {
+    width: 100%;
+    max-width: 100%;
+    height: 300px;
 }
 
 #btn-relat {
@@ -220,174 +317,104 @@ body {
     opacity: 0.5;
 }
 
-.card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 25rem;
-    height: 20rem;
-}
-
-.detail {
-    position: relative;
-    left: 10.7rem;
-    height: 0.8rem;
-    width: 5rem;
-    background-color: #FF9800;
-}
-
-.card-title {
-    font-weight: 600;
-    color: #111111;
-    font-size: 1.4rem;
-}
-
-.card-subtitle {
-    width: 80%;
-    text-align: center;
-}
-
-.card-icon {
-    height: 8rem;
-    width: 8rem;
-    margin-top: -2rem;
-}
-
-.inferior {
-    display: flex;
-    justify-content: center;
-}
-
-.card-inferior {
-    display: flex;
-    flex-direction: column;
+/* Modal */
+.modal_CriarFuncionario,
+.modal_EditarFuncionario,
+.modal_servicos,
+.modal_visualizar,
+.modal_Relatorio,
+.modal_visualizar_clientes {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
     width: 100%;
-    height: 4rem;
-    justify-content: space-between;
-    align-items: center;
-    border-top: solid 0.3rem #FF9800;
-    border-radius: 0.5rem;
-    padding: 1.3rem;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.card-icon-seta {
-    display: flex;
-    height: 2rem;
-    width: 2rem;
-}
-
-.card h3 {
-    margin-top: 0;
-    font-size: 1.5rem;
-    color: #333;
-}
-
-.card form {
-    display: flex;
-    flex-direction: column;
-}
-
-.card label {
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.card input[type="text"],
-.card input[type="number"],
-.card select,
-.card input[type="time"] {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+.modal-card {
+    margin: 130px auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    background-color: #fff;
     border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
 }
 
-.card input[type="submit"] {
-    background-color: #333;
+.btn-close {
+    align-self: flex-end;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: #ff0000;
     color: #fff;
     border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.modal-content h4 {
+    margin-top: 0;
+}
+
+.modal-content button {
     padding: 10px 20px;
+    margin: 10px;
+    border: none;
     cursor: pointer;
     border-radius: 5px;
 }
 
-.card input[type="submit"]:hover {
+.modal-content button:hover {
     background-color: #555;
 }
 
-.card button {
-    background-color: #FF9800;
-    color: #111111;
-    font-weight: 600;
-    border: none;
-    padding: 0.8rem;
-    margin-top: 10px;
-    cursor: pointer;
+.centralizador {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 7;
+}
+
+.alert {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    justify-content: space-between;
     border-radius: 1rem;
-    transition: 0.2s all;
+    text-align: center;
+    top: 3rem;
+    width: 25rem;
+    padding: 2rem;
+    border: solid 2px transparent;
+    background-color: #111111;
 }
 
-.card button:hover {
-    background-color: #ffca28;
+#btn-ok {
+    padding: 0.6rem;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 16px -5px transparent;
+    border: solid 1px transparent;
+    color: #ffffff;
+    width: 40%;
+    background-color: transparent;
+    transition: 0.3s all;
 }
 
-/* Modal de confirmação */
-.modal_CriarFuncionario {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal_EditarFuncionario {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal_servicos {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal_visualizar {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal_Relatorio {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+#btn-ok:hover {
+    opacity: 0.5;
 }
 
 .card_Relatorio {
@@ -439,17 +466,7 @@ body {
     height: 100%;
 }
 
-.esquerdo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-top: 2rem;
-}
-
-.esquerdo>p {
-    font-size: 1.3rem;
-}
-
+.esquerdo,
 .direito {
     display: flex;
     flex-direction: column;
@@ -457,6 +474,7 @@ body {
     margin-top: 2rem;
 }
 
+.esquerdo>p,
 .direito>p {
     font-size: 1.3rem;
 }
@@ -536,47 +554,7 @@ body {
     background-color: #5858589a;
 }
 
-input[type="month"] {
-    background-color: #111111;
-    color: #FFC672;
-    border: 1px solid #FFC672;
-    padding: 5px;
-    border-radius: 5px;
-    font-family: Arial, sans-serif;
-    appearance: none;
-    -webkit-appearance: none;
-    position: relative;
-    font-size: 1.2rem;
-}
-
-input[type="month"]::placeholder {
-    color: #FFC672;
-    opacity: 0.7;
-}
-
-input[type="month"]:focus {
-    outline: none;
-    border-color: #FFC672;
-    box-shadow: 0 0 5px #FFC672;
-}
-
-input[type="month"]::-webkit-calendar-picker-indicator {
-    color: #FFC672;
-    background-color: #111111;
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-}
-
-input[type="month"]::before {
-    content: '▼';
-    position: absolute;
-    right: 10px;
-    top: calc(50% - 0.5em);
-    color: #FFC672;
-    pointer-events: none;
-}
-
+input[type="month"],
 input[type="date"] {
     background-color: #111111;
     color: #FFC672;
@@ -585,37 +563,30 @@ input[type="date"] {
     border-radius: 5px;
     font-family: Arial, sans-serif;
     appearance: none;
-    -webkit-appearance: none;
     position: relative;
     font-size: 1.2rem;
 }
 
+input[type="month"]::placeholder,
 input[type="date"]::placeholder {
     color: #FFC672;
     opacity: 0.7;
 }
 
+input[type="month"]:focus,
 input[type="date"]:focus {
     outline: none;
     border-color: #FFC672;
     box-shadow: 0 0 5px #FFC672;
 }
 
+input[type="month"]::-webkit-calendar-picker-indicator,
 input[type="date"]::-webkit-calendar-picker-indicator {
     color: #FFC672;
     background-color: #111111;
     border: none;
     padding: 5px;
     border-radius: 5px;
-}
-
-input[type="date"]::before {
-    content: '▼';
-    position: absolute;
-    right: 10px;
-    top: calc(50% - 0.5em);
-    color: #FFC672;
-    pointer-events: none;
 }
 
 .modal-content {
@@ -640,54 +611,6 @@ input[type="date"]::before {
 
 .modal-content button:hover {
     background-color: #555;
-}
-
-.centralizador {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    z-index: 7;
-}
-
-.alert {
-    display: none;
-    z-index: 1;
-    position: absolute;
-    justify-content: space-between;
-    border-radius: 1rem;
-    text-align: center;
-    top: 3rem;
-    width: 25rem;
-    padding: 2rem;
-    border: solid 2px transparent;
-    background-color: #111111;
-}
-
-#btn-ok {
-    padding: 0.6rem;
-    border-radius: 2rem;
-    box-shadow: 0px 0px 16px -5px transparent;
-    border: solid 1px transparent;
-    color: #ffffff;
-    width: 40%;
-    background-color: transparent;
-    transition: 0.3s all;
-}
-
-#btn-ok:hover {
-    opacity: 0.5;
-}
-
-.modal_visualizar_clientes {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Media Queries for responsiveness */
@@ -763,6 +686,10 @@ input[type="date"]::before {
         width: 90%;
         height: auto;
     }
+
+    .view-dashboard {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 480px) {
@@ -780,5 +707,9 @@ input[type="date"]::before {
 
     .view-dashboard {
         width: 90%;
+    }
+
+    .chart-row {
+        flex-direction: column;
     }
 }

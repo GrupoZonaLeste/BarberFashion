@@ -11,8 +11,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg container-fluid">
-        <div class="container-fluid"
-            style="color: #FF9800; display: flex; align-items: center; margin-left: 20px; font-size: xx-large; font-weight: bold;">
+        <div class="container-fluid navbar-brand">
             BARBERFASHION
         </div>
     </nav>
@@ -24,7 +23,6 @@
     </div>
 
     <main class="container">
-
         <div class="sidebar">
             <div class="config">
                 <a href=""><img src="/FrontEnd/images/setting-wh.png" alt=""></a>
@@ -36,7 +34,7 @@
             </div>
         </div>
 
-        <section>
+        <section class="content">
             <section class="apresentation">
                 <p id="apresentation" class="apres-title">Olá Senhor (nome do gerente)</p>
                 <p class="apres-subtitle">Administre sua Barbearia, Crie funcionários, visualize seus dashboards</p>
@@ -48,7 +46,7 @@
                             <div class="detail"></div>
                             <img src="/FrontEnd/images/employee 1.png" class="card-icon" alt="">
                             <p class="card-title">FUNCIONÁRIOS</p>
-                            <p class="card-subtitle">Cadastre e adicone as credenciais do novo Funcionário.</p>
+                            <p class="card-subtitle">Cadastre e adicione as credenciais do novo Funcionário.</p>
                             <button id="btn-cadastrar-barbeiro">CADASTRAR BARBEIRO</button>
                         </div>
                     </div>
@@ -62,7 +60,6 @@
                             <button id="btn-editar-barbeiro">EDITAR BARBEIRO</button>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="superior2">
@@ -97,64 +94,69 @@
                 </div>
             </div>
         </section>
+    </main>
 
-        <div class="dashboard">
-            <div class="card-dashboard">
-                <p class="card-title-relat">DASHBOARD DA BARBEARIA: </p>
-                <p class="card-subtitle-relat"> Consulte informações relacionadas aos serviços prestados da sua
-                    Barbearia. </p>
-                <div class="view-dashboard">
-                    <canvas id="servicesChart"></canvas>
-                    <canvas id="earningsChart"></canvas>
+    <section class="dashboard">
+        <div class="card-dashboard">
+            <p class="card-title-relat">DASHBOARD DA BARBEARIA:</p>
+            <p class="card-subtitle-relat">Consulte informações relacionadas aos serviços prestados da sua Barbearia.
+            </p>
+            <div class="view-dashboard">
+                <div class="chart-row">
+                    <div class="chart-container">
+                        <canvas id="servicesChart" class="chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="earningsChart" class="chart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-container">
+                        <canvas id="monthlySalesChart" class="chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="servicesByEmployeeChart" class="chart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
     <div class="modal_CriarFuncionario">
-        <div class="card" style="margin:130px auto; width: 300px;">
-            <button id="fechar_cadastrarFuncionario_btn" type="button" class="btn btn-danger"
-                style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-            <h1 style="font-size: 1.5rem;">CRIAR FUNCIONÁRIO</h1>
+        <div class="card modal-card">
+            <button id="fechar_cadastrarFuncionario_btn" type="button" class="btn btn-danger btn-close">X</button>
+            <h1 class="modal-title">CRIAR FUNCIONÁRIO</h1>
             <div class="modal-content">
                 <form>
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name="nome" required>
-                    <label for="cargo">Email:</label>
-                    <input type="text" id="email" name="email" required>
-                    <label for="cargo">Senha:</label>
-                    <input type="text" id="senha" name="senha" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" required>
                 </form>
-                <input type="submit" id="cadastrarFuncionario" value="Cadastrar" style="background-color: #FF9800;"
-                    class="button cadastrar">
+                <input type="submit" id="cadastrarFuncionario" value="Cadastrar" class="button cadastrar">
             </div>
         </div>
     </div>
 
     <div class="modal_EditarFuncionario">
-        <div class="card" style="margin:130px auto; width: 300px;">
-            <button id="fechar_editarFuncionario_btn" type="button" class="btn btn-danger"
-                style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-            <h1 style="font-size: 1.5rem;">FUNCIONÁRIOS</h1>
-            <div class="modal-content" id="funcionarios_cadastrados">
-            </div>
+        <div class="card modal-card">
+            <button id="fechar_editarFuncionario_btn" type="button" class="btn btn-danger btn-close">X</button>
+            <h1 class="modal-title">FUNCIONÁRIOS</h1>
+            <div class="modal-content" id="funcionarios_cadastrados"></div>
         </div>
     </div>
     <div class="modal_visualizar_clientes">
-        <div class="card" style="margin:130px auto; width: 36%;">
-            <button id="fechar_clientes_btn" type="button" class="btn btn-danger"
-                style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-            <h1 style="font-size: 1.5rem;">CLIENTES</h1>
-            <div class="modal-content" id="clientes_cadastrados">
-
-
-            </div>
+        <div class="card modal-card">
+            <button id="fechar_clientes_btn" type="button" class="btn btn-danger btn-close">X</button>
+            <h1 class="modal-title">CLIENTES</h1>
+            <div class="modal-content" id="clientes_cadastrados"></div>
         </div>
     </div>
     <div class="modal_Relatorio">
-        <div class="card_Relatorio" id="card_Relatorio" style="margin:130px auto; height: 10rem;">
-            <button id="fechar_relatorio_btn" type="button" class="btn-fechar"
-                style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+        <div class="card_Relatorio" id="card_Relatorio">
+            <button id="fechar_relatorio_btn" type="button" class="btn-fechar">X</button>
             <p class="title-relat">RELATÓRIOS DA BARBEARIA</p>
             <div class="modal-content-relat">
                 <p class="subtitle-relat">Selecione qual período você deseja visualizar o Relatório</p>
@@ -165,10 +167,10 @@
                 </div>
                 <div class="relat-content" id="relat-content">
                     <div class="navegacao2">
-                        <input type="date" name="" id="input_diario">
-                        <input type="month" name="" id="input_mensal">
-                        <input type="month" name="" id="input_anual">
-                        <button type="submit" id="pesquisar" style="align-items: center;">PESQUISAR</button>
+                        <input type="date" id="input_diario">
+                        <input type="month" id="input_mensal">
+                        <input type="month" id="input_anual">
+                        <button type="submit" id="pesquisar">PESQUISAR</button>
                     </div>
                     <div class="avaliacao">
                         <div class="esquerdo">
@@ -190,7 +192,7 @@
                             <h3>RESPOSTA</h3>
                             <p>Quantos barbeiros ativos?</p>
                             <h3>RESPOSTA</h3>
-                            <p>Media de clientes atendidos por cliente</p>
+                            <p>Média de clientes atendidos por barbeiro</p>
                             <h3>RESPOSTA</h3>
                         </div>
                     </div>
@@ -198,22 +200,23 @@
             </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- <script src="/FrontEnd/JS/token/token_decode.js"></script> -->
+
     <script src="/FrontEnd/JS/gerente/relatorio_gerente.js"></script>
     <script src="/FrontEnd/JS/gerente/pagina_gerente.js"></script>
     <script src="/FrontEnd/JS/gerente/modal/modal_gerente.js"></script>
     <script src="/FrontEnd/JS/gerente/logout_gerente.js"></script>
-    <!-- <script src="/FrontEnd/JS/token/verifyToken_gerente.js"></script> -->
     <script src="/FrontEnd/JS/gerente/data_gerente.js"></script>
+    <script src="/FrontEnd/JS/token/token_decode.js"></script>
+    <script src="/FrontEnd/JS/token/verifyToken_gerente.js"></script>
 
-    <!-- Dashboards - - Usar os nossos dados do banco aqui -->
     <script>
         const servicesData = {
             labels: ['Realizados', 'Cancelados', 'Pendentes'],
             datasets: [{
                 label: 'Serviços',
-                data: [5, 1, 3], // Exemplo de dados
+                data: [5, 1, 3],
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.2)',
                     'rgba(255, 99, 132, 0.2)',
@@ -239,6 +242,28 @@
             }]
         };
 
+        const monthlySalesData = {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [{
+                label: 'Vendas Mensais',
+                data: [5000, 7000, 3000, 5000, 6000, 8000],
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const servicesByEmployeeData = {
+            labels: ['Funcionario 1', 'Funcionario 2', 'Funcionario 3'],
+            datasets: [{
+                label: 'Serviços por Funcionário',
+                data: [20, 15, 30],
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                borderColor: 'rgba(255, 159, 64, 1)',
+                borderWidth: 1
+            }]
+        };
+
         const configServicesChart = {
             type: 'doughnut',
             data: servicesData,
@@ -249,13 +274,28 @@
             data: earningsData,
         };
 
-        // Renderiza os gráficos 
+        const configMonthlySalesChart = {
+            type: 'bar',
+            data: monthlySalesData,
+        };
+
+        const configServicesByEmployeeChart = {
+            type: 'bar',
+            data: servicesByEmployeeData,
+        };
+
         window.onload = function () {
             const servicesCtx = document.getElementById('servicesChart').getContext('2d');
             new Chart(servicesCtx, configServicesChart);
 
             const earningsCtx = document.getElementById('earningsChart').getContext('2d');
             new Chart(earningsCtx, configEarningsChart);
+
+            const monthlySalesCtx = document.getElementById('monthlySalesChart').getContext('2d');
+            new Chart(monthlySalesCtx, configMonthlySalesChart);
+
+            const servicesByEmployeeCtx = document.getElementById('servicesByEmployeeChart').getContext('2d');
+            new Chart(servicesByEmployeeCtx, configServicesByEmployeeChart);
         };
     </script>
 
