@@ -12,42 +12,36 @@
 
 <body>
   <nav class="navbar navbar-expand-lg container-fluid">
-    
-      <div class="container-fluid" style="color: #FF9800; display: flex; align-items: center; margin-left: 20px; font-size: xx-large; font-weight: bold;"> 
-        BARBERFASHION
+    <div class="container-fluid"
+      style="color: #FF9800; display: flex; align-items: center; margin-left: 20px; font-size: xx-large; font-weight: bold;">
+      BARBERFASHION
     </div>
-    
-</nav>
-
-<div class="centralizador">
-  <div class="alert" id="alert">
-    <button id="btn-ok">OK</button>
-  </div>
-</div>  
-
+  </nav>
 
   <div class="container">
     <div class="row justify-content-center mt-5">
       <div class="col-md-6">
         <div class="card">
           <div class="card-header bg-yellow text-white">
-            <a href="/FrontEnd/HTML/index.html" class="voltar"><img src="/FrontEnd/images/right-arrow.png" class="btn-voltar" alt=""></a>
+            <a href="/FrontEnd/HTML/index.html" class="voltar"><img src="/FrontEnd/images/right-arrow.png"
+                class="btn-voltar" alt=""></a>
             <h4 class="title">Login</h4>
           </div>
           <div class="card-body">
-            <form>
+            <form id="login-form">
               <div class="form-group">
-                <label for="username">Email:</label>
-                <input type="text" class="form-control" id="email" placeholder="Digite seu email">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Digite seu email" required>
               </div>
               <div class="form-group">
                 <label for="password">Senha:</label>
-                <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+                <input type="password" class="form-control" id="password" placeholder="Digite sua senha" required>
               </div>
+              <button type="submit" class="btn btn-warning btn-block" id="button-login">ENTRAR</button>
             </form>
-            <button type="submit" class="btn btn-warning btn-block" id="button-login">ENTRAR</button>
-            <p class="EsqueceuSenha">Esqueceu a Senha? <a onclick="window.location.href = '/FrontEnd/HTML/cliente/esqueceu_senha.html'"
-              class="">&nbsp Clique Aqui para Redefinir a Senha</a></p>
+            <p class="EsqueceuSenha">Esqueceu a Senha? <a
+                onclick="window.location.href = '/FrontEnd/HTML/cliente/esqueceu_senha.html'" class="">&nbsp Clique Aqui
+                para Redefinir a Senha</a></p>
           </div>
           <div class="card-footer text-center">
             <p>ou entre com</p>
@@ -68,14 +62,12 @@
                 class="btn btn-secondary btn-block">Cadastrar</button>
             </div>
           </div>
-          
         </div>
       </div>
-      <ul>
-      
-  </ul>
     </div>
   </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
@@ -83,6 +75,44 @@
 
   <script src="/FrontEnd/JS/endpoints.js"></script>
   <script src="/FrontEnd/JS/cliente/login.js"></script>
-  <script src="/FrontEnd/JS//token/verifyToken_Login.js"></script>
+  <script src="/FrontEnd/JS/token/verifyToken_Login.js"></script>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+
+      if (email === 'test@example.com' && password === 'password123') {
+        Swal.fire({
+          icon: 'success',
+          title: 'Login bem-sucedido!',
+          text: 'Você foi autenticado com sucesso.',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro de login',
+          text: 'Email ou senha incorretos. Tente novamente.',
+        });
+      }
+    });
+  </script>
+
+  <!-- VLibras API -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
 </body>
 </html>

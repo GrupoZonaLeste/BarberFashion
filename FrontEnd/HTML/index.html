@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,30 +9,33 @@
     <link rel="stylesheet" href="/FrontEnd/CSS/landing_page.css">
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg container-fluid ">
-        <div class="container-fluid">
-            <div class="logomarca"> 
-                <img src="/FrontEnd/images/LogoMarca.png" alt="">
+    <header>
+        <nav class="navbar navbar-expand-lg container-fluid ">
+            <div class="container-fluid">
+                <div class="logomarca">
+                    <img src="/FrontEnd/images/LogoMarca.png" alt="">
+                </div>
+                <div class="collapse navbar-collapse" id="navbarNav"></div>
+                <ul class="navbar-nav container-fluid">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#origem">ORIGEM</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicos">SERVIÇOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contatos">CONTATOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="button" id="agendar">AGENDAR AGORA</a>
+                    </li>
+                </ul>
             </div>
-            <div class="collapse navbar-collapse" id="navbarNav"></div>
-            <ul class="navbar-nav container-fluid">
-              <li class="nav-item">
-                <a class="nav-link" href="#origem">ORIGEM</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#servicos">SERVIÇOS</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#contatos">CONTATOS</a>
-              </li>
-              <li class="nav-item">
-                <a class="button" id="agendar">AGENDAR AGORA</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
+
     <div class="">
         <div class="home">
             <div class="principal">
@@ -41,12 +45,10 @@
                     <div class="edit-home2"></div>
                 </div>
                 <div class="subtitle-home">
-                    <div class="search"> 
+                    <div class="search">
                         <img src="/FrontEnd/images/search-yellow.png" alt="">
-                         <span class="placeholder-search"></span>
+                        <span class="placeholder-search"></span>
                     </div>
-                   
-                    <!-- <p>"Revitalize sua Imagem, Assegure sua Confiança e Mantenha sua Lealdade, cada Corte é uma Performance."</p> -->
                 </div>
             </div>
             <div class="div-img">
@@ -94,21 +96,20 @@
                 <h1>NOSSA ORIGEM</h1>
                 <div class="text">
                     <p>
-                        A BARBERFASHION surge como uma resposta inteligente às 
+                        A BARBERFASHION surge como uma resposta inteligente às
                         complexidades enfrentadas pelas barbearias, oferecendo
-                         uma solução abrangente para agendamento e personalização 
-                         de serviços. Eliminando a confusão e os erros decorrentes
-                         da falta de um sistema eficiente, ela não só simplifica o
-                          processo para os clientes, mas também cria uma atmosfera
-                           acolhedora e personalizada. Isso resolve o dilema comum 
-                           enfrentado pelos clientes ao escolher o serviço adequado,
-                            garantindo que suas necessidades sejam atendidas de 
-                            maneira precisa e satisfatória. 
+                        uma solução abrangente para agendamento e personalização
+                        de serviços. Eliminando a confusão e os erros decorrentes
+                        da falta de um sistema eficiente, ela não só simplifica o
+                        processo para os clientes, mas também cria uma atmosfera
+                        acolhedora e personalizada. Isso resolve o dilema comum
+                        enfrentado pelos clientes ao escolher o serviço adequado,
+                        garantindo que suas necessidades sejam atendidas de
+                        maneira precisa e satisfatória.
                     </p>
                 </div>
 
                 <div class="opcoesbtn">
-                    
                     <div class="possui-conta">
                         <p>EU SOU FUNCIONÁRIO!</p>
                         <a href="/FrontEnd/HTML/cliente/login_cliente.html" class="btn-entrar">ENTRE POR AQUI</a>
@@ -121,7 +122,8 @@
                     <div class="divisor"></div>
                     <div class="criar-conta">
                         <p>DESEJA CRIAR UMA CONTA?</p>
-                        <a href="/FrontEnd/HTML/cliente/cadastro_cliente.html" class="btn-cadastrar">CADASTRE-SE POR AQUI</a>
+                        <a href="/FrontEnd/HTML/cliente/cadastro_cliente.html" class="btn-cadastrar">CADASTRE-SE POR
+                            AQUI</a>
                     </div>
                 </div>
             </div>
@@ -129,106 +131,117 @@
             <div class="servicos" id="servicos">
                 <h1>NOSSOS SERVIÇOS</h1>
                 <div class="text">
-                    <p> Como resultado, a BARBERFASHION não apenas conquistou uma 
-                        base de clientes fiéis, mas também estabeleceu uma 
-                        reputação invejável de excelência em serviços de barbearia, 
-                        tornando-se um símbolo reconhecido não apenas em São Paulo, 
+                    <p> Como resultado, a BARBERFASHION não apenas conquistou uma
+                        base de clientes fiéis, mas também estabeleceu uma
+                        reputação invejável de excelência em serviços de barbearia,
+                        tornando-se um símbolo reconhecido não apenas em São Paulo,
                         mas em toda a região.</p>
                 </div>
                 <div class="avaliacao">
-                <div class="cards">
-                    <p class="title-feed">FEEDBACKS DOS CLIENTES:</p>  
-                    <div class="card">
-                        <div>
-                            <img src="/FrontEnd/images/foto-perfil1.png" class="foto-perfil" alt="">
+                    <div class="cards">
+                        <p class="title-feed">FEEDBACKS DOS CLIENTES:</p>
+                        <div class="card">
+                            <div>
+                                <img src="/FrontEnd/images/foto-perfil1.png" class="foto-perfil" alt="">
+                            </div>
+                            <div>
+                                <p class="nome-perfil">Alan Oliveira</p>
+                                <img src="/FrontEnd/images/estrela.png" class="estrelas">
+                                <p class="comentario">"Corte perfeito, marquei horário da minha casa. Recomendo para
+                                    todos!"</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="nome-perfil">Alan Oliveira</p>
-                            <img src="/FrontEnd/images/estrela.png" class="estrelas">
-                            <p class="comentario">"Corte perfeito, marquei horário da minha casa. Recomendo para todos!"</p>
+                        <div class="card">
+                            <div>
+                                <img src="/FrontEnd/images/foto-perfil2.png" class="foto-perfil" alt="">
+                            </div>
+                            <div>
+                                <p class="nome-perfil">Renan Carvalho</p>
+                                <img src="/FrontEnd/images/estrela.png" class="estrelas" alt="">
+                                <p class="comentario">"Escolhi o melhor barbeiro possível, sistema bom e intuitivo,
+                                    consegui remarcar para outro dia!"</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div>
-                            <img src="/FrontEnd/images/foto-perfil2.png" class="foto-perfil" alt="">
-                        </div>
-                        <div>
-                            <p class="nome-perfil">Renan Carvalho</p>
-                            <img src="/FrontEnd/images/estrela.png" class="estrelas" alt="">
-                            <p class="comentario" >"Escolhi o melhor barbeiro possível, sistema bom e intuitivo, consegui remarcar para outro dia!"</p>
-                        </div>
-                    </div>    
-                </div>  
 
-                <div class="passo-a-passo">
-                    <div class="services">
-                        <div class="enquadra">
-                            <h1>1º</h1>
-                            <img src="/FrontEnd/images/smartphone (1) 1.png" alt="">
+                    <div class="passo-a-passo">
+                        <div class="services">
+                            <div class="enquadra">
+                                <h1>1º</h1>
+                                <img src="/FrontEnd/images/smartphone (1) 1.png" alt="">
+                            </div>
+                            <p>Escolha o Estilo</p>
                         </div>
-                        <p>Escolha o Estilo</p>
-                    </div>
-                    <div class="services">
-                        <div class="enquadra">
-                            <h1>2º</h1>
-                            <img src="/FrontEnd/images/schedule 1.png" alt="">
+                        <div class="services">
+                            <div class="enquadra">
+                                <h1>2º</h1>
+                                <img src="/FrontEnd/images/schedule 1.png" alt="">
+                            </div>
+                            <p>Agende a Hora</p>
                         </div>
-                        <p>Agende a Hora</p>
-                    </div>
-                    <div class="services">
-                        <div class="enquadra">
-                            <h1>3º</h1>
-                            <img src="/FrontEnd/images/hair-cutting (1) 1.png" alt="">
+                        <div class="services">
+                            <div class="enquadra">
+                                <h1>3º</h1>
+                                <img src="/FrontEnd/images/hair-cutting (1) 1.png" alt="">
+                            </div>
+                            <p>Realize o Corte</p>
                         </div>
-                        <p>Realize o Corte</p>
-                    </div>
-                    <div class="services">
-                        <div class="enquadra">
-                            <h1>4º</h1>
-                            <img src="/FrontEnd/images/good-feedback.png" alt="">
+                        <div class="services">
+                            <div class="enquadra">
+                                <h1>4º</h1>
+                                <img src="/FrontEnd/images/good-feedback.png" alt="">
+                            </div>
+                            <p>Avalie o Resultado</p>
                         </div>
-                        <p>Avalie o Resultado</p>
                     </div>
                 </div>
             </div>
-            </div>
 
-        <section>
-
-            <footer>
-                <p class="title-footer" id="contatos">BARBERFASHION</p>
-                
-                <p class="subtitle-footer">Integrantes que participaram ativamente do desenvolvimento do projeto:</p>
-                <div class="edit"></div>
-                 <div class="integrantes"> 
-                    <div class="engloba">
-                        <div>
-                            <p>Breno Ribeiro Souza</p>
-                            <p>Daniele Capistrano Pereira</p>
-                        </div>
-                        <div>
-                            <p>Diego Bicelli de Moura</p>
-                            <p>Guilherme Santos da Silva</p>
-                        </div>
-                        <div>
-                            <p>Gustavo dos Anjos Campos</p>
-                            <p>Leandro Reis Santana</p>
+            <section>
+                <footer>
+                    <p class="title-footer" id="contatos">BARBERFASHION</p>
+                    <p class="subtitle-footer">Integrantes que participaram ativamente do desenvolvimento do projeto:
+                    </p>
+                    <div class="edit"></div>
+                    <div class="integrantes">
+                        <div class="engloba">
+                            <div>
+                                <p>Breno Ribeiro Souza</p>
+                                <p>Daniele Capistrano Pereira</p>
+                            </div>
+                            <div>
+                                <p>Diego Bicelli de Moura</p>
+                                <p>Guilherme Santos da Silva</p>
+                            </div>
+                            <div>
+                                <p>Gustavo dos Anjos Campos</p>
+                                <p>Leandro Reis Santana</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="rodape">
-                    Projeto Integrador - Fatec Zona Leste - 3º Semestre
-                </div>
-            </footer>
-            
-
+                    <div class="rodape">
+                        Projeto Integrador - Fatec Zona Leste - 3º Semestre
+                    </div>
+                </footer>
+            </section>
+        </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    
     <script src="/FrontEnd/JS/token/token_decode.js"></script>
     <script src="/FrontEnd/JS/app.js"></script>
-    
+    <!-- VLibras API -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 </body>
+
 </html>

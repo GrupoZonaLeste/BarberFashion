@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: "League Spartan", sans-serif;
@@ -16,8 +16,8 @@ body {
     background-color: #111111;
 }
 
-.navbar{
-    background: rgb(0,0,0);
+.navbar {
+    background: rgb(0, 0, 0);
     background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 15%, rgb(8, 8, 8) 50%);
     border-color: solid none;
     display: flex;
@@ -26,8 +26,7 @@ body {
     height: 80px;
 }
 
-
-.centralizador{
+.centralizador {
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -35,7 +34,8 @@ body {
     z-index: 7;
 }
 
-.alert{
+.alert,
+.confirm {
     display: none;
     z-index: 1;
     position: absolute;
@@ -49,7 +49,9 @@ body {
     background-color: #111111;
 }
 
-#btn-ok{
+#btn-ok,
+#btn-conf,
+#btn-canc {
     padding: 0.6rem;
     border-radius: 2rem;
     box-shadow: 0px 0px 16px -5px transparent;
@@ -57,14 +59,16 @@ body {
     color: #ffffff;
     width: 40%;
     background-color: transparent;
-    transition: 0.3s all;   
+    transition: 0.3s all;
 }
 
-#btn-ok:hover{
+#btn-ok:hover,
+#btn-conf:hover,
+#btn-canc:hover {
     opacity: 0.5;
 }
 
-.sidebar{
+.sidebar {
     padding: 10px;
     width: 8rem;
     display: flex;
@@ -81,7 +85,8 @@ body {
     right: 1rem;
 }
 
-.config{
+.config,
+.sair {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -89,43 +94,28 @@ body {
     height: 5rem;
 }
 
-.config > a { 
+.config>a,
+.sair>a {
     display: flex;
 }
 
-.config > a >img{
+.config>a>img,
+.sair>a>img {
     display: flex;
     height: 3rem;
 }
 
-.link-config{
+.link-config {
     color: #fff;
     text-decoration: none;
 }
 
-.config:hover, .sair:hover{
+.config:hover,
+.sair:hover {
     opacity: 0.5;
 }
 
-.sair{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 5rem;
-}
-
-.sair > a{
-    display: flex;
-}
-
-.sair > a > img{
-    display: flex;
-    height: 3rem;
-    width: 3rem;
-}
-
-.link-sair{
+.link-sair {
     color: #E74040;
     text-decoration: none;
 }
@@ -136,7 +126,7 @@ body {
     flex-grow: 1;
 }
 
-.apresentation{
+.apresentation {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -146,7 +136,7 @@ body {
     margin-top: 2rem;
 }
 
-.apres-title{
+.apres-title {
     font-weight: 600;
     font-size: 2rem;
 }
@@ -169,7 +159,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.card-body{
+.card-body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -183,20 +173,18 @@ body {
     margin: 0 10px;
 }
 
-.superior{
+.superior,
+.superior2 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.superior2{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.superior2 {
     margin-top: 1rem;
 }
 
-.detail{
+.detail {
     position: relative;
     left: 10.7rem;
     height: 0.8rem;
@@ -204,13 +192,13 @@ body {
     background-color: #FF9800;
 }
 
-.card-icon{
+.card-icon {
     height: 8rem;
     width: 8rem;
     margin-top: -2rem;
 }
 
-.editar-perfil{
+.editar-perfil {
     background-color: #FF9800;
     color: #111111;
     font-weight: 600;
@@ -223,12 +211,11 @@ body {
     font-size: 1rem;
 }
 
-.editar-perfil:hover{
+.editar-perfil:hover {
     background-color: #ffca28;
 }
 
-
-button{
+button {
     background-color: #FF9800;
     color: #111111;
     font-weight: 600;
@@ -241,17 +228,17 @@ button{
     font-size: 1rem;
 }
 
-button:hover{
+button:hover {
     background-color: #ffca28;
 }
 
-.card-title{
+.card-title {
     font-weight: 600;
     color: #111111;
     font-size: 1.4rem;
 }
 
-.card-subtitle{
+.card-subtitle {
     width: 80%;
     text-align: center;
 }
@@ -299,8 +286,6 @@ button:hover{
     padding-left: 20px;
 }
 
-
-/* Modal de confirmação */
 .modal {
     display: none;
     position: fixed;
@@ -312,50 +297,20 @@ button:hover{
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal_servico{
+.modal_servico,
+.modal_agenda,
+.modal_agendamento {
     display: none;
     z-index: 1;
     position: absolute;
     height: 100vh;
-    width: 100%; 
-    background:radial-gradient(circle, rgba(0,0,0,0.9694327389158788) 0%, rgba(0,0,0,0.82405458765537467) 35%);
+    width: 100%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.969) 0%, rgba(0, 0, 0, 0.824) 35%);
 }
 
-#servicos_agendados{
-    margin: 130px auto;
-    width: 300px;
-    overflow-y: scroll;
-    height: 32rem;
-    max-height: 100%;
-}
-
-.modal_agenda{
-    display: none;
-    z-index: 1;
-    position: absolute;
-    height: 100vh;
-    width: 100%; 
-    background:radial-gradient(circle, rgba(0,0,0,0.9694327389158788) 0%, rgba(0,0,0,0.82405458765537467) 35%);
-}
-
-#agenda{
-    margin: 130px auto;
-    width: 300px;
-    overflow-y: scroll;
-    height: 32rem;
-    max-height: 100%;
-}
-
-.modal_agendamento{
-    display: none;
-    z-index: 1;
-    position: absolute;
-    height: 100vh;
-    width: 100%; 
-    background:radial-gradient(circle, rgba(0,0,0,0.9694327389158788) 0%, rgba(0,0,0,0.82405458765537467) 35%);
-}
-
-#pedido_agendamento{
+#servicos_agendados,
+#agenda,
+#pedido_agendamento {
     margin: 130px auto;
     width: 300px;
     overflow-y: scroll;
@@ -387,14 +342,15 @@ button:hover{
 .modal-content button:hover {
     background-color: #555;
 }
-section{
+
+section {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
 
-#content_service{
+#content_service {
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -404,106 +360,24 @@ section{
     border-radius: 1rem;
 }
 
-#text_service{
+#text_service {
     display: flex;
     flex-direction: column;
     width: 100%;
     text-align: center;
 }
 
-#text_service > p{
+#text_service>p {
     margin: 0.6rem;
 }
 
-#btn-conf{
-    padding: 0.6rem;
-    border-radius: 2rem;
-    box-shadow: 0px 0px 16px -5px transparent;
-    border: solid 1px transparent;
-    color: #ffffff;
-    width: 40%;
-    background-color: transparent;
-    transition: 0.3s all;   
-    font-weight: 600;
-}
-
-#btn-conf:hover{
-    opacity: 0.5;
-}
-
-#btn-canc{
-    padding: 0.6rem;
-    border-radius: 2rem;
-    box-shadow: 0px 0px 16px -5px transparent;
-    border: solid 1px transparent;
-    color: #ffffff;
-    width: 40%; 
-    background-color: transparent;
-    transition: 0.3s all;   
-}
-
-#btn-canc:hover{
-    opacity: 0.5;
-}
-
-
-.centralizador{
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    z-index: 7;
-}
-
-.alert{
-    display: none;
-    z-index: 1;
-    position: absolute;
-    justify-content: space-between;
-    border-radius: 1rem;
-    text-align: center;
-    top: 3rem;
-    width: 25rem;
-    padding: 2rem;
-    border: solid 2px transparent;
-    background-color: #111111;
-}
-
-.confirm{
-    display: none;
-    z-index: 1;
-    position: absolute;
-    justify-content: space-between;
-    border-radius: 1rem;
-    text-align: center;
-    top: 3rem;
-    width: 25rem;
-    padding: 2rem;
-    border: solid 2px transparent;
-    background-color: #111111;
-}
-
-#btn-ok{
-    padding: 0.6rem;
-    border-radius: 2rem;
-    box-shadow: 0px 0px 16px -5px transparent;
-    border: solid 1px transparent;
-    color: #ffffff;
-    width: 40%;
-    background-color: transparent;
-    transition: 0.3s all;   
-}
-
-#btn-ok:hover{
-    opacity: 0.5;
-}
-
-.btn-options{
+.btn-options {
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: space-around;
 }
+
 
 .inferior{
     display: flex;
@@ -529,4 +403,83 @@ section{
     display: flex;
     height: 2rem;
     width: 2rem;
+
+/* Media Queries for responsiveness */
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 6rem;
+    }
+
+    .card-body {
+        width: 20rem;
+        height: 16rem;
+    }
+
+    .services {
+        height: auto;
+    }
+
+    .superior,
+    .superior2 {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .services {
+        padding: 1rem;
+    }
+
+    .card-body {
+        width: 18rem;
+        height: auto;
+    }
+
+    .superior,
+    .superior2 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .centralizador,
+    .alert,
+    .confirm {
+        width: 90%;
+    }
+
+    .modal-content {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .apres-title {
+        font-size: 1.5rem;
+    }
+
+    .card-body {
+        width: 16rem;
+    }
+
+    button {
+        padding: 0.5rem;
+    }
 }

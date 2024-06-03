@@ -10,28 +10,29 @@
 
 <body>
     <nav class="navbar navbar-expand-lg container-fluid">
-        <div class="container-fluid" style="color: #FF9800; display: flex; align-items: center; margin-left: 20px; font-size: xx-large; font-weight: bold;"> 
+        <div class="container-fluid"
+            style="color: #FF9800; display: flex; align-items: center; margin-left: 20px; font-size: xx-large; font-weight: bold;">
             BARBERFASHION
         </div>
     </nav>
 
     <div class="centralizador">
         <div class="alert" id="alert">
-          <button id="btn-ok">OK</button>
+            <button id="btn-ok">OK</button>
         </div>
-      </div>
+    </div>
 
-      <div class="centralizador">
+    <div class="centralizador">
         <div class="alert" id="alert">
-          <button id="btn-ok">OK</button>
+            <button id="btn-ok">OK</button>
         </div>
         <div class="confirm" id="confirm">
             <div class="btn-options">
                 <button id="btn-conf">DELETAR</button>
                 <button id="btn-canc">CANCELAR</button>
             </div>
-          </div>
-        </div>  
+        </div>
+    </div>
 
 
     <main class="container">
@@ -42,49 +43,64 @@
                 <a href="" class="link-config">CONFIGURAÇÕES</a>
             </div>
             <div class="sair">
-                <a ><img src="/FrontEnd/images/sair-red.png" alt="" id="logout"></a>
+                <a><img src="/FrontEnd/images/sair-red.png" alt="" id="logout"></a>
                 <a class="link-sair">SAIR</a>
-            </div>            
+            </div>
         </div>
 
         <section>
             <section class="apresentation">
                 <p id="apresentation" class="apres-title">Olá Senhor (nome do funcionario)</p>
-                <p class="apres-subtitle">Administre seus Clientes, Aceite pedidos de Agendamento e visualize toda a sua Agenda</p>
+                <p class="apres-subtitle">Administre seus Clientes, Aceite pedidos de Agendamento e visualize toda a sua
+                    Agenda</p>
             </section>
-        <div class="services">  
-        <div class="superior">
-            <section class="card">
-                <div class="card-body">
-                    <div class="detail"></div>
-                        <img src="/FrontEnd/images/perfil-pessoal.png" class="card-icon" alt="">
-                        <p class="card-title">EDITAR PERFIL</p>
-                        <p class="card-subtitle">Edite seus Dados e Informações Pessoais</p>
-                        <a href="/FrontEnd/HTML/funcionario/editar_funcionario.html" class="editar-perfil">EDITAR PERFIL</a>
+            <div class="services">
+                <div class="superior">
+                    <section class="card">
+                        <div class="card-body">
+                            <div class="detail"></div>
+                            <img src="/FrontEnd/images/perfil-pessoal.png" class="card-icon" alt="">
+                            <p class="card-title">EDITAR PERFIL</p>
+                            <p class="card-subtitle">Edite seus Dados e Informações Pessoais</p>
+                            <a href="/FrontEnd/HTML/funcionario/editar_funcionario.html" class="editar-perfil">EDITAR
+                                PERFIL</a>
+                        </div>
+                    </section>
+                    <section class="card">
+                        <div class="card-body">
+                            <div class="detail"></div>
+                            <img src="/FrontEnd/images/agenda.png" class="card-icon" alt="">
+                            <p class="card-title">AGENDA</p>
+                            <p class="card-subtitle">Visualize sua agenda completa, quais horários foram marcados e toda
+                                a sua programação</p>
+                            <button id="btn-agenda">VISUALIZAR AGENDA</button>
+                        </div>
+                    </section>
                 </div>
-            </section>
-            <section class="card">
-                <div class="card-body">
-                    <div class="detail"></div>
-                    <img src="/FrontEnd/images/agenda.png" class="card-icon" alt="">
-                    <p class="card-title">AGENDA</p>
-                    <p class="card-subtitle">Visualize sua agenda completa, quais horários foram marcados e toda a sua programação</p>
-                    <button id="btn-agenda">VISUALIZAR AGENDA</button>
-                </div>
-            </section>
-        </div>    
 
 
-        <div class="superior2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="detail"></div>
-                    <img src="/FrontEnd/images/barber.png" class="card-icon" alt="">
-                    <p class="card-title">MEUS SERVIÇOS</p>
-                    <p class="card-subtitle">Visualize todos os cortes e serviços que você realiza</p>
-                    <button id="btn-meus-servicos">VISUALIZAR SERVIÇOS</button>
+                <div class="superior2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="detail"></div>
+                            <img src="/FrontEnd/images/barber.png" class="card-icon" alt="">
+                            <p class="card-title">MEUS SERVIÇOS</p>
+                            <p class="card-subtitle">Visualize todos os cortes e serviços que você realiza</p>
+                            <button id="btn-meus-servicos">VISUALIZAR SERVIÇOS</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="detail"></div>
+                            <img src="/FrontEnd/images/notebook.png" class="card-icon" alt="">
+                            <p class="card-title">PEDIDOS DE AGENDAMENTO</p>
+                            <p class="card-subtitle">Visualize e confirme todos os pedidos de serviços</p>
+                            <button id="btn-pedidos">AGENDAMENTO</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="card">
                 <div class="card-body">
                     <div class="detail"></div>
@@ -109,12 +125,13 @@
     </main>
     <div class="modal_agenda">
         <div id="agenda" class="card">
-            <button id="fechar_agenda_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <button id="fechar_agenda_btn" type="button" class="btn btn-danger"
+                style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
             <h3>Agenda</h3><br>
-                <div id="agenda_div"></div>
+            <div id="agenda_div"></div>
         </div>
     </div>
-    
+
     <div class="modal_servico">
         <div id="servicos_agendados" class="card">
                 <button id="fechar_servicos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
@@ -126,9 +143,10 @@
 
     <div class="modal_agendamento">
         <div id="pedido_agendamento" class="card">
-            <button id="fechar_pedidos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <button id="fechar_pedidos_btn" type="button" class="btn btn-danger"
+                style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
             <h3>Agendamentos</h3><br>
-                <div id="agendamentos_marcados"></div>
+            <div id="agendamentos_marcados"></div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -141,5 +159,17 @@
     <script src="/FrontEnd/JS/funcionario/pagina_funcionario.js"></script>
     <script src="/FrontEnd/JS/funcionario/data_funcionario.js"></script>
     <script src="/FrontEnd/JS/funcionario/logout_funcionario.js"></script>
+    <!-- VLibras API -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 </body>
+
 </html>
