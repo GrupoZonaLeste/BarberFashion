@@ -297,15 +297,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const confirmar_servico = document.getElementById('confirmar-servico')
     confirmar_servico.addEventListener('click', async () => {
-        await fetch(API_marcar_corte, {
-            method: 'POST',
-            body: JSON.stringify(servico),
-            headers:{
-                "Content-type": "application/json; charset=UTF-8"
-            }
+        Swal.fire({
+            title: "Confirmar serviço?",
+            text: "O Serviço será marcado e enviado ao sistema.",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#e79f33",
+            cancelButtonColor: "#d33",
+            cancelButtonText: "CANCELAR",
+            confirmButtonText: "CONFIRMAR"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "SERVIÇO CONFIRMADO!",
+                    text: "Parabéns! o seu serviço está marcado!.",
+                    icon: "success",
+                    confirmButtonColor: "#e79f33",
+            }).then(async () => {
+                await fetch(API_marcar_corte, {
+                method: 'POST',
+                body: JSON.stringify(servico),
+                headers:{
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+            location.reload()
         })
-        alert("SERVICO MARCADO COM SUCESSO")
-        location.reload()
-    })
+        }
+    });
+})
+})
 
-});

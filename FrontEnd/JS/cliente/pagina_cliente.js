@@ -27,6 +27,8 @@ const div_confirmacao = document.getElementById('confirm')
 const divCortes = document.getElementById('servicos_agendados')
 const dadosDivCortes = document.getElementById('dados_servicos_marcados')
 
+
+
 async function addDivCortes() {
     await fetch(API_pegar_cortes({client_id: retornarIdUsuario()}))
     .then(res => res.json())
@@ -34,9 +36,9 @@ async function addDivCortes() {
         data.forEach(async element => {
             textDATA = ""
             const btn_editar = document.createElement('button')
-                const btn_delete = document.createElement('button')
-                if(element.status == 'confirmado'){
-                    nome_data = await fetch(API_nome_funcionario({funcionario_id : element.funcionario_id})).then(data => data.json()).then(data => {return data.name})
+            const btn_delete = document.createElement('button')
+            nome_data = await fetch(API_nome_funcionario({funcionario_id : element.funcionario_id})).then(data => data.json()).then(data => {return data.name})
+            if(element.status == 'confirmado'){
                     textDATA = `<h4>SERVIÇO CONFIRMADO ✓</h4><hr><br> <h4>DATA:</h4> ${element.data} ; ${element.hora} <h4><br>FUNCIONARIO: </h4> ${nome_data} `;
                     btn_editar.style.display = 'none'
                     btn_delete.innerHTML = "CANCELAR AGENDAMENTO"
@@ -85,42 +87,37 @@ async function addDivCortes() {
                 divCortes.appendChild(div_services)
 
                 btn_delete.addEventListener('click', async () => {
+                    Swal.fire({
+                        title: "Deletar serviço?",
+                        text: "Você não vai poder reverter essa ação.",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#E74040",
+                        cancelButtonColor: "gray",
+                        cancelButtonText: "Cancelar",
+                        confirmButtonText: "Sim, deletar serviço!"
+                      }).then(async (result) => {
+                          if (result.isConfirmed) {
+                              Swal.fire({
+                                  title: "Serviço deletado!",
+                                  text: "Serviço foi deletado com sucesso.",
+                                  icon: "success",
+                                }).then(async () =>{
+                                    await fetch(API_deletar_cortes({id : btn_delete.id}), {
+                                        method: "DELETE",
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        }
+                                    })
+                                    location.reload()
+                                })
+                        }
+                      });
 
-                    div_confirmacao.style.display = 'flex'
-                        div_confirmacao.style.flexDirection = 'column-reverse'
-                        div_confirmacao.style.alignItems = 'center'
-                        div_confirmacao.style.borderColor = '#E74040'
-                        mensagem.style.marginBottom = '1rem'
-                        mensagem.style.color = '#E74040'
 
-                        btnDeletar.style.backgroundColor = '#E74040'
-                        btnDeletar.style.borderColor = '#E74040'
-                        btnDeletar.style.boxShadow = '0px 0px 16px -5px #E74040'
-                        btnCancelar.style.backgroundColor = '#FF9800'
-                        btnCancelar.style.borderColor = '#FF9800'
-                        btnCancelar.style.boxShadow = '0px 0px 16px -5px #FF9800'
-
-                        mensagem.innerHTML = "Deseja mesmo Cancelar o Serviço?";
-                        div_confirmacao.append(mensagem);
-
-                        btnDeletar.addEventListener('click', async () =>{
-                            await fetch(API_deletar_cortes({id : btn_delete.id}), {
-                            method: "DELETE",
-                            headers: {
-                                'Content-Type': 'application/json'
-                            }
-                        })
-                            mensagem.innerHTML = "Serviço Cancelado com Sucesso!";
-                            div_confirmacao.append(mensagem);
-                            div_confirmacao.style.display = 'none'
-                            location.reload()
-                        });
-                        btnCancelar.addEventListener('click', () =>{
-                            div_confirmacao.style.display = 'none'
-                        })
                 })
 
-                btn_editar.addEventListener('click', () =>{
+                btn_editar.addEventListener('click', async() =>{
                     divEditarCortes.style.visibility = 'visible'
                     const btn_fechar_editar = document.createElement('button')
                     const btn_confimar_editar = document.createElement('button')
@@ -132,24 +129,37 @@ async function addDivCortes() {
                     dataInput.type = "date"
                     dataInput.id = btn_editar.id
                     dataInput.min = dataHoje()
+                    dataInput.value = element.data
 
                     const horaInput = document.createElement("input")
                     horaInput.required = true
                     horaInput.type = "time"
                     horaInput.id = btn_editar.id
+                    horaInput.value = element.hora
                     
                     const selectCortes = document.createElement("select")
                     selectCortes.required = true
                     selectCortes.id = btn_editar.id
 
-                    const arrayServicos = ["Selecione um serviço", "corte de cabelo", "barba", "sobrancelha", "progressiva", "coloração de cabelo"]
+                    const arrayServicos = ["Selecione um serviço"]
+
+                    await fetch(API_listar_servicos)
+                    .then(response => response.json())
+                    .then(response => {
+                        response.forEach(element => {
+                            arrayServicos.push(element.nome)
+                        })
+                    })
+
                     for (let i=0 ; i< arrayServicos.length ; i++){
                         let option = document.createElement('option')
                         option.value = arrayServicos[i]
                         option.text = arrayServicos[i]
+                        if(arrayServicos[i] == element.servico){
+                            option.selected = true
+                        }
                         if(arrayServicos[i] == "Selecione um serviço"){
                             option.disabled = true
-                            option.selected = true
                         }
                         selectCortes.appendChild(option) 
                     }
@@ -181,32 +191,24 @@ async function addDivCortes() {
                             headers: {
                                 'Content-Type': 'application/json'
                             }
-                            
-                        }).catch(erro => console.log(`erro: ${erro}`))
-                        div_alerta.style.display = 'flex'
-                        div_alerta.style.flexDirection = 'column-reverse'
-                        div_alerta.style.alignItems = 'center'
-                        div_alerta.style.borderColor = '#FF9800'
-                        mensagem.style.marginBottom = '1rem'
-                        mensagem.style.color = '#FF9800'
-
-                        btnOk.style.backgroundColor = '#FF9800'
-                        btnOk.style.borderColor = '#FF9800'
-                        btnOk.style.boxShadow = '0px 0px 16px -5px #FF9800'
-
-                        mensagem.innerHTML = "Serviço Editado com Sucesso!";
-                        div_alerta.append(mensagem);
-                        btnOk.addEventListener('click', () =>{
-                            div_alerta.style.display = 'none'
-                            location.reload()
-                        });
+                        })
+                        .catch(erro => console.log(`erro: ${erro}`))
+                        Swal.fire({
+                            title: "Serviço atualizado!",
+                            text: "Os dados do serviço foram atualizados com sucesso!",
+                            icon: "success",
+                            confirmButtonColor: "#FF9800",
+                          }).then(() => {
+                              location.reload()
+                          })
+                        
                     })
                 })
                 
             });
         })
         .catch(erro => console.log(`erro: ${erro}`))
-}
+    }
 
 const divMarcarServico = document.getElementById('marcar-servico')
 

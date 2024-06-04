@@ -19,6 +19,7 @@ const senha = document.getElementById('password')
 const div_alerta = document.getElementById('alert')
 const btnOk = document.getElementById('btn-ok')
 var mensagem = document.createElement("p")
+/*
 function Alerta(msg){
 div_alerta.style.display = 'flex'
 div_alerta.style.flexDirection = 'column-reverse'
@@ -35,43 +36,62 @@ btnOk.addEventListener('click', () =>{
 div_alerta.style.display = 'none'
               });
 }
+*/
 login_btn.addEventListener('click', async () => {
- 
+  if(fetchButtonData().email === '' || fetchButtonData().password === ''){
+    Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor, preencha os campos antes de prosseguir.",
+      });
+      return
+  }
   logar();
 
   async function logar(){
-
-  data = fetchButtonData()
-  const options = {
+    
+    data = fetchButtonData()
+    const options = {
       method: 'POST',
       url: API_login,
       params: {email: data.email, senha: data.password, '': ''},
     };
     
-        axios.request(options).then(function (response) {
-          console.log(response)
-          const token = response.data.token;
-          const tipousuario = response.data.tipo_usuario[0]
-          console.log(tipousuario)
-          saveTokenToLocal(token);
-          if(tipousuario == 'cliente'){
-            window.location.href = "http:/FrontEnd/HTML/cliente/pagina_cliente.html";
-          } 
-          if(tipousuario == 'adm'){
-              window.location.href = "http:/FrontEnd/HTML/gerente/pagina_gerente.html";
-          } 
-          if(tipousuario == 'funcionario'){
-              window.location.href = "http:/FrontEnd/HTML/funcionario/pagina_funcionario.html";
-          }
-          checkTokenValidityLogin();         
-
-        }).catch(function (error) {
-          console.error(error);
-          Alerta("Email ou Senha estão Incorretos!");
-          //alert("Usuario não encontrado")
+    
+    axios.request(options).then(function (response) {
+      console.log(response)
+      const token = response.data.token;
+      const tipousuario = response.data.tipo_usuario[0]
+      console.log(tipousuario)
+      saveTokenToLocal(token);
+      Swal.fire({
+        icon: "success",
+        title: "Login realizado!",
+        showConfirmButton: false,
+        timer: 1500
+      }).then((result) =>{
+        if(tipousuario == 'cliente'){
+          window.location.href = "http:/FrontEnd/HTML/cliente/pagina_cliente.html";
+        } 
+        if(tipousuario == 'adm'){
+          window.location.href = "http:/FrontEnd/HTML/gerente/pagina_gerente.html";
+        } 
+        if(tipousuario == 'funcionario'){
+          window.location.href = "http:/FrontEnd/HTML/funcionario/pagina_funcionario.html";
+        }
+        checkTokenValidityLogin();      
+      });
+      }).catch(function (error) {
+        console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Email ou senha incorretos. Por favor, corrija-os antes de prosseguir.",
         });
-        
-  }
-
-
-})
+      });
+      
+    }
+    
+    
+  })
+  

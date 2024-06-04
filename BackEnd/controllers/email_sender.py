@@ -54,7 +54,7 @@ def gerar_codigo(email: str):
         <p>Se você não solicitou a recuperação de senha, por favor ignore este email.</p>
         <br>
         <p>Atenciosamente,</p>
-        <p>Sua Equipe</p>
+        <p>Barberfashion</p>
       </body>
     </html>
     """

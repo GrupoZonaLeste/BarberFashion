@@ -25,7 +25,6 @@ async function addDivCortes(){
     .then(res => res.json())
     .then(data => {
         data.forEach(async element => {
-            console.log(element.status)
             nome_data = await fetch(API_pegar_nomes_usuarios({id : element.client_id})).then(data => data.json()).then(data => {return data.name})
             if(element.status == 'confirmado'){
                 textDATA = `<h4>DATA:</h4> ${element.data} ; ${element.hora} <h4><br>CLIENTE:</h4> ${nome_data}`;
@@ -60,52 +59,67 @@ async function addDivCortes(){
 
                 
                 btn_delete.addEventListener('click', async () => {
+                    Swal.fire({
+                        title: "Cancelar Agendamento?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#E74040",
+                        cancelButtonColor: "gray",
+                        cancelButtonText: "Cancelar",
+                        confirmButtonText: "Sim, Cancelar Agendamento!"
+                      }).then(async (result) => {
+                          if (result.isConfirmed) {
+                              Swal.fire({
+                                  title: "Agendamento cancelado!",
+                                  text: "Agendamento foi cancelado com sucesso.",
+                                  icon: "success",
+                                }).then(async () =>{
+                                    await fetch(API_atualizar_cortes({id: btn_delete.id}),{
+                                        method: 'PUT',
+                                        body: JSON.stringify({
+                                            "status": "esperando"
+                                        }),
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        }      
+                                    })
+                                    location.reload()
+                                })
+                        }
+                      });
                     
-                    div_confirmacao.style.display = 'flex'
-                    div_confirmacao.style.flexDirection = 'column-reverse'
-                    div_confirmacao.style.alignItems = 'center'
-                    div_confirmacao.style.borderColor = '#E74040'
-                    mensagem.style.marginBottom = '1rem'
-                    mensagem.style.color = '#E74040'
-                    
-                    btnDeletar.style.backgroundColor = '#E74040'
-                    btnDeletar.style.borderColor = '#E74040'
-                    btnDeletar.style.boxShadow = '0px 0px 16px -5px #E74040'
-                    btnCancelar.style.backgroundColor = '#FF9800'
-                    btnCancelar.style.borderColor = '#FF9800'
-                    btnCancelar.style.boxShadow = '0px 0px 16px -5px #FF9800'
-                    
-                    mensagem.innerHTML = "Deseja mesmo Cancelar o Serviço?";
-                    div_confirmacao.append(mensagem);
-                    
-                    btnDeletar.addEventListener('click', async () =>{
-                            await fetch(API_deletar_cortes({id:btn_delete.id}), {
-                                method: "DELETE",
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                }
-                            })
-                            mensagem.innerHTML = "Serviço Cancelado com Sucesso!";
-                            div_confirmacao.append(mensagem);
-                            div_confirmacao.style.display = 'none'
-                            location.reload()
-                        });
-                        btnCancelar.addEventListener('click', () =>{
-                            div_confirmacao.style.display = 'none'
-                        })
+
                 })
                 btn_confirmar_servico.addEventListener('click', async () => {
-                    await fetch(API_atualizar_cortes({id: btn_delete.id}),{
-                        method: 'PUT',
-                        body: JSON.stringify({
-                            "status": "realizado"
-                        }),
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }      
-                    })
-                    alert("SERVIÇO REALIZADO")
-                    location.reload()
+                    Swal.fire({
+                        title: "Confirmar realização do serviço?",
+                        text: "O status do serviço mudará para realizado, contabilizando o mesmo no sistema. Você não poderá restaurar essa ação.",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#E74040",
+                        cancelButtonColor: "gray",
+                        cancelButtonText: "Cancelar",
+                        confirmButtonText: "Sim, Confirmar Serviço!"
+                      }).then(async (result) => {
+                          if (result.isConfirmed) {
+                              Swal.fire({
+                                  title: "Serviço Realizado!",
+                                  text: "Parabéns! O serviço foi realizado com sucesso.",
+                                  icon: "success",
+                                }).then(async () =>{
+                                    await fetch(API_atualizar_cortes({id: btn_delete.id}),{
+                                        method: 'PUT',
+                                        body: JSON.stringify({
+                                            "status": "realizado"
+                                        }),
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        }      
+                                    })
+                                    location.reload()
+                                })
+                        }
+                      });
                 })
                     p.innerHTML = textDATA
                     p2.innerHTML = textDESCRIPTION
@@ -151,20 +165,68 @@ async function addDivCortes(){
                 btn_delete.style.opacity = 1
             };
 
+            btn_delete.addEventListener('click', async () => {
+                Swal.fire({
+                    title: "Deletar Serviço?",
+                    text: "Você não vai poder reverter essa ação.",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#E74040",
+                    cancelButtonColor: "gray",
+                    cancelButtonText: "Cancelar",
+                    confirmButtonText: "Sim, deletar Serviço!"
+                  }).then(async (result) => {
+                      if (result.isConfirmed) {
+                          Swal.fire({
+                              title: "Serviço deletado!",
+                              text: "Serviço foi deletado com sucesso.",
+                              icon: "success",
+                            }).then(async () =>{
+                                await fetch(API_deletar_cortes({id: btn_delete.id}),{
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    }      
+                                })
+                                location.reload()
+                            })
+                    }
+                  });
+            })
+
 
             btn_aceitar.addEventListener('click', async () => {
-                await fetch(API_atualizar_cortes({id: btn_aceitar.id}),{
-                    method: 'PUT',
-                    body: JSON.stringify({
-                        "status": "confirmado"
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                            
-                })
 
-                location.reload()
+                Swal.fire({
+                    title: "Aceitar Serviço?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#FF9800",
+                    cancelButtonColor: "gray",
+                    cancelButtonText: "Cancelar",
+                    confirmButtonText: "Aceitar!"
+                  }).then(async (result) => {
+                      if (result.isConfirmed) {
+                          Swal.fire({
+                              title: "Serviço Aceito!",
+                              text: "Serviço foi Aceito com sucesso.",
+                              icon: "success",
+                            }).then(async () =>{
+                                await fetch(API_atualizar_cortes({id: btn_aceitar.id}),{
+                                    method: 'PUT',
+                                    body: JSON.stringify({
+                                        "status": "confirmado"
+                                    }),
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    }
+                                            
+                                })
+                                location.reload()
+                            })
+                    }
+                  });
+                
             })
 
             p.innerHTML = textDATA
@@ -256,8 +318,14 @@ btn_salvar_servicos.addEventListener('click', async () => {
                             "Content-type": "application/json; charset=UTF-8"
                         }
                     })
-                    alert("atualizado com sucesso")
-                    location.reload()
+                    Swal.fire({
+                        title: "Serviços atualizados!",
+                        text: "Seus serviços foram atualizados com sucesso!",
+                        icon: "success",
+                        confirmButtonColor: "#FF9800",
+                      }).then(() =>{
+                          location.reload()
+                      })
 })
 
 async function addDivHistorico(){

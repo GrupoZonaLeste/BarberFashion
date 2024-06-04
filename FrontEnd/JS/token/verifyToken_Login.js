@@ -15,10 +15,7 @@ async function checkTokenValidityLogin() {
     tokenChecked = true;
     axios.request(options).then(function (response) {
     console.log(response.data);
-    if(response.data.status == "Token válido"){
-        alert("LOGIN FEITO COM SUCESSO!");
-    }else{
-        alert("ERRO NA AUTENTICAÇÂO TENTE NOVAMENTE")
+    if(response.data.status != "Token válido"){
         window.location.href("http:/FrontEnd/HTML/pagina_cliente.html")
     }
     }).catch(function (error) {

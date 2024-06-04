@@ -38,8 +38,8 @@ const btnCancelar = document.getElementById('btn-canc')
 var mensagem = document.createElement("p")
 const div_confirmacao = document.getElementById('confirm')
 
+const checkboxes = document.getElementsByName("checkbox-cadastro-servico-funcionario");
 btn_cadastrarFuncionario.addEventListener('click', async () => {
-    const checkboxes = document.querySelectorAll('input[name="checkbox-cadastro-servico-funcionario"]');
     for (let i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i].checked) {
             objServicosSelecionados[checkboxes[i].value] = 1
@@ -48,48 +48,20 @@ btn_cadastrarFuncionario.addEventListener('click', async () => {
             objServicosSelecionados[checkboxes[i].value] = 0
         }
     }
+
     
-    if(nomeInput.value == '' || emailInput.value == '' || senhaInput.value == '' || checkboxes.length < 1 ){
-        div_alerta.style.display = 'flex'
-        div_alerta.style.flexDirection = 'column-reverse'
-        div_alerta.style.alignItems = 'center'
-        div_alerta.style.borderColor = '#E74040'
-        mensagem.style.marginBottom = '1rem'
-        mensagem.style.color = '#E74040'
-        
-        btnOk.style.backgroundColor = '#E74040'
-        btnOk.style.borderColor = '#E74040'
-        btnOk.style.boxShadow = '0px 0px 16px -5px #E74040'
-        
-        mensagem.innerHTML = "Preencha os Campos do Cadastro!";
-        div_alerta.append(mensagem);
-        btnOk.addEventListener('click', () =>{
-            div_alerta.style.display = 'none'
-        });
+    const arrayCheck = Object.values(objServicosSelecionados)
+    const verificacaoCheckbox = (item) => item == 0
+
+    if(nomeInput.value == '' || emailInput.value == '' || senhaInput.value == '' || checkboxes.length < 1 || arrayCheck.every(verificacaoCheckbox) == true){
+        Swal.fire({
+            title: "Oops...",
+            text: "Campos de cadastros inválidos.",
+            icon: "error",
+            confirmButtonColor: "#FF9800",
+          })
         return
     }
-    for (let i = 0; i < checkboxes.length; i++) {
-        if( !checkboxes[i].checked ){
-            div_alerta.style.display = 'flex'
-            div_alerta.style.flexDirection = 'column-reverse'
-            div_alerta.style.alignItems = 'center'
-            div_alerta.style.borderColor = '#E74040'
-            mensagem.style.marginBottom = '1rem'
-            mensagem.style.color = '#E74040'
-            
-            btnOk.style.backgroundColor = '#E74040'
-            btnOk.style.borderColor = '#E74040'
-            btnOk.style.boxShadow = '0px 0px 16px -5px #E74040'
-            
-            mensagem.innerHTML = "Preencha os Campos do Cadastro!";
-            div_alerta.append(mensagem);
-            btnOk.addEventListener('click', () =>{
-                div_alerta.style.display = 'none'
-            });
-            return
-        }
-    }
-    
     let data = fetchButtonData()
     await fetch(API_cadastrar_funcionario, {
         method: "POST",
@@ -103,10 +75,22 @@ btn_cadastrarFuncionario.addEventListener('click', async () => {
         console.log(response)  
         try {
             if (response.status === "OK") {
-                alert(`Funcionário cadastrado com sucesso`);
-                putFotoFuncionario(response.funcid)
+                Swal.fire({
+                    title: "Funcionário Cadastrado!",
+                    text: "Funcionário foi cadastrado com sucesso.",
+                    icon: "success",
+                    confirmButtonColor: "#FF9800",
+                  }).then(() =>{
+                    putFotoFuncionario(response.funcid)
+                    location.reload()
+                  })
             } else if(response.status === "EMAIL CADASTRADO") {
-                alert(`O Email "${data.email}" já está Cadastrado.`);
+                Swal.fire({
+                    title: `O email '${data.email}' já está cadastrado`,
+                    icon: "error"
+                  }).then(() =>{
+                      location.reload()
+                  })
             }
         } catch (error) {
             if (error.response && error.response.status === 422) {
@@ -122,7 +106,6 @@ btn_cadastrarFuncionario.addEventListener('click', async () => {
     emailInput.value = ''
     senhaInput.value = ''
     objServicosSelecionados = {}
-    location.reload()
 })
 
 const divFuncionariosCadastrados = document.getElementById('funcionarios_cadastrados')
@@ -174,15 +157,32 @@ async function addDivFuncionarios(){
             buscarImagemFuncionario(imgfunc, element.funcionario_id)
             
             btn_deletar.addEventListener('click', async ()=> {
-                
-                await fetch(API_deletar_funcionario({funcid: btn_deletar.id}), {
-                    method: "DELETE",
-                    headers: {
-                        'Content-Type': 'application/json'
+                Swal.fire({
+                    title: "Deletar funcionário?",
+                    text: "Você não vai poder reverter essa ação.",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#E74040",
+                    cancelButtonColor: "gray",
+                    cancelButtonText: "Cancelar",
+                    confirmButtonText: "Sim, deletar funcionário!"
+                  }).then(async (result) => {
+                      if (result.isConfirmed) {
+                          Swal.fire({
+                              title: "Funcionário deletado!",
+                              text: "Funcionário foi deletado com sucesso.",
+                              icon: "success",
+                            }).then(async () =>{
+                                await fetch(API_deletar_funcionario({funcid: btn_deletar.id}), {
+                                    method: "DELETE",
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    }
+                                })
+                                location.reload()
+                            })
                     }
-                })
-                alert("Funcionário excluido com Sucesso!")
-                location.reload()
+                  });
             })
             
             btn_editar.addEventListener('click', async () => {
@@ -276,19 +276,26 @@ async function addDivFuncionarios(){
                         alert("campos não podem ser vazios")
                         return
                     }
-                    fetch(API_editar_funcionario( {funcid: element.funcionario_id} ), {
-                        method: "PUT",
-                        body: JSON.stringify({
-                            "name": NomeInput.value,
-                            "email": EmailInput.value,
-                            "servicos": objServicosSelecionados
-                        }),
-                        headers: {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Mudanças salvas!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(async ()=>{
+
+                          fetch(API_editar_funcionario( {funcid: element.funcionario_id} ), {
+                              method: "PUT",
+                              body: JSON.stringify({
+                                  "name": NomeInput.value,
+                                  "email": EmailInput.value,
+                                  "servicos": objServicosSelecionados
+                                }),
+                                headers: {
                             "Content-type": "application/json; charset=UTF-8"
-                        }
+                            }
+                        })
+                        location.reload()
                     })
-                    alert("atualizado com sucesso")
-                    location.reload()
                 })
             })
             
@@ -389,14 +396,33 @@ async function AddDivServicos(){
             };
             
             btn_delete.addEventListener('click', async () => {
-                await fetch(API_excluir_servicos( {nome: element.nome}) , {
-                    method: "DELETE",
-                    headers: {
-                        'Content-Type': 'application/json'
+                Swal.fire({
+                    title: "Deletar serviço?",
+                    text: "Você não vai poder reverter essa ação.",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#E74040",
+                    cancelButtonColor: "gray",
+                    cancelButtonText: "Cancelar",
+                    confirmButtonText: "Sim, deletar serviço!"
+                  }).then(async (result) => {
+                      if (result.isConfirmed) {
+                          Swal.fire({
+                              title: "Serviço deletado!",
+                              text: "Serviço foi deletado com sucesso.",
+                              icon: "success",
+                            }).then(async () =>{
+
+                                await fetch(API_excluir_servicos( {nome: element.nome}) , {
+                                    method: "DELETE",
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    }
+                                })
+                                location.reload()
+                            })
                     }
-                })
-                alert("Serviço excluido com Sucesso!")
-                location.reload()
+                  });
             })
             
             btn_editar.name = "btn-editar-servico"
@@ -487,25 +513,31 @@ async function AddDivServicos(){
                         alert("CAMPOS NÃO PODEM SER VAZIOS")
                         return
                     }
-                    
-                    await fetch(API_editar_servicos( {nome: nomeapi} ), {
-                        method: 'PUT',
-                        body: JSON.stringify({
-                            "nome": NomeInput.value,
-                            "descricao": DescricaoInput.value,
-                            "tempo": TempoInput.value,
-                            "preco": PrecoInput.value
-                        }),
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                    
+                    Swal.fire({
+                        icon: "success",
+                        title: "Mudanças salvas!",
+                        showConfirmButton: false,
+                        timer: 1500
+                      }).then(async () =>{
+                            await fetch(API_editar_servicos( {nome: nomeapi} ), {
+                              method: 'PUT',
+                              body: JSON.stringify({
+                                  "nome": NomeInput.value,
+                                  "descricao": DescricaoInput.value,
+                                  "tempo": TempoInput.value,
+                                  "preco": PrecoInput.value
+                                }),
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            })
+                            location.reload()
+                        })
+                            
                     divEditarServicos.style.display = 'none'
                     while (divEditarServicos2.firstChild) {
                         divEditarServicos2.removeChild(divEditarServicos2.firstChild)
                     }
-                    location.reload()
                 })
                 
             })
