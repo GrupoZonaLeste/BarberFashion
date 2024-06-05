@@ -178,8 +178,20 @@ main {
     flex-direction: column;
     justify-content: center;
     height: 30rem;
-    padding: 2rem;
+    margin-top: 4rem;
+}
+
+#div-historico{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
     margin-top: 2rem;
+}
+
+#div-historico > p{
+    display: flex;
 }
 
 .superior{
@@ -265,6 +277,21 @@ footer {
 #btnservicos{
     background-color: #FF9800;
     color: #111111;
+}
+
+.title-modal{
+    font-size: 2rem; 
+    font-weight: 400; 
+    text-align: center;
+}
+
+.subtitle-modal{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    font-size: 1.3rem;
 }
 
 #btnhorarios, #btnbarbeiros, #btnconfirmacao{
@@ -893,8 +920,7 @@ footer {
 }
 
 #servicos_agendados{
-    margin: 130px auto;
-    width: 300px;
+    margin:130px auto; width: 40%;
     overflow-y: scroll;
     height: 32rem;
     max-height: 100%;
@@ -903,17 +929,20 @@ footer {
 #card_service{
     display: flex;
     flex-direction: column;
-
+    justify-content: center;
+    margin-top: 2rem;
+    width: 100%;
+    align-items: center;
 }
 
 #content_service{
     display: flex;
     flex-direction: column;
-    width: 90%;
     margin-bottom: 2rem;
     border: 2px solid #111111;
     padding: 1rem;
     border-radius: 1rem;
+    width: 90%;
 }
 
 #text_service{

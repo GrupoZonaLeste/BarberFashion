@@ -245,6 +245,27 @@ button:hover{
     background-color: #ffca28;
 }
 
+.title-modal{
+    font-size: 2rem; 
+    font-weight: 400; 
+    text-align: center;
+}
+
+.subtitle-modal{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    font-size: 1.3rem;
+}
+
+#card_service{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
 .card-title{
     font-weight: 600;
     color: #111111;
@@ -322,8 +343,7 @@ button:hover{
 }
 
 #servicos_agendados{
-    margin: 130px auto;
-    width: 300px;
+
     overflow-y: scroll;
     height: 32rem;
     max-height: 100%;
@@ -397,11 +417,31 @@ section{
 #content_service{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 90%;
     margin-bottom: 2rem;
     border: 2px solid #111111;
     padding: 1rem;
     border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+#agendamentos_marcados, #agenda_div{
+    display: flex;
+    justify-content: center;
+}
+
+#div-historico{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+#div-historico > p{
+    display: flex;
 }
 
 #text_service{

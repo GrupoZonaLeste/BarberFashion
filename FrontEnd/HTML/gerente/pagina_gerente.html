@@ -121,10 +121,11 @@
     <!-- Modal de confirmação de exclusão -->
     
     <div class="modal_CriarFuncionario">
-        <div class="card" style="margin:130px auto; width: 300px;">
+        <div class="card" style="margin:130px auto; width: 30%; height: 38rem;">
             <button id="fechar_cadastrarFuncionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-            <h1 style="font-size: 1.5rem;">CRIAR FUNCIONÁRIO</h1>
+            <h1 class="title-modal">Criar Funcionário</h1>
                 <div class="modal-content-funcionario">
+                    <p class="subtitle-modal">Crie seus Funcionários, Adicione as Informações:</p>
                     <form>
 
                         <label>Adicionar foto:</label>
@@ -150,20 +151,22 @@
         </div>
     </div>
 
-    <div class="modal_EditarFuncionario">
-        <div class="card" style="margin:130px auto; width: 300px;">
-            <button id="fechar_editarFuncionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-            <h1 style="font-size: 1.5rem;">FUNCIONÁRIOS</h1>
+    <div class="modal_visualizarFuncionario">
+        <div class="card" id="visu-func">
+            <button id="fechar_visualizarFuncionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <h1 class="title-modal">Funcionários Cadastrados</h1>
                 <div class="modal-content" id="funcionarios_cadastrados">
+                    <p class="subtitle-modal">Visualize Todos os Funcionários Cadastrados:</p>
                 </div>
         </div>
     </div>
     <div class="modal_visualizar_clientes">
-        <div class="card" style="margin:130px auto; width: 36%;">
+        <div class="card" id="visu-cliente">
             <button id="fechar_clientes_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-            <h1 style="font-size: 1.5rem;">CLIENTES</h1>
+            <h1 class="title-modal">Clientes Cadastrados</h1>
+            
                 <div class="modal-content" id="clientes_cadastrados">
-
+                    <p class="subtitle-modal">Visualize Todos os Clientes Cadastrados:</p>
  
                 </div>
         </div>
@@ -218,19 +221,21 @@
         </div>
 
         <div class="modal_editar_Funcionario">
-            <div class="card" style="margin:130px auto; width: 300px;">
-                <button id="fechar_editar_Funcionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-                <h1 style="font-size: 1.5rem;">EDITAR FUNCIONÁRIO</h1>
+            <div class="card" style="margin:130px auto; width: 30%;">
+                <button id="fechar_editarFuncionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+                <h1 class="title-modal">Editar Funcionário</h1>
                     <div class="modal-content" id="editar_Funcionario">
+                        <p class="subtitle-modal">Edite as informações:</p>
                     </div>
             </div>
         </div>
 
         <div class="modal_Agendamentos">
-            <div class="card" style="margin:130px auto; width: 25%;">
+            <div class="card" style="margin:130px auto; width: 40%;">
                 <button id="fechar_agendamenos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-                <h1 style="font-size: 1.5rem;">AGENDAMENTOS</h1>
+                <h1 class="title-modal">Agendamentos</h1>
                     <div class="modal-content" id="div-agendamentos">
+                        <p class="subtitle-modal">Visualize todos os Serviços Agendados:</p>
                     </div>
             </div>
         </div>

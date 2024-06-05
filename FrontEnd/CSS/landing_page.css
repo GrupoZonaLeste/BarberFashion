@@ -37,6 +37,8 @@
     border: none;
     box-shadow: 0px 0px 10px 5px #FF9800;
     transition: 0.2s all;
+    justify-content: center;
+    align-items: center;
   }
 
   #voltarAoTopo:hover {

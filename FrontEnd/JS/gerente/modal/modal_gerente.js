@@ -1,14 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Function to toggle the display of modals
     const toggleModal = (modal, display) => {
+        console.log("Toggling modal. Display:", display); // Adiciona log para verificar se a função toggleModal está sendo chamada
         modal.style.display = display;
     }
 
-    // Event listeners for opening and closing modals
     const addModalEventListeners = (openBtn, closeBtn, modal) => {
         if (openBtn && closeBtn && modal) {
-            openBtn.addEventListener('click', () => toggleModal(modal, 'block'));
-            closeBtn.addEventListener('click', () => toggleModal(modal, 'none'));
+            openBtn.addEventListener('click', () => {
+                console.log("Abrindo modal");
+                toggleModal(modal, 'block');
+            });
+            closeBtn.addEventListener('click', () => {
+                console.log("Fechando modal");
+                toggleModal(modal, 'none');
+            });
         } else {
             console.error('One or more elements are missing:', { openBtn, closeBtn, modal });
         }
@@ -21,10 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
     addModalEventListeners(btnCadastrarBarbeiro, btnFecharCadastrarFuncionario, modalCriarFuncionario);
 
     // MODAL: Editar Funcionario
-    const modalEditarFuncionario = document.querySelector('.modal_EditarFuncionario');
+    const modalVisualizarFuncionario = document.querySelector('.modal_visualizarFuncionario');
     const btnEditarBarbeiro = document.getElementById('btn-editar-barbeiro');
+    const btnFecharVFuncionario = document.getElementById('fechar_visualizarFuncionario_btn');
+    addModalEventListeners(btnEditarBarbeiro, btnFecharVFuncionario, modalVisualizarFuncionario);
+
+    
+    const modalEditarFuncionario = document.querySelector('.modal_editar_Funcionario');
+    const btnEditarFuncionario = document.getElementById('2');
     const btnFecharEditarFuncionario = document.getElementById('fechar_editarFuncionario_btn');
-    addModalEventListeners(btnEditarBarbeiro, btnFecharEditarFuncionario, modalEditarFuncionario);
+    addModalEventListeners(btnEditarFuncionario, btnFecharEditarFuncionario, modalEditarFuncionario);
+    
 
     // MODAL: Servicos Agendados (NAO ESTA FUNCIONANDO!)
     const modalAgendamentos = document.querySelector('.modal_Agendamentos');
