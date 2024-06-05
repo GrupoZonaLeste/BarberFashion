@@ -48,19 +48,18 @@ btn_cadastrarFuncionario.addEventListener('click', async () => {
             objServicosSelecionados[checkboxes[i].value] = 0
         }
     }
-
     
     const arrayCheck = Object.values(objServicosSelecionados)
     const verificacaoCheckbox = (item) => item == 0
-
+    
     if(nomeInput.value == '' || emailInput.value == '' || senhaInput.value == '' || checkboxes.length < 1 || arrayCheck.every(verificacaoCheckbox) == true){
         Swal.fire({
             title: "Oops...",
             text: "Campos de cadastros inválidos.",
             icon: "error",
             confirmButtonColor: "#FF9800",
-          })
-        return
+          }).
+            return
     }
     let data = fetchButtonData()
     await fetch(API_cadastrar_funcionario, {
@@ -422,6 +421,7 @@ async function AddDivServicos(){
             btn_editar.innerHTML = "EDITAR"
             div_textos.id = 'text_service'
             div_contentService.id = 'content_service'
+            div_contentService.style.flexDirection = 'column'
             id_corte = element._id
             btn_delete.id = id_corte.slice(9, 33)
             btn_editar.id = id_corte.slice(9, 33)
@@ -658,7 +658,9 @@ async function addDivAgendamentos(){
             p.style.margin = '5px'
             p.style.fontSize = '110%'
             p.id = 'content_service'
-            p.style.alignItems = 'start'
+            p.style.alignItems = 'center'
+            p.style.display = 'flex'
+            p.style.flexDirection = 'column'
             divAgendamentos.appendChild(p)
 
             imgCliente.forEach(item =>{
