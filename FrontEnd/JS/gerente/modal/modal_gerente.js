@@ -30,12 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnEditarBarbeiro = document.getElementById('btn-editar-barbeiro');
     const btnFecharVFuncionario = document.getElementById('fechar_visualizarFuncionario_btn');
     addModalEventListeners(btnEditarBarbeiro, btnFecharVFuncionario, modalVisualizarFuncionario);
+    // Codigo inutil <deletar?>
+    //const btnFecharEditarFuncionario = document.getElementById('fechar_editarFuncionario_btn');
+    //const modalEditarFuncionario = document.querySelector('.modal_editar_Funcionario');
+    //const btnEditarFuncionario = document.getElementById('2');
 
-    
-    const modalEditarFuncionario = document.querySelector('.modal_editar_Funcionario');
-    const btnEditarFuncionario = document.getElementById('2');
-    const btnFecharEditarFuncionario = document.getElementById('fechar_editarFuncionario_btn');
-    addModalEventListeners(btnEditarFuncionario, btnFecharEditarFuncionario, modalEditarFuncionario);
+    //addModalEventListeners(btnEditarFuncionario, btnFecharEditarFuncionario, modalEditarFuncionario);
     
 
     // MODAL: Servicos Agendados (NAO ESTA FUNCIONANDO!)

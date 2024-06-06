@@ -38,7 +38,6 @@ async function getDataUsuario(){
         method: 'GET',
         url: API_usuario,
         params: {id: id},
-        headers: {'User-Agent': 'insomnia/9.1.0'}
       };
 
     axios.request(options2).then(function (response) {

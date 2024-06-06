@@ -1048,3 +1048,19 @@ img.picture_img {
 .picture_img {
     object-fit: cover;
 }
+span{
+    display: none;
+}
+.span-required{
+    font-size: 15px;
+    color: #e63636;
+}
+.services-container {
+    
+    width: 430px;
+    min-height: 100px; /* Define a altura máxima do contêiner */
+    overflow-y: auto; /* Adiciona a barra de rolagem vertical */
+    border: 1px solid #ccc; /* Opcional: Adiciona uma borda para melhorar a aparência */
+    padding: 10px; /* Espaçamento interno para melhor aparência */
+    margin-bottom: 20px; /* Espaçamento inferior para separar do restante do conteúdo */
+}
