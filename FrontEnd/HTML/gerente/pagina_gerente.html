@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento - Barbearia</title>
     <link rel="stylesheet" href="/FrontEnd/CSS/gerente/pagina_gerente.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg container-fluid">
@@ -21,12 +22,16 @@
 
     <main class="container">
 
-            <div class="sidebar">
+        <div class="sidebar">
+                <div class="config" style="cursor: pointer;" name="editar-barbearia-btn">
+                    <a ><img src="/FrontEnd/images/icone_editar.png"  alt="botão para editar barbearia" name="editar-barbearia-btn"></a>
+                    <a  class="link-config" name="editar-barbearia-btn">EDITAR SERVIÇOS</a>
+                </div>            
                 <div class="config">
                     <a href=""><img src="/FrontEnd/images/setting-wh.png" alt=""></a>
                     <a href="" class="link-config">CONFIGURAÇÕES</a>
                 </div>
-                <div class="sair">
+                <div class="sair" style="cursor: pointer;">
                     <a ><img src="/FrontEnd/images/sair-red.png" id="logout" alt="botão de sair da página"></a>
                     <a  class="link-sair">SAIR</a>
                 </div>            
@@ -89,8 +94,8 @@
                     <div class="inferior">
                         <div class="card-inferior">
                             <p class="card-title">HISTÓRICO DE SERVIÇOS</p>
-                            <div>
-                                <img src="/FrontEnd/images/right-arrow-down.png" class="card-icon-seta" alt="">
+                            <div id="div-historico">
+                                <img src="/FrontEnd/images/right-arrow-down.png" class="card-icon-seta" id="seta" alt="">
                             </div>
                         </div>
                     </div>
@@ -103,12 +108,7 @@
                     <p class="card-title-relat">RELATÓRIOS DA BARBEARIA: </p>
                     <p class="card-subtitle-relat"> Consulte informações relacionados aos serviços prestados da sua Barbearia. </p>
                     <div class="view-relat">
-                        <p>Serviços Realizados Hoje:</p>
-                        <p>5</p>
-                        <p>Serviços Cancelados Hoje:</p>
-                        <p>1</p>
-                        <p>Total Ganho no mês:</p>
-                        <p>R$ *******</p>
+
                         <button id="btn-relat">RELATÓRIOS</button>
                     </div>
                 </div>
@@ -117,41 +117,135 @@
     <!-- Modal de confirmação de exclusão -->
     
     <div class="modal_CriarFuncionario">
-        <div class="card" style="margin:130px auto; width: 300px;">
+        <div class="card" style="margin-left: 40%;width: 25%;height: 80%;margin-top: 5rem;">
             <button id="fechar_cadastrarFuncionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-            <h1 style="font-size: 1.5rem;">CRIAR FUNCIONÁRIO</h1>
-                <div class="modal-content">
-                    <form>
+            <h1 class="title-modal">Criar Funcionário</h1>
+                <div class="modal-content-funcionario">
+                    <p class="subtitle-modal">Crie seus Funcionários, Adicione as Informações:</p>
+                    <form id="form_cadastrar_funcionario">
+                        <label>Adicionar foto:</label>
+                        <div class="foto-perfil">
+                            <label tabindex="0" class="picture">
+                                <input type="file" accept="image/*" id="picture_input_funcionario">
+                                <img class="picture_img" src="/FrontEnd/images/profile.png" width="130" height="130" id="image_user" name="imagem-funcionario">
+                            </label>
+                        </div>
+        
                         <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome" required>
-                        <label for="cargo">Email:</label>
-                        <input type="text" id="email" name="email" required>
-                        <label for="cargo">Senha:</label>
-                        <input type="text" id="senha" name="senha" required>
+                        <input type="text" id="nome" name="nome" class="required" required>
+                        <span class="span-required">Nome deve ter pelo menos 3 caracteres e conter apenas letras.</span>
+        
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" name="email" class="required" required>
+                        <span class="span-required">Email inválido.</span>
+        
+                        <label for="senha">Senha:</label>
+                        <input type="text" id="senha" name="senha" class="required" required>
+                        <span class="span-required">Senha deve ter pelo menos 6 caracteres.</span>
+        
+                        <div id="div_cadastrar_servicos_funcionario" style="align-items: start;">
+                           
+
+                            </div>
+                        </div>
+                        <br>  
                     </form>
                     <input type="submit" id="cadastrarFuncionario" value="Cadastrar" style="background-color: #FF9800;" class="button cadastrar">
                 </div>
         </div>
     </div>
 
-    <div class="modal_EditarFuncionario">
-        <div class="card" style="margin:130px auto; width: 300px;">
-            <button id="fechar_editarFuncionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-            <h1 style="font-size: 1.5rem;">FUNCIONÁRIOS</h1>
+    <div class="modal_visualizarFuncionario">
+        <div class="card" id="visu-func">
+            <button id="fechar_visualizarFuncionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <h1 class="title-modal">Funcionários Cadastrados</h1>
                 <div class="modal-content" id="funcionarios_cadastrados">
+                    <p class="subtitle-modal">Visualize Todos os Funcionários Cadastrados:</p>
                 </div>
         </div>
     </div>
     <div class="modal_visualizar_clientes">
-        <div class="card" style="margin:130px auto; width: 36%;">
+        <div class="card" id="visu-cliente">
             <button id="fechar_clientes_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-            <h1 style="font-size: 1.5rem;">CLIENTES</h1>
+            <h1 class="title-modal">Clientes Cadastrados</h1>
+            
                 <div class="modal-content" id="clientes_cadastrados">
-
+                    <p class="subtitle-modal">Visualize Todos os Clientes Cadastrados:</p>
  
                 </div>
         </div>
     </div>
+
+    <div class="modal_Servicos">
+        <div class="card" style="margin:130px auto; width: 800px;" id="servicos_agendados">
+            <button id="fechar_servicos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+            <h1 style="font-size: 1.5rem;">CONTROLE DE SERVIÇOS</h1>
+                <div class="modal-content-servicos" id="servicos">
+                    <div id="formulario-servicos" class="div-criar-servicos">
+                        <form class="form-servicos">
+
+                            
+                            <label>Adicionar foto:</label>
+                            <div class="foto-perfil-funcionario">
+                                <label tabindex="0" class="picture">
+                                    <input type="file" accept="image/*" id="picture_input" >
+                                    <img class="picture_img" src="/FrontEnd/images/LogoMarca.png" width="150" height="150" id="image_user" name="imagem-servico">
+                                </label>
+                            </div>
+
+                            <label for="nome-servico">Nome:</label>
+                            <input id="nome-servico">
+
+                            <label for="descricao-servico">Descrição:</label>
+                            <textarea id="descricao-servico" rows="5" cols="50" maxlength="150" minlength="10" autocomplete="on" style="resize: none; padding: 6px;"></textarea>
+
+                            <label for="tempo-servico">Tempo estimado: (Em minutos)</label>
+                            <input id="tempo-servico" type="number">
+
+                            <label for="preco-servico">Preço: (Em R$)</label>
+                            <input id="preco-servico" type="number">
+                        </form>
+                        <button id="btn-add-servico">Adicionar serviço</button>
+                    </div>
+                    
+                    <div id="servicos-cadastrados">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <img>
+        <div class="modal_editar_Servicos">
+            <div class="card" style="margin:130px auto; width: 300px;">
+                <button id="fechar_editarServicos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+                <h1 style="font-size: 1.5rem;">EDITAR SERVIÇO</h1>
+                    <div class="modal-content" id="editar_servicos">
+                    </div>
+            </div>
+        </div>
+
+        <div class="modal_editar_Funcionario">
+            <div class="card" style="margin:130px auto; width: 30%;">
+                <button id="fechar_editarFuncionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+                <h1 class="title-modal">Editar Funcionário</h1>
+                    <div class="modal-content" id="editar_Funcionario">
+                        <p class="subtitle-modal">Edite as informações:</p>
+                    </div>
+            </div>
+        </div>
+
+        <div class="modal_Agendamentos">
+            <div class="card" style="margin:130px auto; width: 40%; max-height: 35rem;
+            overflow-y: scroll;">
+                <button id="fechar_agendamenos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
+                <h1 class="title-modal">Agendamentos</h1>
+                    <div class="modal-content" id="div-agendamentos">
+                        <p class="subtitle-modal">Visualize todos os Serviços Agendados:</p>
+                    </div>
+            </div>
+        </div>
+        
+
     <div class="modal_Relatorio">
         <div class="card_Relatorio" id="card_Relatorio" style="margin:130px auto; height: 10rem;">
             <button id="fechar_relatorio_btn" type="button" class="btn-fechar" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
@@ -167,46 +261,53 @@
                         <div class="navegacao2">
                             <input type="date" name="" id="input_diario">
                             <input type="month" name="" id="input_mensal">
-                            <input type="month" name="" id="input_anual">
+                            <select id="input_anual">
+                                <option value="2024">2024</option>
+                            </select>
                             <button type="submit" id="pesquisar" style="align-items: center;">PESQUISAR</button>
                         </div>
                         <div class="avaliacao">
                             <div class="esquerdo">
-                                <p>Horários que foram marcados:</p>
-                                <h3>RESPOSTA</h3>
-                                <p>Clientes que foram atendidos:</p>
-                                <h3>RESPOSTA</h3>
-                                <p>Serviços que foram realizados no total:</p>
-                                <h3>RESPOSTA</h3>
-                                <p>Clientes que não compareceram:</p>
-                                <h3>RESPOSTA</h3>
-                                <p>Total ganho:</p>
-                                <h3>RESPOSTA</h3>
+                               
+                                <div class="view-dashboard">
+                                    <div class="chart-row">
+                                        <div class="chart-container">
+                                            <canvas id="chart-pizza" class="chart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="direito">
-                                <p>Serviço de maior Valor:</p>
-                                <h3>RESPOSTA</h3>
-                                <p>Quantidade de feedbacks recebidos:</p>
-                                <h3>RESPOSTA</h3>
-                                <p>Quantos barbeiros ativos?</p>
-                                <h3>RESPOSTA</h3>
-                                <p>Media de clientes atendidos por cliente</p>
-                                <h3>RESPOSTA</h3>
+                                <p>Total de serviços Realizados:</p>
+                                <h3 id="servicos-realizados-relatorio"></h3>
+                                <p>Total Ganho:</p>
+                                <h3 id="total-ganho-relatorio"></h3>
+                                <p>Total de serviços cancelados:</p>
+                                <h3 id="total-cancelamentos-relatorio"></h3>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    
+    <script src="/FrontEnd/JS/gerente/validacao_cadastro.js"></script>
     <script src="/FrontEnd/JS/endpoints.js"></script>
     <script src="/FrontEnd/JS/token/token_decode.js"></script>
+    <script src="/FrontEnd/JS/gerente/data_gerente.js"></script>
+    
     <script src="/FrontEnd/JS/gerente/relatorio_gerente.js"></script>
     <script src="/FrontEnd/JS/gerente/pagina_gerente.js"></script>
-    <script src="/FrontEnd/JS/gerente/modal/modal_gerente.js"></script>
     <script src="/FrontEnd/JS/gerente/logout_gerente.js"></script>
     <script src="/FrontEnd/JS/token/verifyToken_gerente.js"></script>
-    <script src="/FrontEnd/JS/gerente/data_gerente.js"></script>
-</body>
-</html>
+    
+    <script src="/FrontEnd/JS/gerente/modal/modal_gerente.js"></script>
+
+
+
+    </script>
+            </body>
+            </html>
+            

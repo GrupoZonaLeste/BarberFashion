@@ -11,11 +11,11 @@ function buscarImagemCliente(cliente_id) {
     console.log(cliente_id);
   
     // Constrói o nome do arquivo
-    const filename = `user_${cliente_id}.jpg`;
+    const filename = `user_${cliente_id}.webp`;
     console.log(filename);
   
   
-    const imageUrl = `/BackEnd/clientes_pictures/${filename}`;
+    const imageUrl = `/BackEnd/pictures_clientes/${filename}`;
   
   
     const imgElement = document.getElementById('image_user');
@@ -38,7 +38,6 @@ async function getDataUsuario(){
         method: 'GET',
         url: API_usuario,
         params: {id: id},
-        headers: {'User-Agent': 'insomnia/9.1.0'}
       };
 
     axios.request(options2).then(function (response) {
@@ -63,9 +62,10 @@ function PutData(id,nome,email1,phone){
 const btn_update = document.getElementById('btnupdate')
 
 btn_update.addEventListener('click', async function(){
-     new_name = document.getElementById('name').value
-     new_email = document.getElementById('email').value.trim()
-     new_phone = document.getElementById('phone').value.trim()
+    
+    new_name = document.getElementById('name').value
+    new_email = document.getElementById('email').value.trim()
+    new_phone = document.getElementById('phone').value.trim()
      const params = { id: id };
 
     // Adicionar os campos ao objeto de parâmetros somente se tiverem sido preenchidos
@@ -78,16 +78,20 @@ btn_update.addEventListener('click', async function(){
     url: API_editar,
     params: params
     } 
+    Swal.fire({
+        icon: "success",
+        title: "Mudanças salvas!",
+        showConfirmButton: false,
+        timer: 1500
+      }).then(async ()=>{
+          await axios.request(options).then(function (response) {
+        }).catch(function (error) {
+            console.log(error);
+        });
+    })
+        
+});
 
-    await axios.request(options).then(function (response) {
-        alert("Atualizado com sucesso!")
-        console.log(response.data);
-    }).catch(function (error) {
-        console.log(error);
-    });
-
-    location.reload()
-})
 
 function parseJwt (token) {
     var base64Url = token.split('.')[1];

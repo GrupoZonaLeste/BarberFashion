@@ -1,14 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Function to toggle the display of modals
     const toggleModal = (modal, display) => {
+        console.log("Toggling modal. Display:", display); // Adiciona log para verificar se a função toggleModal está sendo chamada
         modal.style.display = display;
     }
 
-    // Event listeners for opening and closing modals
     const addModalEventListeners = (openBtn, closeBtn, modal) => {
         if (openBtn && closeBtn && modal) {
-            openBtn.addEventListener('click', () => toggleModal(modal, 'block'));
-            closeBtn.addEventListener('click', () => toggleModal(modal, 'none'));
+            openBtn.addEventListener('click', () => {
+                console.log("Abrindo modal");
+                toggleModal(modal, 'block');
+            });
+            closeBtn.addEventListener('click', () => {
+                console.log("Fechando modal");
+                toggleModal(modal, 'none');
+            });
         } else {
             console.error('One or more elements are missing:', { openBtn, closeBtn, modal });
         }
@@ -21,16 +26,23 @@ document.addEventListener('DOMContentLoaded', () => {
     addModalEventListeners(btnCadastrarBarbeiro, btnFecharCadastrarFuncionario, modalCriarFuncionario);
 
     // MODAL: Editar Funcionario
-    const modalEditarFuncionario = document.querySelector('.modal_EditarFuncionario');
+    const modalVisualizarFuncionario = document.querySelector('.modal_visualizarFuncionario');
     const btnEditarBarbeiro = document.getElementById('btn-editar-barbeiro');
-    const btnFecharEditarFuncionario = document.getElementById('fechar_editarFuncionario_btn');
-    addModalEventListeners(btnEditarBarbeiro, btnFecharEditarFuncionario, modalEditarFuncionario);
+    const btnFecharVFuncionario = document.getElementById('fechar_visualizarFuncionario_btn');
+    addModalEventListeners(btnEditarBarbeiro, btnFecharVFuncionario, modalVisualizarFuncionario);
+    // Codigo inutil <deletar?>
+    //const btnFecharEditarFuncionario = document.getElementById('fechar_editarFuncionario_btn');
+    //const modalEditarFuncionario = document.querySelector('.modal_editar_Funcionario');
+    //const btnEditarFuncionario = document.getElementById('2');
+
+    //addModalEventListeners(btnEditarFuncionario, btnFecharEditarFuncionario, modalEditarFuncionario);
+    
 
     // MODAL: Servicos Agendados (NAO ESTA FUNCIONANDO!)
-    //const modalServicos = document.getElementById('modal_servicos');
-    //const btnAgendamentos = document.getElementById('btn-agendamentos');
-    //const btnFecharServicos = document.getElementById('fechar_servicos_btn');
-    //addModalEventListeners(btnAgendamentos, btnFecharServicos, modalServicos);
+    const modalAgendamentos = document.querySelector('.modal_Agendamentos');
+    const btnAgendamentos = document.getElementById('btn-agendamentos');
+    const btnFecharAgendamentos = document.getElementById('fechar_agendamenos_btn');
+    addModalEventListeners(btnAgendamentos, btnFecharAgendamentos, modalAgendamentos);
 
     // MODAL: Visualizar Clientes
     const modalVisualizarClientes = document.querySelector('.modal_visualizar_clientes');
@@ -43,4 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnRelatorio = document.getElementById('btn-relat');
     const btnFecharRelatorio = document.getElementById('fechar_relatorio_btn');
     addModalEventListeners(btnRelatorio, btnFecharRelatorio, modalRelatorio);
+
+    // MODAL: Serviços
+    const modalServicos = document.querySelector('.modal_Servicos');
+    const btnServicos = document.querySelector("[name=editar-barbearia-btn]");
+    const btnFecharServicos = document.getElementById('fechar_servicos_btn');
+    addModalEventListeners(btnServicos, btnFecharServicos, modalServicos);
 });

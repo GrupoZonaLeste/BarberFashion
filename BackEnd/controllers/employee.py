@@ -14,4 +14,15 @@ class Controller_employee:
     def get_current_collection(self):
         return self.__db_connection.get_collection(self.__collection_name)
     
-
+    def retornar_nome_cliente(self, client_id):
+        usuario = self.get_current_collection().find_one({'client_id': int(client_id)})
+        user = { "name": usuario.get('name')}
+        return user
+    
+    def funcionarios_qualificados(self, servico):
+        funcionario = []
+        for i in self.get_current_collection().find({f"servicos.{servico}": 1}):
+            funcionario.append(i)
+        for i in funcionario:
+            i["_id"] = f"ObjectId({str(i['_id'])})"
+        return funcionario

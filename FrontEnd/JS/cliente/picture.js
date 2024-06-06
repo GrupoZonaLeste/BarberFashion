@@ -43,7 +43,6 @@ function enviarImagem() {
             params: {id: user_id},
             headers: {
                 'Content-Type': 'multipart/form-data',
-                
             },
             data: formData
         };

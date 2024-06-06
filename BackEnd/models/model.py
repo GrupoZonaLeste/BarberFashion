@@ -1,16 +1,6 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from typing import Optional
 
-class Item(BaseModel):
-    id: Optional[str] 
-    name: str
-    description: Optional[str]
-    price: Optional[float]
-
-class ItemSend(BaseModel):
-    name: str
-    description: Optional[str]
-    price: Optional[float]
 
 class Cliente(BaseModel):
     name: str
@@ -27,6 +17,7 @@ class Funcionario(BaseModel):
     name: str
     email: Optional[str]
     password: str
+    servicos: dict
     funcionario_id: int
 
 class Gerente(BaseModel):
@@ -34,3 +25,10 @@ class Gerente(BaseModel):
     email: Optional[str]
     password: str
     gerente_id: int
+
+class CodeSchema(BaseModel):
+    email: EmailStr
+    code: str
+class AlterarSenha(BaseModel):
+    password: str
+    email: EmailStr

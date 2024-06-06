@@ -9,6 +9,9 @@ from controllers.login import Controller_auth
 from models.model import *
 from database.connection import *
 from controllers.tokens import Token
+from controllers.email_sender import *
+from models.model import CodeSchema
+from controllers import client
 
 db_handle = DBConnectionHandler()
 db_handle.connect_to_db()
@@ -47,3 +50,33 @@ def login(email: str, senha: str, request: Request):
         return {"status": "Login bem-sucedido","token" : resultado, "tipo_usuario": tipousuario}
     else:
         raise HTTPException(status_code=401, detail="Credenciais inválidas")
+
+@router.post("/recuperar-senha/")
+def solicitar_recuperacao(email: str):
+    try:
+        gerar_codigo(email)
+        return {"message": "Código de recuperação de senha enviado com sucesso"}
+    except ValueError as ve:
+        raise HTTPException(status_code=404, detail=str(ve))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Falha ao enviar o código de recuperação")
+
+@router.post("/verificar-codigo/")
+async def verificar_codigo(code_data: CodeSchema):
+    email = code_data.email
+    code = code_data.code
+
+    if email in temporary_codes:
+        stored_code = temporary_codes[email]['code']
+        expiration_time = temporary_codes[email]['expires']
+        
+        if time.time() > expiration_time:
+            raise HTTPException(status_code=400, detail="Código expirado")
+        
+        if stored_code == code:
+            return {"status": "OK"}
+        else:
+            raise HTTPException(status_code=400, detail="Código inválido")
+    else:
+        raise HTTPException(status_code=400, detail="Nenhum código encontrado para este email")
+

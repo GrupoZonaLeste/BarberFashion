@@ -85,8 +85,8 @@
                     <div class="inferior">
                         <div class="card-inferior">
                             <p class="card-title">HISTÓRICO DE SERVIÇOS</p>
-                            <div>
-                                <img src="/FrontEnd/images/right-arrow-down.png" class="card-icon-seta" alt="">
+                            <div id="div-historico">
+                                <img src="/FrontEnd/images/right-arrow-down.png" class="card-icon-seta" id="seta" alt="">
                             </div>
                         </div>
                     </div>
@@ -97,36 +97,96 @@
     </div>
     
     <div class="modal_agendar">
-        <div class="card" style="margin:130px auto; width: 300px;">
-                <button id="fechar_agendamento_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-                <h3>Agendar Serviço</h3><br>
-                <form>
-                    <label for="data">Data:</label>
-                    <input type="date" id="data" name="data" required><br><br>
+        <div class="card_agendar" style="margin:130px auto; width: 80rem; height: 100%;">
+            <button id="limpar_agendamento_btn" type="button" class="btn-limpar" >LIMPAR FORMUÁRIO</button>
+            <button id="fechar_agendamento_btn" type="button" class="btn-fechar" >X</button>
+            <p style="font-size: 2rem;">Agendar Serviço</p><br>
+                <div class="conteudo-servico">
+                <div class="navegacao" style="position: sticky;">
+                    <button id="btnservicos">SERVIÇOS</button>
+                    <button id="btnhorarios">HORÁRIOS</button>
+                    <button id="btnbarbeiros">BARBEIROS</button>
+                    <button id="btnconfirmacao">CONFIRMAÇÃO</button>
+                </div>
+                <div class="serviços">
+                    <p class="tit-mod">Selecione os Serviços Desejados:</p>
+                    <div class="section" id="cortes">
+                        <div class="cards-cortes"  id="marcar-servico">
+                        </div>
+                    </div>
+                </div>
 
-                    <label for="horario">Horário:</label>
-                    <input type="time" id="horario" name="horario" required><br><br>
+                <div class="horarios">
+                    <p class="tit-mod">Selecione a Data e o Horário para seu Agendamento:</p>
+                    <form class="form-data">
+                        <label for="data" class="label">Data:</label>
+                        <input type="date" id="data" name="data" required><br><br>
+    
+                        <label for="horario" class="label">Horário:</label>
+                        <input type="time" id="horario" name="horario" required><br><br>
+                    </form>
+                </div>
 
-                    <label for="servico">Serviço:</label>
-                    <select id="servico" name="servico" required>
-                        <option value="" disabled selected>Selecione um serviço</option>
-                        <option value="corte de cabelo">Corte</option>
-                        <option value="barba">Barba</option>
-                        <option value="sobrancelha">Sobrancelha</option>
-                        <option value="progressiva">Progressiva</option>
-                        <option value="coloração de cabelo">Coloração</option>
-                    </select><br><br>
-                </form>
-                <button id="input_agendar" type="submit">Agendar</button> 
-            
+                <div class="barbeiros">
+                    <p class="tit-mod">Selecione o Barbeiro de sua Confiança:</p>
+                    <div class="section" id="barbeiros">
+                        <p class="title-degrade">Barbeiros:</p>
+                        <div class="cards-cortes" id="confirmar-barbeiro">
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="confirmacao">
+                    <div class="div-conf">
+                        <p class="tit-mod">Confirme os Dados do Agendamento:</p>
+
+                        <div class="alinhamento">
+                            <div class="divison1" id="servicos-selecionados">
+                                <p class="title-conf">Serviços Selecionados:</p>
+                            </div>
+                            
+                            <div class="divison2">
+                                <p class="title-conf">Tempo Total Estimado:</p>
+                                <p class="sub-elementos" id="tempo-estimado"></p>
+                                <div class="data-conf">
+                                    <p class="elementos">Data:</p> <p id="data-confirmacao"></p>
+                                    <p class="elementos">Horário:</p> <p id="horario-confirmacao"></p>
+                                </div>
+                                
+                                <p class="title-conf">Barbeiro:</p>
+                                <div class="card-barb">
+                                    
+                                    <p class="elementos" id="barbeiro-confirmacao"></p>
+                                    <img src="/FrontEnd/images/estrela.png" alt="" class="img-estrela">
+                                    <img src="" alt="" class="ft-barbeiro" id="foto-barbeiro-confirmacao">
+                                </div>
+                                
+                            </div>
+                        
+                        </div>
+
+                        <div class="btns">
+                            <button class="btn-cancelar" id="cancelar-servico">Cancelar</button>
+                            <button class="btn-confirmar" id="confirmar-servico">Confirmar</button>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
     
         <div class="modal_servico">
             <div id="servicos_agendados" class="card">
                 <button id="fechar_servicos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-                <h3>Serviços Agendados</h3><br>
-                    <div id="card_service"></div>
+                <h1 class="title-modal">Serviços Agendados:</h1>
+                <p class="subtitle-modal">Visualize o Status do seu Agendamento:</p>
+                    <div id="card_service">
+
+                    </div>
             </div>
         </div>
 
@@ -145,7 +205,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+    <script src="/FrontEnd/JS/cliente/opcoes_servicos.js"></script>
     <script src="/FrontEnd/JS/endpoints.js"></script>
     <script src="/FrontEnd/JS/cliente/modal/modal_cliente.js"></script>
     <script src="/FrontEnd/JS/cliente/pagina_cliente.js"></script>
@@ -153,12 +213,8 @@
     <script src="/FrontEnd/JS/token/token_decode.js"></script>
     <script src="/FrontEnd/JS/cliente/logout.js"></script>
     <script src="/FrontEnd/JS/token/verifyToken_Cliente.js"></script>
-    
-    
-  
-    
-    
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>

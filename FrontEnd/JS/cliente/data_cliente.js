@@ -50,11 +50,11 @@ function buscarImagemCliente(cliente_id) {
   console.log(cliente_id);
 
   // Constrói o nome do arquivo
-  const filename = `user_${cliente_id}.jpg`;
+  const filename = `user_${cliente_id}.webp`;
   console.log(filename);
 
 
-  const imageUrl = `/BackEnd/clientes_pictures/${filename}`;
+  const imageUrl = `/BackEnd/pictures_clientes/${filename}`;
 
 
   const imgElement = document.getElementById('image_user');
@@ -72,3 +72,35 @@ function buscarImagemCliente(cliente_id) {
   };
 }
 
+function buscarImagemServico(servico_id) {
+  // Constrói o nome do arquivo
+  const filename = `servico_${servico_id}.webp`;
+  const imageUrl = `/BackEnd/pictures_servicos/${filename}`;
+  const imgElement = document.getElementById(servico_id);
+
+  // Define a nova url na imagem 
+  imgElement.src = imageUrl;
+  
+  // Caso de algum erro
+  imgElement.onerror = function() {
+      const urlImagemAlternativa = '/FrontEnd/images/LogoMarca.png';
+      imgElement.src = urlImagemAlternativa;
+  };
+}
+
+function buscarImagemFuncionario(tag, funcid) {
+
+  // Constrói o nome do arquivo
+  const filename = `funcionario_${funcid}.webp`;
+  const imageUrl = `/BackEnd/pictures_funcionarios/${filename}`;
+
+  // Define a nova url na imagem 
+  tag.src = imageUrl;
+
+  // Caso de algum erro
+  tag.onerror = function() {
+      // URL Dos icones padroes do Gui
+      const urlImagemAlternativa = '/FrontEnd/images/profile.png';
+      tag.src = urlImagemAlternativa;
+  };
+}

@@ -116,11 +116,14 @@ body {
 
 .services {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     height: 30rem;
     padding: 2rem;
     width: 100%;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .superior{
@@ -156,6 +159,36 @@ body {
     padding: 2rem;
     background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#visu-func{
+    margin:130px auto; 
+    width: 40%;
+    max-height: 38rem;
+    overflow-y: scroll;
+}
+
+#visu-cliente{
+    margin:130px auto; 
+    width: 40%;
+    max-height: 38rem;
+    overflow-y: scroll;
+}
+
+.title-modal{
+    font-size: 2rem; 
+    font-weight: 400; 
+    text-align: center;
+}
+
+.subtitle-modal{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
 }
 
 .relatorio{
@@ -267,7 +300,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 4rem;
+    height: auto;
     justify-content: space-between;
     align-items: center;
     border-top: solid 0.3rem #FF9800;
@@ -297,6 +330,9 @@ body {
 .card label {
     margin-bottom: 10px;
     font-weight: bold;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 1rem;
 }
 
 .card input[type="text"],
@@ -306,14 +342,15 @@ body {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 0.4rem;
+    height: 1.2rem;
+    font-size: 1.2rem;
 }
 
 .card input[type="submit"] {
-    background-color: #333;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 20px;
     cursor: pointer;
     border-radius: 5px;
 }
@@ -351,7 +388,7 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal_EditarFuncionario {
+.modal_visualizarFuncionario {
     display: none;
     position: fixed;
     z-index: 1;
@@ -393,6 +430,197 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal_Servicos {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content-servicos {
+    background-color: #fefefe;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-top: 10px;
+}
+
+.div-criar-servicos {
+    border-right: solid 0.15rem #585858;
+    max-width: 350px;
+    top: 100%;
+    position: sticky;
+}
+
+
+.form-servicos {
+    margin-top: 0;
+}
+
+.form-servicos label {
+    margin-top: 15px;
+    align-self: start;
+}
+
+.form-servicos input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0.4rem;
+    height: 1.2rem;
+    font-size: 1.2rem;
+    width: 90%;
+}
+.form-servicos textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0.4rem;
+    font-size: 1.2rem;
+    width: 90%;
+}
+
+#servicos-cadastrados{
+    display: flex;
+    flex-direction: column;
+}
+
+#servicos_agendados{
+    overflow-y: scroll;
+    margin: 130px auto;
+    width: 300px;
+    height: 32rem;
+    max-height: 100%;
+}
+
+#content_service{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin-bottom: 2rem;
+    border: 2px solid #111111;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+#content_cliente{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    margin-bottom: 2rem;
+    border: 2px solid #111111;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+#content_funcionario{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-bottom: 2rem;
+    border: 2px solid #111111;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+#content-double{
+    display: flex;
+    flex-direction: row;
+}
+
+#content-left{
+    display: flex;
+    justify-content: center;
+    width: 45%;
+}
+
+#content-right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 65%;
+}
+
+#div_btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+#form_EditarFunc{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 10rem;
+    justify-content: space-around;
+}
+
+#nomeFunc_input{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0.4rem;
+    height: 1.2rem;
+    font-size: 1.2rem;
+    width: 90%;
+}
+
+#emailFunc_input{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0.4rem;
+    height: 1.2rem;
+    font-size: 1.2rem;
+    width: 90%;
+}
+
+#div_opcoes{
+    display: flex;
+    width: 100%;
+    background-color: aqua;
+}
+
+#div_cadastrar_servicos_funcionario{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    height: 5rem;
+    justify-content: space-around;
+}
+
+#btn-add-servico {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#div-historico{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+#div-historico > p{
+    display: flex;
 }
 
 .card_Relatorio{
@@ -438,10 +666,21 @@ body {
 
 .avaliacao{
     display: flex;
-    flex-direction: row;
     width: 100%;
     justify-content: space-around;
     height: 100%;
+}
+
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart {
+    width: 300px !important;
+    height: 300px !important;
 }
 
 .esquerdo{
@@ -458,12 +697,17 @@ body {
 .direito{
     display: flex;
     flex-direction: column;
-    justify-content: space-around; 
+    justify-content: center; 
     margin-top: 2rem;
 }
 
 .direito > p{
     font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.direito > h3 {
+    margin-bottom: 40px;
 }
 
 .modal-content-relat {
@@ -535,6 +779,38 @@ body {
 
 #pesquisar:hover{
     background-color: #5858589a;
+}
+
+select[id='input_anual'] {
+    background-color: #111111;
+    color: #FFC672;
+    border: 1px solid #FFC672;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    font-size: 1.2rem;
+}
+select[id="input_anual"]::placeholder {
+    color: #FFC672;
+    opacity: 0.7;
+  }
+
+  select[id="input_anual"]:focus {
+    outline: none;
+    border-color: #FFC672;
+    box-shadow: 0 0 5px #FFC672;
+  }
+  
+
+  select[id="input_anual"]::-webkit-calendar-picker-indicator {
+    color: #FFC672;
+    background-color: #111111;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 input[type="month"] {
@@ -620,11 +896,14 @@ input[type="month"] {
   }
 
 .modal-content {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
     background-color: #fefefe;
     margin: 15% auto;
     border-radius: 5px;
     width: 100%;
-    text-align: center;
 }
 
 .modal-content h4 {
@@ -639,8 +918,25 @@ input[type="month"] {
     border-radius: 5px;
 }
 
-.modal-content button:hover {
+.modal-content-funcionario {
+    background-color: #fefefe;
+    margin: 15% auto;
+    border-radius: 5px;
+    width: 100%;
+    text-align: start;
+}
+.modal-content-funcionario h4 {
+    margin-top: 0;
+}
+.modal-content-funcionario button:hover {
     background-color: #555;
+}
+.modal-content-funcionario button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .centralizador{
@@ -689,4 +985,137 @@ input[type="month"] {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+#editar-servicos{
+    visibility:hidden; 
+    z-index: 3;
+    position: absolute;
+    height: 100vh;
+    width: 100%; 
+    background:radial-gradient(circle, rgba(0,0,0,0.5694327389158788) 0%, rgba(0,0,0,0.6240545876s5537467) 35%);
+}
+
+#editar_servicos_agendados {
+    overflow-y: scroll;
+    margin: 130px auto;
+    width: 300px;
+    height: 32rem;
+    max-height: 100%;
+}
+
+.modal_Agendamentos {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal_editar_Servicos {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal_editar_Funcionario {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.foto-perfil{
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    
+}
+
+.foto-perfil-funcionario {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%;   
+}
+
+#picture_input{
+    display: none;
+}
+#picture_input_funcionario {
+    display: none;
+}
+
+img.picture_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+.picture{
+    height: 7.5rem;
+    width: 7.5rem;
+    aspect-ratio: 16/9;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border: 2px dashed #aaa;
+    cursor: pointer;
+    font-weight: 500;
+    text-align: center;
+    transition: 0.3s all;
+    padding: 0.5rem;
+}
+
+.picture:hover {
+    opacity: 0.5;
+}
+
+.picture:active{
+    border-color: #FF9800;
+    color: #FF9800;
+}
+.picture_img {
+    object-fit: cover;
+}
+span{
+    display: none;
+}
+.span-required{
+    font-size: 15px;
+    color: #e63636;
+}
+.services-container {
+    
+    width: 90%;
+    min-height: 100px; /* Define a altura máxima do contêiner */
+    overflow-y: auto; /* Adiciona a barra de rolagem vertical */
+    border: 1px solid #ccc; /* Opcional: Adiciona uma borda para melhorar a aparência */
+    padding: 10px; /* Espaçamento interno para melhor aparência */
+    margin-bottom: 20px; /* Espaçamento inferior para separar do restante do conteúdo */
+}
+.disabled-button {
+    opacity: 0.5; /* Reduz a opacidade do botão */
+    cursor: not-allowed; /* Altera o cursor do mouse para indicar que o botão está desabilitado */
+    /* Adicione outros estilos desejados para o botão desabilitado aqui */
 }

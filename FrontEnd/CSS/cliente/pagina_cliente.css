@@ -178,8 +178,20 @@ main {
     flex-direction: column;
     justify-content: center;
     height: 30rem;
-    padding: 2rem;
+    margin-top: 4rem;
+}
+
+#div-historico{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
     margin-top: 2rem;
+}
+
+#div-historico > p{
+    display: flex;
 }
 
 .superior{
@@ -215,6 +227,449 @@ footer {
     padding: 2rem;
     background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card_agendar{
+    display: flex;
+    flex-direction: column;
+    border-top: solid 0.3rem #FF9800;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    width: 80rem;
+    max-height: 90rem;
+    height: 50rem;
+    overflow-y: scroll;
+}
+
+.conteudo-servico{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    width: 90%;
+}
+
+.navegacao{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.3rem;
+    border: solid 0.2rem #FFC672;
+    width: 100%;
+    border-radius: 2rem;
+    background-color: #111111;
+}
+
+#btnservicos, #btnhorarios, #btnbarbeiros, #btnconfirmacao{
+    margin: 0;
+    padding: 1.2rem;
+    border-radius: 2rem;
+    width: 12rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+#btnservicos{
+    background-color: #FF9800;
+    color: #111111;
+}
+
+.title-modal{
+    font-size: 2rem; 
+    font-weight: 400; 
+    text-align: center;
+}
+
+.subtitle-modal{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    font-size: 1.3rem;
+}
+
+#btnhorarios, #btnbarbeiros, #btnconfirmacao{
+    background-color: #333;
+    color: #f9f9f9;
+}
+
+.btn-limpar {
+    align-self: flex-end; 
+    position: absolute; 
+    margin-top: -10px; 
+    margin-right: 50px; 
+    padding: 10px;
+    background-color: #E74040;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: 0.3s all;
+    z-index: 3;
+}
+
+.btn-limpar:hover{
+    background-color: #e74040a6;
+}
+
+.btn-fechar{
+    align-self: flex-end; 
+    position: absolute; 
+    margin-top: -10px; 
+    padding: 10px;
+    background-color: #FF9800;
+    color: #111111;
+    cursor: pointer;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: 0.3s all;
+}
+
+.btn-fechar:hover{
+    background-color: #ff99007a;
+}
+
+.serviços{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+
+.cortes{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    height: 95%;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.cards-cortes{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.servico-checkbox{
+    display: flex;
+    flex-direction: column;
+    height: 20rem;
+    align-items: center;
+    border-radius: 2rem;
+    justify-content: space-around;
+    padding: 1.2rem;
+    width: 16rem;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 5px #b4b4b4;
+    transition: 0.3s all;
+    margin: 10px;
+}
+
+.servico-checkbox:hover, .servico-checkbox:hover, .servico-checkbox:hover{
+    opacity: 0.5;
+}
+
+.servico-checkbox[data-selected="true"]{
+    background-color: #e79f33;
+    box-shadow: 0px 0px 20px 5px #e79f33;
+}
+
+.servico-checkbox2{
+    display: flex;
+    flex-direction: column;
+    height: 20rem;
+    align-items: center;
+    border-radius: 2rem;
+    justify-content: space-around;
+    padding: 1.2rem;
+    width: 16rem;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 5px #b4b4b4;
+    transition: 0.3s all;
+}
+
+.servico-checkbox2:hover, .servico-checkbox2:hover, .servico-checkbox2:hover{
+    opacity: 0.5;
+}
+
+.servico-checkbox2[data-selected="true"]{
+    background-color: #e79f33;
+    box-shadow: 0px 0px 20px 5px #e79f33;
+}
+.section{
+    margin: 2rem;
+}
+
+.cards-cortes {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.title-corte{
+    font-size: 1.5rem;
+}
+
+
+.descricao-corte{
+    font-size: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.title-degrade{
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 1rem;
+}
+
+.img-servico{
+    height: 10rem;
+}
+.barbas{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    height: 95%;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+.bigodes{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    height: 95%;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+.tratamentos{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    height: 95%;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.barbeiros{
+    display: none;
+    width: 100%;
+}
+
+.tit-mod{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.4rem;
+    font-size: 1.5rem;
+}
+
+.form-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 30rem;
+    width: 100%;
+    padding: 1rem;
+}
+
+.label{
+    font-size: 1.5rem;
+    text-align: center;
+   
+}
+
+#data, #horario{
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btns{
+    display: flex;
+    justify-content:space-around;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 2rem;
+}
+
+.title-conf{
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.btn-confirmar{
+    padding: 1rem;
+    width: 12rem;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+    background-color: #e79f33;
+    cursor: pointer;
+    border: solid transparent;
+    box-shadow: 0px 0px 20px 5px #e79f33;
+    transition: 0.2s all;
+}
+
+.btn-confirmar:hover, .btn-cancelar:hover{
+    opacity: 0.7;
+}
+
+.btn-cancelar{
+    padding: 1rem;
+    width: 12rem;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+    background-color: #E74040;
+    cursor: pointer;
+    border: solid transparent;
+    box-shadow: 0px 0px 20px 5px #E74040;
+    transition: 0.2s all;
+}
+
+.div-nome{
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    /* align-items: center; */
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nome-barbeiro{
+    font-size: 1.5rem;
+}
+
+.estrelas{
+    height: 4rem;
+}
+
+.horarios{
+    display: none;
+}
+
+.confirmacao{
+    display: none;
+    width: 100%;
+    height: 30rem;
+}
+
+.div-conf{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.alinhamento{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: solid 0.1rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 3rem;
+}
+
+.img-conf{
+    height: 7rem;
+}
+
+.divison1{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    height: 40rem;
+}
+
+.divison2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 40rem;
+}
+
+.elementos{
+    font-size: 1.5rem;
+}
+
+.data-conf{
+    display: flex; 
+    flex-direction: column;
+    width: 100%;
+    height: 10rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ft-barbeiro{
+    width: 5rem;
+}
+
+.img-estrela{
+    width: 10rem;
+}
+
+.card-barb{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.1rem solid;
+    border-radius: 2rem;
+    padding: 3rem;
+    background-color: #e79f33;
+    border: solid 1px #e79f33;
+}
+
+.serv-conf{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border: solid 1px #e79f33;
+    padding: 2.3rem;
+    height: 6rem;
+    border-radius: 1rem;
+    background-color: #e79f33;
+}
+
+.card-conf{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between;
+}
+
+.conf-info{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+}
+
+.sub-elementos{
+    font-size: 1.2rem;
 }
 
 .card-body{
@@ -260,7 +715,7 @@ footer {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 4rem;
+    height: auto;
     justify-content: space-between;
     align-items: center;
     border-top: solid 0.3rem #FF9800;
@@ -336,7 +791,6 @@ footer {
     display: none;
     z-index: 1;
     position: absolute;
-    height: 100vh;
     width: 100%; 
     background:radial-gradient(circle, rgba(0,0,0,0.9694327389158788) 0%, rgba(0,0,0,0.82405458765537467) 35%);
 }
@@ -465,8 +919,7 @@ footer {
 }
 
 #servicos_agendados{
-    margin: 130px auto;
-    width: 300px;
+    margin:130px auto; width: 40%;
     overflow-y: scroll;
     height: 32rem;
     max-height: 100%;
@@ -475,17 +928,20 @@ footer {
 #card_service{
     display: flex;
     flex-direction: column;
-
+    justify-content: center;
+    margin-top: 2rem;
+    width: 100%;
+    align-items: center;
 }
 
 #content_service{
     display: flex;
     flex-direction: column;
-    width: 90%;
     margin-bottom: 2rem;
     border: 2px solid #111111;
     padding: 1rem;
     border-radius: 1rem;
+    width: 90%;
 }
 
 #text_service{

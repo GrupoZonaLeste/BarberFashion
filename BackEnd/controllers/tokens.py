@@ -22,7 +22,7 @@ class Token:
             "iss": client_ip,
             'sub': cliente_id,
             'name':nome,
-            'exp': datetime.now(timezone.utc) + timedelta(minutes=5),
+            'exp': datetime.now(timezone.utc) + timedelta(minutes=10000000),
             #role = 1 para identificar que é um cliente comum
             'role': 1
 
@@ -34,7 +34,7 @@ class Token:
             "iss": client_ip,
             'sub': func_id,
             'name':nome,
-            'exp': datetime.now(timezone.utc) + timedelta(minutes=5),
+            'exp': datetime.now(timezone.utc) + timedelta(minutes=10000000),
             #role = 2 para identificar que é um funcionario
             'role': 2
 
@@ -47,7 +47,7 @@ class Token:
             "iss": client_ip,
             'sub': gerente_id,
             'name':nome,
-            'exp': datetime.now(timezone.utc) + timedelta(minutes=5) ,
+            'exp': datetime.now(timezone.utc) + timedelta(minutes=10000000) ,
             #role = 3 para identificar que é um gerente
             'role': 3
 
