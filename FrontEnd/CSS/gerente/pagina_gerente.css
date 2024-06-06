@@ -116,11 +116,14 @@ body {
 
 .services {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     height: 30rem;
     padding: 2rem;
     width: 100%;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .superior{
@@ -345,10 +348,9 @@ body {
 }
 
 .card input[type="submit"] {
-    background-color: #333;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 20px;
     cursor: pointer;
     border-radius: 5px;
 }
@@ -1105,7 +1107,7 @@ span{
 }
 .services-container {
     
-    width: 430px;
+    width: 90%;
     min-height: 100px; /* Define a altura máxima do contêiner */
     overflow-y: auto; /* Adiciona a barra de rolagem vertical */
     border: 1px solid #ccc; /* Opcional: Adiciona uma borda para melhorar a aparência */
