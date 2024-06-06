@@ -134,3 +134,7 @@ async def edit_servico(nome: str , data: dict = Body(...)):
 @router.get("/listar_cortes_agendados")
 async def listar_agendamentos():
     return await pegar_cortes_agendados()
+
+@router.get('/count_servicos/{date}')
+async def countServicos(date):
+    return controller.count_servicos(date)

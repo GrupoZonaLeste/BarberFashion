@@ -664,10 +664,21 @@ body {
 
 .avaliacao{
     display: flex;
-    flex-direction: row;
     width: 100%;
     justify-content: space-around;
     height: 100%;
+}
+
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart {
+    width: 300px !important;
+    height: 300px !important;
 }
 
 .esquerdo{
@@ -684,12 +695,17 @@ body {
 .direito{
     display: flex;
     flex-direction: column;
-    justify-content: space-around; 
+    justify-content: center; 
     margin-top: 2rem;
 }
 
 .direito > p{
     font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.direito > h3 {
+    margin-bottom: 40px;
 }
 
 .modal-content-relat {
@@ -761,6 +777,38 @@ body {
 
 #pesquisar:hover{
     background-color: #5858589a;
+}
+
+select[id='input_anual'] {
+    background-color: #111111;
+    color: #FFC672;
+    border: 1px solid #FFC672;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    font-size: 1.2rem;
+}
+select[id="input_anual"]::placeholder {
+    color: #FFC672;
+    opacity: 0.7;
+  }
+
+  select[id="input_anual"]:focus {
+    outline: none;
+    border-color: #FFC672;
+    box-shadow: 0 0 5px #FFC672;
+  }
+  
+
+  select[id="input_anual"]::-webkit-calendar-picker-indicator {
+    color: #FFC672;
+    background-color: #111111;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 input[type="month"] {

@@ -35,9 +35,10 @@ const endpoints = {
     listar_servicos: `${baseURL}${manager_prefix}/listar_servicos`,
     deletar_servicos: ({ nome }) => `${baseURL}${manager_prefix}/deletar_servico/${nome}`,
     editar_servicos: ({ nome }) => `${baseURL}${manager_prefix}/editar_servico/${nome}`,
-    listar_agendamentos: `${baseURL}${manager_prefix}/listar_cortes_agendados/`
+    listar_agendamentos: `${baseURL}${manager_prefix}/listar_cortes_agendados/`,
+    count_servicos: ({ date }) => `${baseURL}${manager_prefix}/count_servicos/${date}`
   },
-  schedule: {
+  schedule: { 
     deletar: ({id}) => `${baseURL}${schedule_prefix}/deletarcorte/${id}`,
     atualizar: ({id}) => `${baseURL}${schedule_prefix}/atualizarcortes/${id}`,
     cortes_realizados: ({clientid, funcid}) => `${baseURL}${schedule_prefix}/cortes_realizados/${clientid}/${funcid}/`

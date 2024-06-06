@@ -8,6 +8,7 @@ const API_listar_servicos = getEndpoint_manager("listar_servicos")
 const API_excluir_servicos = getEndpoint_manager("deletar_servicos")
 const API_editar_servicos = getEndpoint_manager("editar_servicos")
 const API_listar_agendamentos = getEndpoint_manager("listar_agendamentos")
+const API_count_servicos = getEndpoint_manager("count_servicos")
 const API_listar_cortes_realizados = getEndpoint_schedule("cortes_realizados")
 
 // Nomes funcionario e clientes
@@ -673,6 +674,7 @@ async function addDivHistorico(){
     .then(response => response.json())
     .then(response => {
         response.forEach(async element => {
+            if(element.status == 'cancelado') return
             nome_cliente = await fetch(API_pegar_nomes_usuarios({id : element.client_id})).then(data => data.json()).then(data => {return data.name})
             nome_funcionario = await fetch(API_nome_funcionario({funcionario_id : element.funcionario_id})).then(data => data.json()).then(data => {return data.name})
             const historico = document.getElementById('div-historico')
@@ -685,9 +687,77 @@ async function addDivHistorico(){
     })
 }
 
+servicos = []
+async function servicosRelatorio(){
+    await fetch(API_listar_servicos)
+    .then(response => response.json())
+    .then(response => {
+        response.forEach(element => {
+            servicos.push(element.nome)
+        })
+    })
+}
+
+
+const input_diario_relatorio = document.getElementById('input_diario')
+const input_mensal_relatorio = document.getElementById('input_mensal')
+const input_anual_relatorio = document.getElementById('input_anual')
+const btn_pesquisar_relatorio = document.getElementById('pesquisar')
+count_servicos = []
+
+let ChartPizza
+btn_pesquisar_relatorio.addEventListener('click', async () =>{
+    const ctx = document.getElementById('chart-pizza');
+    let input_data = 'teste'
+    if(input_diario_relatorio.style.display == 'flex'){
+        input_data = input_diario_relatorio.value
+    }if(input_mensal_relatorio.style.display == 'flex'){
+        input_data = input_mensal_relatorio.value
+    }if(input_anual_relatorio.style.display == 'flex'){
+        input_data = input_anual_relatorio.value
+    }
+
+    await fetch(API_count_servicos( {date: input_data} ))
+    .then(response => response.json())
+    .then(response => {
+        response.count_servicos.forEach(element => {
+            count_servicos.push(element)
+        })
+        document.getElementById('servicos-realizados-relatorio').innerHTML = `${response.total_servicos} Serviços<br>`
+        document.getElementById('total-ganho-relatorio').innerHTML = `R$ ${response.total_dinheiro}`
+        document.getElementById('total-cancelamentos-relatorio').innerHTML = response.total_cancelado > 1 ? `${response.total_cancelado} Cancelamentos` : `${response.total_cancelado} Cancelamento`
+    })
+    
+    chartConfig = {
+        type: 'pie',
+        data: {
+            labels: servicos,
+            datasets: [{
+                label: '# of Votes',
+                data: count_servicos,
+                borderWidth: 1
+            }]
+        }
+    }
+
+    if(ChartPizza){
+        ChartPizza.destroy()
+        ChartPizza = new Chart(ctx, chartConfig);
+    } else {
+        ChartPizza = new Chart(ctx, chartConfig);
+
+    }
+    count_servicos = []
+})
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", addDivAgendamentos)
 document.addEventListener("DOMContentLoaded", AddDivServicos)
 document.addEventListener("DOMContentLoaded", listarServicosCheckbox)
 document.addEventListener("DOMContentLoaded",addDivClientes)
 document.addEventListener("DOMContentLoaded", addDivFuncionarios)
 document.addEventListener("DOMContentLoaded", addDivHistorico)
+document.addEventListener("DOMContentLoaded", servicosRelatorio)

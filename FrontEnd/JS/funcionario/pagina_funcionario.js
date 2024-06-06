@@ -333,6 +333,7 @@ async function addDivHistorico(){
     .then(response => response.json())
     .then(response => {
         response.forEach(async element => {
+            if(element.status == 'cancelado') return
             nome_cliente = await fetch(API_pegar_nomes_usuarios({id : element.client_id})).then(data => data.json()).then(data => {return data.name})
             const historico = document.getElementById('div-historico')
             textDATA = `<br><b>SERVIÇO:</b> ${element.servico} | <b>DATA:</b> ${element.data} | <b>HORA:</b> ${element.hora} <br> <b>CLIENTE:</b> ${nome_cliente}<br><hr>`
