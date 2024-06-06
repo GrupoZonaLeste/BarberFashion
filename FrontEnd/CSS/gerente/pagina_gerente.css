@@ -158,6 +158,36 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+#visu-func{
+    margin:130px auto; 
+    width: 40%;
+    max-height: 38rem;
+    overflow-y: scroll;
+}
+
+#visu-cliente{
+    margin:130px auto; 
+    width: 40%;
+    max-height: 38rem;
+    overflow-y: scroll;
+}
+
+.title-modal{
+    font-size: 2rem; 
+    font-weight: 400; 
+    text-align: center;
+}
+
+.subtitle-modal{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+}
+
 .relatorio{
     display: flex;
     flex-direction: column;
@@ -297,6 +327,9 @@ body {
 .card label {
     margin-bottom: 10px;
     font-weight: bold;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 1rem;
 }
 
 .card input[type="text"],
@@ -306,7 +339,9 @@ body {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 0.4rem;
+    height: 1.2rem;
+    font-size: 1.2rem;
 }
 
 .card input[type="submit"] {
@@ -351,7 +386,7 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal_EditarFuncionario {
+.modal_visualizarFuncionario {
     display: none;
     position: fixed;
     z-index: 1;
@@ -423,6 +458,7 @@ body {
     position: sticky;
 }
 
+
 .form-servicos {
     margin-top: 0;
 }
@@ -433,13 +469,21 @@ body {
 }
 
 .form-servicos input {
-    max-width: auto;
-    height: 20px;
-    margin-right: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0.4rem;
+    height: 1.2rem;
+    font-size: 1.2rem;
+    width: 90%;
 }
 .form-servicos textarea {
-    max-width: auto;
-    margin-right: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0.4rem;
+    font-size: 1.2rem;
+    width: 90%;
 }
 
 #servicos-cadastrados{
@@ -457,26 +501,126 @@ body {
 
 #content_service{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 90%;
     margin-bottom: 2rem;
     border: 2px solid #111111;
     padding: 1rem;
     border-radius: 1rem;
-    /*
-    overflow-y:scroll;
+}
+
+#content_cliente{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    margin-bottom: 2rem;
+    border: 2px solid #111111;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+#content_funcionario{
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 80%;
     margin-bottom: 2rem;
-    */
+    border: 2px solid #111111;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+#content-double{
+    display: flex;
+    flex-direction: row;
+}
+
+#content-left{
+    display: flex;
+    justify-content: center;
+    width: 45%;
+}
+
+#content-right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 65%;
+}
+
+#div_btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+#form_EditarFunc{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 10rem;
+    justify-content: space-around;
+}
+
+#nomeFunc_input{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0.4rem;
+    height: 1.2rem;
+    font-size: 1.2rem;
+    width: 90%;
+}
+
+#emailFunc_input{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0.4rem;
+    height: 1.2rem;
+    font-size: 1.2rem;
+    width: 90%;
+}
+
+#div_opcoes{
+    display: flex;
+    width: 100%;
+    background-color: aqua;
+}
+
+#div_cadastrar_servicos_funcionario{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    height: 5rem;
+    justify-content: space-around;
 }
 
 #btn-add-servico {
-    width: 310px;
-    display:flex;
-    align-self: start; 
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    text-align: center;
 }
+
+#div-historico{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+#div-historico > p{
+    display: flex;
+}
+
 .card_Relatorio{
     display: flex;
     flex-direction: column;
@@ -750,11 +894,14 @@ input[type="month"] {
   }
 
 .modal-content {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
     background-color: #fefefe;
     margin: 15% auto;
     border-radius: 5px;
     width: 100%;
-    text-align: center;
 }
 
 .modal-content h4 {
@@ -914,10 +1061,12 @@ input[type="month"] {
 }
 
 img.picture_img {
-    width: 150px;
-    object-position: bottom;
-    object-fit: cover;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
 }
 .picture{
     height: 7.5rem;

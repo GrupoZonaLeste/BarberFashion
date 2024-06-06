@@ -54,7 +54,7 @@
             </section>
         <div class="services">  
         <div class="superior">
-            <section class="card">
+            <div class="card">
                 <div class="card-body">
                     <div class="detail"></div>
                         <img src="/FrontEnd/images/perfil-pessoal.png" class="card-icon" alt="">
@@ -62,8 +62,8 @@
                         <p class="card-subtitle">Edite seus Dados e Informações Pessoais</p>
                         <a href="/FrontEnd/HTML/funcionario/editar_funcionario.html" class="editar-perfil">EDITAR PERFIL</a>
                 </div>
-            </section>
-            <section class="card">
+            </div>
+            <div class="card">
                 <div class="card-body">
                     <div class="detail"></div>
                     <img src="/FrontEnd/images/agenda.png" class="card-icon" alt="">
@@ -71,7 +71,7 @@
                     <p class="card-subtitle">Visualize sua agenda completa, quais horários foram marcados e toda a sua programação</p>
                     <button id="btn-agenda">VISUALIZAR AGENDA</button>
                 </div>
-            </section>
+            </div>
         </div>    
 
 
@@ -108,27 +108,39 @@
     </section>
     </main>
     <div class="modal_agenda">
-        <div id="agenda" class="card">
+        <div id="agenda" class="card" style="margin:130px auto; width: 40%;">
             <button id="fechar_agenda_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-            <h3>Agenda</h3><br>
-                <div id="agenda_div"></div>
+            <h1 class="title-modal">Agenda</h1>
+            <p class="subtitle-modal">Visualize sua Agenda Completa:</p>
+                <div id="agenda_div">
+
+                    
+                </div>
+                
         </div>
     </div>
     
     <div class="modal_servico">
-        <div id="servicos_agendados" class="card">
+        <div id="servicos_agendados" class="card" style="margin:130px auto; width: 40%;">
                 <button id="fechar_servicos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-                <h3>Meus Serviços</h3><br>
-                <div id="card_service"></div>
-                <button id="btn-salvar-servicos" style="margin-top: 100%;">SALVAR EDIÇÕES</button>
+                <h1 class="title-modal">Meus Serviços</h1>
+                <p class="subtitle-modal">Visualize e Edite seus Serviços:</p>
+                <div id="card_service">
+                    
+                
+                </div>
+                <button id="btn-salvar-servicos">SALVAR EDIÇÕES</button>
             </div>
     </div>
 
     <div class="modal_agendamento">
-        <div id="pedido_agendamento" class="card">
+        <div id="pedido_agendamento" class="card" style="margin:130px auto; width: 40%;">
             <button id="fechar_pedidos_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
-            <h3>Agendamentos</h3><br>
-                <div id="agendamentos_marcados"></div>
+            <h1 class="title-modal">Pedidos de Agendamentos</h1>
+            <p class="subtitle-modal">Visualize e Edite seus Serviços:</p>
+                <div id="agendamentos_marcados">
+                    
+                </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

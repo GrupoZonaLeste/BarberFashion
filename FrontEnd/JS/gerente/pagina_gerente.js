@@ -49,19 +49,18 @@ btn_cadastrarFuncionario.addEventListener('click', async () => {
             objServicosSelecionados[checkboxes[i].value] = 0
         }
     }
-
     
     const arrayCheck = Object.values(objServicosSelecionados)
     const verificacaoCheckbox = (item) => item == 0
-
+    
     if(nomeInput.value == '' || emailInput.value == '' || senhaInput.value == '' || checkboxes.length < 1 || arrayCheck.every(verificacaoCheckbox) == true){
         Swal.fire({
             title: "Oops...",
             text: "Campos de cadastros inválidos.",
             icon: "error",
             confirmButtonColor: "#FF9800",
-          })
-        return
+          }).
+            return
     }
     let data = fetchButtonData()
     await fetch(API_cadastrar_funcionario, {
@@ -117,11 +116,26 @@ async function addDivFuncionarios(){
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
-            textNode = `<img id="image_funcionario_${element.funcionario_id}" style="width: 100px; height: 100px; object-fit: cover;"><br><br> <h4>${element.name}</h4><hr><br> <b style="font-size: 110%">Email:</b> ${element.email}<br>`
-            const p = document.createElement('p')
+            //textNode = `<br><br> <hr><br> <br>`
+            img_f = `<img id="image_funcionario_${element.funcionario_id}" style="width: 100px; height: 100px; object-fit: cover;"></img>`
+            nome_f = `<p style="font-size: 1.2rem">Nome: ${element.name}</p> `
+            email_f = `<p style="font-size: 1.2rem">Email: ${element.email}</p> `
+
+            const div_left = document.createElement('div')
+            div_left.id = 'content-left'
+            div_left.innerHTML = img_f
+
+            const p_nome = document.createElement('p')
+            const p_email = document.createElement('p')
+
+            p_nome.innerHTML = nome_f
+            p_email.innerHTML = email_f
+            
+            //const p = document.createElement('p')
 
             const btn_editar = document.createElement('button')
             const btn_deletar = document.createElement('button')
+            const div_imgTXT = document.createElement('div')
             const div_contentService = document.createElement('div')
             const div_textos = document.createElement('div')
             const div_btn = document.createElement('div')
@@ -141,17 +155,19 @@ async function addDivFuncionarios(){
                 btn_deletar.style.opacity = 1
             };
             
-            div_btn.style.display = 'flex'
-            div_btn.style.flexDirection = 'row'
-            div_btn.style.justifyContent = 'space-around'
-            div_textos.id = 'text_service'
-            div_contentService.id = 'content_service'
+            div_btn.id = 'div_btn'
+            div_imgTXT.id = 'content-double'
+            div_left.id = 'content-left'
+            div_textos.id = 'content-right'
+            div_contentService.id = 'content_funcionario'
             
-            p.innerHTML = textNode
-            div_textos.append(p)
+            div_left.innerHTML = img_f
+            div_textos.append(p_nome, p_email)
+            div_imgTXT.append(div_left, div_textos)
+
             div_btn.appendChild(btn_deletar)
             div_btn.appendChild(btn_editar)
-            div_contentService.append(div_textos)
+            div_contentService.append(div_imgTXT)
             div_contentService.append(div_btn)
             divFuncionariosCadastrados.append(div_contentService)
             const imgfunc = document.getElementById(`image_funcionario_${element.funcionario_id}`)
@@ -190,9 +206,12 @@ async function addDivFuncionarios(){
                 divEditarFuncionarios.style.display = 'block'
 
                const divEditarFuncionarios2 = document.getElementById('editar_Funcionario')
-               const formEditarCorte = document.createElement('form')
+               const formEditarFuncionario = document.createElement('form')
+               formEditarFuncionario.id = 'form_EditarFunc'
                const btn_fechar_editar = document.createElement('button')
                const btn_confimar_editar = document.createElement('button')
+               
+
                btn_confimar_editar.innerText = "Confirmar"
                btn_fechar_editar.innerText = "Cancelar"
                btn_fechar_editar.style.backgroundColor = '#E74040'
@@ -205,46 +224,51 @@ async function addDivFuncionarios(){
                };
 
                const LabelNome = document.createElement('label')
-               LabelNome.innerText = 'Editar nome'
+               LabelNome.innerText = 'Editar Nome:'
 
                const LabelEmail = document.createElement('label')
-               LabelEmail.innerText = 'Editar email'
+               LabelEmail.innerText = 'Editar Email:'
 
                const NomeInput = document.createElement('input')
                NomeInput.required = true
                NomeInput.value = element.name
-               NomeInput.style.height = '20px';
+               NomeInput.id = 'nomeFunc_input'
+               
                
                const EmailInput = document.createElement('input')
                EmailInput.required = true
                EmailInput.value = element.email
-               EmailInput.style.height = '20px';
-
-
-               formEditarCorte.appendChild(LabelNome)
-               formEditarCorte.appendChild(NomeInput)
-
-               formEditarCorte.appendChild(document.createElement('br'))
-
-               formEditarCorte.appendChild(LabelEmail)
-               formEditarCorte.appendChild(EmailInput)
+               EmailInput.id = 'emailFunc_input'
                
-               divEditarFuncionarios2.appendChild(formEditarCorte)
+
+
+               formEditarFuncionario.appendChild(LabelNome)
+               formEditarFuncionario.appendChild(NomeInput)
+
+               formEditarFuncionario.appendChild(document.createElement('br'))
+
+               formEditarFuncionario.appendChild(LabelEmail)
+               formEditarFuncionario.appendChild(EmailInput)
+               
+               divEditarFuncionarios2.appendChild(formEditarFuncionario)
 
                divEditarFuncionarios2.appendChild(document.createElement('br'))
                divEditarFuncionarios2.appendChild(await listarServicosCheckbox())
                divEditarFuncionarios2.appendChild(btn_fechar_editar)
                divEditarFuncionarios2.appendChild(btn_confimar_editar)
-                    const checkboxes = document.querySelectorAll('input[name="checkbox-cadastro-servico-funcionario"]');
-                    for (const [key, value] of Object.entries(element.servicos)) {
-                        for(let i=0 ; i< checkboxes.length; i++){
-                            if(key == checkboxes[i].value){
-                                if(value == 1)
-                                checkboxes[i].checked = 'true'
-                                console.log(key, checkboxes[i].value)
-                            }
+               if (element.servicos) { // Verifica se element.servicos está definido
+                for (const [key, value] of Object.entries(element.servicos)) {
+                    for (let i = 0; i < checkboxes.length; i++) {
+                        if (key == checkboxes[i].value) {
+                            if (value == 1)
+                                checkboxes[i].checked = true; // Removi as aspas em 'true', pois o valor deve ser booleano
+                            console.log(key, checkboxes[i].value);
                         }
                     }
+                }
+            } else {
+                console.log("O objeto 'element' não possui a propriedade 'servicos' definida.");
+            }
 
                 btn_fechar_editar.addEventListener('click', () => {
                     divEditarFuncionarios.style.display = 'none'
@@ -254,7 +278,7 @@ async function addDivFuncionarios(){
                     }
                 })
                 
-                document.getElementById('fechar_editar_Funcionario_btn').addEventListener('click', () => {
+                document.getElementById('fechar_editarFuncionario_btn').addEventListener('click', () => {
                     divEditarFuncionarios.style.display = 'none'
                     
                     while (divEditarFuncionarios2.firstChild) {
@@ -312,15 +336,33 @@ async function addDivClientes(){
     .then(response => response.json())
     .then(response => {
         response.forEach(element => {
-            textNode = `<img id="image_client_${element.client_id}" style="width: 100px; height: 100px; object-fit: cover;"><br> <b style="font-size: 120%">Nome: ${element.name}</b> <b style="font-size: 120%">Email: ${element.email}</b>`
+            img_c = `<img id="image_client_${element.client_id}" style="width: 100px; height: 100px; object-fit: cover;">`
+            nome_c = `<p style="font-size: 1.2rem">Nome: ${element.name}</p>`
+            email_c = `<p style="font-size: 1.2rem">Email: ${element.email}</p>`            
             
-            const p = document.createElement('p')
-            p.innerHTML = textNode
-            p.style.margin = '5px'
-            p.style.fontSize = '110%'
-            p.id = 'content_service'
-            p.style.alignItems = 'start'
-            divClientesCadastrados.appendChild(p)
+            const div_VCliente = document.createElement('div')
+            div_VCliente.id = 'content_cliente'
+
+            const div_left = document.createElement('div')
+            div_left.id = 'content-left'
+            div_left.innerHTML = img_c
+
+            const div_right = document.createElement('div')
+            div_right.id = 'content-right'
+
+            const p_nome = document.createElement('p')
+            const p_email = document.createElement('p')
+
+            p_nome.innerHTML = nome_c
+            p_email.innerHTML = email_c
+            
+            div_right.append(p_nome, p_email)
+
+            div_VCliente.append(div_left)
+            div_VCliente.append(div_right)
+
+            divClientesCadastrados.append(div_VCliente)
+
             const imga = document.getElementById(`image_client_${element.client_id}`)
             buscarImagemCliente(imga, element.client_id)
         })
@@ -380,6 +422,7 @@ async function AddDivServicos(){
             btn_editar.innerHTML = "EDITAR"
             div_textos.id = 'text_service'
             div_contentService.id = 'content_service'
+            div_contentService.style.flexDirection = 'column'
             id_corte = element._id
             btn_delete.id = id_corte.slice(9, 33)
             btn_editar.id = id_corte.slice(9, 33)
@@ -586,7 +629,9 @@ async function listarServicosCheckbox(){
             divCheckboxServicos.appendChild(document.createElement('br'))
         })
     })
+    
     cadastarServicosFuncionario.appendChild(divCheckboxServicos)
+    cadastarServicosFuncionario.appendChild(btn_cadastrarFuncionario)
     return divCheckboxServicos
 }
 
@@ -614,7 +659,9 @@ async function addDivAgendamentos(){
             p.style.margin = '5px'
             p.style.fontSize = '110%'
             p.id = 'content_service'
-            p.style.alignItems = 'start'
+            p.style.alignItems = 'center'
+            p.style.display = 'flex'
+            p.style.flexDirection = 'column'
             divAgendamentos.appendChild(p)
 
             imgCliente.forEach(item =>{
