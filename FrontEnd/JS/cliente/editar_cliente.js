@@ -15,7 +15,7 @@ function buscarImagemCliente(cliente_id) {
     console.log(filename);
   
   
-    const imageUrl = `/BackEnd/clientes_pictures/${filename}`;
+    const imageUrl = `/BackEnd/pictures_clientes/${filename}`;
   
   
     const imgElement = document.getElementById('image_user');
