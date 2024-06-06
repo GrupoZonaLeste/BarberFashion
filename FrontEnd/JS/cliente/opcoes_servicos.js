@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "hora": '',
         "servico": '',
         "tempo": '',
+        'preco': '',
         "client_id": retornarIdUsuario(),
         "funcionario_id": 0,
         "status": 'esperando'
@@ -68,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 anyCheckboxSelected = true;
                 servico.servico = element.firstChild.innerText;
                 servico.tempo = element.getAttribute('tempoestimado')
+                servico.preco = element.getAttribute('preco')
                 listar_funcionarios(element.firstChild.innerText) 
                 console.log(servico)
                 return;

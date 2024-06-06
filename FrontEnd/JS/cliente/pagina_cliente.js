@@ -224,6 +224,7 @@ async function addDivServicos(){
             divServico.className = 'servico-checkbox'
             divServico.dataset.selected = 'false'
             divServico.setAttribute("tempoestimado", element.tempo)
+            divServico.setAttribute("preco", element.preco)
             
             const nomeServico = document.createElement('p')
             nomeServico.className = 'title-corte'
