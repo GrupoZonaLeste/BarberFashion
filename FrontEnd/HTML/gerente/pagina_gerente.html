@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento - Barbearia</title>
     <link rel="stylesheet" href="/FrontEnd/CSS/gerente/pagina_gerente.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg container-fluid">
@@ -107,12 +108,7 @@
                     <p class="card-title-relat">RELATÓRIOS DA BARBEARIA: </p>
                     <p class="card-subtitle-relat"> Consulte informações relacionados aos serviços prestados da sua Barbearia. </p>
                     <div class="view-relat">
-                        <p>Serviços Realizados Hoje:</p>
-                        <p>5</p>
-                        <p>Serviços Cancelados Hoje:</p>
-                        <p>1</p>
-                        <p>Total Ganho no mês:</p>
-                        <p>R$ *******</p>
+
                         <button id="btn-relat">RELATÓRIOS</button>
                     </div>
                 </div>
@@ -251,49 +247,50 @@
                         <div class="navegacao2">
                             <input type="date" name="" id="input_diario">
                             <input type="month" name="" id="input_mensal">
-                            <input type="month" name="" id="input_anual">
+                            <select id="input_anual">
+                                <option value="2024">2024</option>
+                            </select>
                             <button type="submit" id="pesquisar" style="align-items: center;">PESQUISAR</button>
                         </div>
                         <div class="avaliacao">
                             <div class="esquerdo">
-                                <p>Horários que foram marcados:</p>
-                                <h3>RESPOSTA</h3>
-                                <p>Clientes que foram atendidos:</p>
-                                <h3>RESPOSTA</h3>
-                                <p>Serviços que foram realizados no total:</p>
-                                <h3>RESPOSTA</h3>
-                                <p>Clientes que não compareceram:</p>
-                                <h3>RESPOSTA</h3>
-                                <p>Total ganho:</p>
-                                <h3>RESPOSTA</h3>
+                               
+                                <div class="view-dashboard">
+                                    <div class="chart-row">
+                                        <div class="chart-container">
+                                            <canvas id="chart-pizza" class="chart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="direito">
-                                <p>Serviço de maior Valor:</p>
-                                <h3>RESPOSTA</h3>
-                                <p>Quantidade de feedbacks recebidos:</p>
-                                <h3>RESPOSTA</h3>
-                                <p>Quantos barbeiros ativos?</p>
-                                <h3>RESPOSTA</h3>
-                                <p>Media de clientes atendidos por cliente</p>
-                                <h3>RESPOSTA</h3>
+                                <p>Total de serviços Realizados:</p>
+                                <h3 id="servicos-realizados-relatorio"></h3>
+                                <p>Total Ganho:</p>
+                                <h3 id="total-ganho-relatorio"></h3>
+                                <p>Total de serviços cancelados:</p>
+                                <h3 id="total-cancelamentos-relatorio"></h3>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/FrontEnd/JS/endpoints.js"></script>
-    <script src="/FrontEnd/JS/token/token_decode.js"></script>
-    <script src="/FrontEnd/JS/gerente/relatorio_gerente.js"></script>
-    <script src="/FrontEnd/JS/gerente/pagina_gerente.js"></script>
-    <script src="/FrontEnd/JS/gerente/modal/modal_gerente.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="/FrontEnd/JS/endpoints.js"></script>
+        <script src="/FrontEnd/JS/token/token_decode.js"></script>
+        <script src="/FrontEnd/JS/gerente/relatorio_gerente.js"></script>
+        <script src="/FrontEnd/JS/gerente/pagina_gerente.js"></script>
+        <script src="/FrontEnd/JS/gerente/modal/modal_gerente.js"></script>
     <script src="/FrontEnd/JS/gerente/logout_gerente.js"></script>
     <script src="/FrontEnd/JS/token/verifyToken_gerente.js"></script>
     <script src="/FrontEnd/JS/gerente/data_gerente.js"></script>
     <script src="/FrontEnd/JS/cliente/picture.js"></script>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
 
-</body>
-</html>
+    </script>
+            </body>
+            </html>
+            

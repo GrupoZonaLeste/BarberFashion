@@ -88,23 +88,26 @@ async function addDivCortes() {
 
                 btn_delete.addEventListener('click', async () => {
                     Swal.fire({
-                        title: "Deletar serviço?",
+                        title: "Cancelar serviço?",
                         text: "Você não vai poder reverter essa ação.",
                         icon: "warning",
                         showCancelButton: true,
                         confirmButtonColor: "#E74040",
                         cancelButtonColor: "gray",
                         cancelButtonText: "Cancelar",
-                        confirmButtonText: "Sim, deletar serviço!"
+                        confirmButtonText: "Sim, Cancelar serviço!"
                       }).then(async (result) => {
                           if (result.isConfirmed) {
                               Swal.fire({
-                                  title: "Serviço deletado!",
-                                  text: "Serviço foi deletado com sucesso.",
+                                  title: "Serviço cancelado!",
+                                  text: "Serviço foi cancelado com sucesso.",
                                   icon: "success",
                                 }).then(async () =>{
-                                    await fetch(API_deletar_cortes({id : btn_delete.id}), {
-                                        method: "DELETE",
+                                    await fetch(API_atualizar_cortes({id : btn_delete.id}), {
+                                        method: "PUT",
+                                        body:JSON.stringify({
+                                            'status': 'cancelado'
+                                        }),
                                         headers: {
                                             'Content-Type': 'application/json'
                                         }
@@ -248,6 +251,7 @@ async function addDivHistorico(){
     .then(response => response.json())
     .then(response => {
         response.forEach(async element => {
+            if(element.status == 'cancelado') return
             nome_funcionario = await fetch(API_nome_funcionario({funcionario_id : element.funcionario_id})).then(data => data.json()).then(data => {return data.name})
             const historico = document.getElementById('div-historico')
             textDATA = `<br><b>SERVIÇO:</b> ${element.servico} | <b>DATA:</b> ${element.data} | <b>HORA:</b> ${element.hora} <br> <b>FUNCIONÁRIO:</b> ${nome_funcionario}<br><hr>`
