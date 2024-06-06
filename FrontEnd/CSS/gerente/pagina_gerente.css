@@ -1064,3 +1064,8 @@ span{
     padding: 10px; /* Espaçamento interno para melhor aparência */
     margin-bottom: 20px; /* Espaçamento inferior para separar do restante do conteúdo */
 }
+.disabled-button {
+    opacity: 0.5; /* Reduz a opacidade do botão */
+    cursor: not-allowed; /* Altera o cursor do mouse para indicar que o botão está desabilitado */
+    /* Adicione outros estilos desejados para o botão desabilitado aqui */
+}
