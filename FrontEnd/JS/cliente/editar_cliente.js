@@ -15,7 +15,7 @@ function buscarImagemCliente(cliente_id) {
     console.log(filename);
   
   
-    const imageUrl = `/BackEnd/clientes_pictures/${filename}`;
+    const imageUrl = `/BackEnd/pictures_clientes/${filename}`;
   
   
     const imgElement = document.getElementById('image_user');
@@ -38,7 +38,6 @@ async function getDataUsuario(){
         method: 'GET',
         url: API_usuario,
         params: {id: id},
-        headers: {'User-Agent': 'insomnia/9.1.0'}
       };
 
     axios.request(options2).then(function (response) {

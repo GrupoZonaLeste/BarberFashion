@@ -117,30 +117,38 @@
     <!-- Modal de confirmação de exclusão -->
     
     <div class="modal_CriarFuncionario">
-        <div class="card" style="margin:130px auto; width: 30%; height: 75%;">
+        <div class="card" style="margin-left: 40%;width: 25%;height: 80%;margin-top: 5rem;">
             <button id="fechar_cadastrarFuncionario_btn" type="button" class="btn btn-danger" style="align-self: flex-end; position: absolute; margin-top: -10px; padding: 10px;">X</button>
             <h1 class="title-modal">Criar Funcionário</h1>
                 <div class="modal-content-funcionario">
                     <p class="subtitle-modal">Crie seus Funcionários, Adicione as Informações:</p>
-                    <form>
-
+                    <form id="form_cadastrar_funcionario">
                         <label>Adicionar foto:</label>
                         <div class="foto-perfil">
                             <label tabindex="0" class="picture">
-                                <input type="file" accept="image/*" id="picture_input_funcionario" >
-                                <img class="picture_img" src="/FrontEnd/images/profile.png"  width="130" height="130" id="image_user" name="imagem-funcionario">
+                                <input type="file" accept="image/*" id="picture_input_funcionario">
+                                <img class="picture_img" src="/FrontEnd/images/profile.png" width="130" height="130" id="image_user" name="imagem-funcionario">
                             </label>
                         </div>
-
+        
                         <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome" required>
-                        <label for="cargo">Email:</label>
-                        <input type="text" id="email" name="email" required>
-                        <label for="cargo">Senha:</label>
-                        <input type="text" id="senha" name="senha" required>
+                        <input type="text" id="nome" name="nome" class="required" required>
+                        <span class="span-required">Nome deve ter pelo menos 3 caracteres e conter apenas letras.</span>
+        
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" name="email" class="required" required>
+                        <span class="span-required">Email inválido.</span>
+        
+                        <label for="senha">Senha:</label>
+                        <input type="text" id="senha" name="senha" class="required" required>
+                        <span class="span-required">Senha deve ter pelo menos 6 caracteres.</span>
+        
+                        <div id="div_cadastrar_servicos_funcionario" style="align-items: start;">
+                           
 
-                        <div id="div_cadastrar_servicos_funcionario" style="align-items: start;"></div>
-                        <br>    
+                            </div>
+                        </div>
+                        <br>  
                     </form>
                     <input type="submit" id="cadastrarFuncionario" value="Cadastrar" style="background-color: #FF9800;" class="button cadastrar">
                 </div>
@@ -282,19 +290,22 @@
                 </div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="/FrontEnd/JS/endpoints.js"></script>
-        <script src="/FrontEnd/JS/token/token_decode.js"></script>
-        <script src="/FrontEnd/JS/gerente/relatorio_gerente.js"></script>
-        <script src="/FrontEnd/JS/gerente/pagina_gerente.js"></script>
-        <script src="/FrontEnd/JS/gerente/modal/modal_gerente.js"></script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/FrontEnd/JS/gerente/validacao_cadastro.js"></script>
+    <script src="/FrontEnd/JS/endpoints.js"></script>
+    <script src="/FrontEnd/JS/token/token_decode.js"></script>
+    <script src="/FrontEnd/JS/gerente/data_gerente.js"></script>
+    
+    <script src="/FrontEnd/JS/gerente/relatorio_gerente.js"></script>
+    <script src="/FrontEnd/JS/gerente/pagina_gerente.js"></script>
     <script src="/FrontEnd/JS/gerente/logout_gerente.js"></script>
     <script src="/FrontEnd/JS/token/verifyToken_gerente.js"></script>
-    <script src="/FrontEnd/JS/gerente/data_gerente.js"></script>
-    <script src="/FrontEnd/JS/cliente/picture.js"></script>
     
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
+    <script src="/FrontEnd/JS/gerente/modal/modal_gerente.js"></script>
+
+
 
     </script>
             </body>

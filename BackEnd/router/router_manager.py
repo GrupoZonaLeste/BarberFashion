@@ -36,7 +36,7 @@ async def upload_image(image: UploadFile = File(...), id: str = None):
 
     # Diretório onde as imagens serão salvas
     upload_folder = "pictures_servicos"
-    file_extension = ".jpeg"
+    file_extension = ".webp"
 
     # Cria o novo nome do arquivo usando o ID do usuário e a extensão do arquivo original
     new_filename = f"servico_{id}{file_extension}"
@@ -54,7 +54,7 @@ async def upload_image(image: UploadFile = File(...), id: str = None):
 
     # Abre a imagem e a converte para WebP
     with Image.open(temp_path) as img:
-        img.save(image_path, format="jpeg")
+        img.save(image_path, format="webp")
 
     # Remove a imagem temporária
     os.remove(temp_path)
@@ -69,7 +69,7 @@ async def upload_image(image: UploadFile = File(...), id: int = None):
 
     # Diretório onde as imagens serão salvas
     upload_folder = "pictures_funcionarios"
-    file_extension = ".jpeg"
+    file_extension = ".webp"
 
     # Cria o novo nome do arquivo usando o ID do usuário e a extensão do arquivo original
     new_filename = f"funcionario_{id}{file_extension}"
@@ -87,12 +87,12 @@ async def upload_image(image: UploadFile = File(...), id: int = None):
 
     # Abre a imagem e a converte para WebP
     with Image.open(temp_path) as img:
-        img.save(image_path, format="jpeg")
+        img.save(image_path, format="webp")
 
     # Remove a imagem temporária
     os.remove(temp_path)
 
-    return JSONResponse({"filename": new_filename})
+    return JSONResponse({"status": "success", "filename": new_filename})
 
 @router.get('/listar_funcionarios/')
 async def get_funcionarios():

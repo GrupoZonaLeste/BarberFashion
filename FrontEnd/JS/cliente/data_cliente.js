@@ -74,7 +74,7 @@ function buscarImagemCliente(cliente_id) {
 
 function buscarImagemServico(servico_id) {
   // Constrói o nome do arquivo
-  const filename = `servico_${servico_id}.jpeg`;
+  const filename = `servico_${servico_id}.webp`;
   const imageUrl = `/BackEnd/pictures_servicos/${filename}`;
   const imgElement = document.getElementById(servico_id);
 
@@ -91,7 +91,7 @@ function buscarImagemServico(servico_id) {
 function buscarImagemFuncionario(tag, funcid) {
 
   // Constrói o nome do arquivo
-  const filename = `funcionario_${funcid}.jpeg`;
+  const filename = `funcionario_${funcid}.webp`;
   const imageUrl = `/BackEnd/pictures_funcionarios/${filename}`;
 
   // Define a nova url na imagem 

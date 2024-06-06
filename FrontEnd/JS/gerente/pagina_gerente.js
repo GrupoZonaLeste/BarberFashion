@@ -1,7 +1,7 @@
 const API_cadastrar_funcionario = getEndpoint_manager("cadastrar")
 const API_listar_funcionarios = getEndpoint_manager("listar_funcionarios")
 const API_deletar_funcionario = getEndpoint_manager("deletar_funcionario")
-const API_editar_funcionario = getEndpoint_manager('editar_funcinoario')
+const API_editar_funcionario = getEndpoint_manager('editar_funcionario')
 const API_listar_usuarios = getEndpoint_manager("listar_usuarios")
 const API_cadastrar_servicos = getEndpoint_manager("cadastrar_servicos")
 const API_listar_servicos = getEndpoint_manager("listar_servicos")
@@ -40,72 +40,66 @@ var mensagem = document.createElement("p")
 const div_confirmacao = document.getElementById('confirm')
 
 const checkboxes = document.getElementsByName("checkbox-cadastro-servico-funcionario");
-btn_cadastrarFuncionario.addEventListener('click', async () => {
+
+btn_cadastrarFuncionario.addEventListener('click', async (event) => {
+    event.preventDefault(); 
+
     for (let i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {
-            objServicosSelecionados[checkboxes[i].value] = 1
-            console.log(objServicosSelecionados)
-        } else {
-            objServicosSelecionados[checkboxes[i].value] = 0
-        }
+        objServicosSelecionados[checkboxes[i].value] = checkboxes[i].checked ? 1 : 0;
     }
     
-    const arrayCheck = Object.values(objServicosSelecionados)
-    const verificacaoCheckbox = (item) => item == 0
+    const arrayCheck = Object.values(objServicosSelecionados);
+    const verificacaoCheckbox = (item) => item == 0;
     
-    if(nomeInput.value == '' || emailInput.value == '' || senhaInput.value == '' || checkboxes.length < 1 || arrayCheck.every(verificacaoCheckbox) == true){
+    // Validate input fields and checkboxes
+    if (nomeInput.value === '' || emailInput.value === '' || senhaInput.value === '' || checkboxes.length < 1 || arrayCheck.every(verificacaoCheckbox)) {
         Swal.fire({
             title: "Oops...",
-            text: "Campos de cadastros inválidos.",
+            text: "Preencha todos os campos!",
             icon: "error",
             confirmButtonColor: "#FF9800",
-          }).
-            return
+        });
+        return;
     }
-    let data = fetchButtonData()
-    await fetch(API_cadastrar_funcionario, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-        }
-    })
-    .then(response => response.json())
-    .then(response => {
-        console.log(response)  
-        try {
-            if (response.status === "OK") {
-                Swal.fire({
-                    title: "Funcionário Cadastrado!",
-                    text: "Funcionário foi cadastrado com sucesso.",
-                    icon: "success",
-                    confirmButtonColor: "#FF9800",
-                  }).then(() =>{
-                    putFotoFuncionario(response.funcid)
-                    location.reload()
-                  })
-            } else if(response.status === "EMAIL CADASTRADO") {
-                Swal.fire({
-                    title: `O email '${data.email}' já está cadastrado`,
-                    icon: "error"
-                  }).then(() =>{
-                      location.reload()
-                  })
-            }
-        } catch (error) {
-            if (error.response && error.response.status === 422) {
-                alert('Dados incorretos');
-            } else {
-                console.log('Erro ao atualizar o item:', error);
-            }
-        }
-    })
-    
 
-    nomeInput.value = ''
-    emailInput.value = ''
-    senhaInput.value = ''
-    objServicosSelecionados = {}
+    let data = fetchButtonData();
+    console.log(data)
+    const options = {
+        method: 'POST',
+        url: API_cadastrar_funcionario,
+        data: data
+    }
+      
+      axios.request(options).then(function (response) {
+         if (response.data.status == "OK") {
+            Swal.fire({
+                title: "Funcionário Cadastrado!",
+                text: "Funcionário foi cadastrado com sucesso.",
+                icon: "success",
+                confirmButtonColor: "#FF9800",
+            }).then(() => {
+                putFotoFuncionario(response.data.funcid);
+            });
+        } else if (response.data.status == "EMAIL CADASTRADO") {
+            Swal.fire({
+                title: `O email '${data.email}' já está cadastrado`,
+                icon: "error"
+            }).then(() => {
+                location.reload();
+            });
+        } else {
+            console.log(response.data.status)
+            Swal.fire({
+                title: "Erro",
+                text: "Erro ao cadastrar funcionário. Tente novamente.",
+                icon: "error",
+                confirmButtonColor: "#FF9800",
+            });
+        }
+      }).catch(function (error) {
+        console.error(error);
+      });
+
 })
 
 const divFuncionariosCadastrados = document.getElementById('funcionarios_cadastrados')
@@ -606,9 +600,10 @@ document.getElementById('fechar_servicos_btn').addEventListener('click', () => {
 })
 
 async function listarServicosCheckbox(){
-    const divCheckboxServicos = document.createElement('div')
-    const titulo = "<h4>Adicionar serviços</h4>" 
-    divCheckboxServicos.innerHTML = titulo
+    const divCheckboxServicos = document.createElement('div');
+    divCheckboxServicos.classList.add('services-container'); // Adiciona a classe para estilizar o contêiner
+    const titulo = "<h4>Adicionar serviços</h4>"; 
+    divCheckboxServicos.innerHTML = titulo;
     
     await fetch(API_listar_servicos)
     .then(response => response.json())
