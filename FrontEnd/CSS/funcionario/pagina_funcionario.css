@@ -155,7 +155,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 30rem;
     padding: 2rem;
 }
 
@@ -433,7 +432,7 @@ section{
 
 #div-historico{
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     width: 100%;
     align-items: center;
     justify-content: space-around;
@@ -442,6 +441,7 @@ section{
 
 #div-historico > p{
     display: flex;
+    margin-bottom: 1rem;
 }
 
 #text_service{

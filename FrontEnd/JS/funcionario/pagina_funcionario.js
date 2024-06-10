@@ -336,11 +336,44 @@ async function addDivHistorico(){
             if(element.status == 'cancelado') return
             nome_cliente = await fetch(API_pegar_nomes_usuarios({id : element.client_id})).then(data => data.json()).then(data => {return data.name})
             const historico = document.getElementById('div-historico')
-            textDATA = `<br><b>SERVIÇO:</b> ${element.servico} | <b>DATA:</b> ${element.data} | <b>HORA:</b> ${element.hora} <br> <b>CLIENTE:</b> ${nome_cliente}<br><hr>`
-            const p = document.createElement('p')
-            p.innerHTML = textDATA
-            historico.appendChild(p)
-            historico.removeChild(document.getElementById('seta'))
+            const servico = `<b>SERVIÇO:</b> ${element.servico}`
+            const data = `<b>DATA:</b> ${element.data}`
+            const hora = `<b>HORA:</b> ${element.hora}`
+            const cliente = `<b>CLIENTE:</b> ${nome_cliente}`
+            
+            const lista = document.createElement('div')
+            lista.id = lista
+            lista.style.display = 'none'
+
+            const p_servico = document.createElement('p')
+            const p_data = document.createElement('p')
+            const p_hora = document.createElement('p')
+            const p_cliente = document.createElement('p')
+                
+            p_servico.innerHTML = servico
+            p_data.innerHTML = data
+            p_hora.innerHTML = hora
+            p_cliente.innerHTML = cliente
+            
+            lista.append(p_servico, p_data, p_hora, p_cliente)
+            historico.appendChild(lista)
+
+            const btn_seta = document.getElementById('seta')
+            btn_seta.addEventListener('click', () => {
+                if (lista.style.display === 'none') {
+                    lista.style.display = 'flex'
+                    lista.style.flexDirection = 'row'
+                    lista.style.justifyContent = 'space-around'
+                    lista.style.width = '100%'
+                    lista.style.margin = '1rem'
+                    btn_seta.style.transform = 'rotate(180deg)'
+                } else {
+                    lista.style.display = 'none'
+                    btn_seta.style.transform = 'rotate(0deg)'
+                }
+                
+
+            })
         })
     })
 }

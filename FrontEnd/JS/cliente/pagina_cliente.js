@@ -255,11 +255,47 @@ async function addDivHistorico(){
             if(element.status == 'cancelado') return
             nome_funcionario = await fetch(API_nome_funcionario({funcionario_id : element.funcionario_id})).then(data => data.json()).then(data => {return data.name})
             const historico = document.getElementById('div-historico')
-            textDATA = `<br><b>SERVIÇO:</b> ${element.servico} | <b>DATA:</b> ${element.data} | <b>HORA:</b> ${element.hora} <br> <b>FUNCIONÁRIO:</b> ${nome_funcionario}<br><hr>`
-            const p = document.createElement('p')
-            p.innerHTML = textDATA
-            historico.appendChild(p)
-            historico.removeChild(document.getElementById('seta'))
+            const servico = `<b>SERVIÇO:</b> ${element.servico}`
+            const data = `<b>DATA:</b> ${element.data}`
+            const hora = `<b>HORA:</b> ${element.hora}`
+            const funcionario = `<b>FUNCIONÁRIO:</b> ${nome_funcionario}`
+            textDATA = `<br> |  |  <br>  | <br><hr>`
+
+            const lista = document.createElement('div')
+                lista.id = lista
+                lista.style.display = 'none'
+
+            const p_servico = document.createElement('p')
+            const p_data = document.createElement('p')
+            const p_hora = document.createElement('p')
+            const p_func = document.createElement('p')
+
+            p_servico.innerHTML = servico
+            p_data.innerHTML = data
+            p_hora.innerHTML = hora
+            p_func.innerHTML = funcionario
+
+            lista.append(p_servico, p_data, p_hora, p_func)
+            historico.appendChild(lista)
+
+            const btn_seta = document.getElementById('seta')
+            btn_seta.addEventListener('click', () => {
+                if (lista.style.display === 'none') {
+                    lista.style.display = 'flex'
+                    lista.style.flexDirection = 'row'
+                    lista.style.justifyContent = 'space-around'
+                    lista.style.width = '100%'
+                    lista.style.margin = '1rem'
+                    btn_seta.style.transform = 'rotate(180deg)'
+                } else {
+                    lista.style.display = 'none'
+                    btn_seta.style.transform = 'rotate(0deg)'
+                }
+                
+
+            })
+
+            
         })
     })
 }

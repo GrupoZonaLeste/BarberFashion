@@ -177,13 +177,12 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 30rem;
     margin-top: 4rem;
 }
 
 #div-historico{
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     width: 100%;
     align-items: center;
     justify-content: space-around;
@@ -192,7 +191,10 @@ main {
 
 #div-historico > p{
     display: flex;
+    margin-bottom: 1rem;
 }
+
+
 
 .superior{
     display: flex;

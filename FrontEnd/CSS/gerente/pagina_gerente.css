@@ -116,7 +116,6 @@ body {
 
 .services {
     display: flex;
-    height: 30rem;
     padding: 2rem;
     width: 100%;
     flex-wrap: nowrap;
@@ -141,8 +140,9 @@ body {
 
 .inferior{
     display: flex;
-    padding: 10px;
     justify-content: center;
+    width: 100%;
+    padding: 1rem;
 }
 
 
@@ -289,11 +289,6 @@ body {
     height: 8rem;
     width: 8rem;
     margin-top: -2rem;
-}
-
-.inferior{
-    display: flex;
-    justify-content: center;
 }
 
 .card-inferior{
@@ -612,7 +607,7 @@ body {
 
 #div-historico{
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     width: 100%;
     align-items: center;
     justify-content: space-around;
@@ -621,6 +616,7 @@ body {
 
 #div-historico > p{
     display: flex;
+    margin-bottom: 1rem;
 }
 
 .card_Relatorio{
