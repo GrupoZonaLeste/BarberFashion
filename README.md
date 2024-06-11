@@ -1,7 +1,7 @@
 <br/>
 <div align="center">
 <a href="https://github.com/GrupoZonaLeste/Projeto_Barbearia">
-<img src="https://cdn.discordapp.com/attachments/480144183231905794/1234938029081231411/Sem_titulo.jpg?ex=66328d2a&is=66313baa&hm=a43ae5947681cd3e1966970e1c06e749acc6e2cfc9c9fec812e7f66deb2487ae&/500x500" alt="Logo" width="80" height="80">
+<img src="https://www.flickr.com/photos/200867541@N04/53784657586/in/dateposted-public/" alt="Logo" width="80" height="80">
 </a>
 <h3 align="center">Projeto Barbearia</h3>
 <p align="center">
