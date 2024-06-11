@@ -1,7 +1,7 @@
 <br/>
 <div align="center">
 <a href="https://github.com/GrupoZonaLeste/Projeto_Barbearia">
-<img src="https://flic.kr/p/2pWLqSw" alt="Logo" width="80" height="80">
+<img src="//live.staticflickr.com/65535/53784657586_7763a9fea2.jpg" alt="Logo" width="80" height="80">
 </a>
 <h3 align="center">Projeto Barbearia</h3>
 <p align="center">
