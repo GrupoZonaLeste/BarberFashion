@@ -1,7 +1,7 @@
 <br/>
 <div align="center">
 <a href="https://github.com/GrupoZonaLeste/Projeto_Barbearia">
-<img src="//live.staticflickr.com/65535/53784657586_7763a9fea2.jpg" alt="Logo" width="80" height="80">
+<img src="https://live.staticflickr.com/65535/53784657586_7763a9fea2.jpg" alt="Logo" width="80" height="80">
 </a>
 <h3 align="center">Projeto Barbearia</h3>
 <p align="center">
@@ -19,7 +19,7 @@ Revitalize sua Imagem, Assegure sua Confiança e Mantenha sua Lealdade, cada Cor
 
  ## 🚧Sobre o projeto
 
-![Tela inicial do site](https://cdn.discordapp.com/attachments/480144183231905794/1234937065561653268/image.png?ex=66328c44&is=66313ac4&hm=778ab4319d65cb902472f1151bd66f72f7c08e59b29e6b5cb3c9dc4dbb94859d&)
+![Tela inicial do site](https://live.staticflickr.com/65535/53784872363_2930ee9937_b.jpg)
 
 Bem-vindo ao nosso site dedicado a oferecer a melhor experiência de agendamento de cortes de cabelo! Nosso objetivo é proporcionar uma plataforma intuitiva e conveniente, onde os clientes possam facilmente marcar seus cortes de cabelo favoritos com os melhores profissionais da área.
 
