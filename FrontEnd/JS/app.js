@@ -57,3 +57,12 @@ window.onscroll = function() {scrollFunction()};
     document.body.scrollTop = 0; // Para navegadores Safari
     document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE e Opera
   }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var button = document.querySelector('.custom-toggler');
+    var nav = document.querySelector('.collapse');
+
+    button.addEventListener('click', function() {
+        nav.classList.toggle('show');
+    });
+});

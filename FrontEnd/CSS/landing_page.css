@@ -435,29 +435,74 @@ footer{
     width: 100%;
 }
 
+.custom-toggler {
+    background-color: #FF9800; /* Cor de fundo do botão */
+    border-color: #FF9800; /* Cor da borda do botão */
+}
+
+.custom-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Ícone do botão */
+}
+
+@media only screen and (max-width: 480px) {
+    /* Estilos para dispositivos móveis pequenos */
+
+    
+}
+
 @media (max-width: 999px) {
+
+    .container-fluid{
+        background: linear-gradient(rgb(0, 0, 0) 0%, rgb(0, 0, 0) 15%);
+        width: 100%;
+
+    }
+
+    .navbar-collapse {
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar{
+        height: 0;
+    }
+
+    .navbar-nav {
+        width: 100%;
+    }
+
     .navbar-nav {
         flex-direction: column;
     }
 
     .nav-item {
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
     }
 
     .nav-link{
         justify-content: center;
     }
 
+    .button{
+        height: 0;
+        display: flex;
+        padding: 1.4rem;
+        width: 100%;
+        justify-content: center;
+    }
+
     .container-fluid{
         display: flex;
         flex-direction: row;
-        align-content: center;
-        flex-wrap: nowrap;
-        height: auto;
+        padding: 0;
     }
 
     .navbar .container-fluid{
-        flex-wrap: nowrap;
+        padding: 1rem;
         width: 100%;
     }
 
@@ -474,7 +519,7 @@ footer{
     }
 
     .title-home{
-        font-size: 3rem;
+        font-size: 4rem;
     }
 
     .edit-home1{
@@ -506,4 +551,11 @@ footer{
         height: 14rem;
     }
 
+    .search{
+        width: 55%;
+    }
+
+    .semana{
+        bottom: 0;
+    }
 }
