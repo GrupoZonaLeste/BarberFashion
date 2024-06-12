@@ -16,6 +16,7 @@ from controllers.manager import Controller_manager
 from controllers.schedule import pegar_cortes_agendados
 from models.model import *
 from database.connection import *
+from router.router_auth import verificar_token
 
 db_handle = DBConnectionHandler()
 db_handle.connect_to_db()
@@ -63,7 +64,7 @@ async def upload_image(image: UploadFile = File(...), id: str = None):
 
 
 @router.post("/upload_funcionario/")
-async def upload_image(image: UploadFile = File(...), id: int = None):
+async def upload_image(image: UploadFile = File(...), id: int = None, token: str = Depends(verificar_token)):
     if id is None:
         raise HTTPException(status_code=400, detail="ID is required")
 
@@ -95,46 +96,46 @@ async def upload_image(image: UploadFile = File(...), id: int = None):
     return JSONResponse({"status": "success", "filename": new_filename})
 
 @router.get('/listar_funcionarios/')
-async def get_funcionarios():
+async def get_funcionarios(token: str = Depends(verificar_token)):
     return controller.listar_funcionarios()
 
 @router.delete('/deletar_funcionario/{funcid}')
-async def delete_funcionarios(funcid: int):
+async def delete_funcionarios(funcid: int, token: str = Depends(verificar_token)):
     return controller.excluir_funcionario(funcid)
 
 @router.put('/editar_funcionario/{funcid}')
-async def editar_funcionarios(funcid, data = Body(...)):
+async def editar_funcionarios(funcid, data = Body(...), token: str = Depends(verificar_token)):
     return controller.editar_funcionario(funcid, data)
 
 @router.get('/listar_usuarios/')
-async def listar_todos_usuarios():
+async def listar_todos_usuarios(token: str = Depends(verificar_token)):
     return controller.listar_usuarios()
 
 @router.post("/cadastrar_funcionario")
-async def add_func(funcionario: Funcionario = Body(...)):
+async def add_func(funcionario: Funcionario = Body(...), token: str = Depends(verificar_token)):
     funcionario.funcionario_id = controller.qtd_ids_funcionario()
     return controller.inserir_funcionario(funcionario)
 
 @router.post("/cadastrar_servico")
-async def add_servico(servico: dict = Body(...)):
+async def add_servico(servico: dict = Body(...), token: str = Depends(verificar_token)):
     return controller.criar_servicos(servico)
 
 @router.get("/listar_servicos")
-async def listar_todos_servicos():
+async def listar_todos_servicos(token: str = Depends(verificar_token)):
     return controller.listar_servicos()
 
 @router.delete("/deletar_servico/{nome}")
-async def deletar_servico(nome):
+async def deletar_servico(nome, token: str = Depends(verificar_token)):
     return controller.excluir_servico(nome)
 
 @router.put("/editar_servico/{nome}")
-async def edit_servico(nome: str , data: dict = Body(...)):
+async def edit_servico(nome: str , data: dict = Body(...), token: str = Depends(verificar_token)):
     return controller.editar_servico(nome, data)
 
 @router.get("/listar_cortes_agendados")
-async def listar_agendamentos():
+async def listar_agendamentos(token: str = Depends(verificar_token)):
     return await pegar_cortes_agendados()
 
 @router.get('/count_servicos/{date}')
-async def countServicos(date):
+async def countServicos(date, token: str = Depends(verificar_token)):
     return controller.count_servicos(date)

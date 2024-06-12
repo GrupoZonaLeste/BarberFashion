@@ -16,7 +16,7 @@ from controllers.employee import Controller_employee
 from models.model import *
 from database.connection import *
 from controllers.schedule import *
-
+from router.router_auth import verificar_token
 
 db_handle = DBConnectionHandler()
 db_handle.connect_to_db()
@@ -27,14 +27,14 @@ jwt_token = Token()
 router = APIRouter()
 
 @router.get('/pegartodoscortes/{id}')
-async def PegarTodosCortes(id):
+async def PegarTodosCortes(id, token: str = Depends(verificar_token)):
     dados = await pegar_todos_cortes(id)
     return dados
 
 @router.get('/usuarionames/{id}')
-async def getUsuarioNome(id):
+async def getUsuarioNome(id, token: str = Depends(verificar_token)):
     return controller.retornar_nome_cliente(id)
 
 @router.get('/listar_funcionarios_qualificados/{servico}')
-async def listar_funcionarios(servico):
+async def listar_funcionarios(servico, token: str = Depends(verificar_token)):
     return controller.funcionarios_qualificados(servico)

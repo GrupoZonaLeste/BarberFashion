@@ -8,6 +8,7 @@ from controllers.tokens import Token
 from models.model import *
 from database.connection import *
 from controllers.schedule import *
+from router.router_auth import verificar_token
 
 ## db_handle = DBConnectionHandler()
 ## db_handle.connect_to_db()
@@ -19,16 +20,16 @@ router = APIRouter()
 
 
 @router.put('/atualizarcortes/{id}')
-async def atualizarCortes(id , dados: dict = Body(...)):
+async def atualizarCortes(id , dados: dict = Body(...), token: str = Depends(verificar_token)):
     await atualizar_cortes(id, dados)
     return "CORTE ATUALIZADO"
 
 @router.delete('/deletarcorte/{id}')
-async def deletecorte(id):
+async def deletecorte(id, token: str = Depends(verificar_token)):
     await deletar_cortes(id)
     return "CORTE DELETADO"
 
 @router.get('/cortes_realizados/{clientid}/{funcid}/')
-async def cortesRealizados(clientid, funcid):
+async def cortesRealizados(clientid, funcid, token: str = Depends(verificar_token)):
     dados = await pegar_cortes_realizados(clientid, funcid)
     return dados

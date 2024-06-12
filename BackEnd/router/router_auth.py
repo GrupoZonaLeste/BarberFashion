@@ -12,11 +12,13 @@ from controllers.tokens import Token
 from controllers.email_sender import *
 from models.model import CodeSchema
 from controllers import client
+from controllers.client import Controller_client
 
 db_handle = DBConnectionHandler()
 db_handle.connect_to_db()
 db_connection = db_handle.get_db_connection()
 controller = Controller_auth(db_connection)
+controller_client = Controller_client(db_connection)
 security = HTTPBearer()
 jwt_token = Token()
 router = APIRouter()
@@ -79,4 +81,15 @@ async def verificar_codigo(code_data: CodeSchema):
             raise HTTPException(status_code=400, detail="Código inválido")
     else:
         raise HTTPException(status_code=400, detail="Nenhum código encontrado para este email")
+    
+@router.post("/alterar_senha/")
+async def alterar_senha(new_senha: AlterarSenha):
+    email = new_senha.email
+    nova_senha = new_senha.password
+    return controller_client.alterar_senha(email, nova_senha)
+
+@router.post("/cadastrar/")
+async def cadastrar(cliente: Cliente):
+    cliente.client_id = controller.qtd_ids_cliente()
+    return controller_client.inserir_cliente(cliente)
 

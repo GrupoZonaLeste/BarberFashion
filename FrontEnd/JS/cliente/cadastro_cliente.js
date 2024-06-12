@@ -1,4 +1,4 @@
-const API_cadastrar = getEndpoint_client("cadastrar")
+const API_cadastrar = getEndpoint_auth("cadastrar")
 //API_Gateway definindo endereço para realizar o fetch
 const fetchButtonData = () => {
     return {

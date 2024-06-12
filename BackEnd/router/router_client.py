@@ -16,6 +16,7 @@ from models.model import *
 from database.connection import *
 from controllers.schedule import *
 from controllers.tokens import Token
+from router.router_auth import verificar_token
 
 db_handle = DBConnectionHandler()
 db_handle.connect_to_db()
@@ -28,7 +29,7 @@ router = APIRouter()
 router.mount("/static", StaticFiles(directory="pictures_clientes"), name="static")
 
 @router.post("/upload/")
-async def upload_image(image: UploadFile = File(...), id: int = None):
+async def upload_image(image: UploadFile = File(...), id: int = None, token: str = Depends(verificar_token)):
     if id is None:
         raise HTTPException(status_code=400, detail="ID is required")
 
@@ -59,34 +60,24 @@ async def upload_image(image: UploadFile = File(...), id: int = None):
 
     return JSONResponse({"filename": new_filename})
 
-@router.post("/cadastrar/")
-async def add_item(cliente: Cliente):
-    cliente.client_id = controller.qtd_ids_cliente()
-    return controller.inserir_cliente(cliente)
-
 @router.post('/editar_cliente/')
-async def editar_cliente(id: int, name: str , email: str, phone: str ):
+async def editar_cliente(id: int, name: str , email: str, phone: str, token: str = Depends(verificar_token)):
     return controller.editar_cliente(id,name,email ,phone)
 
 @router.post('/marcarcorte')
-async def addCorteNoBanco(corte: dict = Body(...)):
+async def addCorteNoBanco(corte: dict = Body(...), token: str = Depends(verificar_token)):
     await adicionar_corte(corte)
     return "CORTE MARCARDO E ENVIADO AO BANCO"
 
 @router.get('/pegarcortes/{client_id}')
-async def pegarCortes(client_id):
+async def pegarCortes(client_id, token: str = Depends(verificar_token)):
     dados = await pegar_cortes(client_id) 
     return dados
 
 @router.get('/usuario')
-async def get_usuario(id: int):
+async def get_usuario(id: int, token: str = Depends(verificar_token)):
     return controller.listar_usuario_por_id(id)
 
-@router.post("/alterar_senha/")
-async def alterar_senha(new_senha: AlterarSenha):
-    email = new_senha.email
-    nova_senha = new_senha.password
-    return controller.alterar_senha(email, nova_senha)
 @router.get('/funcionarionames/{id}')
-async def get_nome_funcionario(id):
+async def get_nome_funcionario(id, token: str = Depends(verificar_token)):
     return controller.retornar_nome_funcionario(id)

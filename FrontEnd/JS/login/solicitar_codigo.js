@@ -126,7 +126,7 @@ function alterar_senha(email){
             }
                 const options = {
                     method: 'POST',
-                    url: 'http://localhost:8000/client/alterar_senha/',
+                    url: 'http://localhost:8000/auth/alterar_senha/',
                     data: {password: password, email: user_email}
                   };
                   axios.request(options).then(function (response) {
