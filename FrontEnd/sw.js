@@ -46,15 +46,6 @@ const urlsToCache = [
     "images/setting-wh.png",
     "images/smartphone (1) 1.png",
     "HTML/cliente/cadastro_cliente.html",
-    "HTML/cliente/editar_cliente.html",
-    "HTML/cliente/esqueceu_senha.html",
-    "HTML/cliente/login_cliente.html",
-    "HTML/cliente/pagina_cliente.html",
-    "HTML/funcionario",
-    "HTML/funcionario/editar_funcionario.html",
-    "HTML/funcionario/pagina_funcionario.html",
-    "HTML/gerente",
-    "HTML/gerente/pagina_gerente.html",
     "HTML/index.html",
     "CSS/cliente",
     "CSS/cliente/cadastro_cliente.css",
@@ -99,7 +90,27 @@ self.addEventListener('activate', event => {
 });
 // Ativado quando requisições forem feitas
 self.addEventListener('fetch', event => {
-  const requestURL = new URL(event.request.url);
+
+    const requestURL = new URL(event.request.url);
+    const bypassCache = requestURL.pathname.includes('/BackEnd/pictures_clientes/');
+
+    if (bypassCache) {
+      // Always fetch from network for profile images
+      event.respondWith(
+        fetch(event.request).then(networkResponse => {
+          if (!networkResponse || networkResponse.status !== 200) {
+            throw new Error('Network response was not ok');
+          }
+          return networkResponse;
+        }).catch(() => {
+          // Return a default image if network fails
+          return caches.match('/FrontEnd/images/profile.png').then(defaultResponse => {
+            return defaultResponse || new Response('Offline', { status: 503 });
+          });
+        })
+      );
+    }
+    
     route_client = requestURL.pathname.startsWith('/client/')
     route_manager = requestURL.pathname.startsWith('/manager/')
     route_employee = requestURL.pathname.startsWith('/employee/')

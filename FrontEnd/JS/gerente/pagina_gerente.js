@@ -79,6 +79,7 @@ btn_cadastrarFuncionario.addEventListener('click', async (event) => {
                 confirmButtonColor: "#FF9800",
             }).then(() => {
                 putFotoFuncionario(response.data.funcid);
+                location.reload();
             });
         } else if (response.data.status == "EMAIL CADASTRADO") {
             Swal.fire({

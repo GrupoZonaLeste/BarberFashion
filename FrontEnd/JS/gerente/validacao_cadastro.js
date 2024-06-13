@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
     function checkFormValidity() {
         const isValid = Array.from(spans).every(span => span.style.display === 'none');
-        console.log(isValid)
         submitButton.disabled = !isValid;
         if (submitButton.disabled) {
             submitButton.classList.add('disabled-button');

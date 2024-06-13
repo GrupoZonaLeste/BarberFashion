@@ -50,7 +50,11 @@ class Controller_client:
         
     def retornar_nome_funcionario(self, funcionario_id):
         funcionario = self.get_current_collection().find_one({'funcionario_id': int(funcionario_id)})
-        user = { "name": funcionario.get('name')}
+        try:
+            user = { "name": funcionario.get('name')}
+        except:
+            return{"STATUS":"Not-found"}
+
         return user
 
     ##operacional    

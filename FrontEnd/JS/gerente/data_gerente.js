@@ -1,8 +1,6 @@
-
 const API_fotos_servicos = getEndpoint_manager('foto_servicos')
 const API_fotos_funcinoarios = getEndpoint_manager('foto_funcionarios')
 
-const token = localStorage.getItem("token");
 token_decoded = parseJwt(token);
 
 const get_gerente_name = token_decoded.name;
