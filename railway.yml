@@ -1,0 +1,9 @@
+services:
+  frontend:
+    # Tipo de serviço para o frontend estático
+    image: 'railway/static'
+    # Caminho para os arquivos estáticos
+    staticPath: 'FrontEnd/HTML'
+    # Comandos para iniciar o serviço (não são necessários para estáticos)
+    env:
+      - PORT: 5500  # Porta na qual o frontend vai rodar
