@@ -1,0 +1,8 @@
+Pylance==0.10.15
+fastapi==0.110.2
+uvicorn==0.29.0
+Pymongo==4.6.3
+pydantic==2.7.1
+Pyjwt==2.8.0
+pillow==10.3.0
+python-multipart==0.0.9
