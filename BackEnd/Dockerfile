@@ -6,6 +6,8 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN pip install email_validator
+
 COPY . .
 
 EXPOSE 8000
